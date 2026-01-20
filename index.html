@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Floxr – Automate your Business & HR Workflows</title>
+  <meta name="description"
+    content="Floxr helps you automate your business and HR workflows. Simple, clean, and powerful." />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">floxr.co</div>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+        ☰
+      </button>
+
+      <nav class="nav" id="mobile-nav">
+        <a href="#workflow">Workflows</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#company">Company</a>
+      </nav>
+      <div class="header-cta">
+        <!-- Dark Mode Toggle -->
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
+          🌗
+        </button>
+
+        <a href="#demo" class="btn btn-ghost">Log in</a>
+        <a href="https://zcal.co/hussainalihaq/30min" target="_blank" class="btn btn-primary">
+          Book a Demo
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="animate">
+          <span class="launch-badge">🚀 Launching Soon</span>
+          <h1>Automate your Business & HR Workflows</h1>
+          <p class="hero-subtitle">
+            floxr.co is the all-in-one automation platform that replaces dozens of tools.
+            No-code workflows, intelligent decisions, and seamless integrations.
+          </p>
+
+          <div style="display: flex; gap: 1rem; justify-content: center;">
+            <a href="https://zcal.co/hussainalihaq/30min" target="_blank" class="btn btn-primary btn-lg">
+              Book a Demo
+            </a>
+            <a href="#features" class="btn btn-ghost btn-lg">View Features</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section" style="padding: 3rem 0; position: relative;">
+      <div class="section-bg-graphic bg-dot-pattern"></div>
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number" data-target="10" data-suffix="x">0x</div>
+            <div class="stat-label">Faster Onboarding</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-target="500" data-suffix="+">0+</div>
+            <div class="stat-label">Companies Trust Us</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-target="99.9" data-suffix="%">0%</div>
+            <div class="stat-label">Uptime SLA</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-target="24" data-suffix="/7">0/7</div>
+            <div class="stat-label">AI Support</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scale Section -->
+    <section id="scale" class="section">
+      <div class="section-bg-graphic bg-circuit-lines"></div>
+      <div class="container">
+        <div class="section-head">
+          <h2>Everything you need to scale</h2>
+          <p style="color: var(--text-light); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+            Powerful tools built for modern businesses. Stop wrestling with data and start making decisions.
+          </p>
+        </div>
+
+        <div class="scale-grid">
+          <!-- Card 1 -->
+          <div class="scale-card">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2c-5 0-9 1-9 3s4 3 9 3 9-1 9-3-4-3-9-3z"></path>
+                <path d="M3 5v14c0 2 4 3 9 3s9-1 9-3V5"></path>
+                <path d="M3 12c0 2 4 3 9 3s9-1 9-3"></path>
+              </svg>
+            </div>
+            <h3>Employee Database</h3>
+            <p>
+              Centralized record keeping for all your staff details, accessible securely from anywhere.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="scale-card">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <h3>Excel Automation</h3>
+            <p>
+              Upload messy Excel sheets and let our engine clean, parse, and organize the data automatically.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="scale-card">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3>Bank-Grade Security</h3>
+            <p>
+              Your data is encrypted at rest and in transit. Role-based access control keeps information safe.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI-Powered Section -->
+    <section class="section section-alt" style="position: relative; overflow: hidden;">
+      <div class="section-bg-graphic">
+        <div class="floating-blob" style="top: 10%; right: -5%;"></div>
+        <div class="floating-blob" style="bottom: 10%; left: -5%; width: 200px; height: 200px; animation-delay: -5s;">
+        </div>
+        <svg class="neural-lines" viewBox="0 0 1000 400" preserveAspectRatio="none">
+          <path d="M0,200 Q250,100 500,200 T1000,200" fill="none" />
+          <path d="M0,150 Q250,250 500,150 T1000,150" fill="none" />
+          <path d="M0,250 Q250,150 500,250 T1000,250" fill="none" />
+        </svg>
+      </div>
+      <div class="container">
+        <div class="section-head">
+          <h2>Powered by Intelligent AI</h2>
+          <p style="color: var(--text-light); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+            Our AI doesn't just automate — it learns, adapts, and makes smart decisions for your business.
+          </p>
+        </div>
+
+        <div class="ai-grid">
+          <div class="ai-card">
+            <div class="ai-icon">🧠</div>
+            <h3>Smart Routing</h3>
+            <p>AI automatically routes tasks to the right person based on workload and expertise.</p>
+          </div>
+          <div class="ai-card">
+            <div class="ai-icon">⚡</div>
+            <h3>Predictive Actions</h3>
+            <p>Anticipate issues before they happen. Get alerts and suggestions proactively.</p>
+          </div>
+          <div class="ai-card">
+            <div class="ai-icon">📊</div>
+            <h3>Insights Dashboard</h3>
+            <p>Real-time analytics that surface bottlenecks and opportunities automatically.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed Features -->
+    <section id="features" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Detailed Workflows, Simplified.</h2>
+          <p style="color: var(--text-light); font-size: 1.1rem;">
+            We handle the complex edge cases so you don't have to.
+          </p>
+        </div>
+
+        <div class="details-grid">
+          <div class="details-left">
+            <div class="detail-item">
+              <div class="check-icon">✓</div>
+              <div class="detail-content">
+                <h3>Conditional Logic</h3>
+                <p>Route approvals based on department or budget.</p>
+              </div>
+            </div>
+            <div class="detail-item">
+              <div class="check-icon">✓</div>
+              <div class="detail-content">
+                <h3>Data Guards</h3>
+                <p>Prevent bad data with auto-validation.</p>
+              </div>
+            </div>
+            <div class="detail-item">
+              <div class="check-icon">✓</div>
+              <div class="detail-content">
+                <h3>Audit Logs</h3>
+                <p>Full history for compliance and security.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="details-right" style="position: relative;">
+            <!-- Product Prototype - Workflow Canvas -->
+            <div class="product-window">
+              <!-- macOS-style window header -->
+              <div class="window-header">
+                <div class="window-dots">
+                  <div class="window-dot"></div>
+                  <div class="window-dot"></div>
+                  <div class="window-dot"></div>
+                </div>
+                <div class="window-title">floxr.co — Employee Onboarding</div>
+              </div>
+
+              <!-- Workflow Canvas -->
+              <div class="canvas-area" style="min-height: 300px; padding: 2rem;">
+                <!-- Clean SVG Connection Lines -->
+                <svg class="flow-connections" viewBox="0 0 800 200" preserveAspectRatio="xMidYMid meet"
+                  style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;">
+                  <defs>
+                    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" style="stop-color: var(--primary); stop-opacity: 0.3" />
+                      <stop offset="50%" style="stop-color: var(--primary); stop-opacity: 1" />
+                      <stop offset="100%" style="stop-color: var(--accent); stop-opacity: 0.3" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M 100 100 C 200 100, 180 100, 280 100" stroke="url(#lineGrad)" stroke-width="3" fill="none"
+                    stroke-linecap="round" />
+                  <path d="M 320 100 C 420 100, 400 100, 500 100" stroke="url(#lineGrad)" stroke-width="3" fill="none"
+                    stroke-linecap="round" />
+                  <path d="M 540 100 C 640 100, 620 100, 720 100" stroke="url(#lineGrad)" stroke-width="3" fill="none"
+                    stroke-linecap="round" />
+                </svg>
+
+                <div class="workflow-canvas" style="position: relative; z-index: 2;">
+                  <!-- Node 1: Trigger -->
+                  <div class="workflow-node">
+                    <div class="node-circle active"
+                      style="background: linear-gradient(135deg, var(--primary-subtle), var(--bg-card));">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
+                        stroke-width="2">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                      </svg>
+                    </div>
+                    <div class="node-label">Trigger</div>
+                    <div class="node-sublabel">Event Detected</div>
+                  </div>
+
+                  <!-- Node 2: Process -->
+                  <div class="workflow-node">
+                    <div class="node-circle active"
+                      style="background: linear-gradient(135deg, var(--primary-subtle), var(--bg-card));">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
+                        stroke-width="2">
+                        <circle cx="12" cy="12" r="3" />
+                        <path
+                          d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                      </svg>
+                    </div>
+                    <div class="node-label">Process</div>
+                    <div class="node-sublabel">Auto-Validate</div>
+                  </div>
+
+                  <!-- Node 3: Sync -->
+                  <div class="workflow-node">
+                    <div class="node-circle active"
+                      style="background: linear-gradient(135deg, var(--primary-subtle), var(--bg-card));">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
+                        stroke-width="2">
+                        <path d="M23 4v6h-6" />
+                        <path d="M1 20v-6h6" />
+                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+                      </svg>
+                    </div>
+                    <div class="node-label">Sync</div>
+                    <div class="node-sublabel">Update Systems</div>
+                  </div>
+
+                  <!-- Node 4: Complete -->
+                  <div class="workflow-node">
+                    <div class="node-circle"
+                      style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), var(--bg-card)); border-color: var(--success);">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--success)"
+                        stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22,4 12,14.01 9,11.01" />
+                      </svg>
+                    </div>
+                    <div class="node-label">Complete</div>
+                    <div class="node-sublabel">Done ✓</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Start with a 1-Month Free Trial</h2>
+          <p style="color: var(--text-light); font-size: 1.1rem;">
+            No commitment. Cancel anytime. Experience the power of automation.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Free Trial Card -->
+          <div class="pricing-card">
+            <span class="price-badge">Most Popular</span>
+            <h3>Pro Trial</h3>
+            <div class="price">$0 <span class="price-period">/ mo</span></div>
+            <p>Full access for 30 days. Then $29/mo.</p>
+            <ul style="list-style: none; padding: 0; margin: 2rem 0; color: var(--text-body);">
+              <li style="margin-bottom: 0.5rem;">✓ Unlimited Workflows</li>
+              <li style="margin-bottom: 0.5rem;">✓ 5 Team Members</li>
+              <li style="margin-bottom: 0.5rem;">✓ Priority Support</li>
+            </ul>
+            <a href="#demo"
+              style="display: block; width: 100%; padding: 0.8rem 2rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-align: center; text-decoration: none; background: linear-gradient(135deg, #4F46E5, #FF6B6B); color: white; border: none; cursor: pointer;">Start
+              Free Trial</a>
+          </div>
+
+          <!-- Enterprise -->
+          <div class="pricing-card">
+            <h3>Enterprise</h3>
+            <div class="price">Custom</div>
+            <p>For large organizations needing control.</p>
+            <ul style="list-style: none; padding: 0; margin: 2rem 0; color: var(--text-body);">
+              <li style="margin-bottom: 0.5rem;">✓ SSO & Audit Logs</li>
+              <li style="margin-bottom: 0.5rem;">✓ Dedicated CSM</li>
+              <li style="margin-bottom: 0.5rem;">✓ Custom Contracts</li>
+            </ul>
+            <a href="https://zcal.co/hussainalihaq/30min" target="_blank"
+              style="display: block; width: 100%; padding: 0.8rem 2rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-align: center; text-decoration: none; background: linear-gradient(135deg, #4F46E5, #FF6B6B); color: white; border: none; cursor: pointer;">Contact
+              Sales</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Company / Contact -->
+    <section id="company" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Grow with Floxr</h2>
+        </div>
+        <div class="company-grid">
+          <div class="company-card">
+            <h3>Careers</h3>
+            <p style="margin-bottom: 1.5rem;">We're looking for talented engineers and designers.</p>
+            <a href="mailto:careers@floxr.coco" class="btn btn-ghost">View Openings</a>
+          </div>
+          <div class="company-card">
+            <h3>Contact Us</h3>
+            <p style="margin-bottom: 1.5rem;">Have questions? We'd love to hear from you.</p>
+            <a href="mailto:hello@floxr.coco" class="btn btn-ghost">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-question">How long does it take to get started?</div>
+            <div class="faq-answer">Most teams are up and running within 24 hours. Our onboarding wizard guides you
+              through connecting your tools and setting up your first workflow.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Do I need technical skills to use datfly?</div>
+            <div class="faq-answer">No coding required. Our visual workflow builder is designed for business users. Just
+              drag, drop, and connect.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Is my data secure?</div>
+            <div class="faq-answer">Absolutely. We use enterprise-grade encryption, run on SOC 2 compliant
+              infrastructure, and never share your data with third parties.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Can I cancel anytime?</div>
+            <div class="faq-answer">Yes, no long-term contracts. Cancel anytime from your dashboard. We'll even help you
+              export your data.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA / Pricing Replacement -->
+    <section id="demo" class="section">
+      <div class="container" style="text-align: center; max-width: 600px;">
+        <h2 style="font-size: 2.5rem;">Ready to automate?</h2>
+        <p style="color: var(--text-light); margin-bottom: 2rem; font-size: 1.1rem;">
+          Join the waitlist or book a demo today.
+        </p>
+
+        <form id="auth-form"
+          style="display: flex; flex-direction: column; gap: 1rem; max-width: 400px; margin: 0 auto;">
+          <input type="email" id="email" placeholder="work@company.com" required
+            style="padding: 1rem; border: 1px solid var(--border-subtle); border-radius: 8px; font-size: 1rem; background: var(--bg-card); color: var(--text-head);">
+          <button type="submit" class="btn btn-primary btn-lg">Continue with Email</button>
+        </form>
+        <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-light);">
+          Startups get 3 months free. No credit card required.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Our Team Section -->
+    <section class="section"
+      style="background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); color: white; text-align: center; padding: 4rem 0;">
+      <div class="container" style="max-width: 700px;">
+        <h2 style="color: white; margin-bottom: 1rem;">Ready to Transform Your Workflows?</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.95;">Connect with our team to see how floxr.co can
+          revolutionize your business automation.</p>
+        <a href="https://zcal.co/hussainalihaq/30min" target="_blank" class="btn btn-lg"
+          style="background: white; color: var(--primary); font-weight: 600; padding: 1rem 2.5rem;">
+          Schedule a Call →
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- AI Chatbot Widget -->
+  <div id="ai-chatbot" class="chatbot-widget">
+    <button class="chatbot-toggle" onclick="toggleChatbot()" aria-label="Toggle AI Assistant">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+    </button>
+    <div class="chatbot-window" id="chatbot-window">
+      <div class="chatbot-header">
+        <div>
+          <div style="font-weight: 600;">floxr.co AI Assistant</div>
+          <div style="font-size: 0.75rem; opacity: 0.8;">Always here to help</div>
+        </div>
+        <button onclick="toggleChatbot()"
+          style="background: none; border: none; color: white; cursor: pointer; font-size: 1.5rem;">&times;</button>
+      </div>
+      <div class="chatbot-messages" id="chatbot-messages">
+        <div class="chatbot-message bot-message">
+          <div class="message-avatar">🤖</div>
+          <div class="message-content">
+            Hi! I'm the floxr.co AI assistant. How can I help you automate your workflows today?
+          </div>
+        </div>
+      </div>
+      <div class="chatbot-input-area">
+        <input type="text" id="chatbot-input" placeholder="Ask me anything..."
+          onkeypress="if(event.key==='Enter') sendChatMessage()">
+        <button onclick="sendChatMessage()" class="chatbot-send-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="logo" style="font-size: 1.2rem; margin-bottom: 1rem;">floxr.co</div>
+      <p>© <span id="year"></span> Floxr Inc. Built for automation.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+      const nav = document.getElementById('mobile-nav');
+      nav.classList.toggle('active');
+    }
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobile-nav').classList.remove('active');
+      });
+    });
+
+    // Theme Toggle Logic
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute("data-theme");
+      const next = current === "light" ? "dark" : "light";
+      html.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+    }
+
+    // Restore Theme on Load
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+
+    // FAQ Accordion Logic
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const faqItem = button.parentElement;
+        const isActive = faqItem.classList.contains('active');
+
+        // Close all other items
+        document.querySelectorAll('.faq-item').forEach(item => {
+          item.classList.remove('active');
+        });
+
+        // Toggle current item
+        if (!isActive) {
+          faqItem.classList.add('active');
+        }
+      });
+    });
+
+    // Animated Counter for Stats
+    function animateCounter(element) {
+      const target = parseFloat(element.getAttribute('data-target'));
+      const suffix = element.getAttribute('data-suffix') || '';
+      const duration = 2000; // 2 seconds
+      const increment = target / (duration / 16); // 60fps
+      let current = 0;
+
+      const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+          // Handle decimal numbers
+          if (target % 1 !== 0) {
+            element.textContent = current.toFixed(1) + suffix;
+          } else {
+            element.textContent = Math.floor(current) + suffix;
+          }
+          requestAnimationFrame(updateCounter);
+        } else {
+          // Final value
+          if (target % 1 !== 0) {
+            element.textContent = target.toFixed(1) + suffix;
+          } else {
+            element.textContent = target + suffix;
+          }
+        }
+      };
+
+      updateCounter();
+    }
+
+    // Scroll Reveal Intersection Observer
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+
+          // Trigger counter animation for stats section
+          if (entry.target.querySelector('.stats-grid')) {
+            const counters = entry.target.querySelectorAll('.stat-number[data-target]');
+            counters.forEach(counter => {
+              if (!counter.classList.contains('counted')) {
+                counter.classList.add('counted');
+                animateCounter(counter);
+              }
+            });
+          }
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.section').forEach(section => {
+      sectionObserver.observe(section);
+    });
+
+    document.getElementById("auth-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const button = e.target.querySelector("button");
+
+      if (!email) return;
+
+      button.textContent = "Sending...";
+      button.disabled = true;
+
+      try {
+        const response = await fetch("http://localhost:4000/waitlist", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, source: "homepage" })
+        });
+
+        if (response.ok) {
+          alert("Thanks! You're on the list.");
+          e.target.reset();
+        } else {
+          alert("Something went wrong. Please try again.");
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Could not connect to server. Is the backend running?");
+      } finally {
+        button.textContent = "Continue with Email";
+        button.disabled = false;
+      }
+    });
+
+    // Chatbot Functions
+    function toggleChatbot() {
+      const chatbotWindow = document.getElementById('chatbot-window');
+      chatbotWindow.classList.toggle('active');
+    }
+
+    function sendChatMessage() {
+      const input = document.getElementById('chatbot-input');
+      const message = input.value.trim();
+
+      if (!message) return;
+
+      // Add user message
+      const messagesContainer = document.getElementById('chatbot-messages');
+      const userMsg = document.createElement('div');
+      userMsg.className = 'chatbot-message user-message';
+      userMsg.innerHTML = `
+        <div class="message-avatar">👤</div>
+        <div class="message-content">${message}</div>
+      `;
+      messagesContainer.appendChild(userMsg);
+
+      // Clear input
+      input.value = '';
+
+      // Scroll to bottom
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+      // Simulate bot response after a delay
+      setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'chatbot-message bot-message';
+        botMsg.innerHTML = `
+          <div class="message-avatar">🤖</div>
+          <div class="message-content">Thanks for your message! Our AI is currently in demo mode. For real assistance, please book a demo or contact our team.</div>
+        `;
+        messagesContainer.appendChild(botMsg);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      }, 800);
+    }
+  </script>
+</body>
+
+</html>
