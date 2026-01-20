@@ -141,6 +141,26 @@ a {
   letter-spacing: -0.02em;
 }
 
+.logo-image {
+  height: 60px;
+  width: auto;
+  display: block;
+}
+
+/* Show light logo by default, hide dark logo */
+.logo-dark {
+  display: none;
+}
+
+/* In dark mode: hide light logo, show dark logo */
+[data-theme="dark"] .logo-light {
+  display: none;
+}
+
+[data-theme="dark"] .logo-dark {
+  display: block;
+}
+
 .nav {
   display: flex;
   gap: 2rem;
@@ -1929,4 +1949,36 @@ input:focus-visible {
     right: 0;
     bottom: 70px;
   }
+}/* Contact Sales Widget */
+.contact-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.contact-toggle {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+}
+
+.contact-toggle svg {
+    width: 20px;
+    height: 20px;
 }
