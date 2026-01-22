@@ -65,6 +65,7 @@
 
   <!-- Critical CSS (loaded first) -->
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./styles-mobile.css" media="(max-width: 768px)" />
 
   <!-- Async Font Loading (non-blocking) -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
@@ -83,10 +84,13 @@
 
       <!-- Navigation -->
       <nav class="nav" id="mobile-nav">
-        <!-- Mobile Nav Close Button -->
-        <button class="mobile-nav-close" onclick="toggleMobileMenu()" aria-label="Close Menu">
-          &times;
-        </button>
+        <div class="mobile-nav-header">
+          <span>Menu</span>
+          <button class="mobile-nav-close" onclick="toggleMobileMenu()" aria-label="Close Menu">
+            &times;
+          </button>
+        </div>
+        <div class="mobile-nav-divider"></div>
         <a href="#features">Features</a>
         <a href="#how-it-works">How It Works</a>
         <a href="#pricing">Pricing</a>

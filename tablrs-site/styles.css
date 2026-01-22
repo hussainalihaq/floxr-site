@@ -202,6 +202,12 @@ a {
   color: var(--primary);
 }
 
+.mobile-nav-header,
+.mobile-nav-divider,
+.mobile-nav-close {
+  display: none;
+}
+
 .header-cta {
   display: flex;
   align-items: center;
@@ -2263,378 +2269,82 @@ input:focus-visible {
   }
 }
 
-/* Contact Sales Widget */
+/* Contact Sales Widget - Minimal Bottom Left Style */
 .contact-widget {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
+  bottom: 0;
+  left: 0;
+  right: auto;
+  z-index: 10000;
 }
 
 .contact-toggle {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: white;
+  background: #0F172A;
+  color: #F8FAFC;
   border: none;
-  padding: 1rem 1.5rem;
-  border-radius: 50px;
-  font-size: 1rem;
-  font-weight: 600;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  opacity: 0.9;
 }
 
 .contact-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+  opacity: 1;
+  background: #1E293B;
+  padding-left: 1.25rem;
 }
 
 .contact-toggle svg {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
+  opacity: 0.8;
 }
 
-/* ============================================
-   COMPREHENSIVE MOBILE RESPONSIVE STYLES
-   ============================================ */
+/* End of main styles */
 
-/* Mobile Menu Toggle Button - 44x44px as requested */
-.mobile-menu-toggle {
-  display: none;
-  width: 44px;
-  height: 44px;
-  background: transparent;
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
+/* Typography - 16px minimum body, 1.6 line height */
+body {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1 {
+  font-size: 1.75rem;
+}
+
+h2 {
   font-size: 1.5rem;
-  color: var(--text-head);
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
 }
 
-/* Sticky Mobile CTA - hidden by default */
-.sticky-mobile-cta {
-  display: none;
+h3 {
+  font-size: 1.25rem;
 }
 
-/* MOBILE BREAKPOINT - 768px and below */
-@media (max-width: 768px) {
+/* Header adjustments */
+.header-inner {
+  height: 60px;
+}
 
-  /* Show hamburger menu */
-  .mobile-menu-toggle {
-    display: flex;
-  }
+.logo-image {
+  height: 45px;
+}
 
-  /* Hide desktop header CTA buttons */
-  .header-cta .btn {
-    display: none;
-  }
+/* FAQ section */
+.faq-question {
+  font-size: 1rem;
+  padding: 1.25rem 0;
+}
 
-  /* Keep theme toggle visible */
-  .header-cta .theme-toggle-btn {
-    display: flex;
-  }
-
-  /* Mobile Navigation - slide in from right */
-  .nav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 280px;
-    height: 100vh;
-    background: var(--bg-card);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-left: 1px solid var(--border-subtle);
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 5rem 2rem 2rem;
-    gap: 0.5rem;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
-    z-index: 1001;
-    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
-  }
-
-  .mobile-nav-close {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    width: 44px;
-    height: 44px;
-    background: transparent;
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    font-size: 2rem;
-    color: var(--text-head);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  .nav.active {
-    right: 0;
-  }
-
-  .nav a {
-    width: 100%;
-    padding: 1rem;
-    font-size: 1.1rem;
-    border-radius: 8px;
-    transition: background-color 0.2s ease;
-  }
-
-  .nav a:hover {
-    background-color: var(--primary-subtle);
-    color: var(--primary);
-  }
-
-  .nav a {
-    color: var(--text-head);
-  }
-
-  /* Sticky Mobile CTA - small Contact Sales button */
-  .sticky-mobile-cta {
-    display: block;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    left: auto;
-    padding: 0;
-    background: transparent;
-    border: none;
-    z-index: 1000;
-  }
-
-  .contact-sales-mobile {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: white;
-    padding: 0.75rem 1.25rem;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
-    transition: all 0.3s ease;
-  }
-
-  .contact-sales-mobile:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
-  }
-
-  .contact-sales-mobile svg {
-    flex-shrink: 0;
-  }
-
-  /* Hide the desktop contact widget on mobile */
-  .contact-widget {
-    display: none;
-  }
-
-  /* No extra footer padding needed */
-  .footer {
-    padding-bottom: 4rem;
-  }
-
-  /* Hero Section - H1 36-40px */
-  .hero {
-    padding: 3rem 0 4rem;
-  }
-
-  .hero h1 {
-    font-size: clamp(2.2rem, 9vw, 2.8rem) !important;
-    line-height: 1.15;
-    padding: 0 0.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    padding: 0 0.5rem;
-    color: var(--text-body);
-    font-weight: 500;
-  }
-
-  /* Hero container padding - 24px */
-  .hero .container {
-    padding: 0 24px;
-  }
-
-  /* Hero CTA buttons - stack vertically, full-width */
-  .hero div[style*="display: flex"][style*="gap: 1rem"] {
-    flex-direction: column !important;
-    gap: 0.75rem !important;
-    width: 100%;
-    padding: 0;
-  }
-
-  .hero .btn {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .launch-badge {
-    font-size: 0.8rem;
-    margin-bottom: 1.5rem;
-  }
-
-  /* Stats Grid - 3 items centered properly */
-  .stats-grid {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 16px !important;
-  }
-
-  .stat-item {
-    padding: 1rem;
-    flex: 0 0 calc(50% - 8px);
-    max-width: calc(50% - 8px);
-  }
-
-  /* Center the 3rd item if only 3 stats */
-  .stat-item:last-child:nth-child(odd) {
-    flex: 0 0 calc(50% - 8px);
-    max-width: calc(50% - 8px);
-  }
-
-  .stat-number {
-    font-size: 2.5rem !important;
-  }
-
-  .stat-label {
-    font-size: 0.85rem;
-  }
-
-  /* Section padding - 48px top, 80px bottom */
-  .section {
-    padding: 48px 0 80px;
-  }
-
-  /* Container padding - 24px */
-  .container {
-    padding: 0 24px;
-  }
-
-  /* Section headings - scale down 20% */
-  .section-head h2 {
-    font-size: 1.75rem !important;
-    line-height: 1.2;
-  }
-
-  .section-head {
-    margin-bottom: 2.5rem;
-  }
-
-  /* Scale/Feature cards - full width */
-  .scale-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem;
-  }
-
-  .scale-card {
-    padding: 1.5rem;
-  }
-
-  .scale-card h3 {
-    font-size: 1.1rem;
-  }
-
-  .scale-card p {
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
-
-  /* Pricing Cards - full width, 24px padding */
-  .pricing-grid,
-  #pricing-top-row,
-  #pricing-bottom-row {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
-    max-width: 100% !important;
-    margin: 2rem auto 0 !important;
-  }
-
-  .pricing-card {
-    width: 100%;
-    padding: 24px !important;
-  }
-
-  .price {
-    font-size: 2rem !important;
-  }
-
-  .pricing-card ul {
-    font-size: 0.875rem !important;
-  }
-
-  /* Details grid - stack on mobile */
-  .details-grid {
-    grid-template-columns: 1fr !important;
-    gap: 2rem;
-  }
-
-  /* Workflow canvas adjustments */
-  .workflow-canvas {
-    flex-direction: column !important;
-    gap: 2rem !important;
-  }
-
-  .canvas-area {
-    padding: 1.5rem 1rem !important;
-    min-height: auto !important;
-  }
-
-  .flow-connections {
-    display: none;
-  }
-
-  /* Typography - 16px minimum body, 1.6 line height */
-  body {
-    font-size: 16px;
-    line-height: 1.6;
-  }
-
-  h1 {
-    font-size: 1.75rem;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  h3 {
-    font-size: 1.25rem;
-  }
-
-  /* Header adjustments */
-  .header-inner {
-    height: 60px;
-  }
-
-  .logo-image {
-    height: 45px;
-  }
-
-  /* FAQ section */
-  .faq-question {
-    font-size: 1rem;
-    padding: 1.25rem 0;
-  }
-
-  .faq-answer {
-    font-size: 0.9rem;
-  }
+.faq-answer {
+  font-size: 0.9rem;
+}
 }
 
 /* SMALL MOBILE - 480px and below */
@@ -2754,51 +2464,7 @@ input:focus-visible {
   /* Zoom effect */
 }
 
-/* Mobile Responsive Styles */
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-
-  .pricing-grid-3,
-  .pricing-grid-2 {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  [data-theme="dark"] .pricing-card,
-  [data-theme="dark"] .scale-card,
-  [data-theme="dark"] .feature-card {
-    background: #182136 !important;
-  }
-
-  .mockup-content>div {
-    flex-direction: column;
-  }
-
-  .mockup-content>div>div:first-child {
-    /* Sidebar */
-    width: 100% !important;
-    border-right: none !important;
-    border-bottom: 1px solid var(--border-subtle);
-    padding: 1rem !important;
-  }
-
-  /* Stack stats and charts on mobile */
-  .mockup-content .stats-row,
-  .mockup-content .charts-row {
-    grid-template-columns: 1fr !important;
-  }
-
-  .mockup-content .stats-row {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-
-  /* Improve header blending on mobile */
-  .header-inner {
-    padding: 0.75rem 1rem;
-  }
-}
+/* End of responsive styles */
 
 /* How It Works Icons */
 .check-icon {
