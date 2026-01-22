@@ -2357,6 +2357,24 @@ input:focus-visible {
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
     z-index: 1001;
     transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-nav-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    font-size: 2rem;
+    color: var(--text-head);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
   }
 
   .nav.active {
@@ -2433,15 +2451,18 @@ input:focus-visible {
   }
 
   .hero h1 {
-    font-size: clamp(2rem, 8vw, 2.5rem) !important;
-    line-height: 1.2;
+    font-size: clamp(2.2rem, 9vw, 2.8rem) !important;
+    line-height: 1.15;
     padding: 0 0.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .hero-subtitle {
-    font-size: 1rem;
+    font-size: 1.05rem;
     line-height: 1.6;
     padding: 0 0.5rem;
+    color: var(--text-body);
+    font-weight: 500;
   }
 
   /* Hero container padding - 24px */
@@ -2683,11 +2704,16 @@ input:focus-visible {
 }
 
 .site-header.scrolled {
-  background: rgba(255, 255, 255, 0);
+  background: var(--bg-page);
   backdrop-filter: blur(12px) saturate(180%);
   -webkit-backdrop-filter: blur(12px) saturate(180%);
-  border-bottom: none;
-  box-shadow: none;
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .site-header.scrolled {
+  background: rgba(15, 23, 42, 0.85);
+  /* Semi-transparent navy */
 }
 
 /* Icon Box Geometry (Applies to all) */
