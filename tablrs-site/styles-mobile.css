@@ -165,12 +165,42 @@
     }
 
     /* Hero Scaling and constraints */
-    /* Hero Scaling and constraints */
     .hero {
         overflow: hidden !important;
-        /* Critical to stop animation overflow */
         width: 100% !important;
         max-width: 100vw !important;
+    }
+
+    /* CRITICAL: Prevent dashboard mockup from causing horizontal scroll */
+    main {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+    }
+
+    .mockup-container {
+        overflow: hidden !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .mockup-window {
+        overflow: hidden !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        transform: none !important;
+        /* Disable 3D transforms on mobile */
+    }
+
+    .mockup-content {
+        overflow: hidden !important;
+        width: 100% !important;
+    }
+
+    /* Disable any transform animations that may cause overflow */
+    .hero * {
+        max-width: 100% !important;
     }
 
     .hero h1 {
