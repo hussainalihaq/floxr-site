@@ -66,6 +66,8 @@
         position: fixed !important;
         top: 0 !important;
         right: -100% !important;
+        /* Start completely offscreen */
+        width: 280px !important;
         width: 280px !important;
         height: 100vh !important;
         background: var(--bg-card) !important;
@@ -81,12 +83,14 @@
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
         display: flex !important;
         /* Ensure it doesn't shift the body */
+        /* Ensure it doesn't shift the body and is truly offscreen by default */
         transform: translateX(100%);
         right: 0 !important;
     }
 
     #mobile-nav.nav.active {
         transform: translateX(0) !important;
+        right: 0 !important;
     }
 
     /* Prevent body scroll when menu is active */
@@ -164,8 +168,12 @@
     }
 
     /* Hero Scaling and constraints */
+    /* Hero Scaling and constraints */
     .hero {
         overflow: hidden !important;
+        /* Critical to stop animation overflow */
+        width: 100% !important;
+        max-width: 100vw !important;
     }
 
     .hero h1 {
