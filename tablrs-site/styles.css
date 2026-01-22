@@ -244,6 +244,20 @@ a {
   letter-spacing: 0.02em;
 }
 
+.btn-header-demo {
+  padding: 0.5rem 1.75rem !important;
+  font-size: 0.9rem !important;
+  font-weight: 800 !important;
+  background: #60A5FA !important;
+  /* Bright Sky Blue from image */
+  box-shadow: 0 4px 14px rgba(96, 165, 250, 0.4) !important;
+}
+
+.btn-header-demo:hover {
+  background: #3B82F6 !important;
+  transform: translateY(-1px);
+}
+
 .btn-primary:hover {
   background: linear-gradient(135deg, var(--primary-hover), var(--accent-hover));
   transform: translateY(-2px);
@@ -2269,42 +2283,38 @@ input:focus-visible {
   }
 }
 
-/* Contact Sales Widget - Minimal Bottom Left Style */
+/* Contact Sales Widget */
 .contact-widget {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: auto;
-  z-index: 10000;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
 }
 
 .contact-toggle {
-  background: #0F172A;
-  color: #F8FAFC;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
   border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0.5rem 1rem;
-  font-size: 0.85rem;
-  font-weight: 500;
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  opacity: 0.9;
 }
 
 .contact-toggle:hover {
-  opacity: 1;
-  background: #1E293B;
-  padding-left: 1.25rem;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
 }
 
 .contact-toggle svg {
-  width: 16px;
-  height: 16px;
-  opacity: 0.8;
+  width: 20px;
+  height: 20px;
 }
 
 /* End of main styles */
@@ -3348,26 +3358,26 @@ h3 {
 
 /* THEME TOGGLE BUTTON STYLES */
 .theme-toggle-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-card);
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: rgba(15, 23, 42, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: var(--text-body);
-  transition: all 0.3s;
+  color: #fff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(8px);
 }
 
 .theme-toggle-btn:hover {
-  background: var(--bg-subtle);
-  border-color: var(--accent);
-  color: var(--accent);
-  transform: rotate(15deg);
+  background: rgba(59, 130, 246, 0.15);
+  border-color: #60A5FA;
+  transform: translateY(-1px);
 }
 
 /* Icon visibility */
