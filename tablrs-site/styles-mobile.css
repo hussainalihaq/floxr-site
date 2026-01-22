@@ -68,7 +68,6 @@
         right: -100% !important;
         /* Start completely offscreen */
         width: 280px !important;
-        width: 280px !important;
         height: 100vh !important;
         background: var(--bg-card) !important;
         backdrop-filter: blur(20px) saturate(180%) !important;
@@ -80,16 +79,14 @@
         gap: 0.5rem !important;
         box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2) !important;
         z-index: 10000 !important;
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        /* Transition right property specifically */
         display: flex !important;
-        /* Ensure it doesn't shift the body */
-        /* Ensure it doesn't shift the body and is truly offscreen by default */
-        transform: translateX(100%);
-        right: 0 !important;
+        transform: none !important;
+        /* Simplify: Use right property for movement */
     }
 
     #mobile-nav.nav.active {
-        transform: translateX(0) !important;
         right: 0 !important;
     }
 
