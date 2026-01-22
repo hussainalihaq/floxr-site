@@ -17,9 +17,28 @@
         margin-left: 0.5rem;
     }
 
+    /* Ensure 3-stack menu icon (burger) is visible and correctly styled */
+    .mobile-menu-toggle svg {
+        width: 24px !important;
+        height: 24px !important;
+        stroke: var(--text-head) !important;
+    }
+
     /* Keep theme toggle visible on mobile */
     .header-cta .theme-toggle-btn {
         display: flex !important;
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    /* SHORTEN BOOK DEMO BUTTON ON MOBILE */
+    .btn-header-demo {
+        padding: 0.4rem 0.8rem !important;
+        /* Extremely short/compact */
+        font-size: 0.8rem !important;
+        border-radius: 30px !important;
+        min-width: unset !important;
+        flex: 0 0 auto !important;
     }
 
     /* Hide desktop nav */
@@ -59,7 +78,6 @@
         justify-content: space-between !important;
         align-items: center !important;
         margin-bottom: 2rem !important;
-        display: flex !important;
     }
 
     .mobile-nav-header span {
@@ -124,34 +142,39 @@
 
     /* Hero Scaling */
     .hero h1 {
-        font-size: clamp(2.2rem, 9vw, 2.6rem) !important;
+        font-size: clamp(2.0rem, 8vw, 2.4rem) !important;
         line-height: 1.15 !important;
     }
 
     .hero-subtitle {
-        font-size: 1.05rem !important;
+        font-size: 1rem !important;
         line-height: 1.6 !important;
     }
 
-    /* Card scaling on mobile */
-    .pricing-card,
-    .scale-card,
-    .feature-card {
-        padding: 1.5rem !important;
-    }
-
+    /* FORCE VERTICAL CARD LAYOUTS FOR READABILITY */
+    .pricing-grid,
     .pricing-grid-3,
-    .pricing-grid-2 {
-        grid-template-columns: 1fr !important;
+    .pricing-grid-2,
+    .features-grid,
+    .scale-grid,
+    .stats-grid,
+    .details-grid {
+        display: flex !important;
+        flex-direction: column !important;
         gap: 1.5rem !important;
     }
 
-    [data-theme="dark"] .pricing-card,
-    [data-theme="dark"] .scale-card,
-    [data-theme="dark"] .feature-card {
-        background: #182136 !important;
+    .pricing-card,
+    .scale-card,
+    .feature-card,
+    .stat-item {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 1.5rem !important;
+        flex: 1 1 auto !important;
     }
 
+    /* Mockup adjustments */
     .mockup-content>div {
         flex-direction: column !important;
     }
@@ -168,11 +191,7 @@
         grid-template-columns: 1fr !important;
     }
 
-    .mockup-content .stats-row {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-
     .header-inner {
-        padding: 0.75rem 1rem !important;
+        padding: 0.75rem 0.5rem !important;
     }
 }

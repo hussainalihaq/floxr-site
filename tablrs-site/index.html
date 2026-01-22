@@ -1184,8 +1184,16 @@
 
     // Restore theme on page load (Default: Dark Mode)
     (function () {
-      const savedTheme = localStorage.getItem('theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', savedTheme);
+      const isMobile = window.innerWidth <= 768;
+      const savedTheme = localStorage.getItem('theme');
+
+      let themeToSet = savedTheme || 'dark'; // Site default is dark
+
+      if (isMobile && !savedTheme) {
+        themeToSet = 'dark';
+      }
+
+      document.documentElement.setAttribute('data-theme', themeToSet);
     })();
   </script>
 </body>
