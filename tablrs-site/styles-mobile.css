@@ -2,6 +2,14 @@
 
 @media (max-width: 768px) {
 
+    /* Global Mobile constraints */
+    html,
+    body {
+        overflow-x: hidden !important;
+        position: relative !important;
+        width: 100% !important;
+    }
+
     /* Mobile Menu Toggle Button */
     .mobile-menu-toggle {
         display: flex !important;
@@ -15,13 +23,20 @@
         align-items: center;
         justify-content: center;
         margin-left: 0.5rem;
+        padding: 0 !important;
     }
 
     /* Ensure 3-stack menu icon (burger) is visible and correctly styled */
     .mobile-menu-toggle svg {
         width: 24px !important;
         height: 24px !important;
+        display: block !important;
+    }
+
+    .mobile-menu-toggle svg line {
         stroke: var(--text-head) !important;
+        stroke-width: 2.5 !important;
+        stroke-linecap: round !important;
     }
 
     /* Keep theme toggle visible on mobile */
@@ -46,11 +61,11 @@
         display: none !important;
     }
 
-    /* Fixed Mobile Navigation Drawer */
+    /* Fixed Mobile Navigation Drawer - True Overlay */
     #mobile-nav.nav {
         position: fixed !important;
         top: 0 !important;
-        right: -110% !important;
+        right: -100% !important;
         width: 280px !important;
         height: 100vh !important;
         background: var(--bg-card) !important;
@@ -63,12 +78,20 @@
         gap: 0.5rem !important;
         box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2) !important;
         z-index: 10000 !important;
-        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
         display: flex !important;
+        /* Ensure it doesn't shift the body */
+        transform: translateX(100%);
+        right: 0 !important;
     }
 
     #mobile-nav.nav.active {
-        right: 0 !important;
+        transform: translateX(0) !important;
+    }
+
+    /* Prevent body scroll when menu is active */
+    body.menu-open {
+        overflow: hidden !important;
     }
 
     /* Mobile Nav Header */
@@ -140,7 +163,11 @@
         font-size: 1.2rem;
     }
 
-    /* Hero Scaling */
+    /* Hero Scaling and constraints */
+    .hero {
+        overflow: hidden !important;
+    }
+
     .hero h1 {
         font-size: clamp(2.0rem, 8vw, 2.4rem) !important;
         line-height: 1.15 !important;

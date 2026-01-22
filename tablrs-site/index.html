@@ -920,12 +920,14 @@
     function toggleMobileMenu() {
       const nav = document.getElementById('mobile-nav');
       nav.classList.toggle('active');
+      document.body.classList.toggle('menu-open');
     }
 
     // Close mobile menu when clicking a link
     document.querySelectorAll('.nav a').forEach(link => {
       link.addEventListener('click', () => {
         document.getElementById('mobile-nav').classList.remove('active');
+        document.body.classList.remove('menu-open');
       });
     });
     // Header scroll effect

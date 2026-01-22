@@ -3,6 +3,13 @@
    Dark Mode: Midnight Navy (Premium, Data-focused)
 */
 
+html,
+body {
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+}
+
 :root {
   /* Light Mode (default) */
   --bg-page: #FFFFFF;
