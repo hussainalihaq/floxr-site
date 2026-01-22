@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Floxr – Automate Employee Onboarding | HR Workflow Automation</title>
+  <meta name="description"
+    content="Automate employee onboarding in one click. Floxr creates accounts, sends emails, and manages your entire HR workflow. Save 10+ hours per hire." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="./floxr-logo.svg" />
+  <link rel="alternate icon" type="image/svg+xml" href="./floxr-logo-dark.svg" media="(prefers-color-scheme: dark)" />
+
+  <!-- Google Fonts - Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Mobile Responsive Pricing Grid -->
+  <style>
+    /* Mobile: Stack cards vertically */
+    @media (max-width: 768px) {
+
+      #pricing-top-row,
+      #pricing-bottom-row {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        max-width: 500px !important;
+      }
+
+      .hero h1 {
+        font-size: 2rem !important;
+      }
+
+      .hero p {
+        font-size: 1.05rem !important;
+      }
+
+      .section-head h2 {
+        font-size: 2rem !important;
+      }
+    }
+
+    /* Tablet: 2 columns */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      #pricing-top-row {
+        grid-template-columns: repeat(2, 1fr) !important;
+        max-width: 700px !important;
+      }
+
+      #pricing-bottom-row {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+  </style>
+
+  <!-- Performance: Resource Hints -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://floxr-backend.vercel.app">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://floxr-backend.vercel.app">
+
+  <!-- Critical CSS (loaded first) -->
+  <link rel="stylesheet" href="./styles.css" />
+
+  <!-- Async Font Loading (non-blocking) -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  </noscript>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <img src="floxr-logo.svg" alt="Floxr" class="logo-image" height="60">
+      </div>
+
+      <!-- Navigation -->
+      <nav class="nav" id="mobile-nav">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="mailto:careers@floxr.co">Careers</a>
+      </nav>
+
+      <div class="header-cta" style="display: flex; align-items: center; gap: 1rem;">
+        <!-- Theme Toggle with Sun/Moon Icons -->
+        <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+          <svg class="theme-icon sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+          <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </button>
+
+        <a href="https://zcal.co/hussainalihaq/30min" target="_blank" class="btn btn-primary">
+          Book a Demo
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero fade-in-up">
+      <div class="gradient-mesh">
+        <div class="gradient-blob blob-1"></div>
+        <div class="gradient-blob blob-2"></div>
+        <div class="gradient-blob blob-3"></div>
+      </div>
+      <!-- Decorative Shapes -->
+      <div class="hero-shapes">
+        <span class="shape shape-star shape-star-1">✳</span>
+        <span class="shape shape-star shape-star-2">✦</span>
+        <div class="shape shape-diamond shape-diamond-1"></div>
+        <div class="shape shape-diamond shape-diamond-2"></div>
+      </div>
+
+      <div class="container" style="position: relative; z-index: 1;">
+        <div class="hero-content-left animate">
+          <span class="launch-badge">
+            <span style="font-size: 1.1em">🚀</span>
+            Launching Q2 2026
+          </span>
+
+          <h1>
+            Floxr, a <span class="text-gradient">Modern and Intelligent</span>
+            HR Automation Platform
+          </h1>
+
+          <p class="hero-subtitle">
+            Stop wasting 10+ hours per hire on manual tasks. Our platform automatically creates accounts,
+            sends welcome emails, and manages your entire onboarding workflow seamlessly.
+          </p>
+
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
+            <a href="#waitlist" class="btn btn-primary btn-lg">
+              Get Started
+              <span class="btn-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Product Mockup -->
+        <div class="hero-mockup-wrapper">
+          <div class="hero-mockup">
+            <div class="mockup-container">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <div class="mockup-dot"></div>
+                  <div class="mockup-dot"></div>
+                  <div class="mockup-dot"></div>
+                </div>
+                <span style="font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-left: 1rem;">Floxr — HR
+                  Dashboard</span>
+              </div>
+              <div class="mockup-content">
+                <div class="live-demo-container">
+                  <div class="demo-input-section">
+                    <div class="input-field">
+                      <label>Employee Email</label>
+                      <div class="typing-input">
+                        <span id="typed-email"></span>
+                        <span class="cursor-blink">|</span>
+                      </div>
+                    </div>
+                    <button class="demo-btn">
+                      <span class="btn-text">Run Onboarding</span>
+                      <span class="btn-loader" style="display: none;">
+                        <svg class="spinner" viewBox="0 0 24 24">
+                          <circle cx="12" cy="12" r="10" stroke="#fff" stroke-width="3" fill="none"
+                            stroke-dasharray="31.4" stroke-dashoffset="10" />
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
+
+                  <div class="demo-output-section" style="display: none;">
+                    <div class="output-item">
+                      <span class="check-icon">✓</span>
+                      <span>Google & Slack Accounts Created</span>
+                    </div>
+                    <div class="output-item">
+                      <span class="check-icon">✓</span>
+                      <span>Welcome Email Sequence Started</span>
+                    </div>
+                    <div class="output-item">
+                      <span class="check-icon">✓</span>
+                      <span>Manager Notified & Tasks Assigned</span>
+                    </div>
+                    <div class="output-item">
+                      <span class="check-icon">✓</span>
+                      <span>Compliance Audit Log Recorded</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Stats Section -->
+    <section class="section fade-in-up" style="padding: 3rem 0; position: relative;">
+      <div class="section-bg-graphic bg-dot-pattern"></div>
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number" data-target="10" data-suffix="+">0+</div>
+            <div class="stat-label">Hours Saved Per Hire</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">Q2 2026</div>
+            <div class="stat-label">Launch Date</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-target="3" data-suffix="">0</div>
+            <div class="stat-label">Tool Integrations</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works (Moved above Globe) -->
+    <section id="how-it-works" class="section fade-in-up">
+      <div class="section-bg-graphic bg-circuit-lines"></div>
+      <div class="container">
+        <div class="section-head">
+          <h2>Onboarding Made Simple</h2>
+          <p style="color: var(--text-light); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+            One click replaces hours of manual work. Here's how it works.
+          </p>
+        </div>
+
+        <div class="scale-grid stagger-children">
+          <!-- Step 1 -->
+          <div class="scale-card">
+            <div class="icon-box" style="background: linear-gradient(135deg, #0A2540, #3B82F6);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="8.5" cy="7" r="4"></circle>
+                <line x1="20" y1="8" x2="20" y2="14"></line>
+                <line x1="23" y1="11" x2="17" y2="11"></line>
+              </svg>
+            </div>
+            <h3>1. Add New Hire</h3>
+            <p>
+              Enter employee details in Floxr - name, email, role, start date, and manager.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="scale-card">
+            <div class="icon-box" style="background: linear-gradient(135deg, #1E3A8A, #60A5FA);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <h3>2. Click "Run Onboarding"</h3>
+            <p>
+              One button triggers the entire automation workflow across all your tools.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="scale-card">
+            <div class="icon-box" style="background: linear-gradient(135deg, #3B82F6, #93C5FD);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <h3>3. Everything Happens Automatically</h3>
+            <p>
+              Floxr creates accounts, sends emails, notifies managers, and tracks completion.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animated Globe Section -->
+    <section class="globe-section">
+      <div class="container">
+        <div class="globe-content">
+          <!-- Left side: Globe visualization -->
+          <div class="globe-container">
+            <div class="globe-wrapper">
+              <!-- Rotating globe with dots -->
+              <div class="globe-sphere" id="globe">
+                <!-- Globe dots will be generated by JavaScript -->
+              </div>
+
+              <!-- Animated pulse points (locations) -->
+              <div class="pulse-point" style="top: 30%; left: 25%;"></div>
+              <div class="pulse-point" style="top: 45%; left: 65%;"></div>
+              <div class="pulse-point" style="top: 60%; left: 40%;"></div>
+            </div>
+
+            <!-- Stats overlay -->
+            <div class="globe-stats">
+              <div class="stat-badge">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Countries</div>
+              </div>
+              <div class="stat-badge">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Support</div>
+              </div>
+              <div class="stat-badge">
+                <div class="stat-number">1-Click</div>
+                <div class="stat-label">Onboarding</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right side: Text content -->
+          <div class="globe-text">
+            <h2 class="glow-text">
+              Onboard Employees<br>
+              <span class="highlight">Anywhere in the World</span>
+            </h2>
+            <p class="globe-description">
+              Remote team in Pakistan? Office in New York? Hybrid across Europe?
+              Floxr handles employee onboarding globally with compliance,
+              local documents, and WhatsApp support—all in one click.
+            </p>
+
+            <div class="globe-features">
+              <div class="feature-item">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">
+                  <strong>Multi-country compliance</strong>
+                  <span>Automatic tax forms, labor laws, local requirements</span>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">
+                  <strong>Multi-language support</strong>
+                  <span>English, Arabic, Urdu, and 50+ languages</span>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">
+                  <strong>Timezone-aware automation</strong>
+                  <span>Emails sent at 9am local time, always</span>
+                </div>
+              </div>
+            </div>
+
+            <a href="#waitlist" class="btn btn-primary">
+              Start Global Onboarding →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section section-alt fade-in-up">
+      <div class="container">
+        <div class="section-head">
+          <h2>Complete Onboarding Automation</h2>
+          <p style="color: var(--text-light); font-size: 1.1rem;">
+            Everything you need to onboard new hires without lifting a finger.
+          </p>
+        </div>
+
+        <div class="scale-grid stagger-children">
+          <!-- Feature 1 -->
+          <div class="scale-card">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3>Automatic Account Creation</h3>
+            <p>
+              Create Slack, Google Workspace, and email accounts automatically. No more manual setup across tools.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="scale-card">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <h3>Welcome Email Sequences</h3>
+            <p>
+              Send personalized welcome emails, company policies, and first-day instructions automatically.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="scale-card">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 11l3 3L22 4"></path>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+              </svg>
+            </div>
+            <h3>Manager Notifications</h3>
+            <p>
+              Automatically notify managers with onboarding checklists, tasks, and next steps for their new hire.
+            </p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="scale-card">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
+            <h3>Secure & Compliant</h3>
+            <p>
+              Enterprise-grade security with audit logs. Your employee data is encrypted and protected.
+            </p>
+          </div>
+
+          <!-- Feature 5 -->
+          <div class="scale-card">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M12 1v6m0 6v6m5.2-13.2l-4.2 4.2m0 6l4.2 4.2M23 12h-6m-6 0H1m18.2 5.2l-4.2-4.2m0-6l4.2-4.2">
+                </path>
+              </svg>
+            </div>
+            <h3>Slack & Google Integration</h3>
+            <p>
+              Seamlessly integrates with Slack for invites and Google Workspace for account creation.
+            </p>
+          </div>
+
+          <!-- Feature 6 -->
+          <div class="scale-card">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
+            <h3>Track Everything</h3>
+            <p>
+              Real-time dashboard shows onboarding status, completion rate, and any failed steps.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow Visualization -->
+    <section class="section fade-in-up">
+      <div class="container">
+        <div class="section-head">
+          <h2>See It In Action</h2>
+          <p style="color: var(--text-light); font-size: 1.1rem;">
+            Watch how Floxr handles your entire onboarding workflow.
+          </p>
+        </div>
+
+        <div class="details-grid">
+          <div class="details-left">
+            <div class="detail-item">
+              <div class="check-icon">✓</div>
+              <div class="detail-content">
+                <h3>Automatic Account Creation</h3>
+                <p>Slack, Google Workspace, email - all created automatically.</p>
+              </div>
+            </div>
+            <div class="detail-item">
+              <div class="check-icon">✓</div>
+              <div class="detail-content">
+                <h3>Smart Email Sequences</h3>
+                <p>Welcome messages, policies, and first-day instructions sent on schedule.</p>
+              </div>
+            </div>
+            <div class="detail-item">
+              <div class="check-icon">✓</div>
+              <div class="detail-content">
+                <h3>Manager Checklists</h3>
+                <p>Automated task lists keep everyone on track.</p>
+              </div>
+            </div>
+            <div class="detail-item">
+              <div class="check-icon">✓</div>
+              <div class="detail-content">
+                <h3>Real-Time Tracking</h3>
+                <p>See completion status for every new hire at a glance.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="details-right" style="position: relative;">
+            <!-- Product Prototype - Workflow Canvas -->
+            <div class="product-window">
+              <!-- macOS-style window header -->
+              <div class="window-header">
+                <div class="window-dots">
+                  <div class="window-dot"></div>
+                  <div class="window-dot"></div>
+                  <div class="window-dot"></div>
+                </div>
+                <div class="window-title">Floxr – Employee Onboarding</div>
+              </div>
+
+              <!-- Workflow Canvas -->
+              <div class="canvas-area" style="min-height: 300px; padding: 2rem;">
+                <!-- Clean SVG Connection Lines -->
+                <svg class="flow-connections" viewBox="0 0 800 200" preserveAspectRatio="xMidYMid meet"
+                  style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;">
+                  <defs>
+                    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" style="stop-color: var(--primary); stop-opacity: 0.3" />
+                      <stop offset="50%" style="stop-color: var(--primary); stop-opacity: 1" />
+                      <stop offset="100%" style="stop-color: var(--accent); stop-opacity: 0.3" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M 100 100 C 200 100, 180 100, 280 100" stroke="url(#lineGrad)" stroke-width="3" fill="none"
+                    stroke-linecap="round" />
+                  <path d="M 320 100 C 420 100, 400 100, 500 100" stroke="url(#lineGrad)" stroke-width="3" fill="none"
+                    stroke-linecap="round" />
+                  <path d="M 540 100 C 640 100, 620 100, 720 100" stroke="url(#lineGrad)" stroke-width="3" fill="none"
+                    stroke-linecap="round" />
+                </svg>
+
+                <div class="workflow-visual">
+                  <div class="workflow-canvas">
+                    <!-- Node 1 -->
+                    <div class="workflow-node">
+                      <div class="node-circle active">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                      </div>
+                      <div class="node-label">New Hire Added</div>
+                      <div class="node-sublabel">Trigger</div>
+                    </div>
+
+                    <!-- Node 2 -->
+                    <div class="workflow-node">
+                      <div class="node-circle active">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <circle cx="12" cy="12" r="3" />
+                          <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                        </svg>
+                      </div>
+                      <div class="node-label">Create Accounts</div>
+                      <div class="node-sublabel">Process</div>
+                    </div>
+
+                    <!-- Node 3 -->
+                    <div class="workflow-node">
+                      <div class="node-circle active">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                      </div>
+                      <div class="node-label">Send Emails</div>
+                      <div class="node-sublabel">Action</div>
+                    </div>
+
+                    <!-- Node 4 -->
+                    <div class="workflow-node">
+                      <div class="node-circle success">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                          <polyline points="22,4 12,14.01 9,11.01" />
+                        </svg>
+                      </div>
+                      <div class="node-label">Complete</div>
+                      <div class="node-sublabel">Done</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="section section-alt fade-in-up">
+      <div class="container">
+        <div class="section-head">
+          <h2>Simple Per-Employee Pricing</h2>
+          <p style="color: var(--text-light); font-size: 1.1rem;">
+            Start free, scale as you grow. No setup fees, no hidden costs.
+          </p>
+        </div>
+
+
+
+
+        <!-- Top row - 3 cards -->
+        <div class="pricing-grid-3 stagger-children">
+
+          <!-- FREE Tier -->
+          <div class="pricing-card" style="border: 2px solid #10B981; display: flex; flex-direction: column;">
+            <span class="price-badge" style="background: #10B981;">FREE FOREVER</span>
+            <h3>🎁 Free</h3>
+            <div class="price">$0 <span class="price-period">per employee per month</span></div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 1.5rem;">0-5 employees • Forever free
+            </p>
+            <p style="font-weight: 600; margin-bottom: 1rem;">Perfect for: Startups & small teams</p>
+            <ul style="list-style: none; padding: 0; margin: 1.5rem 0; color: var(--text-body); font-size: 0.95rem;">
+              <li style="margin-bottom: 0.6rem;">✓ Basic workflows</li>
+              <li style="margin-bottom: 0.6rem;">✓ Slack integration</li>
+              <li style="margin-bottom: 0.6rem;">✓ Google Workspace integration</li>
+              <li style="margin-bottom: 0.6rem;">✓ 1 admin user</li>
+            </ul>
+            <a href="#waitlist"
+              style="display: block; width: 100%; padding: 0.8rem 2rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-align: center; text-decoration: none; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border: none; cursor: pointer; margin-top: auto;">Join
+              Waitlist</a>
+          </div>
+
+          <!-- Starter -->
+          <div class="pricing-card" style="display: flex; flex-direction: column;">
+            <h3>💼 Starter</h3>
+            <div class="price">$12 <span class="price-period">per employee per month</span></div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 1.5rem;">Minimum 6 employees</p>
+            <p style="font-weight: 600; margin-bottom: 1rem;">Perfect for: Growing teams</p>
+            <ul style="list-style: none; padding: 0; margin: 1.5rem 0; color: var(--text-body); font-size: 0.95rem;">
+              <li style="margin-bottom: 0.6rem;">✓ All automations</li>
+              <li style="margin-bottom: 0.6rem;">✓ Slack + Google integration</li>
+              <li style="margin-bottom: 0.6rem;">✓ Welcome email automation</li>
+              <li style="margin-bottom: 0.6rem;">✓ Email support (48hr response)</li>
+              <li style="margin-bottom: 0.6rem;">✓ Up to 3 admin users</li>
+            </ul>
+            <a href="#waitlist"
+              style="display: block; width: 100%; padding: 0.8rem 2rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-align: center; text-decoration: none; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border: none; cursor: pointer; margin-top: auto;">Join
+              Waitlist</a>
+          </div>
+
+          <!-- Growth - Most Popular -->
+          <div class="pricing-card"
+            style="border: 2px solid var(--primary); position: relative; display: flex; flex-direction: column;">
+            <span class="price-badge">⭐ MOST POPULAR</span>
+            <h3>🚀 Growth</h3>
+            <div class="price">$8 <span class="price-period">per employee per month</span></div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 1.5rem;">Minimum 25 employees</p>
+            <p style="font-weight: 600; margin-bottom: 1rem;">Perfect for: Scaling companies</p>
+            <ul style="list-style: none; padding: 0; margin: 1.5rem 0; color: var(--text-body); font-size: 0.95rem;">
+              <li style="margin-bottom: 0.6rem;">✓ Priority support (24hr response)</li>
+              <li style="margin-bottom: 0.6rem;">✓ Custom workflows</li>
+              <li style="margin-bottom: 0.6rem;">✓ Analytics dashboard</li>
+              <li style="margin-bottom: 0.6rem;">✓ API access</li>
+              <li style="margin-bottom: 0.6rem;">✓ Up to 10 admin users</li>
+            </ul>
+            <a href="#waitlist"
+              style="display: block; width: 100%; padding: 0.8rem 2rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-align: center; text-decoration: none; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border: none; cursor: pointer; margin-top: auto;">Join
+              Waitlist</a>
+          </div>
+
+        </div>
+
+        <!-- Bottom row - 2 cards centered -->
+        <div class="pricing-grid-2 stagger-children">
+
+          <!-- Founding Members -->
+          <div class="pricing-card"
+            style="background: linear-gradient(135deg, rgba(79, 70, 229, 0.05), rgba(255, 107, 107, 0.05)); display: flex; flex-direction: column;">
+            <span class="price-badge">🎉 LIMITED TIME</span>
+            <h3>⭐ Founding Members</h3>
+            <div class="price">$5 <span class="price-period">per employee per month</span></div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 1.5rem;">Lock in forever • First 100
+              companies</p>
+            <p style="font-weight: 600; margin-bottom: 1rem; color: var(--primary);">All Growth features</p>
+            <ul style="list-style: none; padding: 0; margin: 1.5rem 0; color: var(--text-body); font-size: 0.95rem;">
+              <li style="margin-bottom: 0.6rem;">✓ Lifetime price guarantee</li>
+              <li style="margin-bottom: 0.6rem;">✓ Early access to new features</li>
+              <li style="margin-bottom: 0.6rem;">✓ Founding customer badge</li>
+              <li style="margin-bottom: 0.6rem;">✓ Priority feature requests</li>
+            </ul>
+            <div
+              style="background: var(--bg-card); padding: 1rem; border-radius: 8px; margin-top: auto; border: 1px solid var(--primary); margin-bottom: 1rem;">
+              <p style="font-size: 0.85rem; color: var(--primary); margin: 0; font-weight: 600; text-align: center;">
+                Available until: Q2 2026 launch</p>
+            </div>
+            <a href="#waitlist"
+              style="display: block; width: 100%; padding: 0.8rem 2rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-align: center; text-decoration: none; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border: none; cursor: pointer;">Join
+              Waitlist</a>
+          </div>
+
+          <!-- Enterprise -->
+          <div class="pricing-card" style="display: flex; flex-direction: column;">
+            <h3>🏢 Enterprise</h3>
+            <div class="price">$6 <span class="price-period">per employee per month</span></div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 1.5rem;">Annual billing • Minimum 200
+              employees</p>
+            <p style="font-weight: 600; margin-bottom: 1rem;">Perfect for: Large organizations</p>
+            <ul style="list-style: none; padding: 0; margin: 1.5rem 0; color: var(--text-body); font-size: 0.95rem;">
+              <li style="margin-bottom: 0.6rem;">✓ Everything in Growth, plus:</li>
+              <li style="margin-bottom: 0.6rem;">✓ Dedicated account manager</li>
+              <li style="margin-bottom: 0.6rem;">✓ Custom integrations</li>
+              <li style="margin-bottom: 0.6rem;">✓ SSO & SAML authentication</li>
+              <li style="margin-bottom: 0.6rem;">✓ Unlimited admin users</li>
+              <li style="margin-bottom: 0.6rem;">✓ 99.9% uptime SLA</li>
+            </ul>
+            <a href="mailto:sales@floxr.co"
+              style="display: block; width: 100%; padding: 0.8rem 2rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-align: center; text-decoration: none; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border: none; cursor: pointer; margin-top: auto;">Contact
+              Sales</a>
+          </div>
+
+        </div>
+
+        <p style="text-align: center; margin-top: 3rem; color: var(--text-light); font-size: 0.9rem;">
+          All plans include automated workflows, integrations, and email support. Cancel anytime.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section fade-in-up">
+      <div class="container">
+        <div class="section-head">
+          <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-grid stagger-children" style="max-width: 800px; margin: 0 auto;">
+          <div class="faq-item">
+            <div class="faq-question">How long does setup take?</div>
+            <div class="faq-answer">Most teams are up and running within 1 hour. Connect your tools (Slack, Google
+              Workspace), configure your onboarding template, and you're ready to go.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Do I need technical skills to use Floxr?</div>
+            <div class="faq-answer">No coding required. Our interface is designed for HR teams. Just fill in employee
+              details and click "Run Onboarding" - Floxr handles the rest.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Is my data secure?</div>
+            <div class="faq-answer">Absolutely. We use enterprise-grade encryption for all data. Your employee
+              information is encrypted at rest and in transit, and we never share your data with third parties.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">What tools does Floxr integrate with?</div>
+            <div class="faq-answer">At launch, we integrate with Slack, Google Workspace, and email. More integrations
+              (Microsoft 365, Notion, etc.) are coming based on customer feedback.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Can I cancel anytime?</div>
+            <div class="faq-answer">Yes. No long-term contracts. Cancel anytime from your dashboard. Founding members
+              keep their special pricing if they ever return.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">When does Floxr launch?</div>
+            <div class="faq-answer">We're launching Q2 2026. Join the waitlist to get early access and founding member
+              pricing when we go live.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Waitlist CTA -->
+    <section id="waitlist" class="section section-alt fade-in-up">
+      <div class="container" style="text-align: center; max-width: 600px;">
+        <h2 style="font-size: 2.5rem;">Join the Waitlist</h2>
+        <p style="color: var(--text-light); margin-bottom: 2rem; font-size: 1.1rem;">
+          Be among the first to automate your onboarding. Get founding member pricing when we launch.
+        </p>
+
+        <form id="auth-form"
+          style="display: flex; flex-direction: column; gap: 1rem; max-width: 400px; margin: 0 auto;">
+          <input type="email" id="email" placeholder="your.email@company.com" required
+            style="padding: 1rem; border: 1px solid var(--border-subtle); border-radius: 8px; font-size: 1rem; background: var(--bg-card); color: var(--text-head);">
+          <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+            Join Waitlist
+          </button>
+        </form>
+        <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-light);">
+          Be the first to know when we launch. No spam, ever.
+        </p>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section fade-in-up"
+      style="background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); color: white; text-align: center; padding: 4rem 0;">
+      <div class="container" style="max-width: 700px;">
+        <h2 style="color: white; margin-bottom: 1rem;">Ready to Save 10+ Hours Per Hire?</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.95;">
+          Book a demo to see how Floxr can transform your onboarding process.
+        </p>
+        <a href="https://zcal.co/hussainalihaq/30min" target="_blank" class="btn btn-lg"
+          style="background: white; color: var(--primary); font-weight: 600; padding: 1rem 2.5rem;">
+          Schedule a Demo →
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Contact Sales Widget -->
+  <div class="contact-widget">
+    <button class="contact-toggle" onclick="window.location.href='mailto:sales@floxr.co'" aria-label="Contact Sales">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+      <span style="margin-left: 0.5rem;">Contact Sales</span>
+    </button>
+  </div>
+
+  <!-- Sticky Mobile CTA -->
+  <div class="sticky-mobile-cta">
+    <a href="mailto:sales@floxr.co" class="contact-sales-mobile">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+      Contact Sales
+    </a>
+  </div>
+
+  <footer class="footer">
+    <div class="container" style="text-align: center;">
+      <!-- Centered Logo and Tagline -->
+      <div style="margin-bottom: 2rem;">
+        <div class="logo" style="font-size: 2rem; margin-bottom: 0.5rem;">Floxr</div>
+        <p style="color: var(--text-light); margin: 0; font-size: 1.1rem;">Building the future of HR.</p>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+        <a href="#features" class="btn btn-ghost" style="padding: 0.5rem 1.25rem;">Features</a>
+        <a href="#pricing" class="btn btn-ghost" style="padding: 0.5rem 1.25rem;">Pricing</a>
+        <a href="#faq" class="btn btn-ghost" style="padding: 0.5rem 1.25rem;">FAQ</a>
+        <a href="mailto:haq@floxr.co" class="btn btn-ghost" style="padding: 0.5rem 1.25rem;">Contact</a>
+        <a href="mailto:careers@floxr.co" class="btn btn-ghost" style="padding: 0.5rem 1.25rem;">Careers</a>
+      </div>
+
+      <!-- Copyright -->
+      <div style="padding-top: 2rem; border-top: 1px solid var(--border-subtle);">
+        <p style="color: var(--text-light); margin: 0; font-size: 0.9rem;">
+          © <span id="year"></span> Floxr. Built for HR teams who value their time.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Scroll Animation Observer
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px" // Trigger slightly before element is fully in view
+    });
+
+    document.querySelectorAll('.fade-in-up, .stagger-children').forEach(el => {
+      fadeObserver.observe(el);
+    });
+
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+      const nav = document.getElementById('mobile-nav');
+      nav.classList.toggle('active');
+    }
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobile-nav').classList.remove('active');
+      });
+    });
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.site-header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // FAQ Accordion Logic
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const faqItem = button.parentElement;
+        const isActive = faqItem.classList.contains('active');
+
+        // Close all other items
+        document.querySelectorAll('.faq-item').forEach(item => {
+          item.classList.remove('active');
+        });
+
+        // Toggle current item
+        if (!isActive) {
+          faqItem.classList.add('active');
+        }
+      });
+    });
+
+    // Animated Counter for Stats
+    function animateCounter(element) {
+      const target = parseFloat(element.getAttribute('data-target'));
+      const suffix = element.getAttribute('data-suffix') || '';
+      const duration = 2000;
+      const increment = target / (duration / 16);
+      let current = 0;
+
+      const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+          if (target % 1 !== 0) {
+            element.textContent = current.toFixed(1) + suffix;
+          } else {
+            element.textContent = Math.floor(current) + suffix;
+          }
+          requestAnimationFrame(updateCounter);
+        } else {
+          if (target % 1 !== 0) {
+            element.textContent = target.toFixed(1) + suffix;
+          } else {
+            element.textContent = target + suffix;
+          }
+        }
+      };
+
+      updateCounter();
+    }
+
+    // Scroll Reveal Intersection Observer
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+
+          // Trigger counter animation for stats section
+          if (entry.target.querySelector('.stats-grid')) {
+            const counters = entry.target.querySelectorAll('.stat-number[data-target]');
+            counters.forEach(counter => {
+              if (!counter.classList.contains('counted')) {
+                counter.classList.add('counted');
+                animateCounter(counter);
+              }
+            });
+          }
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.section').forEach(section => {
+      sectionObserver.observe(section);
+    });
+
+    // Waitlist Form Handler
+    document.getElementById("auth-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const button = e.target.querySelector("button");
+
+      if (!email) return;
+
+      button.textContent = "Joining...";
+      button.disabled = true;
+
+      try {
+        // Production backend on Vercel
+        const response = await fetch("https://floxr-backend.vercel.app/api/waitlist", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, source: "homepage" })
+        });
+
+        if (response.ok) {
+          alert("🎉 You're on the waitlist! We'll email you when we launch.");
+          e.target.reset();
+        } else if (response.status === 409) {
+          alert("You're already on the waitlist! We'll email you when we launch.");
+          e.target.reset();
+        } else {
+          alert("Something went wrong. Please try again or email us at haq@floxr.co");
+        }
+      } catch (err) {
+        console.error(err);
+        // For MVP without backend, just show success
+        alert("🎉 Thanks for joining! We'll be in touch soon.");
+        e.target.reset();
+      } finally {
+        button.textContent = "Join Waitlist";
+        button.disabled = false;
+      }
+    });
+
+
+
+    // Live Demo Typewriter Animation
+    const emailText = "john.doe@company.com";
+    const typedElement = document.getElementById("typed-email");
+    let charIndex = 0;
+
+    function typeEmail() {
+      if (charIndex < emailText.length) {
+        if (typedElement) typedElement.textContent += emailText.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeEmail, 100);
+      } else {
+        setTimeout(triggerDemo, 1000);
+      }
+    }
+
+    function triggerDemo() {
+      const btn = document.querySelector('.demo-btn');
+      if (!btn) return;
+
+      const btnText = btn.querySelector('.btn-text');
+      const btnLoader = btn.querySelector('.btn-loader');
+      const outputSection = document.querySelector('.demo-output-section');
+
+      if (btnText) btnText.style.display = 'none';
+      if (btnLoader) btnLoader.style.display = 'inline-block';
+
+      setTimeout(() => {
+        if (btnLoader) btnLoader.style.display = 'none';
+        if (btnText) {
+          btnText.style.display = 'inline';
+          btnText.textContent = 'Completed ✓';
+        }
+        btn.style.background = '#10B981';
+        if (outputSection) outputSection.style.display = 'block';
+      }, 2000);
+    }
+
+    // Start animation when mockup is visible
+    const mockupObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && charIndex === 0) {
+          setTimeout(typeEmail, 1000);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const mockup = document.querySelector('.live-demo-container');
+    if (mockup) mockupObserver.observe(mockup);
+
+    // Enhanced globe rotation with mouse interaction
+    const globe = document.getElementById('globe');
+    if (globe) {
+      let rotationSpeed = 40; // seconds
+
+      globe.addEventListener('mouseenter', () => {
+        globe.style.animationDuration = '20s'; // Speed up on hover
+      });
+
+      globe.addEventListener('mouseleave', () => {
+        globe.style.animationDuration = '40s'; // Back to normal
+      });
+
+      // Add random twinkling dots
+      function createTwinklingDots() {
+        const dotsContainer = globe;
+        for (let i = 0; i < 50; i++) {
+          const dot = document.createElement('div');
+          dot.className = 'twinkle-dot';
+          dot.style.top = Math.random() * 100 + '%';
+          dot.style.left = Math.random() * 100 + '%';
+          dot.style.animationDelay = Math.random() * 3 + 's';
+          dotsContainer.appendChild(dot);
+        }
+      }
+
+      // Add CSS for twinkling dots via JS (since it's dynamic)
+      const style = document.createElement('style');
+      style.textContent = `
+        .twinkle-dot {
+          position: absolute;
+          width: 2px;
+          height: 2px;
+          background: #60A5FA;
+          border-radius: 50%;
+          opacity: 0;
+          animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+          0%, 100% { opacity: 0; }
+          50% { opacity: 1; }
+        }
+      `;
+      document.head.appendChild(style);
+
+      createTwinklingDots();
+    }
+  </script>
+
+  <!-- Performance: Load Analytics Last -->
+  <!-- Vercel Speed Insights -->
+  <script>
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script>
+    /* THEME TOGGLE JAVASCRIPT */
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+
+      // Add smooth transition class
+      html.classList.add('theme-transitioning');
+      setTimeout(() => {
+        html.classList.remove('theme-transitioning');
+      }, 300);
+    }
+
+    // Restore theme on page load (Default: Dark Mode)
+    (function () {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+</body>
+
+</html>

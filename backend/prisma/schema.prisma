@@ -1,0 +1,197 @@
+// This is your Prisma schema file for Datfly HR Platform
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Company/Organization
+model Company {
+  id              String       @id @default(cuid())
+  name            String
+  email           String       @unique
+  logo            String?
+  industry        String?
+  size            String?      // SMALL, MEDIUM, LARGE, ENTERPRISE
+  location        String?
+  timezone        String       @default("UTC")
+  currency        String       @default("USD")
+  language        String       @default("en")
+  
+  // Subscription & Billing
+  plan            String       @default("TRIAL") // TRIAL, FREE, STARTER, GROWTH, ENTERPRISE, FOUNDING
+  status          String       @default("TRIAL") // TRIAL, ACTIVE, PAST_DUE, SUSPENDED, CHURNED
+  trialStartDate  DateTime     @default(now())
+  trialEndDate    DateTime?
+  
+  // Relationships
+  users           User[]
+  employees       Employee[]
+  departments     Department[]
+  invitations     Invitation[]
+  
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+}
+
+// Department
+model Department {
+  id        String     @id @default(cuid())
+  name      String
+  companyId String
+  company   Company    @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  employees Employee[]
+  createdAt DateTime   @default(now())
+}
+
+// Employee
+model Employee {
+  id            String         @id @default(cuid())
+  email         String         @unique
+  firstName     String
+  lastName      String
+  phone         String?
+  role          String?
+  departmentId  String?
+  department    Department?    @relation(fields: [departmentId], references: [id])
+  companyId     String
+  company       Company        @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  salary        Decimal?
+  hourlyRate    Decimal?
+  employmentType String        @default("FULL_TIME") // FULL_TIME, PART_TIME, CONTRACT
+  startDate     DateTime
+  endDate       DateTime?
+  status        String         @default("ACTIVE") // ACTIVE, INACTIVE, TERMINATED
+  timesheets    Timesheet[]
+  leaveRequests LeaveRequest[]
+  payrolls      Payroll[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+}
+
+// Time Tracking
+model Timesheet {
+  id          String    @id @default(cuid())
+  employeeId  String
+  employee    Employee  @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  clockIn     DateTime
+  clockOut    DateTime?
+  hoursWorked Decimal?
+  status      String    @default("PENDING") // PENDING, APPROVED, REJECTED
+  notes       String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+// Leave Management
+model LeaveRequest {
+  id         String   @id @default(cuid())
+  employeeId String
+  employee   Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  startDate  DateTime
+  endDate    DateTime
+  leaveType  String   // PTO, SICK, UNPAID, MATERNITY, etc.
+  status     String   @default("PENDING") // PENDING, APPROVED, DENIED
+  reason     String?
+  days       Int
+  approvedBy String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+// Payroll
+model Payroll {
+  id              String   @id @default(cuid())
+  employeeId      String
+  employee        Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  payPeriodStart  DateTime
+  payPeriodEnd    DateTime
+  hoursWorked     Decimal?
+  grossPay        Decimal
+  deductions      Decimal  @default(0)
+  netPay          Decimal
+  status          String   @default("PENDING") // PENDING, PROCESSED, PAID
+  paidAt          DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+// Waitlist (for your marketing site)
+model Waitlist {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  source    String?
+  createdAt DateTime @default(now())
+}
+
+// Users (HR Admins who use the platform - different from Employee)
+model User {
+  id              String   @id @default(cuid())
+  email           String   @unique
+  name            String
+  avatar          String?
+  phone           String?
+  role            String   @default("MEMBER") // OWNER, ADMIN, MANAGER, MEMBER, VIEWER
+  language        String   @default("en")
+  timezone        String   @default("UTC")
+  
+  // Supabase Auth integration
+  authId          String?  @unique  // Supabase auth.users.id
+  
+  // Multi-company support
+  companyId       String
+  company         Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  
+  // Activity tracking
+  lastLoginAt     DateTime?
+  activities      ActivityLog[]
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@index([companyId])
+  @@index([authId])
+}
+
+// Team Invitations
+model Invitation {
+  id          String   @id @default(cuid())
+  email       String
+  role        String   @default("MEMBER")
+  token       String   @unique
+  status      String   @default("PENDING") // PENDING, ACCEPTED, EXPIRED
+  expiresAt   DateTime
+  
+  invitedBy   String?  @db.Text
+  acceptedAt  DateTime?
+  
+  companyId   String
+  company     Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  
+  createdAt   DateTime @default(now())
+  
+  @@index([companyId])
+  @@index([token])
+  @@index([email])
+}
+
+// Activity Logs (Audit Trail)
+model ActivityLog {
+  id          String   @id @default(cuid())
+  action      String   // USER_LOGGED_IN, EMPLOYEE_ADDED, INTEGRATION_CONNECTED, etc.
+  metadata    Json?    // Additional context
+  ipAddress   String?
+  userAgent   String?
+  
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  createdAt   DateTime @default(now())
+  
+  @@index([userId])
+  @@index([createdAt])
+}

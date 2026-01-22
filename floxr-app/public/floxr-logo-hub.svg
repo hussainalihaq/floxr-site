@@ -1,0 +1,28 @@
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background -->
+  <rect width="200" height="60" fill="#0F172A"/>
+  
+  <!-- Text: fl -->
+  <text x="10" y="45" font-family="Inter, sans-serif" font-weight="800" font-size="36" fill="#FFFFFF">fl</text>
+  
+  <!-- Connecting hub icon for 'o' -->
+  <g transform="translate(68, 30)">
+    <!-- Center circle -->
+    <circle cx="0" cy="0" r="4" fill="#6366F1"/>
+    
+    <!-- Connected nodes -->
+    <circle cx="-8" cy="-8" r="2.5" fill="#FF6B6B"/>
+    <circle cx="8" cy="-8" r="2.5" fill="#FF6B6B"/>
+    <circle cx="-8" cy="8" r="2.5" fill="#FF6B6B"/>
+    <circle cx="8" cy="8" r="2.5" fill="#FF6B6B"/>
+    
+    <!-- Connection lines -->
+    <line x1="0" y1="0" x2="-8" y2="-8" stroke="#6366F1" stroke-width="1.5" opacity="0.6"/>
+    <line x1="0" y1="0" x2="8" y2="-8" stroke="#6366F1" stroke-width="1.5" opacity="0.6"/>
+    <line x1="0" y1="0" x2="-8" y2="8" stroke="#6366F1" stroke-width="1.5" opacity="0.6"/>
+    <line x1="0" y1="0" x2="8" y2="8" stroke="#6366F1" stroke-width="1.5" opacity="0.6"/>
+  </g>
+  
+  <!-- Text: xr -->
+  <text x="90" y="45" font-family="Inter, sans-serif" font-weight="800" font-size="36" fill="#FFFFFF">xr</text>
+</svg>
