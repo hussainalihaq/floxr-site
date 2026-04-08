@@ -12,6 +12,15 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "dashboard-final/**",
+    "floxr-*/**",
+    "integrations-frontend/**",
+    "new-onboarding/**",
+    "onboardflow/**",
+    "payroll-report/**",
+    "run-payroll/**",
+    "update-status/**",
+    "analytics/**",
   ]),
 ]);
 
