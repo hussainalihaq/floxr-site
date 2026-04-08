@@ -5,9 +5,10 @@ import { getCurrentUser } from '@/lib/auth'
 // GET /api/employees/:id - Get employee details
 export async function GET(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
+        const { id } = await params
         const user = await getCurrentUser()
         if (!user) {
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -15,7 +16,7 @@ export async function GET(
 
         const employee = await prisma.employee.findFirst({
             where: {
-                id: params.id,
+                id: id,
                 companyId: user.companyId,
             },
             include: {
@@ -37,9 +38,10 @@ export async function GET(
 // PUT /api/employees/:id - Update employee
 export async function PUT(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
+        const { id } = await params
         const user = await getCurrentUser()
         if (!user) {
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -48,7 +50,7 @@ export async function PUT(
         // Check if employee belongs to company
         const existing = await prisma.employee.findFirst({
             where: {
-                id: params.id,
+                id: id,
                 companyId: user.companyId,
             },
         })
@@ -86,7 +88,7 @@ export async function PUT(
         }
 
         const employee = await prisma.employee.update({
-            where: { id: params.id },
+            where: { id: id },
             data: updateData,
             include: {
                 department: true,
@@ -119,9 +121,10 @@ export async function PUT(
 // DELETE /api/employees/:id - Soft delete (set status to TERMINATED)
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
+        const { id } = await params
         const user = await getCurrentUser()
         if (!user) {
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -130,7 +133,7 @@ export async function DELETE(
         // Check if employee belongs to company
         const existing = await prisma.employee.findFirst({
             where: {
-                id: params.id,
+                id: id,
                 companyId: user.companyId,
             },
         })
@@ -141,7 +144,7 @@ export async function DELETE(
 
         // Soft delete - set status to TERMINATED
         const employee = await prisma.employee.update({
-            where: { id: params.id },
+            where: { id: id },
             data: {
                 status: 'TERMINATED',
                 endDate: new Date(),

@@ -1,67 +1,108 @@
 @import "tailwindcss";
 
-/* Datfly Theme System
-   Default: Light (Clean, Readable)
-   Dark Mode: Midnight Navy (Premium, Data-focused)
-*/
-
-:root {
-  /* LIGHT MODE (Default) - Premium Palette */
-  --bg-page: #FAFBFC;
-  --bg-subtle: #F5F7FA;
-  --bg-card: #FFFFFF;
-
-  --text-head: #0F172A;
-  --text-body: #475569;
-  --text-light: #64748B;
-
-  --primary: #4F46E5;
-  /* Indigo */
-  --primary-hover: #4338CA;
-  --primary-subtle: #EEF2FF;
-
-  --accent: #FF6B6B;
-  /* Electric Coral */
-  --accent-hover: #FF5252;
-  --accent-subtle: #FFE5E5;
-
-  --success: #10B981;
-  --warning: #F59E0B;
-
-  --border-subtle: #E2E8F0;
-
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-
-  --font-main: "Inter", system-ui, -apple-system, sans-serif;
+@theme {
+  --font-display: "PP Neue Machina", sans-serif;
+  --font-body: "var(--font-instrument)", serif;
+  --font-mono: "var(--font-jetbrains)", monospace;
+  
+  --color-bg: #080808;
+  --color-surface: #0f0f0f;
+  --color-elevated: #161616;
+  --color-border-dark: #1e1e1e; /* Changed from --color-border to avoid tailwind conflict */
+  --color-lime: #b8ff57;
+  --color-heat: #ff4500;
+  --color-text-primary: #efefef;
+  --color-text-muted: #3a3a3a;
+  --color-text-subtle: #222222;
 }
 
-[data-theme="dark"] {
-  /* DARK MODE (Midnight Premium) */
-  --bg-page: #0F172A;
-  --bg-subtle: #1E293B;
-  --bg-card: #1E293B;
+@font-face {
+  font-family: 'PP Neue Machina';
+  src: url('/fonts/PPNeueMachina-Regular.woff2') format('woff2'),
+       url('https://cdn.fontshare.com/wf/TTX2Z3YFI4LZ4RVVNPOJ66D5NC2B23/7E552PZCZYGZZJMYJMB4S2Z3Q2LZG2/KDQZV/Z2LZG2.woff2') format('woff2'); /* Fallback Clash Display until user adds WOFF */
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Neue Machina';
+  src: url('/fonts/PPNeueMachina-Ultrabold.woff2') format('woff2'),
+       url('https://cdn.fontshare.com/wf/KWQZXH/JMB22PZCZYGZZ/7EZZ2PZCZYGZZJMYJMB4S2Z3Q2LZGK/ZZJZ2P.woff2') format('woff2'); /* Fallback Clash Display */
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
 
-  --text-head: #F8FAFC;
-  --text-body: #CBD5E1;
-  --text-light: #94A3B8;
+:root {
+  --bg: #080808;
+  --surface: #0f0f0f;
+  --elevated: #161616;
+  --border: #1e1e1e;
+  --border-light: #1e1e1e;
+  --lime: #b8ff57;
+  --heat: #ff4500;
+  --text: #efefef;
+  --muted: #a1a1aa;  /* Improved readability, was #3a3a3a */
+  --subtle: #71717a; /* Improved readability, was #222222 */
 
-  --primary: #6366F1;
-  /* Lighter indigo for dark mode */
-  --primary-hover: #818CF8;
-  --primary-subtle: rgba(99, 102, 241, 0.15);
+  /* Glow effects */
+  --glow-lime: rgba(184, 255, 87, 0.15);
+  --glow-heat: rgba(255, 69, 0, 0.15);
 
-  --accent: #FF6B6B;
-  --accent-hover: #FF8787;
+  /* Datfly Theme System
+     Default: Light (Clean, Readable)
+     Dark Mode: Midnight Navy (Premium, Data-focused)
+  */
 
-  --border-subtle: rgba(255, 255, 255, 0.1);
+  /* DARK THEME AS DEFAULT - MATCHING REFERENCE IMAGE */
+  --bg-page: #0a0e1a;
+  --bg-subtle: #1a1d29;
+  --bg-card: #1e2230;
+
+  --text-head: #ffffff;
+  --text-body: #9ca3af;
+  --text-light: #6b7280;
+
+  --primary: #2463eb;
+  --primary-hover: #3b82f6;
+  --primary-subtle: rgba(36, 99, 235, 0.15);
+
+  --accent: #10b981;
+  --accent-hover: #34d399;
+  --accent-subtle: rgba(16, 185, 129, 0.15);
+
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #8b5cf6;
+
+  --border-subtle: #2d3748;
 
   --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.6);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.7);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.8);
+
+  --font-main: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0e1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2d3748;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4a5568;
 }
 
 *,
@@ -2101,4 +2142,215 @@ input:focus-visible {
   .price {
     font-size: 1.75rem;
   }
+}
+
+/* ========================================
+   CURSOR GLOW EFFECT
+   ======================================== */
+
+.cursor-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.cursor-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(36, 99, 235, 0.15),
+      transparent 40%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cursor-glow:hover::before {
+  opacity: 1;
+}
+
+/* Ensure content stays above glow */
+.cursor-glow>* {
+  position: relative;
+  z-index: 2;
+}
+
+/* ========================================
+   OUTLINE GLOW EFFECT (for stat boxes)
+   ======================================== */
+
+.outline-glow {
+  position: relative;
+  border-radius: 0.75rem;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.outline-glow:hover {
+  box-shadow: 0 0 20px rgba(36, 99, 235, 0.25),
+    0 0 40px rgba(36, 99, 235, 0.1),
+    inset 0 0 60px rgba(36, 99, 235, 0.03);
+  border-color: rgba(36, 99, 235, 0.4) !important;
+}
+
+/* Moving gradient border effect */
+.outline-glow::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(var(--glow-angle, 0deg),
+      rgba(36, 99, 235, 0.5),
+      transparent 40%,
+      transparent 60%,
+      rgba(36, 99, 235, 0.5));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+
+/* ============================================
+   DASHBOARD-SPECIFIC STYLES
+   ============================================ */
+
+/* Glass Panel Effect */
+.glass-panel {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.3s ease;
+}
+
+/* Dashboard Typography */
+.text-primary {
+  color: var(--text-head);
+}
+
+.text-muted {
+  color: var(--text-body);
+}
+
+.text-secondary {
+  color: var(--text-light);
+}
+
+.text-success {
+  color: var(--success);
+}
+
+.text-error,
+.text-danger {
+  color: var(--danger);
+}
+
+.text-warning {
+  color: var(--warning);
+}
+
+.text-info {
+  color: var(--info);
+}
+
+/* Background Colors */
+.bg-bg-tertiary,
+.bg-bg-secondary {
+  background-color: var(--bg-card);
+}
+
+.bg-primary-blue {
+  background-color: var(--primary);
+}
+
+/* Border Colors */
+.border-border-color {
+  border-color: var(--border-subtle);
+}
+
+.border-primary-blue-glow {
+  border-color: var(--primary);
+}
+
+/* Card Hover Effect */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Stat Card Specific */
+.stat-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Icon Button */
+.icon-btn {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-subtle);
+  background-color: transparent;
+  color: var(--text-body);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+  background-color: var(--bg-card);
+  color: var(--text-head);
+}
+
+/* Fade In Animation */
+.fade-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Dashboard Header */
+.dashboard-header h1 {
+  color: var(--text-head);
+}
+
+/* Quick Stats Row */
+.quick-stats-row span {
+  color: var(--text-body);
+}
+
+/* Primary Blue Hover */
+.bg-primary-blue:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Progress Bar BG */
+.bg-bg-tertiary {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Border Styles */
+.border-bg-secondary {
+  border-color: var(--border-subtle);
+}
+
+/* Activity Timeline Dot Colors */
+.bg-success {
+  background-color: var(--success);
+}
+
+.bg-warning {
+  background-color: var(--warning);
+}
+
+.bg-primary-blue {
+  background-color: var(--primary);
 }

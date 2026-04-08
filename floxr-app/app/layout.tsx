@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
+  style: "italic",
   subsets: ["latin"],
-  variable: "--font-inter"
+  variable: "--font-instrument",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
 });
 
 export const metadata: Metadata = {
-  title: "Floxr – Automate your Business & HR Workflows",
-  description: "Floxr helps you automate your business and HR workflows. Simple, clean, and powerful.",
+  title: "Floxr | Software That Ships.",
+  description: "Floxr is entering a market full of agencies using the same blue-gradient, card-grid. We build software that ships.",
 };
 
 export default function RootLayout({
@@ -18,8 +25,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light">
-      <body className={inter.className}>
+    <html lang="en" className="scroll-smooth bg-[var(--bg)] text-[var(--text)]">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+        {/* We expect PP Neue Machina to be handled via CSS @font-face or Fontshare in globals.css */}
+      </head>
+      <body className={`${instrumentSerif.variable} ${jetbrainsMono.variable}`}>
         {children}
       </body>
     </html>

@@ -76,169 +76,173 @@ export default function NewEmployeePage() {
     }
 
     return (
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="new-employee-page">
             {/* Header */}
-            <div className="mb-8">
-                <Link href="/employees" className="text-indigo-400 hover:text-indigo-300 text-sm mb-2 inline-block">
+            <div className="page-header">
+                <Link href="/employees" className="back-link">
                     ← Back to Employees
                 </Link>
-                <h1 className="text-3xl font-bold text-white">Add New Employee</h1>
-                <p className="text-slate-400 mt-1">Fill in the details to start onboarding</p>
+                <h1 className="page-title">Add New Employee</h1>
+                <p className="page-subtitle">Fill in the details to start onboarding</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="employee-form">
                 {/* Basic Info */}
-                <div className="bg-slate-800 rounded-xl border border-slate-700 p-6">
-                    <h2 className="text-lg font-semibold text-white mb-4">Basic Information</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">First Name *</label>
+                <div className="form-section">
+                    <h2 className="section-title">Basic Information</h2>
+                    <div className="form-grid">
+                        <div className="form-group">
+                            <label className="form-label">First Name *</label>
                             <input
                                 type="text"
                                 name="firstName"
                                 value={form.firstName}
                                 onChange={handleChange}
                                 required
-                                className="w-full px-4 py-2.5 bg-slate-900 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                className="form-input"
+                                placeholder="John"
                             />
                         </div>
-                        <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">Last Name *</label>
+                        <div className="form-group">
+                            <label className="form-label">Last Name *</label>
                             <input
                                 type="text"
                                 name="lastName"
                                 value={form.lastName}
                                 onChange={handleChange}
                                 required
-                                className="w-full px-4 py-2.5 bg-slate-900 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                className="form-input"
+                                placeholder="Doe"
                             />
                         </div>
-                        <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">Work Email *</label>
+                        <div className="form-group">
+                            <label className="form-label">Work Email *</label>
                             <input
                                 type="email"
                                 name="email"
                                 value={form.email}
                                 onChange={handleChange}
                                 required
-                                className="w-full px-4 py-2.5 bg-slate-900 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                className="form-input"
+                                placeholder="john@company.com"
                             />
                         </div>
-                        <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">Personal Email</label>
+                        <div className="form-group">
+                            <label className="form-label">Personal Email</label>
                             <input
                                 type="email"
                                 name="personalEmail"
                                 value={form.personalEmail}
                                 onChange={handleChange}
-                                className="w-full px-4 py-2.5 bg-slate-900 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                className="form-input"
+                                placeholder="john@gmail.com"
                             />
                         </div>
                     </div>
                 </div>
 
                 {/* Contact */}
-                <div className="bg-slate-800 rounded-xl border border-slate-700 p-6">
-                    <h2 className="text-lg font-semibold text-white mb-4">Contact Details</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">Phone Number</label>
+                <div className="form-section">
+                    <h2 className="section-title">Contact Details</h2>
+                    <div className="form-grid">
+                        <div className="form-group">
+                            <label className="form-label">Phone Number</label>
                             <input
                                 type="tel"
                                 name="phone"
                                 value={form.phone}
                                 onChange={handleChange}
                                 placeholder="+92 300 1234567"
-                                className="w-full px-4 py-2.5 bg-slate-900 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                className="form-input"
                             />
                         </div>
-                        <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">WhatsApp Number</label>
+                        <div className="form-group">
+                            <label className="form-label">WhatsApp Number</label>
                             <input
                                 type="tel"
                                 name="whatsappNumber"
                                 value={form.whatsappNumber}
                                 onChange={handleChange}
                                 placeholder="Same as phone if blank"
-                                className="w-full px-4 py-2.5 bg-slate-900 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                className="form-input"
                             />
                         </div>
                     </div>
                 </div>
 
                 {/* Job Details */}
-                <div className="bg-slate-800 rounded-xl border border-slate-700 p-6">
-                    <h2 className="text-lg font-semibold text-white mb-4">Job Details</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">Job Title</label>
+                <div className="form-section">
+                    <h2 className="section-title">Job Details</h2>
+                    <div className="form-grid">
+                        <div className="form-group">
+                            <label className="form-label">Job Title</label>
                             <input
                                 type="text"
                                 name="jobTitle"
                                 value={form.jobTitle}
                                 onChange={handleChange}
                                 placeholder="e.g. Software Engineer"
-                                className="w-full px-4 py-2.5 bg-slate-900 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                className="form-input"
                             />
                         </div>
-                        <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">Department</label>
+                        <div className="form-group">
+                            <label className="form-label">Department</label>
                             <input
                                 type="text"
                                 name="newDepartment"
                                 value={form.newDepartment}
                                 onChange={handleChange}
                                 placeholder="e.g. Engineering"
-                                className="w-full px-4 py-2.5 bg-slate-900 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                className="form-input"
                             />
                         </div>
-                        <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">Employment Type</label>
+                        <div className="form-group">
+                            <label className="form-label">Employment Type</label>
                             <select
                                 name="employmentType"
                                 value={form.employmentType}
                                 onChange={handleChange}
-                                className="w-full px-4 py-2.5 bg-slate-900 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                className="form-input"
                             >
                                 <option value="FULL_TIME">Full Time</option>
                                 <option value="PART_TIME">Part Time</option>
                                 <option value="CONTRACT">Contract</option>
                             </select>
                         </div>
-                        <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">Start Date *</label>
+                        <div className="form-group">
+                            <label className="form-label">Start Date *</label>
                             <input
                                 type="date"
                                 name="startDate"
                                 value={form.startDate}
                                 onChange={handleChange}
                                 required
-                                className="w-full px-4 py-2.5 bg-slate-900 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                className="form-input"
                             />
                         </div>
                     </div>
                 </div>
 
                 {/* Compensation & Compliance */}
-                <div className="bg-slate-800 rounded-xl border border-slate-700 p-6">
-                    <h2 className="text-lg font-semibold text-white mb-4">Compensation & Compliance</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">Salary</label>
-                            <div className="flex gap-2">
+                <div className="form-section">
+                    <h2 className="section-title">Compensation & Compliance</h2>
+                    <div className="form-grid">
+                        <div className="form-group">
+                            <label className="form-label">Salary</label>
+                            <div className="input-group">
                                 <input
                                     type="number"
                                     name="salary"
                                     value={form.salary}
                                     onChange={handleChange}
                                     placeholder="Monthly salary"
-                                    className="flex-1 px-4 py-2.5 bg-slate-900 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                    className="form-input flex-1"
                                 />
                                 <select
                                     name="currency"
                                     value={form.currency}
                                     onChange={handleChange}
-                                    className="w-24 px-3 py-2.5 bg-slate-900 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                    className="form-input w-24"
                                 >
                                     <option value="PKR">PKR</option>
                                     <option value="INR">INR</option>
@@ -247,14 +251,14 @@ export default function NewEmployeePage() {
                                 </select>
                             </div>
                         </div>
-                        <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">Tax ID</label>
-                            <div className="flex gap-2">
+                        <div className="form-group">
+                            <label className="form-label">Tax ID</label>
+                            <div className="input-group">
                                 <select
                                     name="taxIdType"
                                     value={form.taxIdType}
                                     onChange={handleChange}
-                                    className="w-28 px-3 py-2.5 bg-slate-900 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                    className="form-input w-28"
                                 >
                                     <option value="">Type</option>
                                     <option value="NTN">NTN</option>
@@ -268,7 +272,7 @@ export default function NewEmployeePage() {
                                     value={form.taxId}
                                     onChange={handleChange}
                                     placeholder="Tax ID number"
-                                    className="flex-1 px-4 py-2.5 bg-slate-900 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                    className="form-input flex-1"
                                 />
                             </div>
                         </div>
@@ -276,23 +280,20 @@ export default function NewEmployeePage() {
                 </div>
 
                 {error && (
-                    <div className="bg-red-500/20 border border-red-500/50 text-red-400 px-4 py-3 rounded-xl text-sm">
+                    <div className="error-message">
                         {error}
                     </div>
                 )}
 
                 {/* Actions */}
-                <div className="flex justify-end gap-4">
-                    <Link
-                        href="/employees"
-                        className="px-6 py-2.5 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-medium transition"
-                    >
+                <div className="form-actions">
+                    <Link href="/employees" className="btn-secondary">
                         Cancel
                     </Link>
                     <button
                         type="submit"
                         disabled={loading}
-                        className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition disabled:opacity-50"
+                        className="btn-primary"
                     >
                         {loading ? 'Creating...' : 'Add Employee'}
                     </button>
