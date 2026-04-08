@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
           {/* Col 1 Brand */}
           <div className="flex flex-col gap-4 items-start">
-            <img src="/floxr-logo-dark.svg" alt="Floxr" className="h-[40px] w-auto mb-2" />
+            <img src="/floxr-logo-dark.svg" alt="Floxr" className="h-[52px] w-auto mb-2" />
             <p className="font-[var(--font-body)] text-[16px] text-[var(--muted)]">Software that moves.</p>
             <a href="mailto:hello@floxr.co" className="font-[var(--font-mono)] text-[12px] text-[var(--muted)] hover:text-[var(--lime)] transition-colors mt-2">hello@floxr.co</a>
           </div>

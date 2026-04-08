@@ -150,6 +150,47 @@ model Payroll {
   updatedAt       DateTime @updatedAt
 }
 
+// Payroll Consultants (Third-party access)
+model PayrollConsultant {
+  id          String   @id @default(cuid())
+  email       String
+  name        String?
+  accessToken String   @unique
+  permissions String   @default("VIEW_ONLY") // VIEW_ONLY, EXPORT
+  status      String   @default("ACTIVE") // ACTIVE, REVOKED
+  invitedBy   String?  // User ID who invited
+  expiresAt   DateTime?
+  lastAccess  DateTime?
+  
+  companyId   String
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([companyId])
+  @@index([accessToken])
+  @@unique([email, companyId])
+}
+
+// Payroll Audit Log
+model PayrollAuditLog {
+  id          String   @id @default(cuid())
+  action      String   // PROCESS, MARK_PAID, EXPORT_CSV, CONSULTANT_VIEW
+  details     Json?    // Additional context (period, count, etc.)
+  userId      String?  // User who performed action
+  consultantId String? // If action by consultant
+  ipAddress   String?
+  userAgent   String?
+  
+  companyId   String
+  
+  createdAt   DateTime @default(now())
+  
+  @@index([companyId])
+  @@index([action])
+  @@index([createdAt])
+}
+
 // Waitlist (for your marketing site)
 model Waitlist {
   id        String   @id @default(cuid())

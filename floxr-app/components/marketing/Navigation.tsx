@@ -23,7 +23,7 @@ export default function Navigation() {
       >
         {/* Left: Logo */}
         <div className="flex items-center">
-          <img src="/floxr-logo-dark.svg" alt="Floxr" className="h-[28px] w-auto" />
+          <img src="/floxr-logo-dark.svg" alt="Floxr" className="h-[36px] w-auto" />
         </div>
 
         {/* Center: Desktop Nav */}
@@ -65,7 +65,7 @@ export default function Navigation() {
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-[100] bg-[var(--bg)] flex flex-col p-6">
           <div className="flex justify-between items-center h-[64px] mb-8">
-            <img src="/floxr-logo-dark.svg" alt="Floxr" className="h-[32px] w-auto" />
+            <img src="/floxr-logo-dark.svg" alt="Floxr" className="h-[40px] w-auto" />
             <button 
               className="w-10 h-10 flex items-center justify-center text-[var(--text)] text-2xl"
               onClick={() => setMobileMenuOpen(false)}

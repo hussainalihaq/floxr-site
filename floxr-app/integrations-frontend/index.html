@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Floxr Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+              "card-dark": "#181c24",
+              "slack": "#4A154B",
+              "teams": "#6264A7",
+              "zoom": "#2D8CFF",
+              "quickbooks": "#2CA01C",
+              "gusto": "#0A8080",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"],
+              "sans": ["Inter", "sans-serif"]
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3748;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a5568;
+        }
+        /* Custom Toggle Switch Styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #10B981;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #10B981;
+        }
+        /* Glassmorphism Card */
+        .glass-card {
+            background: rgba(24, 28, 36, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card:hover {
+            background: rgba(24, 28, 36, 0.8);
+            border-color: rgba(19, 91, 236, 0.3);
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased overflow-hidden">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

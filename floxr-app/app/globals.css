@@ -34,16 +34,16 @@
 }
 
 :root {
-  --bg: #080808;
-  --surface: #0f0f0f;
-  --elevated: #161616;
+  --bg: #030303;
+  --surface: #0a0a0a;
+  --elevated: #111111;
   --border: #1e1e1e;
   --border-light: #1e1e1e;
   --lime: #b8ff57;
   --heat: #ff4500;
-  --text: #efefef;
-  --muted: #a1a1aa;  /* Improved readability, was #3a3a3a */
-  --subtle: #71717a; /* Improved readability, was #222222 */
+  --text: #ffffff;
+  --muted: #d1d5db;  /* Extreme readability for muted text */
+  --subtle: #9ca3af; /* Extreme readability for subtle text */
 
   /* Glow effects */
   --glow-lime: rgba(184, 255, 87, 0.15);

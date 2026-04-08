@@ -48,7 +48,7 @@ export default function Preloader() {
       
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="preloader-text will-change-transform">
-          <img src="/floxr-logo-dark.svg" alt="Floxr" className="w-[180px] md:w-[240px] drop-shadow-2xl" />
+          <img src="/floxr-logo-dark.svg" alt="Floxr" className="w-[220px] md:w-[280px] drop-shadow-2xl" />
         </div>
       </div>
     </div>

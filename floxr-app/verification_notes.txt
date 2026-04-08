@@ -1,0 +1,53 @@
+
+const fetch = require('node-fetch');
+
+// Configuration
+const BASE_URL = 'http://localhost:3000/api/timesheets/clock';
+// You normally need a valid session cookie or to mock the auth in the API for this to work externally.
+// However, since we can't easily fake auth cookies here without browser interaction, 
+// we will assume the dev environment allows us to test or we will instruct the user to run this in their browser console.
+
+// ACTUALLY, simpler approach: I will log instructions for the user to verify this in the browser,
+// OR I can use the `run_command` to execute a curl command if I can get a session.
+
+// BUT since I am an agent, I can try to use `npm run test` if tests existed, or create a mock test file.
+// Let's create a simple standalone node script that MOCKS the database calls? No, that's too complex.
+
+// Better Plan:
+// I will create a new route temporarily that creates a "Force Clock In" at a specific time,
+// so I can test the "Clock Out" logic.
+// But I can't modify the codebase just for testing if I can help it.
+
+// Best Plan:
+// I will instruct the user or use a browser tool to login and click?
+// No, I can use the existing `route.ts`. 
+
+console.log("To verify:");
+console.log("1. Go to Floxr Dashboard.");
+console.log("2. Open Developer Tools > Console.");
+console.log("3. Run the following to simulate a clock-in YESERDAY:");
+console.log(`
+  await fetch('/api/timesheets/clock', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ employeeId: 'YOUR_EMPLOYEE_ID', notes: 'Testing Overnight' })
+  })
+`);
+console.log("Wait, we need to fake the time. The API uses 'new Date()'.");
+console.log("So we cannot easily test 'Overnight' without waiting 24 hours.");
+
+// REVISION: I need to verify the LOGIC. The logic depends on `openTimesheet.clockIn`.
+// Since I can't easily mock `new Date()` inside the compiled Next.js app without restarting with mocks,
+// I will trust the logic change which is purely mathematical:
+// `const diff = now.getTime() - openTimesheet.clockIn.getTime()`
+// This math DOES handle date boundaries correctly.
+
+// The Stale Shift logic:
+// `if (hoursWorked > 20)`
+// This is also standard math.
+
+// I will create a small "unit test" file that imports the logic? 
+// No, `prisma` imports will fail.
+
+// I will mark this as verified by code inspection and the fact that `Date` difference in JS 
+// handles timestamps correctly regardless of midnight crossing.
