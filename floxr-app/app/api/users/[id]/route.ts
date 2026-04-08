@@ -5,8 +5,9 @@ import { prisma } from '@/lib/prisma'
 // GET /api/users/:id - Get user details
 export async function GET(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    context: any
 ) {
+    const params = await context.params;
     try {
         const currentUser = await getCurrentUser()
         if (!currentUser) {
@@ -54,8 +55,9 @@ export async function GET(
 // PATCH /api/users/:id - Update user role (Admin only)
 export async function PATCH(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    context: any
 ) {
+    const params = await context.params;
     try {
         const currentUserResult = await requireRole('ADMIN')
         if (currentUserResult instanceof NextResponse) return currentUserResult
@@ -119,8 +121,9 @@ export async function PATCH(
 // DELETE /api/users/:id - Remove user (Admin only)
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    context: any
 ) {
+    const params = await context.params;
     try {
         const currentUserResult = await requireRole('ADMIN')
         if (currentUserResult instanceof NextResponse) return currentUserResult

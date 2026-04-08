@@ -5,8 +5,9 @@ import { getCurrentUser } from '@/lib/auth'
 // GET single equipment
 export async function GET(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    context: any
 ) {
+    const params = await context.params;
     try {
         const user = await getCurrentUser()
         if (!user) {
@@ -49,8 +50,9 @@ export async function GET(
 // PUT update equipment
 export async function PUT(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    context: any
 ) {
+    const params = await context.params;
     try {
         const user = await getCurrentUser()
         if (!user) {
@@ -83,8 +85,9 @@ export async function PUT(
 // DELETE equipment
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    context: any
 ) {
+    const params = await context.params;
     try {
         const user = await getCurrentUser()
         if (!user) {

@@ -5,8 +5,9 @@ import { prisma } from '@/lib/prisma'
 // GET /api/companies/:id - Get company details
 export async function GET(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    context: any
 ) {
+    const params = await context.params;
     try {
         const user = await getCurrentUser()
         if (!user) {
@@ -44,8 +45,9 @@ export async function GET(
 // PUT /api/companies/:id - Update company
 export async function PUT(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    context: any
 ) {
+    const params = await context.params;
     try {
         const userResult = await requireRole('ADMIN')
         if (userResult instanceof NextResponse) return userResult

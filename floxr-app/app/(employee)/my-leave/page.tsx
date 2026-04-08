@@ -30,9 +30,10 @@ export default async function MyLeavePage() {
         take: 50
     })
 
-    // Serialize dates
+    // Serialize dates and map properties
     const serializedRequests = leaveRequests.map(lr => ({
         ...lr,
+        type: lr.leaveType,
         startDate: lr.startDate.toISOString(),
         endDate: lr.endDate.toISOString(),
         createdAt: lr.createdAt.toISOString(),

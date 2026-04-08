@@ -1,7 +1,6 @@
 import { getCurrentUser } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 import { prisma } from '@/lib/prisma'
-import '../(dashboard)/dashboard.css'
 import EmployeeSidebar from '@/components/employee/EmployeeSidebar'
 
 export default async function EmployeeLayout({

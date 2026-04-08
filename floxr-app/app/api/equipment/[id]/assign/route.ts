@@ -5,8 +5,9 @@ import { getCurrentUser } from '@/lib/auth'
 // POST assign equipment to employee
 export async function POST(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    context: any
 ) {
+    const params = await context.params;
     try {
         const user = await getCurrentUser()
         if (!user) {
@@ -67,8 +68,9 @@ export async function POST(
 // PUT return equipment
 export async function PUT(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    context: any
 ) {
+    const params = await context.params;
     try {
         const user = await getCurrentUser()
         if (!user) {
