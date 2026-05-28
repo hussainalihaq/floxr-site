@@ -12,8 +12,8 @@ import CTABanner from '@/components/marketing/sections/CTABanner';
 import Footer from '@/components/marketing/Footer';
 
 export const metadata: Metadata = {
-  title: "Floxr | Software That Ships",
-  description: "Floxr is entering the market with premium, high-converting digital products and software.",
+  title: "Floxr | Software That Ships. Premium Digital Studio.",
+  description: "We build high-performance software, premium branding, and conversion-first digital products. Engineering excellence for the next generation of startups.",
 };
 
 export default function HomePage() {
@@ -22,8 +22,12 @@ export default function HomePage() {
       <Preloader />
       <CustomCursor />
       
+      {/* Global Masterpiece Background Overlays */}
+      <div className="bg-noise" />
+      <div className="bg-grid-pattern fixed inset-0 z-0 pointer-events-none opacity-50 mix-blend-lighten" />
+
       {/* We wrap everything in this class so the Preloader can fade it in smoothly */}
-      <main className="marketing-page-content opacity-0 bg-[var(--bg)] min-h-screen text-[var(--text)] transition-opacity duration-300">
+      <main className="marketing-page-content opacity-0 bg-transparent min-h-screen text-[var(--text)] transition-opacity duration-300 relative z-10">
         <Navigation />
         
         {/* Sections in Exact Order */}

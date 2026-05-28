@@ -47,7 +47,7 @@ export default function CTABanner() {
         READY?
       </span>
 
-      <h2 className="font-[var(--font-display)] text-[clamp(64px,8vw,120px)] font-extrabold text-[var(--text)] leading-[0.95] text-center max-w-[1200px] mb-16 flex flex-wrap justify-center gap-x-4 z-10">
+      <h2 className="font-[var(--font-display)] text-[clamp(32px,8vw,120px)] font-extrabold text-[var(--text)] leading-[0.95] text-center max-w-[1200px] mb-16 flex flex-wrap justify-center gap-x-4 z-10">
         {/* Split words then split letters */}
         {headline.split(' ').map((word, wordIndex) => (
           <div key={wordIndex} className="flex">

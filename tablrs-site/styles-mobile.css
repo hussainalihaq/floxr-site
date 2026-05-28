@@ -253,7 +253,102 @@
         grid-template-columns: 1fr !important;
     }
 
+    /* Fix email text overflow in dashboard mockup */
+    .typing-input {
+        overflow: hidden !important;
+        max-width: 100% !important;
+        word-break: break-all !important;
+    }
+
+    #typed-email {
+        font-size: 0.8rem !important;
+        word-break: break-all !important;
+    }
+
+    .input-field {
+        overflow: hidden !important;
+        max-width: 100% !important;
+    }
+
+    .live-demo-container {
+        overflow: hidden !important;
+        max-width: 100% !important;
+    }
+
     .header-inner {
         padding: 0.75rem 0.5rem !important;
+    }
+
+    /* GLOBE SECTION MOBILE FIX */
+    .globe-section {
+        overflow: hidden !important;
+        padding: 3rem 0 !important;
+    }
+
+    .globe-content {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+    }
+
+    .globe-container {
+        height: auto !important;
+        min-height: 300px !important;
+        order: 1 !important;
+    }
+
+    .globe-wrapper {
+        width: 280px !important;
+        height: 280px !important;
+        margin: 0 auto !important;
+    }
+
+    .globe-text {
+        order: 2 !important;
+        text-align: center !important;
+        max-width: 100% !important;
+        padding: 0 1rem !important;
+    }
+
+    .glow-text {
+        font-size: 1.75rem !important;
+        line-height: 1.2 !important;
+        word-wrap: break-word !important;
+    }
+
+    .globe-description {
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+    }
+
+    .globe-stats {
+        position: relative !important;
+        bottom: auto !important;
+        flex-wrap: wrap !important;
+        gap: 1rem !important;
+        margin-top: 1.5rem !important;
+    }
+
+    .stat-badge {
+        padding: 0.75rem 1rem !important;
+        min-width: auto !important;
+        flex: 1 1 calc(50% - 0.5rem) !important;
+    }
+
+    .stat-number {
+        font-size: 1.5rem !important;
+    }
+
+    .stat-label {
+        font-size: 0.75rem !important;
+    }
+
+    /* Disable pulse animation on mobile to save performance */
+    .pulse-point {
+        animation: none !important;
+    }
+
+    .pulse-point::before {
+        animation: none !important;
     }
 }

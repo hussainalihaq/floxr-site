@@ -15,8 +15,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Floxr | Software That Ships.",
-  description: "Floxr is entering a market full of agencies using the same blue-gradient, card-grid. We build software that ships.",
+  title: "Floxr | Software That Ships. Premium Digital Studio.",
+  description: "We build high-performance software, premium branding, and conversion-first digital products. Engineering excellence for the next generation of startups.",
 };
 
 export default function RootLayout({

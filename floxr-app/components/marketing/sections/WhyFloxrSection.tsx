@@ -80,13 +80,21 @@ export default function WhyFloxrSection() {
   };
 
   return (
-    <section ref={sectionRef} className="w-full bg-[#0a0a0a] border-t border-[var(--border)] py-32 px-6 md:px-12 flex flex-col items-center">
+    <section ref={sectionRef} className="relative w-full bg-[#0a0a0a] border-t border-[var(--border)] py-32 px-6 md:px-12 flex flex-col items-center overflow-hidden">
       
-      <span className="font-[var(--font-mono)] text-[11px] text-[var(--lime)] tracking-[0.2em] mb-12">
+      {/* Massive Background Watermark Typography for Depth */}
+      <div className="absolute top-[30%] left-[-5%] select-none pointer-events-none z-0 opacity-[0.02] font-[var(--font-display)] text-[20vw] font-extrabold whitespace-nowrap rotate-3">
+        DIFFERENT DIFFERENT
+      </div>
+
+      <span className="relative z-10 font-[var(--font-mono)] text-[11px] text-[var(--lime)] tracking-[0.2em] mb-12">
         WHY NOT JUST ANYONE
       </span>
 
-      <div className="w-full max-w-[1100px] flex flex-col md:flex-row gap-6 md:gap-8">
+      <div className="relative z-10 w-full max-w-[1100px] flex flex-col md:flex-row gap-6 md:gap-8">
+        
+        {/* Glow directly behind terminals */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[var(--glow-lime)] blur-[100px] rounded-full pointer-events-none -z-10 opacity-30" />
         
         {/* Left Terminal */}
         <div className="w-full md:w-1/2 border-[0.5px] border-[var(--border)] rounded-lg bg-[var(--bg)] flex flex-col overflow-hidden">
@@ -97,12 +105,12 @@ export default function WhyFloxrSection() {
               <div className="w-2 h-2 rounded-full bg-[#ffbd2e]" />
               <div className="w-2 h-2 rounded-full bg-[#27c93f]" />
             </div>
-            <span className="absolute left-1/2 -translate-x-1/2 font-[var(--font-mono)] text-[11px] text-[#222222]">
+            <span className="absolute left-1/2 -translate-x-1/2 font-[var(--font-mono)] text-[11px] text-[#888888]">
               typical-agency.exe
             </span>
           </div>
           {/* Content */}
-          <div className="p-6 font-[var(--font-mono)] text-[13px] leading-[1.8] min-h-[300px]">
+          <div className="p-4 sm:p-6 font-[var(--font-mono)] text-[13px] leading-[1.8] min-h-[300px]">
             {leftLines.slice(0, visibleLeft).map((line, i) => (
               <div key={i} className={getColor(line.type)}>{line.text}</div>
             ))}
@@ -119,12 +127,12 @@ export default function WhyFloxrSection() {
               <div className="w-2 h-2 rounded-full bg-[#27c93f]" />
               <div className="w-2 h-2 rounded-full bg-[#27c93f]" />
             </div>
-            <span className="absolute left-1/2 -translate-x-1/2 font-[var(--font-mono)] text-[11px] text-[#222222]">
+            <span className="absolute left-1/2 -translate-x-1/2 font-[var(--font-mono)] text-[11px] text-[#888888]">
               floxr.sh
             </span>
           </div>
           {/* Content */}
-          <div className="p-6 font-[var(--font-mono)] text-[13px] leading-[1.8] min-h-[300px]">
+          <div className="p-4 sm:p-6 font-[var(--font-mono)] text-[13px] leading-[1.8] min-h-[300px]">
             {rightLines.slice(0, visibleRight).map((line, i) => (
               <div key={i} className={getColor(line.type)}>{line.text}</div>
             ))}

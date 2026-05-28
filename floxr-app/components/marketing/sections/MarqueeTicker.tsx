@@ -24,17 +24,21 @@ export default function MarqueeTicker() {
   }, []);
 
   const handleMouseEnter = () => {
-    tweenRef.current?.pause();
+    if (typeof window !== 'undefined' && window.matchMedia('(pointer: fine)').matches) {
+      tweenRef.current?.pause();
+    }
   };
 
   const handleMouseLeave = () => {
-    tweenRef.current?.play();
+    if (typeof window !== 'undefined' && window.matchMedia('(pointer: fine)').matches) {
+      tweenRef.current?.play();
+    }
   };
 
   return (
     <div 
       ref={containerRef}
-      className="w-full h-[48px] bg-[var(--surface)] border-y border-[var(--border)] overflow-hidden flex items-center group cursor-default"
+      className="w-full h-[60px] bg-[rgba(10,10,10,0.8)] backdrop-blur-xl border-y border-[rgba(184,255,87,0.15)] overflow-hidden flex items-center group cursor-default relative shadow-[0_0_30px_rgba(184,255,87,0.05)]"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -46,7 +50,7 @@ export default function MarqueeTicker() {
         {[1, 2, 3, 4].map((i) => (
           <span 
             key={i}
-            className="font-[var(--font-mono)] text-[12px] text-[var(--subtle)] tracking-[0.15em] px-4 group-hover:text-[var(--muted)] transition-colors duration-300"
+            className="font-[var(--font-mono)] text-[14px] text-[var(--subtle)] tracking-[0.2em] px-6 group-hover:text-[var(--lime)] transition-colors duration-500 drop-shadow-[0_0_8px_rgba(184,255,87,0)] group-hover:drop-shadow-[0_0_8px_rgba(184,255,87,0.5)] font-medium"
           >
             {MARQUEE_TEXT}
           </span>
