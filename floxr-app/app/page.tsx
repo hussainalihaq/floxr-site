@@ -7,13 +7,10 @@ export default function HomePage() {
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
-    const alreadyShown = sessionStorage.getItem('floxr_audit_popup_shown');
-    if (alreadyShown) return;
-
+    // Temporarily removing sessionStorage check so the popup reliably appears for the user.
     const timer = setTimeout(() => {
       setShowPopup(true);
-      sessionStorage.setItem('floxr_audit_popup_shown', 'true');
-    }, 5000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -25,7 +22,7 @@ export default function HomePage() {
         <div className="flex justify-between items-center w-full px-6 md:px-12 py-4 max-w-[1440px] mx-auto">
           {/* Logo */}
           <Link href="/">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8 md:h-10 w-auto" />
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-10 md:h-12 w-auto" />
           </Link>
 
           {/* Center Nav Links */}
@@ -38,19 +35,19 @@ export default function HomePage() {
             </Link>
             <Link
               className="text-secondary hover:text-primary transition-colors duration-300"
-              href="#audit"
+              href="/audit"
             >
               Audit
             </Link>
             <Link
               className="text-secondary hover:text-primary transition-colors duration-300"
-              href="#capabilities"
+              href="/capabilities"
             >
               Capabilities
             </Link>
             <Link
               className="text-secondary hover:text-primary transition-colors duration-300"
-              href="#lab"
+              href="/lab"
             >
               Lab
             </Link>
@@ -79,8 +76,13 @@ export default function HomePage() {
 
       <main className="max-w-[1440px] mx-auto px-6 md:px-12">
         {/* ─── 2. HERO SECTION ─── */}
-        <section className="min-h-[80vh] flex flex-col justify-center py-section-gap">
-          <h1 className="font-headline-lg text-display-lg text-primary max-w-4xl mb-8 leading-tight">
+        <section className="relative min-h-[80vh] flex flex-col justify-center py-section-gap overflow-hidden">
+          {/* Abstract background pattern to feel less empty */}
+          <div className="absolute inset-0 pointer-events-none opacity-20 -z-10">
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)]"></div>
+          </div>
+          
+          <h1 className="font-headline-lg text-display-lg text-primary max-w-4xl mb-8 leading-tight tracking-tight">
             We diagnose what is broken, design what should exist, and build what
             moves businesses forward.
           </h1>
@@ -90,7 +92,7 @@ export default function HomePage() {
           <div>
             <Link
               href="/work"
-              className="inline-block bg-primary text-on-primary font-label-mono text-label-mono uppercase px-8 py-4 hover:opacity-90 transition-opacity duration-300"
+              className="inline-block bg-primary text-on-primary font-label-mono text-label-mono uppercase px-8 py-4 hover:bg-surface-tint hover:scale-[1.02] transition-all duration-300 shadow-sm"
             >
               Explore Our Work
             </Link>

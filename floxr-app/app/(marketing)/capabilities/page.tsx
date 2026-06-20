@@ -6,7 +6,7 @@ export default function CapabilitiesPage() {
       <nav className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b border-outline-variant transition-all duration-200 ease-in-out">
         <div className="flex justify-between items-center w-full px-grid-margin-mobile md:px-grid-margin py-stack-md max-w-[1440px] mx-auto">
           <Link className="flex items-center" href="/">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8 md:h-10 w-auto" />
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-10 md:h-12 w-auto" />
           </Link>
           <div className="hidden md:flex gap-gutter items-center font-body-md text-body-md uppercase tracking-widest">
             <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/work">Work</Link>
@@ -82,7 +82,7 @@ export default function CapabilitiesPage() {
       <footer className="bg-primary text-on-primary w-full mt-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter px-grid-margin-mobile md:px-grid-margin py-section-gap max-w-[1440px] mx-auto items-start">
           <div className="md:col-span-6 flex flex-col space-y-stack-md">
-            <img src="/floxr-logo-dark.svg" alt="FLOXR" className="h-10 w-auto object-contain object-left mb-stack-sm" />
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-10 md:h-12 w-auto object-contain object-left mb-stack-sm brightness-0 invert" />
             <div className="font-body-lg text-body-lg text-left text-on-primary/70">© 2024 FLOXR. Digital Architecture Firm.</div>
           </div>
           <div className="md:col-span-6 flex justify-start md:justify-end mt-stack-lg md:mt-0">

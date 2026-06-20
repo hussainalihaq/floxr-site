@@ -1,5 +1,4 @@
 <svg width="200" height="80" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
-  <!-- CSS Animation for spinning gear -->
   <style>
     @keyframes rotate-gear {
       from { transform: rotate(0deg); }
@@ -8,30 +7,30 @@
   </style>
   
   <!-- Text: fl -->
-  <text x="15" y="55" font-family="Inter, sans-serif" font-weight="800" font-size="48" fill="#000000" letter-spacing="2">fl</text>
+  <!-- We'll use a very bold font, like system-ui or Inter Black -->
+  <text x="10" y="55" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" fill="#000000" letter-spacing="1">fl</text>
   
-  <!-- Gear icon for 'o' - rotating in place like a wheel -->
-  <g transform="translate(60, 42)">
-    <!-- Rotating group for gear -->
-    <g style="animation: rotate-gear 6s linear infinite; transform-origin: 0px 0px;">
-      <!-- Gear -->
-      <circle cx="0" cy="0" r="10" fill="none" stroke="#000000" stroke-width="2.5"/>
-      <circle cx="0" cy="0" r="4" fill="#000000"/>
+  <!-- Gear icon for 'o' -->
+  <g transform="translate(68, 40)">
+    <g style="animation: rotate-gear 8s linear infinite; transform-origin: 0px 0px;">
+      <!-- Outer thick circle -->
+      <circle cx="0" cy="0" r="12" fill="none" stroke="#000000" stroke-width="5"/>
+      <!-- Inner dot -->
+      <circle cx="0" cy="0" r="4.5" fill="#000000"/>
       
-      <!-- Gear teeth (8 teeth) -->
-      <rect x="-1.5" y="-12.5" width="3" height="4" fill="#000000" rx="0.5"/>
-      <rect x="-1.5" y="8.5" width="3" height="4" fill="#000000" rx="0.5"/>
-      <rect x="-12.5" y="-1.5" width="4" height="3" fill="#000000" rx="0.5"/>
-      <rect x="8.5" y="-1.5" width="4" height="3" fill="#000000" rx="0.5"/>
+      <!-- Thick Gear teeth (8 teeth) -->
+      <rect x="-2.5" y="-16" width="5" height="5" fill="#000000" rx="1"/>
+      <rect x="-2.5" y="11" width="5" height="5" fill="#000000" rx="1"/>
+      <rect x="-16" y="-2.5" width="5" height="5" fill="#000000" rx="1"/>
+      <rect x="11" y="-2.5" width="5" height="5" fill="#000000" rx="1"/>
       
-      <!-- Diagonal teeth -->
-      <rect transform="rotate(45)" x="-1.5" y="-12.5" width="3" height="4" fill="#000000" rx="0.5"/>
-      <rect transform="rotate(45)" x="-1.5" y="8.5" width="3" height="4" fill="#000000" rx="0.5"/>
-      <rect transform="rotate(-45)" x="-1.5" y="-12.5" width="3" height="4" fill="#000000" rx="0.5"/>
-      <rect transform="rotate(-45)" x="-1.5" y="8.5" width="3" height="4" fill="#000000" rx="0.5"/>
+      <rect transform="rotate(45)" x="-2.5" y="-16" width="5" height="5" fill="#000000" rx="1"/>
+      <rect transform="rotate(45)" x="-2.5" y="11" width="5" height="5" fill="#000000" rx="1"/>
+      <rect transform="rotate(-45)" x="-2.5" y="-16" width="5" height="5" fill="#000000" rx="1"/>
+      <rect transform="rotate(-45)" x="-2.5" y="11" width="5" height="5" fill="#000000" rx="1"/>
     </g>
   </g>
   
   <!-- Text: xr -->
-  <text x="75" y="55" font-family="Inter, sans-serif" font-weight="800" font-size="48" fill="#000000" letter-spacing="2">xr</text>
+  <text x="90" y="55" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" fill="#000000" letter-spacing="1">xr</text>
 </svg>

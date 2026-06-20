@@ -61,7 +61,7 @@ export default function WorkPage() {
       <nav className="bg-background fixed top-0 w-full z-50 border-b border-primary transition-all duration-200 ease-in-out">
         <div className="flex justify-between items-center w-full px-grid-margin-mobile md:px-grid-margin py-stack-md max-w-[1440px] mx-auto">
           <Link href="/" className="flex items-center gap-2">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8 md:h-10 w-auto" />
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-10 md:h-12 w-auto" />
           </Link>
           <div className="hidden md:flex gap-gutter items-center font-body-md text-body-md uppercase tracking-widest">
             <Link className="text-primary font-semibold" href="/work">Work</Link>
@@ -245,7 +245,7 @@ export default function WorkPage() {
       <footer className="bg-primary w-full">
         <div className="grid grid-cols-12 gap-gutter px-grid-margin-mobile md:px-grid-margin py-section-gap max-w-[1440px] mx-auto text-on-primary">
           <div className="col-span-12 md:col-span-6 mb-stack-lg md:mb-0">
-            <img src="/floxr-logo-dark.svg" alt="FLOXR" className="h-10 w-auto object-contain object-left mb-stack-sm" />
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-10 md:h-12 w-auto object-contain object-left mb-stack-sm brightness-0 invert" />
             <p className="font-body-lg text-body-lg text-left text-on-primary/70 max-w-sm">
               © 2024 FLOXR. Digital Architecture Firm.
             </p>
