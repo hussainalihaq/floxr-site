@@ -478,7 +478,7 @@ export default function HomePage() {
               className="h-8 brightness-0 invert mb-4"
             />
             <p className="font-body-md text-body-md text-on-primary/70 max-w-sm">
-              © 2024 FLOXR. Digital Architecture Firm.
+              © 2026 FLOXR built in house.
             </p>
           </div>
 

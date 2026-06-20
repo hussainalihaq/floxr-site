@@ -8,9 +8,9 @@ export default function AuditPage() {
     <div className="min-h-screen bg-[#111111] text-white font-body-md antialiased selection:bg-white selection:text-black">
       <Navbar />
 
-      <main className="flex-grow pt-32 pb-section-gap max-w-[1440px] mx-auto">
+      <main className="flex-grow pt-[140px] pb-section-gap max-w-[1440px] mx-auto px-6 md:px-12">
         {/* Hero Section */}
-        <section className="px-grid-margin-mobile md:px-grid-margin py-section-gap">
+        <section className="py-section-gap">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
             <div className="md:col-span-7 flex flex-col space-y-stack-lg">
               <div className="inline-flex items-center space-x-2">
@@ -185,8 +185,8 @@ export default function AuditPage() {
       <footer className="bg-[#111111] text-white w-full border-t border-[#333333]">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter px-grid-margin-mobile md:px-grid-margin py-section-gap max-w-[1440px] mx-auto items-start">
           <div className="md:col-span-6 flex flex-col space-y-stack-md">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-10 md:h-12 w-auto object-contain object-left mb-stack-sm brightness-0 invert" />
-            <div className="font-body-lg text-body-lg text-left text-[#aaaaaa]">© 2024 FLOXR. Digital Architecture Firm.</div>
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-6 md:h-8 w-auto object-contain object-left mb-stack-sm brightness-0 invert" />
+            <div className="font-body-lg text-body-lg text-left text-[#aaaaaa]">© 2026 FLOXR built in house.</div>
           </div>
           <div className="md:col-span-6 flex justify-start md:justify-end mt-stack-lg md:mt-0">
             <ul className="flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0">

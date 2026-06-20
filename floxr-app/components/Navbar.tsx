@@ -13,7 +13,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center w-full px-6 md:px-12 py-4 max-w-[1440px] mx-auto">
           {/* Logo */}
           <Link href="/" onClick={() => setIsOpen(false)}>
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8 md:h-9 w-auto dark:invert" />
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8 md:h-9 w-auto" />
           </Link>
 
           {/* Desktop Nav Links */}

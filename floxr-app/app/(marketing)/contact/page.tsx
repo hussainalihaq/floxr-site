@@ -205,9 +205,9 @@ export default function ContactPage() {
       <footer className="bg-primary dark:bg-surface-container-lowest w-full cursor-pointer mt-section-gap">
         <div className="grid grid-cols-12 gap-gutter px-grid-margin-mobile md:px-grid-margin py-section-gap max-w-[1440px] mx-auto text-on-primary dark:text-on-surface">
           <div className="col-span-12 md:col-span-6 mb-stack-lg md:mb-0">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-10 md:h-12 w-auto object-contain object-left mb-stack-sm brightness-0 invert" />
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-6 md:h-8 w-auto object-contain object-left mb-stack-sm brightness-0 invert" />
             <p className="font-body-lg text-body-lg text-left text-on-primary/70 dark:text-on-surface-variant max-w-sm">
-                © 2024 FLOXR. Digital Architecture Firm.
+                © 2026 FLOXR built in house.
             </p>
           </div>
           <div className="col-span-12 md:col-span-6 flex flex-col md:flex-row gap-stack-lg md:justify-end">
