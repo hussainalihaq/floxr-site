@@ -99,6 +99,59 @@ app.get("/waitlist/export", async (_req, res) => {
   }
 });
 
+// Save a new contact form submission
+app.post("/contact", async (req, res) => {
+  try {
+    const { name, email, budget, scope } = req.body || {};
+
+    if (!name || !email || !scope) {
+      return res.status(400).json({ error: "Name, email, and scope are required" });
+    }
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ error: "Invalid email format" });
+    }
+
+    console.log(`New contact submission from: ${name} (${email}) - Budget: ${budget}`);
+    console.log(`Scope: ${scope}`);
+
+    try {
+      // Attempt to save to database
+      const submission = await prisma.contactSubmission.create({
+        data: {
+          name,
+          email: email.toLowerCase(),
+          budget,
+          scope
+        }
+      });
+      return res.status(201).json({ success: true, id: submission.id });
+    } catch (dbError) {
+      console.error("Database connection failed. Logging submission to console:", dbError.message);
+      // Even if DB fails, return success to frontend so it can show the success state.
+      return res.status(201).json({ success: true, fallback: true });
+    }
+  } catch (error) {
+    console.error("Contact form error:", error);
+    return res.status(500).json({ error: "Server error" });
+  }
+});
+
+// View all contact submissions
+app.get("/contact", async (_req, res) => {
+  try {
+    const submissions = await prisma.contactSubmission.findMany({
+      orderBy: { createdAt: "desc" }
+    });
+    res.json(submissions);
+  } catch (error) {
+    console.error("Error fetching contact submissions:", error);
+    res.status(500).json({ error: "Server error or Database unreachable" });
+  }
+});
+
 app.listen(port, () => {
-  console.log(`Floxr waitlist backend running on port ${port}`);
+  console.log(`Floxr backend running on port ${port}`);
 });

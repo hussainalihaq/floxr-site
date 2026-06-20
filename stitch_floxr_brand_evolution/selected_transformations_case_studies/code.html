@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Selected Transformations - FLOXR</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#1b1b1b",
+                        "primary-container": "#1b1b1b",
+                        "on-primary-container": "#848484",
+                        "on-tertiary-container": "#848484",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "surface": "#f9f9ff",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#4c4546",
+                        "primary-fixed": "#e2e2e2",
+                        "primary": "#000000",
+                        "surface-container-high": "#e6e8f0",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eff0f9",
+                        "surface-tint": "#5e5e5e",
+                        "background": "#f9f9ff",
+                        "on-primary-fixed-variant": "#474747",
+                        "surface-variant": "#e1e2ea",
+                        "secondary-fixed": "#e2e2e2",
+                        "surface-container": "#ecedf6",
+                        "surface-dim": "#d8dae2",
+                        "inverse-surface": "#2d3037",
+                        "outline": "#7e7576",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "on-secondary-fixed-variant": "#454747",
+                        "surface-bright": "#f9f9ff",
+                        "surface-container-highest": "#e1e2ea",
+                        "surface-container-lowest": "#ffffff",
+                        "text-muted": "#666666",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "surface-alt": "#F2F2F2",
+                        "inverse-primary": "#c6c6c6",
+                        "on-secondary-container": "#616363",
+                        "on-background": "#191c22",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "secondary-container": "#dfe0e0",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#cfc4c5",
+                        "tertiary": "#000000",
+                        "surface-container-low": "#f2f3fc",
+                        "on-surface": "#191c22",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-error": "#ffffff",
+                        "secondary": "#5d5f5f",
+                        "tertiary-container": "#1b1b1b",
+                        "accent-red": "#FF3000",
+                        "tertiary-fixed": "#e2e2e2",
+                        "tertiary-fixed-dim": "#c6c6c6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "grid-margin": "4rem",
+                        "stack-lg": "2rem",
+                        "stack-sm": "0.5rem",
+                        "section-gap": "8rem",
+                        "stack-md": "1rem",
+                        "gutter": "1.5rem",
+                        "grid-margin-mobile": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "label-mono": ["JetBrains Mono"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg-mobile": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-mono": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg": ["80px", { "lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col pt-32">
+<!-- TopNavBar -->
+<nav class="bg-background dark:bg-on-background text-primary dark:text-on-primary font-body-md text-body-md uppercase tracking-widest fixed top-0 w-full z-50 border-b border-primary dark:border-on-primary-container transition-all duration-200 ease-in-out">
+<div class="flex justify-between items-center w-full px-grid-margin py-stack-md max-w-[1440px] mx-auto hidden md:flex">
+<a class="font-headline-md text-headline-md font-bold tracking-tighter text-primary dark:text-on-primary" href="#">FLOXR</a>
+<div class="flex items-center gap-gutter">
+<a class="text-primary dark:text-on-primary font-bold border-b border-primary transition-colors duration-300" href="#">Work</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="#">Audit</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="#">Capabilities</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="#">Lab</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="#">Contact</a>
+</div>
+<button class="bg-primary text-on-primary font-label-mono text-label-mono px-6 py-3 uppercase tracking-widest hover:bg-surface-tint transition-colors duration-300">Get Started</button>
+</div>
+<!-- Mobile TopAppBar Shell (Standardized for responsive) -->
+<div class="flex md:hidden justify-between items-center w-full px-grid-margin-mobile py-stack-md">
+<a class="font-headline-md text-headline-md font-bold tracking-tighter text-primary dark:text-on-primary" href="#">FLOXR</a>
+<button class="p-2"><span class="material-symbols-outlined" data-icon="menu">menu</span></button>
+</div>
+</nav>
+<!-- Header Section -->
+<header class="px-grid-margin-mobile md:px-grid-margin max-w-[1440px] mx-auto w-full pt-section-gap pb-stack-lg border-b border-primary">
+<div class="flex flex-col gap-stack-lg max-w-4xl">
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary">Selected<br/>Transformations</h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-2xl">
+                An archive of rigorous digital architecture. High-impact systems rebuilt for scale, precision, and operational clarity. We prioritize structure over decoration.
+            </p>
+</div>
+</header>
+<!-- Case Studies Grid -->
+<main class="flex-grow w-full">
+<!-- Case Study 1: Fintech Logistics Rebuild (Featured) -->
+<section class="border-b border-primary">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-0 max-w-[1440px] mx-auto">
+<div class="col-span-1 md:col-span-7 border-r-0 md:border-r border-primary">
+<img class="w-full h-full object-cover min-h-[500px]" data-alt="A highly detailed, ultra-modern dashboard interface for a fintech logistics platform displayed on a sleek monitor. The UI is minimalist, using a strict black, white, and subtle gray palette with crisp typography. The monitor sits on a pristine white desk in a brightly lit, high-end corporate office. The overall aesthetic conveys precision, scale, and digital mastery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqYjhnkUbDy6NHHCrSBMnkLcDf3Rea8tWxl7lH_VAk1WNH0NDJv481npEOtkAyJn83VWSYCaJUiM-0-b49HX_rxLxvxcdOeL3DMJa_wFLOl957tbIeOEnIOcrr797DIpm43PzqScSoEYNn10o73aY7psTGkpxyJ_W-sJf9-PkXKjdzJR8SoT0hGGXH4psj0kunk22CNxrpHgzLqZHj1kUbfiI0GKAMQlnV2zpYDYczku1tup_Z7jV_L3-PgB-ZdQWi4EMsxskFUBie"/>
+</div>
+<div class="col-span-1 md:col-span-5 p-grid-margin-mobile md:p-grid-margin flex flex-col justify-between bg-surface">
+<div class="flex flex-col gap-stack-lg">
+<div>
+<span class="font-label-mono text-label-mono bg-surface-alt px-3 py-1 uppercase tracking-widest text-primary border border-surface-dim">01 / Architecture</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mt-stack-md">Fintech Logistics<br/>Rebuild</h2>
+</div>
+<div class="flex flex-col gap-stack-sm mt-stack-md">
+<h3 class="font-label-mono text-label-mono text-secondary uppercase tracking-widest">Problem</h3>
+<p class="font-body-md text-body-md text-on-surface">Legacy infrastructure causing extreme latency in global transaction routing. The existing UI obfuscated critical data points under layers of unnecessary graphical elements.</p>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<h3 class="font-label-mono text-label-mono text-secondary uppercase tracking-widest">Solution</h3>
+<p class="font-body-md text-body-md text-on-surface">A complete structural overhaul. We introduced a rigid typographic grid, removed all non-functional UI, and rebuilt the data visualization engine prioritizing load speed and clarity.</p>
+</div>
+<div class="flex flex-col gap-stack-sm border-t border-surface-dim pt-stack-sm">
+<h3 class="font-label-mono text-label-mono text-secondary uppercase tracking-widest">Result</h3>
+<p class="font-body-md text-body-md text-primary font-medium">94% reduction in transaction visualization latency. 40% increase in analyst processing volume.</p>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 font-label-mono text-label-mono text-primary uppercase tracking-widest mt-section-gap group" href="#">
+                        View Full Audit <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Case Study 2 & 3 Grid -->
+<section class="border-b border-primary">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-0 max-w-[1440px] mx-auto">
+<!-- Case Study 2 -->
+<div class="border-b md:border-b-0 md:border-r border-primary flex flex-col h-full">
+<div class="h-64 border-b border-primary relative overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Abstract representation of healthcare data synchronization. Minimalist visual featuring precise geometric wireframes intersecting in a clean, bright, light-mode environment. The colors are strictly monochrome with subtle metallic silver tones, reflecting a clinical, high-tech, and structured aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKZLq-5bPYkDGTjvws2dJJYFqgfAMsbqofN9zvcMEW2Zsrc2jX9ZSjheR8qEKFb2vNu2jl9MdqLj00tQcJ91DtiqdD_BC2JpS-7zLnt3xtaLkYvcLhb3mXFyWgrLvjl_Ke7FrIFXb9L0gT718iaNyf7S5Nqlj3VUkkkUJtBFmm3LKPvwyx3qixEV-eGBfWnqK5Vqheuqgo5wSW7TDJFcGjAdsS0sdcAzylsmnq48zkvBdQGDUJ7SxfasSQaXnkKjHA2pUzSIfkkzY9"/>
+</div>
+<div class="p-grid-margin-mobile md:p-stack-lg flex flex-col gap-stack-lg flex-grow bg-surface">
+<div>
+<span class="font-label-mono text-label-mono bg-surface-alt px-3 py-1 uppercase tracking-widest text-primary border border-surface-dim">02 / Synchronization</span>
+<h2 class="font-headline-md text-headline-md text-primary mt-stack-md">Global Healthcare Hub</h2>
+</div>
+<div class="grid grid-cols-1 gap-stack-md flex-grow">
+<div class="flex flex-col gap-stack-sm">
+<h3 class="font-label-mono text-label-mono text-secondary uppercase tracking-widest">Problem</h3>
+<p class="font-body-md text-body-md text-on-surface">Fragmented patient data silos across 14 international regions.</p>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<h3 class="font-label-mono text-label-mono text-secondary uppercase tracking-widest">Result</h3>
+<p class="font-body-md text-body-md text-primary font-medium">Unified command center UI, ensuring sub-second global data parity.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Case Study 3 -->
+<div class="flex flex-col h-full bg-surface-alt">
+<div class="p-grid-margin-mobile md:p-stack-lg flex flex-col gap-stack-lg flex-grow border-b border-primary">
+<div>
+<span class="font-label-mono text-label-mono bg-surface px-3 py-1 uppercase tracking-widest text-primary border border-surface-dim">03 / Interface</span>
+<h2 class="font-headline-md text-headline-md text-primary mt-stack-md">Enterprise Supply Chain</h2>
+</div>
+<div class="grid grid-cols-1 gap-stack-md flex-grow">
+<div class="flex flex-col gap-stack-sm">
+<h3 class="font-label-mono text-label-mono text-secondary uppercase tracking-widest">Solution</h3>
+<p class="font-body-md text-body-md text-on-surface">Implemented a high-density, monochromatic data table system utilizing JetBrains Mono for rapid numerical scanning, stripping away decorative elements.</p>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<h3 class="font-label-mono text-label-mono text-secondary uppercase tracking-widest">Result</h3>
+<p class="font-body-md text-body-md text-primary font-medium">Zero training time required for new logistics managers.</p>
+</div>
+</div>
+</div>
+<div class="h-64 relative overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Close up of a highly complex, monochrome data table interface on a digital screen. Rows and columns of precise numerical data displayed in a monospaced font. The visual is stark, clean, and purely functional, bathed in a soft, bright white light indicating a sterile, professional logistics environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChGD3LPKpwS9yl_ZbCTKLAVRcadiA4oNBsaIrnA9uluU4ymwxVtnLnYgS68KGzb5YvBQprW-qCxyq4S6ApVLI2YzIYxPV2oVviKUEpNLpaBVsNoh_bF5iNxapwpxwRmI-KjHW2PoTZDbtxpBcaQJq_r_PTgCvmwxYTPy94A7vF65b-iETGXV93FfFHPvrlkraUOJC6U9RjQ3vim_uS72vapWLxLIEjqAYKaUyOIAVNdE56_43dPKglJm3JeofHSUIOWb20HD5ZQFjj"/>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-surface-container-lowest text-on-primary dark:text-on-surface w-full mt-auto">
+<div class="grid grid-cols-12 gap-gutter px-grid-margin py-section-gap max-w-[1440px] mx-auto">
+<div class="col-span-12 md:col-span-6 flex flex-col gap-stack-lg">
+<span class="font-headline-lg text-headline-lg font-bold text-on-primary dark:text-on-surface">FLOXR</span>
+<p class="font-body-lg text-body-lg text-left text-on-primary/70 dark:text-on-surface-variant max-w-sm">
+                    © 2024 FLOXR. Digital Architecture Firm.
+                </p>
+</div>
+<div class="col-span-12 md:col-span-6 flex flex-col md:flex-row gap-gutter md:justify-end items-start md:items-center mt-stack-lg md:mt-0 font-body-lg text-body-lg text-left">
+<a class="text-on-primary/70 dark:text-on-surface-variant hover:opacity-80 transition-opacity cursor-pointer" href="#">LinkedIn</a>
+<a class="text-on-primary/70 dark:text-on-surface-variant hover:opacity-80 transition-opacity cursor-pointer" href="#">Instagram</a>
+<a class="text-on-primary/70 dark:text-on-surface-variant hover:opacity-80 transition-opacity cursor-pointer" href="#">Contact</a>
+<a class="text-on-primary/70 dark:text-on-surface-variant hover:opacity-80 transition-opacity cursor-pointer" href="#">Privacy</a>
+</div>
+</div>
+</footer>
+</body></html>

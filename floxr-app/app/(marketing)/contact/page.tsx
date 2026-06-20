@@ -1,10 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Navigation from '@/components/marketing/Navigation';
-import Footer from '@/components/marketing/Footer';
-import CustomCursor from '@/components/marketing/CustomCursor';
 import { Send, CheckCircle } from 'lucide-react';
+import Link from 'next/link';
 
 export default function ContactPage() {
   const [focusedField, setFocusedField] = useState<string | null>(null);
@@ -12,14 +10,40 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [selectedBudget, setSelectedBudget] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setError(null);
+    
+    const formData = new FormData(e.currentTarget);
+    const payload = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      budget: selectedBudget,
+      scope: formData.get('scope')
+    };
+
+    try {
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://backend-production-19db.up.railway.app';
+      const response = await fetch(`${backendUrl}/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit');
+      }
+      
       setIsSuccess(true);
-    }, 2000);
+    } catch (err: any) {
+      setError(err.message || 'Something went wrong');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleBlur = (name: string, value: string) => {
@@ -45,193 +69,205 @@ export default function ContactPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#030303] flex flex-col relative selection:bg-[var(--lime)] selection:text-black">
-      <CustomCursor />
-      <Navigation />
+    <>
+      <nav className="bg-background dark:bg-on-background fixed top-0 w-full z-50 border-b border-primary dark:border-on-primary-container transition-all duration-200 ease-in-out">
+        <div className="flex justify-between items-center w-full px-grid-margin-mobile md:px-grid-margin py-stack-md max-w-[1440px] mx-auto">
+          <Link className="font-headline-md text-headline-md font-bold tracking-tighter text-primary dark:text-on-primary" href="/">FLOXR</Link>
+          <div className="hidden md:flex gap-gutter items-center font-body-md text-body-md uppercase tracking-widest">
+            <Link className="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="/">Work</Link>
+            <Link className="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="/">Audit</Link>
+            <Link className="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="/">Capabilities</Link>
+            <Link className="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="/">Lab</Link>
+            <Link className="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="/contact">Contact</Link>
+          </div>
+          <Link href="/contact">
+            <button className="bg-primary text-on-primary font-label-mono text-label-mono uppercase px-6 py-3 hover:bg-surface-tint transition-colors duration-300 hidden md:block">
+              Get Started
+            </button>
+          </Link>
+        </div>
+      </nav>
 
-      <div className="flex-1 w-full max-w-[1440px] mx-auto px-6 md:px-12 pt-[160px] md:pt-[180px] pb-24 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 z-10">
+      <main className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin py-section-gap flex flex-col lg:flex-row gap-gutter pt-[180px]">
         
         {/* Left Column: Copy & Info */}
-        <div className="flex flex-col">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-2 h-2 rounded-full bg-[#b8ff57] animate-pulse" />
-            <span className="font-[var(--font-mono)] text-[11px] uppercase tracking-widest text-[#fff] bg-[#111] border border-[#333] px-3 py-1 rounded-sm">
+        <div className="flex-1 flex flex-col">
+          <div className="flex items-center gap-3 mb-stack-lg">
+            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="font-label-mono text-label-mono uppercase tracking-widest text-primary bg-surface-alt border border-outline-variant px-3 py-1 rounded-sm">
               Accepting New Projects
             </span>
           </div>
 
-          <h1 className="font-[var(--font-display)] text-[clamp(34px,8vw,100px)] font-extrabold text-white leading-[0.9] tracking-tight mb-8">
-            Let&apos;s build<br />the future.
+          <h1 className="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg font-bold text-primary leading-tight tracking-tight mb-stack-lg">
+            Let's build<br />the future.
           </h1>
 
-          <p className="font-[var(--font-body)] text-[18px] md:text-[22px] text-[#888] mb-16 max-w-md leading-relaxed">
+          <p className="font-body-lg text-body-lg text-secondary mb-section-gap max-w-md leading-relaxed border-l border-primary pl-4">
             Whether you need a massive enterprise SaaS, a cutting-edge AI integration, or a breathtaking digital experience, we have the firepower to execute.
           </p>
 
-          <div className="flex flex-col gap-8 mt-auto">
+          <div className="flex flex-col gap-8 mt-auto border-t border-outline-variant pt-stack-lg">
             <div>
-              <span className="block font-[var(--font-mono)] text-[10px] text-[#555] uppercase tracking-wider mb-2">Email</span>
-              <a href="mailto:hello@floxr.co" className="font-[var(--font-mono)] text-[16px] text-white hover:text-[#b8ff57] transition-colors relative group w-fit">
+              <span className="block font-label-mono text-label-mono text-secondary uppercase tracking-wider mb-2">Email</span>
+              <a href="mailto:hello@floxr.co" className="font-label-mono text-[16px] text-primary hover:text-secondary transition-colors relative group w-fit">
                 hello@floxr.co
-                <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-white scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
+                <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-primary scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
               </a>
             </div>
             
             <div className="grid grid-cols-2 gap-8">
               <div>
-                <span className="block font-[var(--font-mono)] text-[10px] text-[#555] uppercase tracking-wider mb-2">Location</span>
-                <span className="font-[var(--font-mono)] text-[14px] text-white">Global Remote</span>
+                <span className="block font-label-mono text-label-mono text-secondary uppercase tracking-wider mb-2">Location</span>
+                <span className="font-label-mono text-[14px] text-primary">Global Remote</span>
               </div>
               <div>
-                <span className="block font-[var(--font-mono)] text-[10px] text-[#555] uppercase tracking-wider mb-2">Response Time</span>
-                <span className="font-[var(--font-mono)] text-[14px] text-white">&lt; 24 Hours</span>
+                <span className="block font-label-mono text-label-mono text-secondary uppercase tracking-wider mb-2">Response Time</span>
+                <span className="font-label-mono text-[14px] text-primary">&lt; 24 Hours</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Right Column: Interactive Form */}
-        <div className="w-full flex items-start justify-center">
-          <div className="w-full relative">
+        <div className="flex-1 w-full flex items-start justify-center lg:justify-end">
+          <div className="w-full max-w-lg bg-surface-container-lowest p-stack-lg rounded-none border border-outline-variant hover:border-primary transition-colors duration-300 shadow-sm relative group">
             
-            {/* Animated rotating border glow */}
-            <div className="absolute -inset-[1px] rounded-[29px] bg-[conic-gradient(from_var(--angle),#111_0%,#333_25%,#111_50%,#555_75%,#111_100%)] animate-[spin_8s_linear_infinite] opacity-60 blur-[1px] pointer-events-none z-0"
-              style={{ '--angle': '0deg' } as any} 
-            />
-            
-            {/* Ambient glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] bg-white blur-[200px] opacity-[0.025] pointer-events-none rounded-full z-0" />
-            
-            <div className="w-full bg-[#080808] p-8 md:p-10 rounded-[28px] relative z-10 shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-[#222]">
-              
-              {/* Form step progress */}
-              {!isSuccess && (
-                <div className="flex items-center gap-2 mb-8">
-                  {['Details', 'Budget', 'Scope'].map((step, si) => (
-                    <div key={step} className="flex items-center gap-2">
-                      <div className={`w-6 h-6 rounded-full text-[9px] font-[var(--font-mono)] font-bold flex items-center justify-center transition-all duration-300 ${
-                        si === 0 && (filledFields.has('name') || filledFields.has('email')) ? 'bg-white text-black' :
-                        si === 1 && selectedBudget ? 'bg-white text-black' :
-                        si === 2 && filledFields.has('scope') ? 'bg-white text-black' :
-                        'bg-[#111] text-[#555] border border-[#333]'
-                      }`}>
-                        {si + 1}
-                      </div>
-                      <span className="font-[var(--font-mono)] text-[9px] text-[#555] uppercase tracking-wider hidden md:block">{step}</span>
-                      {si < 2 && <div className="w-8 h-[1px] bg-[#222]" />}
-                    </div>
-                  ))}
+            {isSuccess ? (
+              <div className="flex flex-col items-center justify-center text-center py-20">
+                <div className="w-16 h-16 rounded-full bg-surface-alt flex items-center justify-center mb-6">
+                  <CheckCircle size={28} className="text-primary" />
                 </div>
-              )}
-              
-              {isSuccess ? (
-                <div className="flex flex-col items-center justify-center text-center py-20 animate-in zoom-in-95 duration-500">
-                  <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mb-6">
-                    <CheckCircle size={28} className="text-black" />
+                <h3 className="font-headline-md text-headline-md font-bold text-primary mb-3">Sent.</h3>
+                <p className="font-body-md text-body-md text-secondary leading-relaxed max-w-xs">
+                  We've received your brief and will reach out within 24 hours.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex flex-col gap-0">
+                
+                {error && (
+                  <div className="bg-error-container text-on-error-container p-4 mb-4 text-sm font-label-mono">
+                    {error}
                   </div>
-                  <h3 className="font-[var(--font-display)] text-[36px] font-bold text-white mb-3">Sent.</h3>
-                  <p className="font-[var(--font-mono)] text-[13px] text-[#888] leading-relaxed max-w-xs">
-                    We&apos;ve received your brief and will reach out within 24 hours.
-                  </p>
+                )}
+
+                {/* Name */}
+                <div className={`relative py-5 border-b transition-colors duration-300 ${focusedField === 'name' ? 'border-primary' : 'border-outline-variant'}`}>
+                  <label className={`absolute left-0 transition-all duration-300 pointer-events-none font-label-mono uppercase tracking-wider ${isActive('name') ? 'top-1 text-[10px] text-secondary' : 'top-5 text-[12px] text-secondary'}`}>
+                    Full Name
+                  </label>
+                  <input 
+                    type="text" 
+                    name="name"
+                    required
+                    className="w-full bg-transparent pt-4 font-body-md text-primary outline-none placeholder-transparent"
+                    onFocus={() => setFocusedField('name')}
+                    onBlur={(e) => handleBlur('name', e.target.value)}
+                  />
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-0">
-                  
-                  {/* Name */}
-                  <div className={`relative py-5 border-b transition-colors duration-300 ${focusedField === 'name' ? 'border-white' : 'border-[#222]'}`}>
-                    <label className={`absolute left-0 transition-all duration-300 pointer-events-none font-[var(--font-mono)] uppercase tracking-wider ${isActive('name') ? 'top-1 text-[9px] text-white' : 'top-5 text-[12px] text-[#555]'}`}>
-                      Full Name
-                    </label>
-                    <input 
-                      type="text" 
-                      required
-                      className="w-full bg-transparent pt-4 font-[var(--font-body)] text-[16px] text-white outline-none placeholder-transparent"
-                      onFocus={() => setFocusedField('name')}
-                      onBlur={(e) => handleBlur('name', e.target.value)}
-                    />
+
+                {/* Email */}
+                <div className={`relative py-5 border-b transition-colors duration-300 ${focusedField === 'email' ? 'border-primary' : 'border-outline-variant'}`}>
+                  <label className={`absolute left-0 transition-all duration-300 pointer-events-none font-label-mono uppercase tracking-wider ${isActive('email') ? 'top-1 text-[10px] text-secondary' : 'top-5 text-[12px] text-secondary'}`}>
+                    Email Address
+                  </label>
+                  <input 
+                    type="email" 
+                    name="email"
+                    required
+                    className="w-full bg-transparent pt-4 font-body-md text-primary outline-none placeholder-transparent"
+                    onFocus={() => setFocusedField('email')}
+                    onBlur={(e) => handleBlur('email', e.target.value)}
+                  />
+                </div>
+
+                {/* Budget */}
+                <div className="py-6 border-b border-outline-variant">
+                  <label className="block font-label-mono text-[11px] text-secondary uppercase tracking-wider mb-4">
+                    Project Budget
+                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    {BUDGETS.map((b) => (
+                      <button
+                        key={b.value}
+                        type="button"
+                        onClick={() => setSelectedBudget(b.value)}
+                        className={`font-label-mono text-[11px] px-4 py-2.5 transition-all duration-200 border
+                          ${selectedBudget === b.value 
+                            ? 'bg-primary text-on-primary border-primary' 
+                            : 'bg-transparent text-secondary border-outline hover:border-primary hover:text-primary'}`}
+                      >
+                        {b.label}
+                      </button>
+                    ))}
                   </div>
+                </div>
 
-                  {/* Email */}
-                  <div className={`relative py-5 border-b transition-colors duration-300 ${focusedField === 'email' ? 'border-white' : 'border-[#222]'}`}>
-                    <label className={`absolute left-0 transition-all duration-300 pointer-events-none font-[var(--font-mono)] uppercase tracking-wider ${isActive('email') ? 'top-1 text-[9px] text-white' : 'top-5 text-[12px] text-[#555]'}`}>
-                      Email Address
-                    </label>
-                    <input 
-                      type="email" 
-                      required
-                      className="w-full bg-transparent pt-4 font-[var(--font-body)] text-[16px] text-white outline-none"
-                      onFocus={() => setFocusedField('email')}
-                      onBlur={(e) => handleBlur('email', e.target.value)}
-                    />
-                  </div>
+                {/* Scope */}
+                <div className={`relative py-5 border-b transition-colors duration-300 ${focusedField === 'scope' ? 'border-primary' : 'border-outline-variant'}`}>
+                  <label className={`absolute left-0 transition-all duration-300 pointer-events-none font-label-mono uppercase tracking-wider ${isActive('scope') ? 'top-1 text-[10px] text-secondary' : 'top-5 text-[12px] text-secondary'}`}>
+                    Tell us about your project
+                  </label>
+                  <textarea 
+                    name="scope"
+                    required
+                    rows={3}
+                    className="w-full bg-transparent pt-4 font-body-md text-primary outline-none resize-none placeholder-transparent"
+                    onFocus={() => setFocusedField('scope')}
+                    onBlur={(e) => handleBlur('scope', e.target.value)}
+                  />
+                </div>
 
-                  {/* Budget — Interactive Chips */}
-                  <div className="py-6 border-b border-[#222]">
-                    <label className="block font-[var(--font-mono)] text-[9px] text-[#888] uppercase tracking-wider mb-4">
-                      Project Budget
-                    </label>
-                    <div className="flex flex-wrap gap-2">
-                      {BUDGETS.map((b) => (
-                        <button
-                          key={b.value}
-                          type="button"
-                          onClick={() => setSelectedBudget(b.value)}
-                          className={`font-[var(--font-mono)] text-[11px] px-4 py-2.5 rounded-full border transition-all duration-200 
-                            ${selectedBudget === b.value 
-                              ? 'bg-white text-black border-white font-bold scale-[1.05]' 
-                              : 'bg-transparent text-[#888] border-[#333] hover:border-[#666] hover:text-white'}`}
-                        >
-                          {b.label}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+                {/* Submit */}
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="group w-full flex items-center justify-center gap-3 bg-primary text-on-primary font-label-mono text-label-mono uppercase px-8 py-4 hover:bg-surface-tint transition-colors duration-300 mt-8 disabled:bg-outline disabled:text-outline-variant"
+                >
+                  {isSubmitting ? (
+                    <span className="animate-pulse">Processing...</span>
+                  ) : (
+                    <>
+                      <span>Submit Request</span>
+                      <Send size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
+                    </>
+                  )}
+                </button>
 
-                  {/* Scope */}
-                  <div className={`relative py-5 border-b transition-colors duration-300 ${focusedField === 'scope' ? 'border-white' : 'border-[#222]'}`}>
-                    <label className={`absolute left-0 transition-all duration-300 pointer-events-none font-[var(--font-mono)] uppercase tracking-wider ${isActive('scope') ? 'top-1 text-[9px] text-white' : 'top-5 text-[12px] text-[#555]'}`}>
-                      Tell us about your project
-                    </label>
-                    <textarea 
-                      required
-                      rows={3}
-                      className="w-full bg-transparent pt-4 font-[var(--font-body)] text-[16px] text-white outline-none resize-none"
-                      onFocus={() => setFocusedField('scope')}
-                      onBlur={(e) => handleBlur('scope', e.target.value)}
-                    />
-                  </div>
+                <p className="font-label-mono text-[10px] text-secondary text-center mt-4 uppercase">
+                  Your information is encrypted.
+                </p>
 
-                  {/* Submit */}
-                  <button 
-                    type="submit" 
-                    disabled={isSubmitting}
-                    className="group w-full h-[56px] flex items-center justify-center gap-3 bg-white disabled:bg-[#333] disabled:text-[#666] text-black font-bold font-[var(--font-mono)] tracking-wider text-[12px] uppercase rounded-full mt-8 transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.15)] hover:scale-[1.02] active:scale-[0.98]"
-                  >
-                    {isSubmitting ? (
-                      <span className="animate-pulse">Processing...</span>
-                    ) : (
-                      <>
-                        <span>Submit Request</span>
-                        <Send size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
-                      </>
-                    )}
-                  </button>
-
-                  {/* Privacy note */}
-                  <p className="font-[var(--font-mono)] text-[9px] text-[#444] text-center mt-4">
-                    Your information is encrypted and never shared with third parties.
-                  </p>
-
-                </form>
-              )}
-            </div>
-
+              </form>
+            )}
           </div>
         </div>
 
-      </div>
+      </main>
 
-      <Footer />
-    </main>
+      <footer className="bg-primary dark:bg-surface-container-lowest w-full cursor-pointer mt-section-gap">
+        <div className="grid grid-cols-12 gap-gutter px-grid-margin-mobile md:px-grid-margin py-section-gap max-w-[1440px] mx-auto text-on-primary dark:text-on-surface">
+          <div className="col-span-12 md:col-span-6 mb-stack-lg md:mb-0">
+            <div className="font-headline-lg text-headline-lg font-bold text-on-primary dark:text-on-surface mb-stack-sm">FLOXR</div>
+            <p className="font-body-lg text-body-lg text-left text-on-primary/70 dark:text-on-surface-variant max-w-sm">
+                © 2024 FLOXR. Digital Architecture Firm.
+            </p>
+          </div>
+          <div className="col-span-12 md:col-span-6 flex flex-col md:flex-row gap-stack-lg md:justify-end">
+            <div className="flex flex-col gap-4 font-body-lg text-body-lg text-left">
+              <span className="font-label-mono text-label-mono text-on-primary/50 uppercase">Social</span>
+              <a className="text-on-primary/70 dark:text-on-surface-variant hover:opacity-80 transition-opacity" href="#">LinkedIn</a>
+              <a className="text-on-primary/70 dark:text-on-surface-variant hover:opacity-80 transition-opacity" href="#">Instagram</a>
+            </div>
+            <div className="flex flex-col gap-4 font-body-lg text-body-lg text-left">
+              <span className="font-label-mono text-label-mono text-on-primary/50 uppercase">Legal</span>
+              <Link className="text-on-primary/70 dark:text-on-surface-variant hover:opacity-80 transition-opacity" href="/contact">Contact</Link>
+              <a className="text-on-primary/70 dark:text-on-surface-variant hover:opacity-80 transition-opacity" href="#">Privacy</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </>
   );
 }

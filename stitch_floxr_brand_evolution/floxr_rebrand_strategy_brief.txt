@@ -1,0 +1,25 @@
+### Floxr Rebrand: Digital Architecture Firm Strategy
+
+**Positioning:** Digital Architecture Firm
+**Tagline:** We audit, architect, and build digital systems for ambitious companies.
+**Mission:** We diagnose what is broken, design what should exist, and build what moves businesses forward.
+
+**Core Services:**
+1. **Audit:** Website, UX, Product, Automation.
+2. **Architect:** Strategy, Systems, Customer journeys, Brand direction.
+3. **Build:** Software, Apps, Platforms, AI integrations.
+
+**Signature Offer:** The Floxr Digital Audit™ (Lead Magnet).
+
+**Navigation Structure:**
+- Work
+- Audit
+- Capabilities
+- Lab
+- Contact
+
+**Visual Identity:** 
+- Premium, high-contrast, off-white/light gray theme. 
+- Minimalist, architectural typography. 
+- Heavy focus on "Selected Transformations" (Problem/Solution/Result).
+- "Lab" section for teardowns and expert reviews.

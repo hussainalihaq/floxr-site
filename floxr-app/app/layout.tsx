@@ -1,22 +1,20 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const instrumentSerif = Instrument_Serif({
-  weight: "400",
-  style: "italic",
-  subsets: ["latin"],
-  variable: "--font-instrument",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains",
-});
-
 export const metadata: Metadata = {
-  title: "Floxr | Software That Ships. Premium Digital Studio.",
-  description: "We build high-performance software, premium branding, and conversion-first digital products. Engineering excellence for the next generation of startups.",
+  title: "FLOXR - Digital Architecture & Product Systems",
+  description: "We diagnose what is broken, design what should exist, and build what moves businesses forward.",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
+  openGraph: {
+    title: "FLOXR - Digital Architecture & Product Systems",
+    description: "We diagnose what is broken, design what should exist, and build what moves businesses forward.",
+    type: "website",
+    siteName: "FLOXR",
+  }
 };
 
 export default function RootLayout({
@@ -25,12 +23,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth bg-[var(--bg)] text-[var(--text)]">
+    <html lang="en" className="scroll-smooth">
       <head>
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link crossOrigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+        <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&family=Inter:wght@400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-        {/* We expect PP Neue Machina to be handled via CSS @font-face or Fontshare in globals.css */}
       </head>
-      <body className={`${instrumentSerif.variable} ${jetbrainsMono.variable}`}>
+      <body className="bg-background text-on-background font-body-md antialiased overflow-x-hidden pt-24">
         {children}
       </body>
     </html>
