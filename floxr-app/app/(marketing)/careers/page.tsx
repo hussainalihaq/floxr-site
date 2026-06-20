@@ -80,7 +80,7 @@ export default function CareersPage() {
       <nav className="bg-background fixed top-0 w-full z-50 border-b border-primary transition-all duration-200 ease-in-out">
         <div className="flex justify-between items-center w-full px-grid-margin-mobile md:px-grid-margin py-stack-md max-w-[1440px] mx-auto">
           <Link href="/" className="flex items-center gap-2">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8" />
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8 md:h-10 w-auto" />
           </Link>
           <div className="hidden md:flex gap-gutter items-center font-body-md text-body-md uppercase tracking-widest">
             <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/work">Work</Link>
@@ -260,7 +260,7 @@ export default function CareersPage() {
       <footer className="bg-primary w-full">
         <div className="grid grid-cols-12 gap-gutter px-grid-margin-mobile md:px-grid-margin py-section-gap max-w-[1440px] mx-auto text-on-primary">
           <div className="col-span-12 md:col-span-6 mb-stack-lg md:mb-0">
-            <div className="font-headline-lg text-headline-lg font-bold text-on-primary mb-stack-md">FLOXR</div>
+            <img src="/floxr-logo-dark.svg" alt="FLOXR" className="h-10 w-auto object-contain object-left mb-stack-sm" />
             <p className="font-body-lg text-body-lg text-on-primary/70 max-w-sm">
               © 2024 FLOXR. Digital Architecture Firm.
             </p>

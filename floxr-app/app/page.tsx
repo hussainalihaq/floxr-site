@@ -25,7 +25,7 @@ export default function HomePage() {
         <div className="flex justify-between items-center w-full px-6 md:px-12 py-4 max-w-[1440px] mx-auto">
           {/* Logo */}
           <Link href="/">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8" />
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8 md:h-10 w-auto" />
           </Link>
 
           {/* Center Nav Links */}
@@ -287,7 +287,7 @@ export default function HomePage() {
             {/* Case Details */}
             <div className="md:col-span-5 md:pl-8">
               <h3 className="font-headline-lg text-headline-md text-primary mb-3">
-                AmeerGlobal Immigration Platform
+                AmeerGlobal Study Abroad & Immigration Consultancy
               </h3>
               <div className="flex gap-2 mb-6 flex-wrap">
                 <span className="px-2 py-1 bg-surface-alt text-primary font-label-mono text-label-mono border border-outline-variant">
