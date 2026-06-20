@@ -21,9 +21,9 @@ export default function HomePage() {
       {/* ─── 1. FIXED TOP NAV BAR ─── */}
       <Navbar />
 
-      <main className="max-w-[1440px] mx-auto px-6 md:px-12 pt-[80px] md:pt-[100px]">
+      <main className="max-w-[1440px] mx-auto px-6 md:px-12 pt-[72px] md:pt-[80px]">
         {/* ─── 2. HERO SECTION ─── */}
-        <section className="relative min-h-[60vh] md:min-h-[80vh] flex flex-col justify-center pt-[100px] pb-12 md:py-section-gap overflow-hidden">
+        <section className="relative min-h-[60vh] md:min-h-[80vh] flex flex-col justify-center pt-0 pb-12 md:py-section-gap overflow-hidden">
           {/* Abstract background pattern to feel less empty */}
           <div className="absolute inset-0 pointer-events-none opacity-20 -z-10">
             <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)]"></div>
@@ -333,7 +333,7 @@ export default function HomePage() {
             {/* Article 1 */}
             <Link
               className="border-b border-outline-variant py-8 block group"
-              href="/lab"
+              href="/lab/death-of-decorative-ui"
             >
               <span className="font-label-mono text-[10px] bg-surface-alt px-3 py-1 text-secondary uppercase mb-4 inline-block tracking-widest">
                 LATEST
@@ -349,7 +349,7 @@ export default function HomePage() {
             {/* Article 2 */}
             <Link
               className="border-b border-outline-variant py-8 block group"
-              href="/lab"
+              href="/lab/micro-frontends-in-practice"
             >
               <span className="font-label-mono text-[10px] bg-surface-alt px-3 py-1 text-secondary uppercase mb-4 inline-block tracking-widest">
                 TECHNICAL
@@ -373,7 +373,7 @@ export default function HomePage() {
             <img
               src="/floxr-logo.svg"
               alt="FLOXR"
-              className="h-8 brightness-0 invert mb-4"
+              className="h-10 md:h-12 brightness-0 invert mb-4"
             />
             <p className="font-body-md text-body-md text-on-primary/70 max-w-sm">
               © 2026 FLOXR built in house.

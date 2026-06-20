@@ -64,7 +64,7 @@ export default function ContactPage() {
     <>
       <Navbar />
 
-      <main className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin py-section-gap flex flex-col lg:flex-row gap-gutter pt-[80px] md:pt-[100px]">
+      <main className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin py-section-gap flex flex-col lg:flex-row gap-gutter pt-[72px] md:pt-[80px]">
         
         {/* Left Column: Copy & Info */}
         <div className="flex-1 flex flex-col">
@@ -205,7 +205,7 @@ export default function ContactPage() {
       <footer className="bg-primary dark:bg-surface-container-lowest w-full cursor-pointer mt-section-gap">
         <div className="grid grid-cols-12 gap-gutter px-grid-margin-mobile md:px-grid-margin py-section-gap max-w-[1440px] mx-auto text-on-primary dark:text-on-surface">
           <div className="col-span-12 md:col-span-6 mb-stack-lg md:mb-0">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-6 md:h-8 w-auto object-contain object-left mb-stack-sm brightness-0 invert" />
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8 md:h-12 w-auto object-contain object-left mb-stack-sm brightness-0 invert" />
             <p className="font-body-lg text-body-lg text-left text-on-primary/70 dark:text-on-surface-variant max-w-sm">
                 © 2026 FLOXR built in house.
             </p>
@@ -213,13 +213,13 @@ export default function ContactPage() {
           <div className="col-span-12 md:col-span-6 flex flex-col md:flex-row gap-stack-lg md:justify-end">
             <div className="flex flex-col gap-4 font-body-lg text-body-lg text-left">
               <span className="font-label-mono text-label-mono text-on-primary/50 uppercase">Social</span>
-              <a className="text-on-primary/70 dark:text-on-surface-variant hover:opacity-80 transition-opacity" href="#">LinkedIn</a>
-              <a className="text-on-primary/70 dark:text-on-surface-variant hover:opacity-80 transition-opacity" href="#">Instagram</a>
+              <a className="text-on-primary/70 dark:text-on-surface-variant hover:opacity-80 transition-opacity" href="/">LinkedIn</a>
+              <a className="text-on-primary/70 dark:text-on-surface-variant hover:opacity-80 transition-opacity" href="/">Instagram</a>
             </div>
             <div className="flex flex-col gap-4 font-body-lg text-body-lg text-left">
               <span className="font-label-mono text-label-mono text-on-primary/50 uppercase">Legal</span>
               <Link className="text-on-primary/70 dark:text-on-surface-variant hover:opacity-80 transition-opacity" href="/contact">Contact</Link>
-              <a className="text-on-primary/70 dark:text-on-surface-variant hover:opacity-80 transition-opacity" href="#">Privacy</a>
+              <a className="text-on-primary/70 dark:text-on-surface-variant hover:opacity-80 transition-opacity" href="/">Privacy</a>
             </div>
           </div>
         </div>

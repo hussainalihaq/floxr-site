@@ -61,9 +61,9 @@ export default function WorkPage() {
       {/* ── Top Nav ── */}
       <Navbar />
 
-      <main className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin bg-background min-h-screen pt-[80px] md:pt-[100px]">
+      <main className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin bg-background min-h-screen pt-[72px] md:pt-[80px]">
         {/* ── Page Header ── */}
-        <section className="pt-[10rem] pb-section-gap flex flex-col items-start">
+        <section className="pt-12 pb-section-gap flex flex-col items-start">
           <span className="font-label-mono text-label-mono text-secondary uppercase tracking-widest mb-stack-md">
             Portfolio
           </span>
@@ -224,7 +224,7 @@ export default function WorkPage() {
       <footer className="bg-primary w-full">
         <div className="grid grid-cols-12 gap-gutter px-grid-margin-mobile md:px-grid-margin py-section-gap max-w-[1440px] mx-auto text-on-primary">
           <div className="col-span-12 md:col-span-6 mb-stack-lg md:mb-0">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-6 md:h-8 w-auto object-contain object-left mb-stack-sm brightness-0 invert" />
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8 md:h-12 w-auto object-contain object-left mb-stack-sm brightness-0 invert" />
             <p className="font-body-lg text-body-lg text-left text-on-primary/70 max-w-sm">
               © 2026 FLOXR built in house.
             </p>

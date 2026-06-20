@@ -6,7 +6,7 @@ export default function CapabilitiesPage() {
     <div className="min-h-screen bg-background text-primary font-body-md antialiased">
       <Navbar />
 
-      <main className="flex-grow pb-section-gap px-6 md:px-12 max-w-[1440px] mx-auto pt-[80px] md:pt-[100px]">
+      <main className="flex-grow pb-section-gap px-6 md:px-12 max-w-[1440px] mx-auto pt-[72px] md:pt-[80px]">
         {/* Hero Section */}
         <header className="mb-section-gap md:mt-section-gap">
           <h1 className="font-display-lg text-[48px] md:text-[80px] font-bold text-primary mb-8 max-w-4xl leading-[1.1]">
@@ -120,16 +120,16 @@ export default function CapabilitiesPage() {
       <footer className="bg-primary text-on-primary w-full mt-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter px-6 md:px-12 py-section-gap max-w-[1440px] mx-auto items-start">
           <div className="md:col-span-6 flex flex-col space-y-8">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-6 md:h-8 w-auto object-contain object-left mb-2 brightness-0 invert" />
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8 md:h-12 w-auto object-contain object-left mb-2 brightness-0 invert" />
             <div className="font-body-sm text-sm text-left text-[#888888]">© 2026 FLOXR built in house.</div>
           </div>
           <div className="md:col-span-6 flex justify-start md:justify-end mt-12 md:mt-0">
             <ul className="flex flex-col md:flex-row md:space-x-12 space-y-4 md:space-y-0">
-              <li><a className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="#">About</a></li>
-              <li><a className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="#">Contact</a></li>
-              <li><a className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="#">LinkedIn</a></li>
-              <li><a className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="#">Privacy</a></li>
-              <li><a className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="#">Instagram</a></li>
+              <li><a className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="/">About</a></li>
+              <li><a className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="/">Contact</a></li>
+              <li><a className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="/">LinkedIn</a></li>
+              <li><a className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="/">Privacy</a></li>
+              <li><a className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="/">Instagram</a></li>
             </ul>
           </div>
         </div>

@@ -6,7 +6,7 @@ export default function LabPage() {
     <div className="min-h-screen bg-background text-primary font-body-md antialiased">
       <Navbar />
 
-      <main className="flex-grow pb-section-gap max-w-[1440px] mx-auto px-6 md:px-12 pt-[80px] md:pt-[100px]">
+      <main className="flex-grow pb-section-gap max-w-[1440px] mx-auto px-6 md:px-12 pt-[72px] md:pt-[80px]">
         <section className="mb-16">
           <h1 className="font-display-lg text-[64px] md:text-[88px] font-bold tracking-tight text-primary leading-none mb-6">The Lab</h1>
           <p className="font-body-lg text-[16px] text-secondary max-w-2xl leading-relaxed mb-12">
@@ -30,7 +30,7 @@ export default function LabPage() {
               <span className="md:hidden">10/24</span>
             </div>
             <div className="md:col-span-8">
-              <Link href="#" className="block">
+              <Link href="/lab/death-of-decorative-ui" className="block">
                 <h2 className="font-headline-lg text-[28px] md:text-[36px] font-bold text-primary mb-4 group-hover:opacity-80 transition-opacity">The Death of Decorative UI</h2>
                 <p className="font-body-md text-[14px] text-secondary leading-relaxed max-w-3xl">
                   Why pure structural design outlasts trend cycles and drives higher enterprise value. We examine the shift towards utility-first, brutalist-inspired interfaces in B2B SaaS.
@@ -49,7 +49,7 @@ export default function LabPage() {
               <span className="md:hidden">11/23</span>
             </div>
             <div className="md:col-span-8">
-              <Link href="#" className="block">
+              <Link href="/lab/micro-frontends-in-practice" className="block">
                 <h2 className="font-headline-lg text-[28px] md:text-[36px] font-bold text-primary mb-4 group-hover:opacity-80 transition-opacity">Micro-Frontends in Practice</h2>
                 <div className="font-body-md text-[14px] text-secondary leading-relaxed max-w-3xl">
                   <span className="font-label-mono text-[11px] text-[#ff3333] font-bold uppercase tracking-wider mr-2">[STRUCTURAL REVIEW]</span>
@@ -68,7 +68,7 @@ export default function LabPage() {
               Aug 05, 2026
             </div>
             <div className="md:col-span-8">
-              <Link href="#" className="block">
+              <Link href="/lab/friction-as-a-feature" className="block">
                 <h2 className="font-headline-lg text-[28px] md:text-[36px] font-bold text-primary mb-4 group-hover:opacity-80 transition-opacity">Friction as a Feature</h2>
                 <div className="font-body-md text-secondary leading-relaxed max-w-3xl">
                   <span className="font-label-mono text-[11px] text-[#ff3333] font-bold uppercase tracking-wider mr-2">[EXPERT ANALYSIS]</span>
@@ -87,7 +87,7 @@ export default function LabPage() {
               Jul 18, 2026
             </div>
             <div className="md:col-span-8">
-              <Link href="#" className="block">
+              <Link href="/lab/typographic-scales-in-fluid-contexts" className="block">
                 <h2 className="font-headline-lg text-[28px] md:text-[36px] font-bold text-primary mb-4 group-hover:opacity-80 transition-opacity">Typographic Scales in Fluid Contexts</h2>
                 <p className="font-body-md text-secondary leading-relaxed max-w-3xl">
                   Mathematical approaches to responsive typography. Moving away from arbitrary breakpoints toward clamp-based fluid scales that maintain harmonic proportions across all viewport dimensions.
@@ -111,16 +111,16 @@ export default function LabPage() {
       <footer className="bg-primary text-on-primary w-full mt-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter px-6 md:px-12 py-section-gap max-w-[1440px] mx-auto items-start">
           <div className="md:col-span-6 flex flex-col space-y-8">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-6 md:h-8 w-auto object-contain object-left mb-2 brightness-0 invert" />
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8 md:h-12 w-auto object-contain object-left mb-2 brightness-0 invert" />
             <div className="font-body-sm text-sm text-left text-[#888888]">© 2026 FLOXR built in house.</div>
           </div>
           <div className="md:col-span-6 flex justify-start md:justify-end mt-12 md:mt-0">
             <ul className="flex flex-col md:flex-row md:space-x-12 space-y-4 md:space-y-0">
-              <li><a className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="#">About</a></li>
-              <li><a className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="#">Contact</a></li>
-              <li><a className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="#">LinkedIn</a></li>
-              <li><a className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="#">Privacy</a></li>
-              <li><a className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="#">Instagram</a></li>
+              <li><a className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="/">About</a></li>
+              <li><a className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="/">Contact</a></li>
+              <li><a className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="/">LinkedIn</a></li>
+              <li><a className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="/">Privacy</a></li>
+              <li><a className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="/">Instagram</a></li>
             </ul>
           </div>
         </div>
