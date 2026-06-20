@@ -72,12 +72,14 @@ export default function ContactPage() {
     <>
       <nav className="bg-background dark:bg-on-background fixed top-0 w-full z-50 border-b border-primary dark:border-on-primary-container transition-all duration-200 ease-in-out">
         <div className="flex justify-between items-center w-full px-grid-margin-mobile md:px-grid-margin py-stack-md max-w-[1440px] mx-auto">
-          <Link className="font-headline-md text-headline-md font-bold tracking-tighter text-primary dark:text-on-primary" href="/">FLOXR</Link>
+          <Link className="flex items-center" href="/">
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8" />
+          </Link>
           <div className="hidden md:flex gap-gutter items-center font-body-md text-body-md uppercase tracking-widest">
-            <Link className="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="/">Work</Link>
-            <Link className="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="/">Audit</Link>
-            <Link className="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="/">Capabilities</Link>
-            <Link className="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="/">Lab</Link>
+            <Link className="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="/work">Work</Link>
+            <Link className="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="/#audit">Audit</Link>
+            <Link className="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="/#capabilities">Capabilities</Link>
+            <Link className="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="/#lab">Lab</Link>
             <Link className="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="/contact">Contact</Link>
           </div>
           <Link href="/contact">
@@ -249,7 +251,7 @@ export default function ContactPage() {
       <footer className="bg-primary dark:bg-surface-container-lowest w-full cursor-pointer mt-section-gap">
         <div className="grid grid-cols-12 gap-gutter px-grid-margin-mobile md:px-grid-margin py-section-gap max-w-[1440px] mx-auto text-on-primary dark:text-on-surface">
           <div className="col-span-12 md:col-span-6 mb-stack-lg md:mb-0">
-            <div className="font-headline-lg text-headline-lg font-bold text-on-primary dark:text-on-surface mb-stack-sm">FLOXR</div>
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-10 brightness-0 invert mb-stack-sm" />
             <p className="font-body-lg text-body-lg text-left text-on-primary/70 dark:text-on-surface-variant max-w-sm">
                 © 2024 FLOXR. Digital Architecture Firm.
             </p>

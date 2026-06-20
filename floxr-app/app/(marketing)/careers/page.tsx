@@ -1,219 +1,284 @@
-'use client';
-
-import Navigation from '@/components/marketing/Navigation';
-import Footer from '@/components/marketing/Footer';
-import CustomCursor from '@/components/marketing/CustomCursor';
-import { Code, Zap, Shield, Globe, Briefcase, ArrowUpRight } from 'lucide-react';
+import Link from 'next/link';
 
 const VALUES = [
-  { 
-    icon: <Code size={28} className="stroke-[1.5px]" />,
-    title: "Craft Over Convention",
-    desc: "We don't use templates. Every line of code is purpose-built for the problem it solves."
+  {
+    icon: 'code',
+    title: 'Craft Over Convention',
+    desc: 'Every line of code is purpose-built.',
   },
-  { 
-    icon: <Zap size={28} className="stroke-[1.5px]" />,
-    title: "Speed Is a Feature",
-    desc: "We ship fast, iterate faster, and treat performance as a first-class citizen."
+  {
+    icon: 'bolt',
+    title: 'Speed Is a Feature',
+    desc: 'We ship fast, iterate faster.',
   },
-  { 
-    icon: <Shield size={28} className="stroke-[1.5px]" />,
-    title: "Ownership Culture",
-    desc: "Every engineer owns their domain end-to-end. No hand-offs, no excuses."
+  {
+    icon: 'shield',
+    title: 'Ownership Culture',
+    desc: 'Every engineer owns their domain end-to-end.',
   },
-  { 
-    icon: <Globe size={28} className="stroke-[1.5px]" />,
-    title: "Remote-First, Global",
-    desc: "Work from anywhere. We hire talent, not timezones."
-  }
+  {
+    icon: 'public',
+    title: 'Remote-First, Global',
+    desc: 'We hire talent, not timezones.',
+  },
 ];
 
 const POSITIONS = [
   {
-    title: "Senior Full-Stack Engineer",
-    department: "Engineering",
-    location: "Remote",
-    type: "Full-time",
+    title: 'Senior Full-Stack Engineer',
+    location: 'Remote',
+    type: 'Full-time',
+    stack: ['Next.js', 'Node.js', 'PostgreSQL'],
+    description:
+      'Own critical product surfaces end-to-end — from database schema to pixel-perfect UI. You will architect features, ship production code daily, and mentor the next wave of engineers joining the team.',
   },
   {
-    title: "AI/ML Engineer",
-    department: "AI Lab",
-    location: "Remote",
-    type: "Full-time",
+    title: 'Senior Product Designer',
+    location: 'Remote',
+    type: 'Full-time',
+    stack: ['Figma', 'Design Systems', 'Prototyping'],
+    description:
+      'Shape the visual language and interaction patterns across every product we build. You will lead design sprints, maintain our component library, and collaborate directly with engineering on implementation.',
   },
   {
-    title: "Product Designer",
-    department: "Design",
-    location: "Remote",
-    type: "Full-time",
+    title: 'AI/ML Engineer',
+    location: 'Remote',
+    type: 'Full-time',
+    stack: ['Python', 'LLMs', 'Vector DBs'],
+    description:
+      'Build intelligent systems that power our AI-driven products. You will design retrieval pipelines, fine-tune models, and deploy production ML services that serve thousands of users.',
+  },
+];
+
+const PERKS = [
+  {
+    icon: 'schedule',
+    title: 'Async-First',
+    desc: 'Deep work over meetings. We default to written communication and protect focus time.',
   },
   {
-    title: "DevOps / Infrastructure",
-    department: "Engineering",
-    location: "Remote",
-    type: "Contract",
+    icon: 'trending_up',
+    title: 'Competitive Equity',
+    desc: 'Meaningful ownership stake so you benefit directly from the products you help build.',
   },
   {
-    title: "Technical Project Manager",
-    department: "Operations",
-    location: "Remote",
-    type: "Full-time",
+    icon: 'school',
+    title: 'Learning Budget',
+    desc: '$2K/yr for courses, conferences, books — anything that makes you sharper.',
+  },
+  {
+    icon: 'devices',
+    title: 'Premium Hardware',
+    desc: 'Top-spec MacBook Pro, 4K display, and any peripherals you need to do your best work.',
   },
 ];
 
 export default function CareersPage() {
   return (
-    <main className="min-h-screen bg-[#030303] flex flex-col relative selection:bg-[var(--lime)] selection:text-black">
-      <CustomCursor />
-      <Navigation />
-
-      {/* Hero */}
-      <section className="w-full pt-[180px] pb-24 px-6 md:px-12 flex flex-col items-center text-center relative overflow-hidden">
-        {/* Background watermark */}
-        <div className="absolute top-[10%] left-1/2 -translate-x-1/2 select-none pointer-events-none opacity-[0.015] font-[var(--font-display)] text-[25vw] font-extrabold whitespace-nowrap">
-          CAREERS
+    <>
+      {/* ── Fixed Top Nav ── */}
+      <nav className="bg-background fixed top-0 w-full z-50 border-b border-primary transition-all duration-200 ease-in-out">
+        <div className="flex justify-between items-center w-full px-grid-margin-mobile md:px-grid-margin py-stack-md max-w-[1440px] mx-auto">
+          <Link href="/" className="flex items-center gap-2">
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8" />
+          </Link>
+          <div className="hidden md:flex gap-gutter items-center font-body-md text-body-md uppercase tracking-widest">
+            <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/work">Work</Link>
+            <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/">Audit</Link>
+            <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/">Capabilities</Link>
+            <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/">Lab</Link>
+            <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/contact">Contact</Link>
+          </div>
+          <Link href="/contact">
+            <button className="bg-primary text-on-primary font-label-mono text-label-mono uppercase px-6 py-3 hover:bg-surface-tint transition-colors duration-300 hidden md:block">
+              Get Started
+            </button>
+          </Link>
         </div>
+      </nav>
 
-        <div className="flex items-center gap-3 mb-8">
-          <div className="w-2 h-2 rounded-full bg-[#b8ff57] animate-pulse" />
-          <span className="font-[var(--font-mono)] text-[11px] uppercase tracking-widest text-white bg-[#111] border border-[#333] px-3 py-1 rounded-sm">
-            We&apos;re Hiring
-          </span>
-        </div>
-        
-        <h1 className="font-[var(--font-display)] text-[clamp(34px,8vw,110px)] font-extrabold text-white leading-[0.9] tracking-tight mb-8 max-w-5xl">
-          Build the future.<br /><span className="text-[#888]">From the dark.</span>
-        </h1>
-        
-        <p className="font-[var(--font-body)] text-[18px] md:text-[22px] text-[#888] max-w-2xl leading-relaxed">
-          We are a collective of engineers, designers, and product thinkers who build software that matters. If you want to work on things that scale, this is the place.
-        </p>
-      </section>
-
-      {/* Culture Values — Dual-direction infinite marquee */}
-      <section className="w-full py-16 md:py-24 overflow-hidden relative">
-        <div className="w-full max-w-[1200px] mx-auto px-6 md:px-12 mb-12">
-          <div className="flex items-center gap-3">
-            <span className="font-[var(--font-mono)] text-[11px] uppercase tracking-widest text-[#888]">
-              Our DNA
+      <main className="min-h-screen bg-background">
+        {/* ── Page Header ── */}
+        <section className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin pt-[180px] pb-section-gap">
+          <div className="max-w-3xl">
+            <span className="font-label-mono text-label-mono uppercase tracking-widest text-secondary bg-surface-alt border border-outline-variant px-3 py-1 inline-block mb-stack-lg">
+              Careers
             </span>
-            <div className="flex-1 h-[1px] bg-[#222]" />
+            <h1 className="font-headline-lg text-display-lg font-bold text-primary leading-tight tracking-tight mb-stack-lg">
+              Build What Matters
+            </h1>
+            <p className="font-body-md text-body-lg text-secondary max-w-2xl leading-relaxed border-l-2 border-primary pl-4">
+              We are always looking for exceptional engineers, designers, and strategists who want to build products that move industries forward.
+            </p>
+          </div>
+        </section>
+
+        {/* ── Our Values ── */}
+        <section className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin pb-section-gap">
+          <div className="flex items-center gap-4 mb-stack-lg">
+            <span className="font-label-mono text-label-mono uppercase tracking-widest text-secondary">Our Values</span>
+            <div className="flex-1 h-[1px] bg-outline-variant" />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+            {VALUES.map((v) => (
+              <div
+                key={v.title}
+                className="group border border-outline-variant hover:border-primary bg-surface-container-lowest p-stack-lg transition-all duration-300"
+              >
+                <div className="w-12 h-12 bg-surface-alt border border-outline-variant flex items-center justify-center mb-stack-md group-hover:bg-primary group-hover:border-primary transition-colors duration-300">
+                  <span className="material-symbols-outlined text-primary group-hover:text-on-primary transition-colors duration-300">
+                    {v.icon}
+                  </span>
+                </div>
+                <h3 className="font-headline-lg text-headline-md font-bold text-primary mb-2">
+                  {v.title}
+                </h3>
+                <p className="font-body-md text-body-md text-secondary leading-relaxed">
+                  {v.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Open Positions ── */}
+        <section className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin pb-section-gap">
+          <div className="flex items-center gap-4 mb-stack-lg">
+            <span className="font-label-mono text-label-mono uppercase tracking-widest text-secondary">Open Positions</span>
+            <div className="flex-1 h-[1px] bg-outline-variant" />
+            <span className="font-label-mono text-label-mono text-secondary">{POSITIONS.length} roles</span>
+          </div>
+
+          <div className="flex flex-col gap-gutter">
+            {POSITIONS.map((pos) => (
+              <div
+                key={pos.title}
+                className="group border border-outline-variant hover:border-primary bg-surface-container-lowest p-stack-lg transition-all duration-300"
+              >
+                {/* Top row: title + meta */}
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-stack-md">
+                  <div>
+                    <h3 className="font-headline-lg text-headline-md font-bold text-primary mb-2 group-hover:translate-x-1 transition-transform duration-300">
+                      {pos.title}
+                    </h3>
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <span className="font-label-mono text-label-mono text-secondary flex items-center gap-1">
+                        <span className="material-symbols-outlined text-[16px]">location_on</span>
+                        {pos.location}
+                      </span>
+                      <span className="text-outline-variant">·</span>
+                      <span className="font-label-mono text-label-mono text-secondary flex items-center gap-1">
+                        <span className="material-symbols-outlined text-[16px]">work</span>
+                        {pos.type}
+                      </span>
+                    </div>
+                  </div>
+
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 bg-primary text-on-primary font-label-mono text-label-mono uppercase px-6 py-3 hover:bg-surface-tint transition-colors duration-300 shrink-0 w-fit"
+                  >
+                    Apply
+                    <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                  </Link>
+                </div>
+
+                {/* Description */}
+                <p className="font-body-md text-body-md text-secondary leading-relaxed mb-stack-md max-w-3xl">
+                  {pos.description}
+                </p>
+
+                {/* Stack tags */}
+                <div className="flex gap-2 flex-wrap">
+                  {pos.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="font-label-mono text-label-mono text-primary bg-surface-alt border border-outline-variant px-3 py-1"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Perks ── */}
+        <section className="border-y border-outline-variant">
+          <div className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin py-section-gap">
+            <div className="flex items-center gap-4 mb-stack-lg">
+              <span className="font-label-mono text-label-mono uppercase tracking-widest text-secondary">Perks &amp; Benefits</span>
+              <div className="flex-1 h-[1px] bg-outline-variant" />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+              {PERKS.map((perk) => (
+                <div key={perk.title} className="flex flex-col gap-3">
+                  <div className="w-10 h-10 bg-primary flex items-center justify-center">
+                    <span className="material-symbols-outlined text-on-primary text-[20px]">
+                      {perk.icon}
+                    </span>
+                  </div>
+                  <h4 className="font-headline-lg text-headline-md font-bold text-primary">
+                    {perk.title}
+                  </h4>
+                  <p className="font-body-md text-body-md text-secondary leading-relaxed">
+                    {perk.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── CTA: Don't see your role? ── */}
+        <section className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin py-section-gap">
+          <div className="border border-outline-variant bg-surface-container-lowest p-stack-lg md:p-[4rem] flex flex-col items-center text-center">
+            <div className="w-14 h-14 bg-surface-alt border border-outline-variant flex items-center justify-center mb-stack-md">
+              <span className="material-symbols-outlined text-primary text-[28px]">mail</span>
+            </div>
+            <h2 className="font-headline-lg text-headline-lg font-bold text-primary mb-stack-md">
+              Don&apos;t see your role?
+            </h2>
+            <p className="font-body-md text-body-lg text-secondary max-w-md leading-relaxed mb-stack-lg">
+              We&apos;re always looking for exceptional people. Send us your portfolio and tell us what you&apos;re great at — we&apos;ll find a way to work together.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-primary text-on-primary font-label-mono text-label-mono uppercase px-8 py-4 hover:bg-surface-tint transition-colors duration-300"
+            >
+              Get in Touch
+              <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </Link>
+          </div>
+        </section>
+      </main>
+
+      {/* ── Footer ── */}
+      <footer className="bg-primary w-full">
+        <div className="grid grid-cols-12 gap-gutter px-grid-margin-mobile md:px-grid-margin py-section-gap max-w-[1440px] mx-auto text-on-primary">
+          <div className="col-span-12 md:col-span-6 mb-stack-lg md:mb-0">
+            <div className="font-headline-lg text-headline-lg font-bold text-on-primary mb-stack-md">FLOXR</div>
+            <p className="font-body-lg text-body-lg text-on-primary/70 max-w-sm">
+              © 2024 FLOXR. Digital Architecture Firm.
+            </p>
+          </div>
+          <div className="col-span-12 md:col-span-6 flex flex-col md:flex-row gap-stack-lg md:justify-end">
+            <div className="flex flex-col gap-4 font-body-lg text-body-lg">
+              <span className="font-label-mono text-label-mono text-on-primary/50 uppercase">Social</span>
+              <a className="text-on-primary/70 hover:opacity-80 transition-opacity" href="#">LinkedIn</a>
+              <a className="text-on-primary/70 hover:opacity-80 transition-opacity" href="#">Instagram</a>
+            </div>
+            <div className="flex flex-col gap-4 font-body-lg text-body-lg">
+              <span className="font-label-mono text-label-mono text-on-primary/50 uppercase">Legal</span>
+              <Link className="text-on-primary/70 hover:opacity-80 transition-opacity" href="/contact">Contact</Link>
+              <a className="text-on-primary/70 hover:opacity-80 transition-opacity" href="#">Privacy</a>
+            </div>
           </div>
         </div>
-
-        {/* Row 1 — scrolls left */}
-        <div className="flex w-max animate-[marquee-left_30s_linear_infinite] mb-6">
-          {[...VALUES, ...VALUES, ...VALUES].map((val, i) => (
-            <div key={i} className="flex items-center gap-6 mr-12 group cursor-default">
-              <div className="flex-shrink-0 w-14 h-14 rounded-full bg-[#0a0a0a] border border-[#333] flex items-center justify-center text-white group-hover:border-white transition-colors duration-300">
-                {val.icon}
-              </div>
-              <div className="flex flex-col min-w-[280px]">
-                <h3 className="font-[var(--font-display)] text-[22px] font-bold text-white whitespace-nowrap group-hover:text-[#b8ff57] transition-colors duration-300">
-                  {val.title}
-                </h3>
-                <p className="font-[var(--font-mono)] text-[11px] text-[#555] whitespace-nowrap mt-1">
-                  {val.desc}
-                </p>
-              </div>
-              <span className="text-[#222] mx-4">—</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Row 2 — scrolls right (reverse) */}
-        <div className="flex w-max animate-[marquee-right_35s_linear_infinite]">
-          {[...VALUES, ...VALUES, ...VALUES].reverse().map((val, i) => (
-            <div key={i} className="flex items-center gap-6 mr-12 group cursor-default">
-              <div className="flex-shrink-0 w-14 h-14 rounded-full bg-[#0a0a0a] border border-[#333] flex items-center justify-center text-white group-hover:border-white transition-colors duration-300">
-                {val.icon}
-              </div>
-              <div className="flex flex-col min-w-[280px]">
-                <h3 className="font-[var(--font-display)] text-[22px] font-bold text-white whitespace-nowrap group-hover:text-[#b8ff57] transition-colors duration-300">
-                  {val.title}
-                </h3>
-                <p className="font-[var(--font-mono)] text-[11px] text-[#555] whitespace-nowrap mt-1">
-                  {val.desc}
-                </p>
-              </div>
-              <span className="text-[#222] mx-4">—</span>
-            </div>
-          ))}
-        </div>
-
-        <style jsx>{`
-          @keyframes marquee-left {
-            from { transform: translateX(0); }
-            to { transform: translateX(-33.33%); }
-          }
-          @keyframes marquee-right {
-            from { transform: translateX(-33.33%); }
-            to { transform: translateX(0); }
-          }
-        `}</style>
-      </section>
-
-      {/* Open Positions */}
-      <section className="w-full max-w-[1200px] mx-auto px-6 md:px-12 py-16 md:py-24">
-        <div className="flex items-center gap-3 mb-12">
-          <span className="font-[var(--font-mono)] text-[11px] uppercase tracking-widest text-[#888]">
-            Open Positions
-          </span>
-          <div className="flex-1 h-[1px] bg-[#222]" />
-          <span className="font-[var(--font-mono)] text-[11px] text-[#555]">{POSITIONS.length} roles</span>
-        </div>
-
-        <div className="flex flex-col">
-          {POSITIONS.map((pos, i) => (
-            <a 
-              key={i}
-              href={`mailto:careers@floxr.co?subject=Application: ${pos.title}`}
-              className="group flex flex-col md:flex-row md:items-center justify-between py-8 border-b border-[#222] hover:border-[#555] transition-all duration-300 cursor-pointer relative"
-            >
-              {/* Left */}
-              <div className="flex flex-col mb-4 md:mb-0">
-                <h3 className="font-[var(--font-display)] text-[22px] md:text-[28px] font-bold text-white group-hover:text-[#b8ff57] transition-colors duration-300 mb-2">
-                  {pos.title}
-                </h3>
-                <div className="flex items-center gap-3">
-                  <span className="font-[var(--font-mono)] text-[11px] text-[#555] uppercase">{pos.department}</span>
-                  <span className="text-[#333]">·</span>
-                  <span className="font-[var(--font-mono)] text-[11px] text-[#555]">{pos.location}</span>
-                  <span className="text-[#333]">·</span>
-                  <span className="font-[var(--font-mono)] text-[11px] text-[#555]">{pos.type}</span>
-                </div>
-              </div>
-
-              {/* Right: Apply button */}
-              <div className="flex items-center gap-3 opacity-40 group-hover:opacity-100 transition-all duration-300">
-                <span className="font-[var(--font-mono)] text-[11px] uppercase tracking-wider text-white">Apply</span>
-                <div className="w-10 h-10 rounded-full border border-[#444] group-hover:border-[#b8ff57] flex items-center justify-center group-hover:bg-[#b8ff57] transition-all duration-300">
-                  <ArrowUpRight size={16} className="text-white group-hover:text-black transition-colors" />
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-
-        {/* bottom CTA */}
-        <div className="flex flex-col items-center text-center mt-24 py-16 border border-[#222] rounded-[32px] bg-[#080808]">
-          <Briefcase size={32} className="text-[#555] mb-6" />
-          <h3 className="font-[var(--font-display)] text-[28px] md:text-[40px] font-bold text-white mb-4">
-            Don&apos;t see your role?
-          </h3>
-          <p className="font-[var(--font-body)] text-[16px] text-[#888] mb-8 max-w-md">
-            We&apos;re always looking for exceptional people. Send us your portfolio and we&apos;ll find a way to work together.
-          </p>
-          <a 
-            href="mailto:careers@floxr.co"
-            className="inline-flex items-center gap-2 bg-[#b8ff57] text-black font-bold font-[var(--font-mono)] text-[12px] uppercase tracking-wider px-8 py-4 rounded-full hover:scale-[1.05] transition-transform duration-300 shadow-[0_0_20px_rgba(184,255,87,0.3)]"
-          >
-            Get in Touch
-          </a>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
+      </footer>
+    </>
   );
 }

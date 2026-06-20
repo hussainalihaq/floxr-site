@@ -1,145 +1,213 @@
-'use client';
-
-import Navigation from '@/components/marketing/Navigation';
-import Footer from '@/components/marketing/Footer';
-import CustomCursor from '@/components/marketing/CustomCursor';
-import { Users, Target, Award, TrendingUp } from 'lucide-react';
+import Link from 'next/link';
 
 const STATS = [
-  { value: "50+", label: "Projects Shipped" },
-  { value: "98%", label: "Client Retention" },
-  { value: "15+", label: "Engineers" },
-  { value: "4", label: "Countries" },
+  { value: '50+', label: 'Projects Shipped' },
+  { value: '98%', label: 'Client Retention' },
+  { value: '15+', label: 'Engineers' },
+  { value: '4', label: 'Countries' },
 ];
 
 const PRINCIPLES = [
   {
-    icon: <Target size={24} className="stroke-[1.5px]" />,
-    title: "Outcome-Obsessed",
-    desc: "We don't bill hours. We deliver results. Every engagement is measured by the impact it creates."
+    icon: 'target',
+    title: 'Outcome-Obsessed',
+    desc: "We don\u2019t bill hours. We deliver results.",
   },
   {
-    icon: <Users size={24} className="stroke-[1.5px]" />,
-    title: "Senior-Only Teams",
-    desc: "No juniors learning on your project. Every engineer on your team has 5+ years of production experience."
+    icon: 'groups',
+    title: 'Senior-Only Teams',
+    desc: "No juniors learning on your project. Every engineer has 5+ years experience.",
   },
   {
-    icon: <Award size={24} className="stroke-[1.5px]" />,
-    title: "Design-Engineering Fusion",
-    desc: "We don't hand off designs to developers. Our engineers think in pixels and our designers think in systems."
+    icon: 'design_services',
+    title: 'Design-Engineering Fusion',
+    desc: "Our engineers think in pixels and our designers think in systems.",
   },
   {
-    icon: <TrendingUp size={24} className="stroke-[1.5px]" />,
-    title: "Built to Scale",
-    desc: "From day one, every architecture decision is made with 10x growth in mind. No rewrites, no regrets."
-  }
+    icon: 'verified',
+    title: 'Relentless Standards',
+    desc: "If it\u2019s not exceptional, it doesn\u2019t ship.",
+  },
 ];
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-[#030303] flex flex-col relative selection:bg-[var(--lime)] selection:text-black">
-      <CustomCursor />
-      <Navigation />
-
-      {/* Hero */}
-      <section className="w-full pt-[180px] pb-24 px-6 md:px-12 flex flex-col items-center text-center relative overflow-hidden">
-        <div className="absolute top-[10%] left-1/2 -translate-x-1/2 select-none pointer-events-none opacity-[0.015] font-[var(--font-display)] text-[25vw] font-extrabold whitespace-nowrap">
-          FLOXR
+    <>
+      {/* ── Fixed Top Nav ─────────────────────────────────────────── */}
+      <nav className="bg-background fixed top-0 w-full z-50 border-b border-primary transition-all duration-200 ease-in-out">
+        <div className="flex justify-between items-center w-full px-grid-margin-mobile md:px-grid-margin py-stack-md max-w-[1440px] mx-auto">
+          <Link href="/" className="flex items-center">
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8" />
+          </Link>
+          <div className="hidden md:flex gap-gutter items-center font-body-md text-body-md uppercase tracking-widest">
+            <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/work">Work</Link>
+            <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/">Audit</Link>
+            <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/">Capabilities</Link>
+            <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/">Lab</Link>
+            <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/contact">Contact</Link>
+          </div>
+          <Link href="/contact">
+            <button className="bg-primary text-on-primary font-label-mono text-label-mono uppercase px-6 py-3 hover:bg-surface-tint transition-colors duration-300 hidden md:block">
+              Get Started
+            </button>
+          </Link>
         </div>
+      </nav>
 
-        <span className="font-[var(--font-mono)] text-[11px] uppercase tracking-widest text-white bg-[#111] border border-[#333] px-3 py-1 rounded-sm mb-8">
-          About Us
-        </span>
-        
-        <h1 className="font-[var(--font-display)] text-[clamp(34px,8vw,110px)] font-extrabold text-white leading-[0.9] tracking-tight mb-8 max-w-5xl">
-          We build software<br /><span className="text-[#555]">that matters.</span>
-        </h1>
-        
-        <p className="font-[var(--font-body)] text-[18px] md:text-[22px] text-[#888] max-w-2xl leading-relaxed">
-          Floxr is a digital engineering studio. We partner with ambitious companies to design,
-          build, and scale software products that create real value.
-        </p>
-      </section>
+      <main className="min-h-screen bg-background">
 
-      {/* Stats Strip */}
-      <section className="w-full border-y border-[#222] py-12">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {STATS.map((stat, i) => (
-            <div key={i} className="flex flex-col items-center text-center">
-              <span className="font-[var(--font-display)] text-[48px] md:text-[64px] font-extrabold text-white leading-none">{stat.value}</span>
-              <span className="font-[var(--font-mono)] text-[11px] text-[#555] uppercase tracking-wider mt-2">{stat.label}</span>
+        {/* ── Page Header ─────────────────────────────────────────── */}
+        <section className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin pt-[180px] pb-section-gap">
+          <div className="max-w-3xl">
+            <span className="font-label-mono text-label-mono uppercase tracking-widest text-secondary bg-surface-alt border border-outline-variant px-3 py-1 inline-block mb-8">
+              About
+            </span>
+            <h1 className="font-headline-lg text-display-lg font-bold text-primary leading-tight tracking-tight mb-stack-lg">
+              We are Digital Architects
+            </h1>
+            <p className="font-body-lg text-body-lg text-secondary leading-relaxed max-w-2xl border-l-2 border-primary pl-6">
+              FLOXR is a digital architecture firm. We audit what exists, architect what should,
+              and build what moves businesses forward. No templates. No shortcuts. Just precision engineering.
+            </p>
+          </div>
+        </section>
+
+        {/* ── Stats Row ───────────────────────────────────────────── */}
+        <section className="border-y border-outline-variant">
+          <div className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin py-section-gap">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+              {STATS.map((stat, i) => (
+                <div
+                  key={i}
+                  className="border border-outline-variant bg-surface-container-lowest p-stack-lg flex flex-col items-center text-center hover:border-primary transition-colors duration-300"
+                >
+                  <span className="font-headline-lg text-[clamp(40px,6vw,64px)] font-bold text-primary leading-none mb-3">
+                    {stat.value}
+                  </span>
+                  <span className="font-label-mono text-label-mono text-secondary uppercase tracking-wider">
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* Story */}
-      <section className="w-full max-w-[900px] mx-auto px-6 md:px-12 py-24 md:py-32">
-        <div className="flex items-center gap-3 mb-12">
-          <span className="font-[var(--font-mono)] text-[11px] uppercase tracking-widest text-[#888]">Our Story</span>
-          <div className="flex-1 h-[1px] bg-[#222]" />
-        </div>
-        
-        <div className="flex flex-col gap-8">
-          <p className="font-[var(--font-body)] text-[18px] md:text-[22px] text-[#ccc] leading-relaxed">
-            We started Floxr because we were tired of watching great ideas die in the hands of mediocre development shops. 
-            Too many agencies optimize for billable hours instead of shipped products.
-          </p>
-          <p className="font-[var(--font-body)] text-[18px] md:text-[22px] text-[#888] leading-relaxed">
-            We took a different approach: assemble a small, senior-only team of engineers and designers 
-            who genuinely care about craft. People who stay up late not because they have to,
-            but because they refuse to ship something they are not proud of.
-          </p>
-          <p className="font-[var(--font-body)] text-[18px] md:text-[22px] text-[#888] leading-relaxed">
-            Today, we work with startups and enterprises across finance, legal tech, healthcare, 
-            and e-commerce — building the tools that power their growth.
-          </p>
-        </div>
-      </section>
+        {/* ── Our Principles ──────────────────────────────────────── */}
+        <section className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin py-section-gap">
+          <div className="flex items-center gap-4 mb-16">
+            <span className="font-label-mono text-label-mono uppercase tracking-widest text-secondary">
+              Our Principles
+            </span>
+            <div className="flex-1 h-[1px] bg-outline-variant" />
+          </div>
 
-      {/* Principles */}
-      <section className="w-full max-w-[1200px] mx-auto px-6 md:px-12 py-16 md:py-24">
-        <div className="flex items-center gap-3 mb-16">
-          <span className="font-[var(--font-mono)] text-[11px] uppercase tracking-widest text-[#888]">How We Operate</span>
-          <div className="flex-1 h-[1px] bg-[#222]" />
-        </div>
-
-        <div className="flex flex-col">
-          {PRINCIPLES.map((p, i) => (
-            <div key={i} className="group flex items-start gap-8 md:gap-12 py-10 border-b border-[#222] hover:border-[#444] transition-colors duration-300">
-              <div className="w-14 h-14 rounded-xl bg-[#111] border border-[#333] flex items-center justify-center text-white flex-shrink-0 group-hover:border-[#555] transition-colors duration-300">
-                {p.icon}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+            {PRINCIPLES.map((p, i) => (
+              <div
+                key={i}
+                className="group border border-outline-variant bg-surface-container-lowest p-stack-lg hover:border-primary transition-colors duration-300 flex flex-col gap-6"
+              >
+                <div className="w-14 h-14 bg-surface-alt border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors duration-300">
+                  <span className="material-symbols-outlined text-primary text-[28px]">
+                    {p.icon}
+                  </span>
+                </div>
+                <div>
+                  <h3 className="font-headline-lg text-headline-md font-bold text-primary mb-3">
+                    {p.title}
+                  </h3>
+                  <p className="font-body-md text-body-md text-secondary leading-relaxed">
+                    {p.desc}
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-[var(--font-display)] text-[24px] md:text-[32px] font-bold text-white mb-3 group-hover:translate-x-2 transition-transform duration-300">
-                  {p.title}
-                </h3>
-                <p className="font-[var(--font-body)] text-[16px] md:text-[18px] text-[#888] max-w-xl leading-relaxed">
-                  {p.desc}
-                </p>
+            ))}
+          </div>
+        </section>
+
+        {/* ── The Team Section ────────────────────────────────────── */}
+        <section className="relative overflow-hidden border-y border-outline-variant">
+          {/* Subtle Grid Pattern Background */}
+          <div
+            className="absolute inset-0 opacity-[0.04] pointer-events-none"
+            style={{
+              backgroundImage:
+                'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)',
+              backgroundSize: '40px 40px',
+            }}
+          />
+
+          <div className="relative max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin py-section-gap">
+            <div className="max-w-2xl mx-auto text-center flex flex-col items-center">
+              <span className="font-label-mono text-label-mono uppercase tracking-widest text-secondary bg-surface-alt border border-outline-variant px-3 py-1 inline-block mb-8">
+                The Team
+              </span>
+              <h2 className="font-headline-lg text-headline-lg font-bold text-primary leading-tight mb-stack-lg">
+                Built by Operators
+              </h2>
+              <p className="font-body-lg text-body-lg text-secondary leading-relaxed max-w-xl">
+                Every member of our team has built and scaled their own products.
+                We understand the pressure because we have lived it.
+              </p>
+
+              {/* Decorative team silhouette row */}
+              <div className="mt-16 flex gap-6 items-end justify-center">
+                {[48, 56, 64, 56, 48].map((h, i) => (
+                  <div
+                    key={i}
+                    className="bg-surface-alt border border-outline-variant rounded-sm"
+                    style={{ width: '48px', height: `${h}px` }}
+                  />
+                ))}
               </div>
             </div>
-          ))}
+          </div>
+        </section>
+
+        {/* ── CTA ─────────────────────────────────────────────────── */}
+        <section className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin py-section-gap">
+          <div className="border border-outline-variant bg-surface-container-lowest p-stack-lg md:p-16 flex flex-col items-center text-center">
+            <h2 className="font-headline-lg text-headline-lg font-bold text-primary leading-tight mb-stack-md">
+              Ready to build something exceptional?
+            </h2>
+            <p className="font-body-md text-body-md text-secondary mb-10 max-w-md leading-relaxed">
+              Let&apos;s talk about your next project. No sales pitch, just a real conversation with engineers.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-3 bg-primary text-on-primary font-label-mono text-label-mono uppercase px-8 py-4 hover:bg-surface-tint transition-colors duration-300"
+            >
+              <span>Start a Conversation</span>
+              <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </Link>
+          </div>
+        </section>
+      </main>
+
+      {/* ── Footer ────────────────────────────────────────────────── */}
+      <footer className="bg-primary w-full mt-0">
+        <div className="grid grid-cols-12 gap-gutter px-grid-margin-mobile md:px-grid-margin py-section-gap max-w-[1440px] mx-auto text-on-primary">
+          <div className="col-span-12 md:col-span-6 mb-stack-lg md:mb-0">
+            <div className="font-headline-lg text-headline-lg font-bold text-on-primary mb-stack-sm">FLOXR</div>
+            <p className="font-body-lg text-body-lg text-left text-on-primary/70 max-w-sm">
+              © 2024 FLOXR. Digital Architecture Firm.
+            </p>
+          </div>
+          <div className="col-span-12 md:col-span-6 flex flex-col md:flex-row gap-stack-lg md:justify-end">
+            <div className="flex flex-col gap-4 font-body-lg text-body-lg text-left">
+              <span className="font-label-mono text-label-mono text-on-primary/50 uppercase">Social</span>
+              <a className="text-on-primary/70 hover:opacity-80 transition-opacity" href="#">LinkedIn</a>
+              <a className="text-on-primary/70 hover:opacity-80 transition-opacity" href="#">Instagram</a>
+            </div>
+            <div className="flex flex-col gap-4 font-body-lg text-body-lg text-left">
+              <span className="font-label-mono text-label-mono text-on-primary/50 uppercase">Legal</span>
+              <Link className="text-on-primary/70 hover:opacity-80 transition-opacity" href="/contact">Contact</Link>
+              <a className="text-on-primary/70 hover:opacity-80 transition-opacity" href="#">Privacy</a>
+            </div>
+          </div>
         </div>
-      </section>
-
-      {/* CTA */}
-      <section className="w-full max-w-[900px] mx-auto px-6 md:px-12 py-24 flex flex-col items-center text-center">
-        <h2 className="font-[var(--font-display)] text-[clamp(32px,5vw,56px)] font-extrabold text-white mb-6 leading-tight">
-          Ready to build something?
-        </h2>
-        <p className="font-[var(--font-body)] text-[18px] text-[#888] mb-10 max-w-md">
-          Let&apos;s talk about your next project. No sales pitch, just a real conversation with engineers.
-        </p>
-        <a 
-          href="/contact"
-          className="inline-flex items-center gap-2 bg-transparent border border-[#555] text-white font-[var(--font-mono)] text-[12px] uppercase tracking-wider px-8 py-4 rounded-full hover:border-white hover:bg-white hover:text-black transition-all duration-300"
-        >
-          Start a Conversation
-        </a>
-      </section>
-
-      <Footer />
-    </main>
+      </footer>
+    </>
   );
 }

@@ -1,156 +1,269 @@
 'use client';
 
-import Navigation from '@/components/marketing/Navigation';
-import Footer from '@/components/marketing/Footer';
-import CustomCursor from '@/components/marketing/CustomCursor';
-import { ArrowUpRight } from 'lucide-react';
+import Link from 'next/link';
 
-const ALL_PROJECTS = [
+const FEATURED_PROJECTS = [
   {
-    name: "Juriq",
-    category: "AI Platform",
-    tagline: "AI-powered legal research assistant that cuts case prep time by 80%.",
-    stack: ["Next.js", "GPT-4", "Supabase"],
-    year: "2024",
-    url: "https://juriq.app",
-    featured: true,
+    name: 'AmeerGlobal',
+    category: 'Immigration Platform',
+    tagline: 'End-to-end immigration services platform with automated workflows and client portal.',
+    stack: ['Next.js', 'Node.js', 'PostgreSQL'],
+    year: '2024',
+    url: 'https://ameerglobal.ca',
+    domain: 'ameerglobal.ca',
   },
   {
-    name: "Datafly Dashboard",
-    category: "B2B SaaS",
-    tagline: "Real-time business intelligence for growing teams.",
-    stack: ["React", "Go", "PostgreSQL"],
-    year: "2024",
-    url: "#",
-    featured: false,
+    name: 'Juriq',
+    category: 'AI Legal Research',
+    tagline: 'AI-powered legal research assistant that cuts case prep time by 80%.',
+    stack: ['Next.js', 'GPT-4', 'Supabase'],
+    year: '2024',
+    url: 'https://juriq.app',
+    domain: 'juriq.app',
+  },
+];
+
+const OTHER_PROJECTS = [
+  {
+    name: 'Datafly Dashboard',
+    category: 'B2B SaaS',
+    tagline: 'Real-time business intelligence.',
+    stack: ['React', 'Go', 'PostgreSQL'],
+    year: '2024',
   },
   {
-    name: "Fintech Mobile",
-    category: "Finance",
-    tagline: "Peer-to-peer payments with instant settlement.",
-    stack: ["React Native", "Node.js", "AWS"],
-    year: "2023",
-    url: "#",
-    featured: false,
+    name: 'Fintech Mobile',
+    category: 'Finance',
+    tagline: 'Peer-to-peer payments.',
+    stack: ['React Native', 'Stripe', 'Firebase'],
+    year: '2023',
   },
   {
-    name: "MedSync Portal",
-    category: "Healthcare",
-    tagline: "Patient data synchronization across hospital networks.",
-    stack: ["Next.js", "FHIR API", "Azure"],
-    year: "2023",
-    url: "#",
-    featured: false,
+    name: 'E-Commerce Rebuild',
+    category: 'Retail',
+    tagline: 'Full platform migration.',
+    stack: ['Next.js', 'Shopify', 'Algolia'],
+    year: '2023',
   },
   {
-    name: "LogiTrack",
-    category: "Logistics",
-    tagline: "Fleet management and real-time GPS tracking for delivery networks.",
-    stack: ["React", "Python", "MapBox"],
-    year: "2023",
-    url: "#",
-    featured: false,
-  },
-  {
-    name: "EduFlow LMS",
-    category: "EdTech",
-    tagline: "Learning management system serving 50K+ students across 12 institutions.",
-    stack: ["Next.js", "Supabase", "Stripe"],
-    year: "2022",
-    url: "#",
-    featured: false,
+    name: 'Healthcare Portal',
+    category: 'HealthTech',
+    tagline: 'Patient management.',
+    stack: ['React', 'FHIR', 'AWS'],
+    year: '2023',
   },
 ];
 
 export default function WorkPage() {
   return (
-    <main className="min-h-screen bg-[#030303] flex flex-col relative selection:bg-[var(--lime)] selection:text-black">
-      <CustomCursor />
-      <Navigation />
-
-      {/* Hero */}
-      <section className="w-full pt-[180px] pb-16 px-6 md:px-12 flex flex-col items-center text-center relative overflow-hidden">
-        <div className="absolute top-[10%] left-1/2 -translate-x-1/2 select-none pointer-events-none opacity-[0.015] font-[var(--font-display)] text-[25vw] font-extrabold whitespace-nowrap">
-          WORK
+    <>
+      {/* ── Top Nav ── */}
+      <nav className="bg-background fixed top-0 w-full z-50 border-b border-primary transition-all duration-200 ease-in-out">
+        <div className="flex justify-between items-center w-full px-grid-margin-mobile md:px-grid-margin py-stack-md max-w-[1440px] mx-auto">
+          <Link href="/" className="flex items-center gap-2">
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8" />
+          </Link>
+          <div className="hidden md:flex gap-gutter items-center font-body-md text-body-md uppercase tracking-widest">
+            <Link className="text-primary font-semibold" href="/work">Work</Link>
+            <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/">Audit</Link>
+            <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/">Capabilities</Link>
+            <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/">Lab</Link>
+            <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/contact">Contact</Link>
+          </div>
+          <Link
+            href="/contact"
+            className="bg-primary text-on-primary font-label-mono text-label-mono uppercase px-6 py-3 hover:bg-surface-tint transition-colors duration-300 hidden md:block"
+          >
+            Get Started
+          </Link>
+          <button className="md:hidden text-primary">
+            <span className="material-symbols-outlined">menu</span>
+          </button>
         </div>
+      </nav>
 
-        <span className="font-[var(--font-mono)] text-[11px] uppercase tracking-widest text-white bg-[#111] border border-[#333] px-3 py-1 rounded-sm mb-8">
-          Portfolio
-        </span>
-        
-        <h1 className="font-[var(--font-display)] text-[clamp(34px,8vw,100px)] font-extrabold text-white leading-[0.9] tracking-tight mb-8 max-w-5xl">
-          Projects that<br /><span className="text-[#555]">shipped & scaled.</span>
-        </h1>
-        
-        <p className="font-[var(--font-body)] text-[18px] md:text-[22px] text-[#888] max-w-2xl leading-relaxed">
-          A selection of products we&apos;ve designed, engineered, and deployed for clients across industries.
-        </p>
-      </section>
+      <main className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin bg-background min-h-screen">
+        {/* ── Page Header ── */}
+        <section className="pt-[10rem] pb-section-gap flex flex-col items-start">
+          <span className="font-label-mono text-label-mono text-secondary uppercase tracking-widest mb-stack-md">
+            Portfolio
+          </span>
+          <h1 className="font-headline-lg text-display-lg text-primary max-w-3xl mb-stack-md leading-tight">
+            Selected Transformations
+          </h1>
+          <p className="font-body-lg text-body-lg text-secondary max-w-2xl border-l border-primary pl-4">
+            A curated collection of projects where we diagnosed, designed, and delivered.
+          </p>
+        </section>
 
-      {/* Projects Grid */}
-      <section className="w-full max-w-[1200px] mx-auto px-6 md:px-12 py-16">
-        <div className="flex flex-col gap-4">
-          {ALL_PROJECTS.map((project, i) => (
-            <a 
-              key={i}
-              href={project.url}
-              target={project.url !== '#' ? '_blank' : undefined}
-              rel={project.url !== '#' ? 'noopener noreferrer' : undefined}
-              className="group flex flex-col md:flex-row md:items-center justify-between p-8 md:p-10 rounded-2xl border border-[#1a1a1a] bg-[#080808] hover:border-[#444] hover:bg-[#0a0a0a] transition-all duration-300 cursor-pointer"
-            >
-              <div className="flex flex-col mb-4 md:mb-0">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="font-[var(--font-mono)] text-[10px] uppercase tracking-widest text-white bg-[#111] border border-[#333] px-3 py-1 rounded-sm">
+        {/* ── Featured Projects ── */}
+        <section className="pb-section-gap border-t border-secondary-container pt-stack-lg">
+          <div className="mb-stack-lg flex justify-between items-end">
+            <h2 className="font-headline-lg text-headline-lg text-primary">Featured Work</h2>
+            <span className="font-label-mono text-label-mono text-secondary uppercase tracking-widest hidden md:block">
+              {FEATURED_PROJECTS.length} Projects
+            </span>
+          </div>
+
+          <div className="flex flex-col gap-gutter">
+            {FEATURED_PROJECTS.map((project) => (
+              <a
+                key={project.name}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block border border-outline-variant bg-surface-container-lowest hover:border-primary transition-all duration-300"
+              >
+                {/* Browser Mockup Visual */}
+                <div className="relative w-full h-[320px] md:h-[420px] bg-primary overflow-hidden">
+                  {/* Grid pattern */}
+                  <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:32px_32px]" />
+
+                  {/* Browser chrome */}
+                  <div className="absolute top-6 left-6 right-6 md:top-10 md:left-10 md:right-10 bg-on-background/80 rounded-t-lg overflow-hidden border border-white/10">
+                    {/* Title bar */}
+                    <div className="flex items-center gap-2 px-4 py-3 bg-on-background border-b border-white/10">
+                      <span className="w-3 h-3 rounded-full bg-red-500/60" />
+                      <span className="w-3 h-3 rounded-full bg-yellow-500/60" />
+                      <span className="w-3 h-3 rounded-full bg-green-500/60" />
+                      <span className="ml-4 font-label-mono text-label-mono text-white/40">{project.domain}</span>
+                    </div>
+                    {/* Content area */}
+                    <div className="flex items-center justify-center h-[200px] md:h-[300px] bg-on-background/60">
+                      <span className="font-headline-lg text-[clamp(2rem,5vw,4rem)] font-bold text-white/90 tracking-tight group-hover:scale-105 transition-transform duration-500">
+                        {project.domain}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* External link badge */}
+                  <div className="absolute top-6 right-6 md:top-10 md:right-10 w-10 h-10 bg-white/10 backdrop-blur-sm flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                    <span className="material-symbols-outlined text-white text-lg">arrow_outward</span>
+                  </div>
+                </div>
+
+                {/* Card Content */}
+                <div className="p-stack-lg md:p-stack-lg flex flex-col md:flex-row md:items-center md:justify-between gap-stack-md">
+                  <div>
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="font-label-mono text-label-mono text-secondary uppercase tracking-widest">
+                        {project.category}
+                      </span>
+                      <span className="w-1 h-1 bg-secondary rounded-full" />
+                      <span className="font-label-mono text-label-mono text-secondary">{project.year}</span>
+                    </div>
+                    <h3 className="font-headline-lg text-headline-lg text-primary mb-2 group-hover:translate-x-1 transition-transform duration-300">
+                      {project.name}
+                    </h3>
+                    <p className="font-body-md text-body-md text-secondary max-w-lg">
+                      {project.tagline}
+                    </p>
+                  </div>
+                  <div className="flex gap-2 flex-wrap flex-shrink-0">
+                    {project.stack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 bg-surface-alt text-primary font-label-mono text-label-mono border border-outline-variant"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Other Projects Grid ── */}
+        <section className="pb-section-gap border-t border-secondary-container pt-stack-lg">
+          <div className="mb-stack-lg flex justify-between items-end">
+            <h2 className="font-headline-lg text-headline-lg text-primary">More Projects</h2>
+            <span className="font-label-mono text-label-mono text-secondary uppercase tracking-widest hidden md:block">
+              Archive
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+            {OTHER_PROJECTS.map((project) => (
+              <div
+                key={project.name}
+                className="group border border-outline-variant p-stack-lg bg-surface-container-lowest hover:bg-surface-alt hover:border-primary transition-all duration-300"
+              >
+                <div className="flex items-center gap-3 mb-stack-md">
+                  <span className="font-label-mono text-label-mono text-secondary uppercase tracking-widest">
                     {project.category}
                   </span>
-                  <span className="font-[var(--font-mono)] text-[10px] text-[#555]">{project.year}</span>
+                  <span className="w-1 h-1 bg-secondary rounded-full" />
+                  <span className="font-label-mono text-label-mono text-secondary">{project.year}</span>
                 </div>
-                
-                <h3 className="font-[var(--font-display)] text-[28px] md:text-[36px] font-bold text-white leading-none mb-2 group-hover:translate-x-2 transition-transform duration-300">
+
+                <h3 className="font-headline-md text-headline-md text-primary mb-2 group-hover:translate-x-1 transition-transform duration-300">
                   {project.name}
                 </h3>
-                
-                <p className="font-[var(--font-body)] text-[15px] text-[#888] max-w-lg mb-4">
+
+                <p className="font-body-md text-body-md text-secondary mb-stack-lg">
                   {project.tagline}
                 </p>
 
-                <div className="flex gap-2 flex-wrap">
-                  {project.stack.map(tech => (
-                    <span key={tech} className="font-[var(--font-mono)] text-[10px] text-[#888] bg-[#111] border border-[#222] px-3 py-1 rounded-full">
+                <div className="flex gap-2 flex-wrap border-t border-outline-variant pt-stack-md">
+                  {project.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 bg-surface-alt text-primary font-label-mono text-label-mono border border-outline-variant"
+                    >
                       {tech}
                     </span>
                   ))}
                 </div>
               </div>
+            ))}
+          </div>
+        </section>
 
-              {/* Arrow */}
-              <div className="flex items-center gap-3 opacity-30 group-hover:opacity-100 transition-all duration-300 flex-shrink-0">
-                <div className="w-12 h-12 rounded-full border border-[#444] group-hover:border-white flex items-center justify-center group-hover:bg-white transition-all duration-300">
-                  <ArrowUpRight size={18} className="text-white group-hover:text-black transition-colors" />
-                </div>
-              </div>
-            </a>
-          ))}
+        {/* ── CTA Section ── */}
+        <section className="py-section-gap border-t border-secondary-container">
+          <div className="bg-primary text-on-primary p-grid-margin-mobile md:p-grid-margin flex flex-col md:flex-row items-center justify-between gap-stack-lg">
+            <div>
+              <h2 className="font-headline-lg text-headline-lg mb-stack-sm">Have a project in mind?</h2>
+              <p className="font-body-lg text-body-lg text-on-primary/70 max-w-md">
+                Tell us what you&apos;re building. We&apos;ll show you how we&apos;d architect it.
+              </p>
+            </div>
+            <Link
+              href="/contact"
+              className="bg-on-primary text-primary font-label-mono text-label-mono uppercase px-8 py-4 hover:bg-surface-dim transition-colors duration-300 flex items-center gap-2 flex-shrink-0"
+            >
+              Start a Conversation
+              <span className="material-symbols-outlined text-sm">arrow_forward</span>
+            </Link>
+          </div>
+        </section>
+      </main>
+
+      {/* ── Footer ── */}
+      <footer className="bg-primary w-full">
+        <div className="grid grid-cols-12 gap-gutter px-grid-margin-mobile md:px-grid-margin py-section-gap max-w-[1440px] mx-auto text-on-primary">
+          <div className="col-span-12 md:col-span-6 mb-stack-lg md:mb-0">
+            <div className="font-headline-lg text-headline-lg font-bold text-on-primary mb-stack-sm">FLOXR</div>
+            <p className="font-body-lg text-body-lg text-left text-on-primary/70 max-w-sm">
+              © 2024 FLOXR. Digital Architecture Firm.
+            </p>
+          </div>
+          <div className="col-span-12 md:col-span-6 flex flex-col md:flex-row gap-stack-lg md:justify-end">
+            <div className="flex flex-col gap-4 font-body-lg text-body-lg text-left">
+              <span className="font-label-mono text-label-mono text-on-primary/50 uppercase">Social</span>
+              <Link className="text-on-primary/70 hover:opacity-80 transition-opacity" href="/">LinkedIn</Link>
+              <Link className="text-on-primary/70 hover:opacity-80 transition-opacity" href="/">Instagram</Link>
+            </div>
+            <div className="flex flex-col gap-4 font-body-lg text-body-lg text-left">
+              <span className="font-label-mono text-label-mono text-on-primary/50 uppercase">Legal</span>
+              <Link className="text-on-primary/70 hover:opacity-80 transition-opacity" href="/contact">Contact</Link>
+              <Link className="text-on-primary/70 hover:opacity-80 transition-opacity" href="/">Privacy</Link>
+            </div>
+          </div>
         </div>
-      </section>
-
-      {/* CTA */}
-      <section className="w-full max-w-[900px] mx-auto px-6 md:px-12 py-24 flex flex-col items-center text-center">
-        <h2 className="font-[var(--font-display)] text-[clamp(32px,5vw,56px)] font-extrabold text-white mb-6 leading-tight">
-          Want to be next?
-        </h2>
-        <p className="font-[var(--font-body)] text-[18px] text-[#888] mb-10 max-w-md">
-          Tell us about your project. We&apos;ll tell you how we&apos;d build it.
-        </p>
-        <a 
-          href="/contact"
-          className="inline-flex items-center gap-2 bg-transparent border border-[#555] text-white font-[var(--font-mono)] text-[12px] uppercase tracking-wider px-8 py-4 rounded-full hover:border-white hover:bg-white hover:text-black transition-all duration-300"
-        >
-          Start a Project
-        </a>
-      </section>
-
-      <Footer />
-    </main>
+      </footer>
+    </>
   );
 }
