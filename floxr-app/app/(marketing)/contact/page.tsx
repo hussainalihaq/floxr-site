@@ -9,7 +9,6 @@ export default function ContactPage() {
   const [filledFields, setFilledFields] = useState<Set<string>>(new Set());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [selectedBudget, setSelectedBudget] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,7 +20,6 @@ export default function ContactPage() {
     const payload = {
       name: formData.get('name'),
       email: formData.get('email'),
-      budget: selectedBudget,
       scope: formData.get('scope')
     };
 
@@ -59,21 +57,14 @@ export default function ContactPage() {
 
   const isActive = (name: string) => focusedField === name || filledFields.has(name);
 
-  const BUDGETS = [
-    { value: "1k-5k", label: "$1K – $5K" },
-    { value: "5k-10k", label: "$5K – $10K" },
-    { value: "10k-25k", label: "$10K – $25K" },
-    { value: "25k-50k", label: "$25K – $50K" },
-    { value: "50k-100k", label: "$50K – $100K" },
-    { value: "100k+", label: "$100K+" },
-  ];
+
 
   return (
     <>
       <nav className="bg-background dark:bg-on-background fixed top-0 w-full z-50 border-b border-primary dark:border-on-primary-container transition-all duration-200 ease-in-out">
         <div className="flex justify-between items-center w-full px-grid-margin-mobile md:px-grid-margin py-stack-md max-w-[1440px] mx-auto">
           <Link className="flex items-center" href="/">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-10 md:h-12 w-auto" />
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-10 md:h-12 w-auto dark:invert" />
           </Link>
           <div className="hidden md:flex gap-gutter items-center font-body-md text-body-md uppercase tracking-widest">
             <Link className="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="/work">Work</Link>
@@ -184,27 +175,7 @@ export default function ContactPage() {
                   />
                 </div>
 
-                {/* Budget */}
-                <div className="px-4 py-4 mb-4 rounded-sm border border-outline-variant bg-transparent hover:border-primary transition-all duration-300">
-                  <label className="block font-label-mono text-[11px] text-secondary uppercase tracking-wider mb-4">
-                    Project Budget
-                  </label>
-                  <div className="flex flex-wrap gap-2">
-                    {BUDGETS.map((b) => (
-                      <button
-                        key={b.value}
-                        type="button"
-                        onClick={() => setSelectedBudget(b.value)}
-                        className={`font-label-mono text-[11px] px-4 py-2.5 transition-all duration-200 border
-                          ${selectedBudget === b.value 
-                            ? 'bg-primary text-on-primary border-primary shadow-sm' 
-                            : 'bg-transparent text-secondary border-outline hover:border-primary hover:text-primary hover:bg-surface-alt'}`}
-                      >
-                        {b.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
+
 
                 {/* Scope */}
                 <div className={`relative px-4 py-3 mb-4 rounded-sm border transition-all duration-300 ${focusedField === 'scope' ? 'border-primary bg-surface-alt shadow-sm' : 'border-outline-variant bg-transparent hover:border-primary'}`}>

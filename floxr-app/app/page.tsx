@@ -22,7 +22,7 @@ export default function HomePage() {
         <div className="flex justify-between items-center w-full px-6 md:px-12 py-4 max-w-[1440px] mx-auto">
           {/* Logo */}
           <Link href="/">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-10 md:h-12 w-auto" />
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-10 md:h-12 w-auto dark:invert" />
           </Link>
 
           {/* Center Nav Links */}
@@ -76,13 +76,13 @@ export default function HomePage() {
 
       <main className="max-w-[1440px] mx-auto px-6 md:px-12">
         {/* ─── 2. HERO SECTION ─── */}
-        <section className="relative min-h-[80vh] flex flex-col justify-center py-section-gap overflow-hidden">
+        <section className="relative min-h-[60vh] md:min-h-[80vh] flex flex-col justify-center pt-[100px] pb-12 md:py-section-gap overflow-hidden">
           {/* Abstract background pattern to feel less empty */}
           <div className="absolute inset-0 pointer-events-none opacity-20 -z-10">
             <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)]"></div>
           </div>
           
-          <h1 className="font-headline-lg text-display-lg text-primary max-w-4xl mb-8 leading-tight tracking-tight">
+          <h1 className="font-headline-lg text-display-lg-mobile md:text-display-lg text-primary max-w-4xl mb-6 md:mb-8 leading-tight tracking-tight mt-8 md:mt-0">
             We diagnose what is broken, design what should exist, and build what
             moves businesses forward.
           </h1>
@@ -299,14 +299,14 @@ export default function HomePage() {
                   Full-Stack
                 </span>
               </div>
+              
               <div className="space-y-4">
                 <div className="border-l-2 border-outline-variant pl-4">
                   <span className="font-label-mono text-label-mono text-secondary uppercase block mb-1">
                     Problem
                   </span>
                   <p className="font-body-md text-body-md text-primary">
-                    Complex immigration processes with fragmented client intake
-                    and document management causing delays.
+                    Outdated visa application processes and scattered client communications hindering scaling.
                   </p>
                 </div>
                 <div className="border-l-2 border-outline-variant pl-4">
@@ -314,8 +314,7 @@ export default function HomePage() {
                     Solution
                   </span>
                   <p className="font-body-md text-body-md text-primary">
-                    Built end-to-end digital platform with automated workflows,
-                    client portal, and real-time case tracking.
+                    Designed a centralized digital presence with streamlined intake forms and a cohesive brand identity.
                   </p>
                 </div>
                 <div className="border-l-2 border-primary pl-4 bg-surface-alt p-3">
@@ -323,11 +322,11 @@ export default function HomePage() {
                     Result
                   </span>
                   <p className="font-body-md text-body-md text-primary font-bold">
-                    Client processing time reduced by 70%. Zero document loss
-                    incidents.
+                    Increased high-quality leads by 40% and reduced manual processing time.
                   </p>
                 </div>
               </div>
+              
               <a
                 href="https://ameerglobal.ca"
                 target="_blank"

@@ -6,7 +6,7 @@ export default function LabPage() {
       <nav className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b border-outline-variant transition-all duration-200 ease-in-out">
         <div className="flex justify-between items-center w-full px-grid-margin-mobile md:px-grid-margin py-stack-md max-w-[1440px] mx-auto">
           <Link className="flex items-center" href="/">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-10 md:h-12 w-auto" />
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-10 md:h-12 w-auto dark:invert" />
           </Link>
           <div className="hidden md:flex gap-gutter items-center font-body-md text-body-md uppercase tracking-widest">
             <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/work">Work</Link>
