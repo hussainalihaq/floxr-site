@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Send, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
+import Navbar from '@/components/Navbar';
 
 export default function ContactPage() {
   const [focusedField, setFocusedField] = useState<string | null>(null);
@@ -61,25 +62,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <nav className="bg-background dark:bg-on-background fixed top-0 w-full z-50 border-b border-primary dark:border-on-primary-container transition-all duration-200 ease-in-out">
-        <div className="flex justify-between items-center w-full px-grid-margin-mobile md:px-grid-margin py-stack-md max-w-[1440px] mx-auto">
-          <Link className="flex items-center" href="/">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-10 md:h-12 w-auto dark:invert" />
-          </Link>
-          <div className="hidden md:flex gap-gutter items-center font-body-md text-body-md uppercase tracking-widest">
-            <Link className="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="/work">Work</Link>
-            <Link className="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="/audit">Audit</Link>
-            <Link className="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="/capabilities">Capabilities</Link>
-            <Link className="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="/lab">Lab</Link>
-            <Link className="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-on-primary transition-colors duration-300" href="/contact">Contact</Link>
-          </div>
-          <Link href="/contact">
-            <button className="bg-primary text-on-primary font-label-mono text-label-mono uppercase px-6 py-3 hover:bg-surface-tint transition-colors duration-300 hidden md:block">
-              Get Started
-            </button>
-          </Link>
-        </div>
-      </nav>
+      <Navbar />
 
       <main className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin py-section-gap flex flex-col lg:flex-row gap-gutter pt-[180px]">
         

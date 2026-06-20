@@ -1,12 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import Navbar from '@/components/Navbar';
 
 const FEATURED_PROJECTS = [
   {
     name: 'AmeerGlobal',
-    category: 'Study Abroad & Immigration Consultancy',
-    tagline: 'End-to-end immigration services platform with automated workflows and client portal.',
+    category: 'Global Trading, Imports & Exports',
+    tagline: 'End-to-end B2B trading and logistics platform for international supply chain management.',
     stack: ['Next.js', 'Node.js', 'PostgreSQL'],
     year: '2024',
     url: 'https://ameerglobal.ca',
@@ -58,29 +59,7 @@ export default function WorkPage() {
   return (
     <>
       {/* ── Top Nav ── */}
-      <nav className="bg-background fixed top-0 w-full z-50 border-b border-primary transition-all duration-200 ease-in-out">
-        <div className="flex justify-between items-center w-full px-grid-margin-mobile md:px-grid-margin py-stack-md max-w-[1440px] mx-auto">
-          <Link href="/" className="flex items-center gap-2">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-10 md:h-12 w-auto dark:invert" />
-          </Link>
-          <div className="hidden md:flex gap-gutter items-center font-body-md text-body-md uppercase tracking-widest">
-            <Link className="text-primary font-semibold" href="/work">Work</Link>
-            <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/">Audit</Link>
-            <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/">Capabilities</Link>
-            <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/">Lab</Link>
-            <Link className="text-secondary hover:text-primary transition-colors duration-300" href="/contact">Contact</Link>
-          </div>
-          <Link
-            href="/contact"
-            className="bg-primary text-on-primary font-label-mono text-label-mono uppercase px-6 py-3 hover:bg-surface-tint transition-colors duration-300 hidden md:block"
-          >
-            Get Started
-          </Link>
-          <button className="md:hidden text-primary">
-            <span className="material-symbols-outlined">menu</span>
-          </button>
-        </div>
-      </nav>
+      <Navbar />
 
       <main className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin bg-background min-h-screen">
         {/* ── Page Header ── */}

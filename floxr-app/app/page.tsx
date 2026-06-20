@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Navbar from '@/components/Navbar';
 
 export default function HomePage() {
   const [showPopup, setShowPopup] = useState(false);
@@ -18,61 +19,7 @@ export default function HomePage() {
   return (
     <>
       {/* ─── 1. FIXED TOP NAV BAR ─── */}
-      <nav className="bg-background fixed top-0 w-full z-50 border-b border-outline-variant">
-        <div className="flex justify-between items-center w-full px-6 md:px-12 py-4 max-w-[1440px] mx-auto">
-          {/* Logo */}
-          <Link href="/">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-10 md:h-12 w-auto dark:invert" />
-          </Link>
-
-          {/* Center Nav Links */}
-          <div className="hidden md:flex gap-gutter items-center font-body-md text-body-md uppercase tracking-widest">
-            <Link
-              className="text-secondary hover:text-primary transition-colors duration-300"
-              href="/work"
-            >
-              Work
-            </Link>
-            <Link
-              className="text-secondary hover:text-primary transition-colors duration-300"
-              href="/audit"
-            >
-              Audit
-            </Link>
-            <Link
-              className="text-secondary hover:text-primary transition-colors duration-300"
-              href="/capabilities"
-            >
-              Capabilities
-            </Link>
-            <Link
-              className="text-secondary hover:text-primary transition-colors duration-300"
-              href="/lab"
-            >
-              Lab
-            </Link>
-            <Link
-              className="text-secondary hover:text-primary transition-colors duration-300"
-              href="/contact"
-            >
-              Contact
-            </Link>
-          </div>
-
-          {/* Get Started Button */}
-          <Link
-            href="/contact"
-            className="bg-primary text-on-primary font-label-mono text-label-mono uppercase px-6 py-3 hover:opacity-90 transition-opacity duration-300 hidden md:block"
-          >
-            Get Started
-          </Link>
-
-          {/* Mobile Menu Button */}
-          <button className="md:hidden text-primary">
-            <span className="material-symbols-outlined">menu</span>
-          </button>
-        </div>
-      </nav>
+      <Navbar />
 
       <main className="max-w-[1440px] mx-auto px-6 md:px-12">
         {/* ─── 2. HERO SECTION ─── */}
@@ -306,7 +253,7 @@ export default function HomePage() {
                     Problem
                   </span>
                   <p className="font-body-md text-body-md text-primary">
-                    Outdated visa application processes and scattered client communications hindering scaling.
+                    Outdated supply chain processes, scattered B2B communications, and poor inventory tracking hindering global scaling.
                   </p>
                 </div>
                 <div className="border-l-2 border-outline-variant pl-4">
@@ -314,7 +261,7 @@ export default function HomePage() {
                     Solution
                   </span>
                   <p className="font-body-md text-body-md text-primary">
-                    Designed a centralized digital presence with streamlined intake forms and a cohesive brand identity.
+                    Designed a centralized digital presence with streamlined B2B intake forms and a unified logistics brand identity.
                   </p>
                 </div>
                 <div className="border-l-2 border-primary pl-4 bg-surface-alt p-3">
@@ -322,7 +269,7 @@ export default function HomePage() {
                     Result
                   </span>
                   <p className="font-body-md text-body-md text-primary font-bold">
-                    Increased high-quality leads by 40% and reduced manual processing time.
+                    Increased wholesale lead capture by 40% and improved inventory transparency for import/export partners.
                   </p>
                 </div>
               </div>
