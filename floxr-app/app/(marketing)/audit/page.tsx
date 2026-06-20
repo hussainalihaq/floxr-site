@@ -8,26 +8,24 @@ export default function AuditPage() {
     <div className="min-h-screen bg-[#111111] text-white font-body-md antialiased selection:bg-white selection:text-black">
       <Navbar />
 
-      <main className="flex-grow pt-[140px] pb-section-gap max-w-[1440px] mx-auto px-6 md:px-12">
+      <main className="flex-grow pb-section-gap max-w-[1440px] mx-auto px-6 md:px-12 pt-[80px] md:pt-[100px]">
         {/* Hero Section */}
         <section className="py-section-gap">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
             <div className="md:col-span-7 flex flex-col space-y-stack-lg">
               <div className="inline-flex items-center space-x-2">
-                <span className="bg-[#222222] px-3 py-1 font-label-mono text-label-mono text-white uppercase border border-[#444444]">Diagnostic Tool</span>
-                <span className="material-symbols-outlined text-white text-sm">architecture</span>
+                <span className="bg-[#222222] px-3 py-1 font-label-mono text-label-mono text-white uppercase border border-[#444444]">DIAGNOSTIC PROTOCOL V2.1</span>
               </div>
               <h1 className="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-white font-bold leading-tight">
                   The Floxr Digital Audit™
               </h1>
               <p className="font-body-lg text-body-lg text-[#aaaaaa] max-w-2xl leading-relaxed">
-                  A rigorous, multi-disciplinary analysis of your digital architecture. We uncover structural inefficiencies, evaluate technological debt, and identify high-impact opportunities for systematic growth.
+                  A rigorous, data-driven analysis of your digital ecosystem. We uncover technical debt, UX friction points, and architecture flaws that are silently leaking revenue.
               </p>
               <div className="pt-stack-md">
                 <Link href="#initiate-audit">
-                  <button className="bg-[#222222] text-white font-label-mono text-label-mono uppercase px-8 py-4 border border-[#444444] hover:bg-white hover:text-black transition-colors duration-300 flex items-center space-x-2 w-fit">
-                    <span>Request Diagnostic</span>
-                    <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                  <button className="bg-white text-black font-label-mono text-label-mono uppercase px-8 py-4 hover:bg-[#dddddd] transition-colors duration-300 flex items-center space-x-2 w-fit font-bold">
+                    <span>REQUEST DIAGNOSTIC</span>
                   </button>
                 </Link>
               </div>
@@ -36,9 +34,14 @@ export default function AuditPage() {
             <div className="md:col-span-5 mt-stack-lg md:mt-0">
               <div className="relative w-full aspect-square bg-[#1a1a1a] border border-[#333333] overflow-hidden flex items-center justify-center">
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
-                <div className="z-10 bg-white border border-white p-stack-md shadow-xl text-black">
-                  <div className="font-label-mono text-label-mono uppercase mb-2 text-[#555]">Typical Audit Readiness Score</div>
-                  <div className="font-headline-lg text-headline-lg font-bold">92.4%</div>
+                <div className="z-10 bg-white p-stack-md text-black w-full max-w-[80%]">
+                  <div className="font-label-mono text-label-mono uppercase mb-2 text-[#555]">SYSTEM HEALTH SCORE</div>
+                  <div className="font-headline-lg text-[64px] font-bold leading-none mb-6">92.4%</div>
+                  <div className="flex gap-2 font-label-mono text-[10px] uppercase tracking-widest font-bold">
+                    <span className="bg-[#ffdddd] text-[#ff0000] px-2 py-1">CRITICAL</span>
+                    <span className="bg-[#ffffdd] text-[#aaaa00] px-2 py-1">STABLE</span>
+                    <span className="bg-[#ddffdd] text-[#00aa00] px-2 py-1">OPTIMAL</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -48,7 +51,7 @@ export default function AuditPage() {
         {/* What We Analyze (Bento Grid) */}
         <section className="px-grid-margin-mobile md:px-grid-margin py-section-gap border-t border-[#333333]">
           <div className="mb-stack-lg">
-            <h2 className="font-headline-lg text-headline-lg text-white font-bold">Structural Diagnostics</h2>
+            <h2 className="font-headline-lg text-headline-lg text-white font-bold">Critical Vectors</h2>
             <p className="font-body-md text-body-md text-[#aaaaaa] mt-stack-sm max-w-xl">We deconstruct your digital presence across four critical vectors to ensure architectural integrity.</p>
           </div>
           
@@ -57,10 +60,10 @@ export default function AuditPage() {
             <div className="md:col-span-8 bg-[#1a1a1a] border border-[#333333] p-stack-lg flex flex-col justify-between group hover:bg-[#222222] transition-colors duration-300">
               <div className="flex justify-between items-start">
                 <span className="material-symbols-outlined text-white text-3xl">route</span>
-                <span className="font-label-mono text-label-mono text-[#888888]">01 / Vector</span>
+                <span className="font-label-mono text-label-mono text-[#888888]">V.01</span>
               </div>
               <div>
-                <h3 className="font-headline-md text-headline-md text-white font-bold">User Experience (UX) Architecture</h3>
+                <h3 className="font-headline-md text-[24px] text-white font-bold">UX Architecture</h3>
                 <p className="font-body-md text-body-md text-[#aaaaaa] mt-2 max-w-lg">Evaluating navigation flows, friction points, and cognitive load to ensure seamless user journeys.</p>
               </div>
             </div>
@@ -69,10 +72,10 @@ export default function AuditPage() {
             <div className="md:col-span-4 bg-[#222222] border border-[#444444] text-white p-stack-lg flex flex-col justify-between group">
               <div className="flex justify-between items-start">
                 <span className="material-symbols-outlined text-white text-3xl">code_blocks</span>
-                <span className="font-label-mono text-label-mono text-[#aaaaaa]">02 / Vector</span>
+                <span className="font-label-mono text-label-mono text-[#aaaaaa]">V.02</span>
               </div>
               <div>
-                <h3 className="font-headline-md text-headline-md text-white font-bold">Tech Stack Integrity</h3>
+                <h3 className="font-headline-md text-[24px] text-white font-bold">Tech Stack Integrity</h3>
                 <p className="font-body-md text-body-md text-[#aaaaaa] mt-2">Assessing performance, technical debt, and scalability.</p>
               </div>
             </div>

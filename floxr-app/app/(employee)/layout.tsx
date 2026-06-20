@@ -51,7 +51,7 @@ export default async function EmployeeLayout({
             />
 
             {/* Main Content */}
-            <main className="dashboard-main">
+            <main className="dashboard-main pt-[80px] md:pt-[100px]">
                 {children}
             </main>
         </div>

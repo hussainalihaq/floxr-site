@@ -37,7 +37,7 @@ export default function AboutPage() {
       {/* ── Fixed Top Nav ─────────────────────────────────────────── */}
       <Navbar />
 
-      <main className="min-h-screen bg-background">
+      <main className="min-h-screen bg-background pt-[80px] md:pt-[100px]">
 
         {/* ── Page Header ─────────────────────────────────────────── */}
         <section className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin pt-[180px] pb-section-gap">

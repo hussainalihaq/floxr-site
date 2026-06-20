@@ -6,57 +6,59 @@ export default function LabPage() {
     <div className="min-h-screen bg-background text-primary font-body-md antialiased">
       <Navbar />
 
-      <main className="flex-grow pt-[140px] pb-section-gap max-w-[1440px] mx-auto px-6 md:px-12">
+      <main className="flex-grow pb-section-gap max-w-[1440px] mx-auto px-6 md:px-12 pt-[80px] md:pt-[100px]">
         <section className="mb-16">
-          <h1 className="font-display-lg text-[64px] md:text-[88px] font-bold tracking-tight text-primary leading-none mb-6">Lab</h1>
-          <p className="font-body-lg text-body-lg text-secondary max-w-2xl leading-relaxed mb-12">
-            An archive of technical essays, deep-dive UX teardowns, and structural insights from the forefront of digital architecture.
+          <h1 className="font-display-lg text-[64px] md:text-[88px] font-bold tracking-tight text-primary leading-none mb-6">The Lab</h1>
+          <p className="font-body-lg text-[16px] text-secondary max-w-2xl leading-relaxed mb-12">
+            A rigorous examination of digital architecture, component strategy, and interface kinematics.
           </p>
           
           <div className="flex flex-wrap items-center gap-2 border-b border-outline-variant pb-8">
             <span className="font-label-mono text-[10px] text-secondary uppercase tracking-widest mr-4">Filter By:</span>
-            <button className="bg-primary text-on-primary font-label-mono text-[10px] uppercase tracking-widest px-4 py-2">All</button>
-            <button className="bg-surface-alt text-secondary hover:text-primary hover:bg-outline-variant transition-colors font-label-mono text-[10px] uppercase tracking-widest px-4 py-2">Engineering</button>
-            <button className="bg-surface-alt text-secondary hover:text-primary hover:bg-outline-variant transition-colors font-label-mono text-[10px] uppercase tracking-widest px-4 py-2">UX Research</button>
-            <button className="bg-surface-alt text-secondary hover:text-primary hover:bg-outline-variant transition-colors font-label-mono text-[10px] uppercase tracking-widest px-4 py-2">Design Systems</button>
+            <button className="bg-primary text-on-primary font-label-mono text-[10px] uppercase tracking-widest px-4 py-2">ALL ENTRIES</button>
+            <button className="bg-surface-alt text-secondary hover:text-primary hover:bg-outline-variant transition-colors font-label-mono text-[10px] uppercase tracking-widest px-4 py-2">ENGINEERING</button>
+            <button className="bg-surface-alt text-secondary hover:text-primary hover:bg-outline-variant transition-colors font-label-mono text-[10px] uppercase tracking-widest px-4 py-2">UX RESEARCH</button>
+            <button className="bg-surface-alt text-secondary hover:text-primary hover:bg-outline-variant transition-colors font-label-mono text-[10px] uppercase tracking-widest px-4 py-2">DESIGN SYSTEMS</button>
           </div>
         </section>
 
         <section className="flex flex-col">
           {/* Article 1 */}
-          <article className="grid grid-cols-1 md:grid-cols-12 gap-8 py-10 border-b border-outline-variant group">
-            <div className="md:col-span-2 font-label-mono text-[10px] text-secondary uppercase tracking-widest pt-2">
-              Oct 24, 2026
+          <article className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-10 border-b border-outline-variant group">
+            <div className="md:col-span-2 font-label-mono text-[10px] text-secondary uppercase tracking-widest pt-2 flex justify-between md:block">
+              <span>DESIGN SYSTEMS</span>
+              <span className="md:hidden">10/24</span>
             </div>
             <div className="md:col-span-8">
               <Link href="#" className="block">
-                <h2 className="font-headline-lg text-[28px] md:text-[36px] font-bold text-primary mb-4 group-hover:opacity-80 transition-opacity">The Topology of Component States</h2>
-                <p className="font-body-md text-secondary leading-relaxed max-w-3xl">
-                  A rigorous examination of state machine principles applied to front-end component libraries. We tear down the common pitfalls of boolean prop pollution and advocate for strict, exhaustive state definitions in enterprise design systems.
+                <h2 className="font-headline-lg text-[28px] md:text-[36px] font-bold text-primary mb-4 group-hover:opacity-80 transition-opacity">The Death of Decorative UI</h2>
+                <p className="font-body-md text-[14px] text-secondary leading-relaxed max-w-3xl">
+                  Why pure structural design outlasts trend cycles and drives higher enterprise value. We examine the shift towards utility-first, brutalist-inspired interfaces in B2B SaaS.
                 </p>
               </Link>
             </div>
-            <div className="md:col-span-2 md:text-right font-label-mono text-[10px] text-secondary uppercase tracking-widest pt-2">
-              Design Systems
+            <div className="md:col-span-2 text-right font-label-mono text-[10px] text-secondary uppercase tracking-widest pt-2 hidden md:block">
+              10/24
             </div>
           </article>
 
           {/* Article 2 */}
-          <article className="grid grid-cols-1 md:grid-cols-12 gap-8 py-10 border-b border-outline-variant group">
-            <div className="md:col-span-2 font-label-mono text-[10px] text-secondary uppercase tracking-widest pt-2">
-              Sep 12, 2026
+          <article className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-10 border-b border-outline-variant group">
+            <div className="md:col-span-2 font-label-mono text-[10px] text-secondary uppercase tracking-widest pt-2 flex justify-between md:block">
+              <span>ENGINEERING</span>
+              <span className="md:hidden">11/23</span>
             </div>
             <div className="md:col-span-8">
               <Link href="#" className="block">
-                <h2 className="font-headline-lg text-[28px] md:text-[36px] font-bold text-primary mb-4 group-hover:opacity-80 transition-opacity">WebGPU: Beyond the Canvas</h2>
-                <div className="font-body-md text-secondary leading-relaxed max-w-3xl">
+                <h2 className="font-headline-lg text-[28px] md:text-[36px] font-bold text-primary mb-4 group-hover:opacity-80 transition-opacity">Micro-Frontends in Practice</h2>
+                <div className="font-body-md text-[14px] text-secondary leading-relaxed max-w-3xl">
                   <span className="font-label-mono text-[11px] text-[#ff3333] font-bold uppercase tracking-wider mr-2">[STRUCTURAL REVIEW]</span>
-                  Moving computation to the edge of the browser. This technical essay explores how leveraging WebGPU for heavy data visualization tasks can unlock unprecedented performance metrics in dashboard architectures.
+                  Architectural strategies for scaling development teams without increasing technical debt. A look at Webpack Module Federation and its implications for enterprise product suites.
                 </div>
               </Link>
             </div>
-            <div className="md:col-span-2 md:text-right font-label-mono text-[10px] text-secondary uppercase tracking-widest pt-2">
-              Engineering
+            <div className="md:col-span-2 text-right font-label-mono text-[10px] text-secondary uppercase tracking-widest pt-2 hidden md:block">
+              11/23
             </div>
           </article>
 

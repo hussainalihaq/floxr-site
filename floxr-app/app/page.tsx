@@ -21,7 +21,7 @@ export default function HomePage() {
       {/* ─── 1. FIXED TOP NAV BAR ─── */}
       <Navbar />
 
-      <main className="max-w-[1440px] mx-auto px-6 md:px-12">
+      <main className="max-w-[1440px] mx-auto px-6 md:px-12 pt-[80px] md:pt-[100px]">
         {/* ─── 2. HERO SECTION ─── */}
         <section className="relative min-h-[60vh] md:min-h-[80vh] flex flex-col justify-center pt-[100px] pb-12 md:py-section-gap overflow-hidden">
           {/* Abstract background pattern to feel less empty */}
@@ -29,12 +29,13 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)]"></div>
           </div>
           
-          <h1 className="font-headline-lg text-display-lg-mobile md:text-display-lg text-primary max-w-4xl mb-6 md:mb-8 leading-tight tracking-tight mt-8 md:mt-0">
+          <h1 className="font-headline-lg text-[40px] md:text-[80px] text-primary max-w-4xl mb-6 md:mb-8 leading-tight tracking-tight mt-8 md:mt-0">
             We diagnose what is broken, design what should exist, and build what
             moves businesses forward.
           </h1>
-          <p className="font-body-md text-body-lg text-secondary max-w-2xl mb-8 border-l-2 border-primary pl-4">
-            Digital Architecture &amp; Product Systems for ambitious companies.
+          <hr className="w-12 border-t-2 border-primary mb-6" />
+          <p className="font-body-md text-[18px] md:text-[24px] text-primary max-w-2xl mb-8 leading-relaxed">
+            Digital architecture is destiny. The structural integrity of your platforms determines the ceiling of your growth. We construct the foundation.
           </p>
           <div>
             <Link
@@ -57,99 +58,75 @@ export default function HomePage() {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Card: 01. Audit */}
-            <div className="border border-outline-variant p-stack-lg bg-surface-container-lowest hover:bg-surface-alt transition-colors duration-300 group">
-              <div className="text-primary mb-4 flex justify-between items-start">
-                <h3 className="font-headline-lg text-headline-md">01. Audit</h3>
-                <span className="material-symbols-outlined text-outline group-hover:text-primary transition-colors">
+            <div className="border border-outline-variant p-8 bg-surface-container-lowest">
+              <div className="text-primary mb-6 flex items-center gap-3">
+                <span className="material-symbols-outlined text-outline">
                   troubleshoot
                 </span>
+                <h3 className="font-headline-lg text-[24px] font-bold">Audit</h3>
               </div>
-              <p className="font-body-md text-body-md text-secondary mb-4 min-h-[4rem]">
-                Deep forensic analysis of your existing digital footprint to
-                identify critical failure points.
-              </p>
-              <ul className="space-y-4 border-t border-outline-variant pt-4 font-label-mono text-label-mono text-primary">
-                <li className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-primary inline-block" />
-                  Website Performance
+              <ul className="space-y-4 border-t border-outline-variant pt-6 font-body-md text-[14px] text-secondary">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary">-</span>
+                  System mapping & technical debt analysis.
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-primary inline-block" />
-                  UX/UI Teardowns
+                <li className="flex items-start gap-2">
+                  <span className="text-primary">-</span>
+                  User experience friction identification.
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-primary inline-block" />
-                  Product Systems
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-primary inline-block" />
-                  Operational Automation
+                <li className="flex items-start gap-2">
+                  <span className="text-primary">-</span>
+                  Performance & scalability benchmarks.
                 </li>
               </ul>
             </div>
 
             {/* Card: 02. Architect */}
-            <div className="border border-outline-variant p-stack-lg bg-surface-container-lowest hover:bg-surface-alt transition-colors duration-300 group">
-              <div className="text-primary mb-4 flex justify-between items-start">
-                <h3 className="font-headline-lg text-headline-md">02. Architect</h3>
-                <span className="material-symbols-outlined text-outline group-hover:text-primary transition-colors">
+            <div className="border border-outline-variant p-8 bg-surface-container-lowest">
+              <div className="text-primary mb-6 flex items-center gap-3">
+                <span className="material-symbols-outlined text-outline">
                   architecture
                 </span>
+                <h3 className="font-headline-lg text-[24px] font-bold">Architect</h3>
               </div>
-              <p className="font-body-md text-body-md text-secondary mb-4 min-h-[4rem]">
-                Designing scalable systems, rigid structures, and precise
-                blueprints for growth.
-              </p>
-              <ul className="space-y-4 border-t border-outline-variant pt-4 font-label-mono text-label-mono text-primary">
-                <li className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-primary inline-block" />
-                  Design Systems
+              <ul className="space-y-4 border-t border-outline-variant pt-6 font-body-md text-[14px] text-secondary">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary">-</span>
+                  Scalable infrastructure blueprints.
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-primary inline-block" />
-                  Information Architecture
+                <li className="flex items-start gap-2">
+                  <span className="text-primary">-</span>
+                  Design system & token engineering.
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-primary inline-block" />
-                  Data Structuring
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-primary inline-block" />
-                  Brand Frameworks
+                <li className="flex items-start gap-2">
+                  <span className="text-primary">-</span>
+                  Data flow & API structural design.
                 </li>
               </ul>
             </div>
 
             {/* Card: 03. Build */}
-            <div className="border border-outline-variant p-stack-lg bg-surface-container-lowest hover:bg-surface-alt transition-colors duration-300 group">
-              <div className="text-primary mb-4 flex justify-between items-start">
-                <h3 className="font-headline-lg text-headline-md">03. Build</h3>
-                <span className="material-symbols-outlined text-outline group-hover:text-primary transition-colors">
+            <div className="border border-outline-variant p-8 bg-surface-container-lowest">
+              <div className="text-primary mb-6 flex items-center gap-3">
+                <span className="material-symbols-outlined text-outline">
                   construction
                 </span>
+                <h3 className="font-headline-lg text-[24px] font-bold">Build</h3>
               </div>
-              <p className="font-body-md text-body-md text-secondary mb-4 min-h-[4rem]">
-                Executing the blueprint with high-performance engineering and
-                uncompromised quality.
-              </p>
-              <ul className="space-y-4 border-t border-outline-variant pt-4 font-label-mono text-label-mono text-primary">
-                <li className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-primary inline-block" />
-                  Web Development
+              <ul className="space-y-4 border-t border-outline-variant pt-6 font-body-md text-[14px] text-secondary">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary">-</span>
+                  High-fidelity front-end implementation.
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-primary inline-block" />
-                  Custom Applications
+                <li className="flex items-start gap-2">
+                  <span className="text-primary">-</span>
+                  Robust back-end service integration.
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-primary inline-block" />
-                  CMS Integration
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1 h-1 bg-primary inline-block" />
-                  Performance Tuning
+                <li className="flex items-start gap-2">
+                  <span className="text-primary">-</span>
+                  Continuous deployment pipelines.
                 </li>
               </ul>
             </div>
@@ -161,32 +138,21 @@ export default function HomePage() {
           <div className="bg-primary text-on-primary p-8 md:p-12 flex flex-col md:flex-row gap-8 items-center">
             {/* Left Content */}
             <div className="flex-1">
-              <div className="inline-block px-3 py-1 border border-on-primary/30 font-label-mono text-label-mono mb-4 uppercase tracking-wider">
-                Proprietary Tool
+              <div className="font-label-mono text-[10px] text-on-primary/70 mb-4 uppercase tracking-widest">
+                DIAGNOSTIC PROTOCOL
               </div>
-              <h2 className="font-headline-lg text-headline-lg mb-4">
+              <h2 className="font-headline-lg text-[40px] md:text-[56px] leading-tight mb-6">
                 The Floxr Digital Audit™
               </h2>
-              <p className="font-body-md text-body-lg text-on-primary/70 mb-8 max-w-xl">
-                A rigorous, unvarnished review of your current tech stack, brand
-                coherence, and operational efficiency. Stop guessing where
-                you&apos;re losing money.
+              <p className="font-body-md text-[16px] text-on-primary/90 mb-8 max-w-xl leading-relaxed">
+                Stop guessing where your digital product is leaking revenue. We provide a rigorous, objective tear-down of your platform's architecture and UX.
               </p>
               <Link
                 href="/contact"
-                className="inline-block bg-on-primary text-primary font-label-mono text-label-mono uppercase px-8 py-4 hover:opacity-90 transition-opacity duration-300"
+                className="inline-block bg-on-primary text-primary font-label-mono text-[12px] uppercase px-8 py-4 hover:opacity-90 transition-opacity duration-300 w-full md:w-auto text-center"
               >
-                Request an Audit
+                REQUEST AN AUDIT
               </Link>
-            </div>
-
-            {/* Right Visual */}
-            <div className="flex-1 w-full h-64 md:h-96 relative border border-on-primary/20 overflow-hidden flex items-center justify-center group bg-on-primary/5">
-              {/* Grid pattern overlay */}
-              <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px]" />
-              <span className="material-symbols-outlined text-on-primary/20 text-[8rem] group-hover:scale-110 transition-transform duration-700 ease-out relative z-10">
-                search_insights
-              </span>
             </div>
           </div>
         </section>
@@ -203,9 +169,9 @@ export default function HomePage() {
           </div>
 
           {/* Case Study 1 — AmeerGlobal */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-24 items-center">
+          <div className="mb-24">
             {/* Browser Mockup */}
-            <div className="md:col-span-7 h-[400px] md:h-[500px] border border-outline-variant relative overflow-hidden bg-surface-alt flex flex-col">
+            <div className="w-full h-[300px] md:h-[500px] border border-outline-variant relative overflow-hidden bg-surface-alt flex flex-col mb-8">
               {/* Browser Chrome */}
               <div className="flex items-center gap-2 px-4 py-3 border-b border-outline-variant bg-surface-container-lowest">
                 <div className="flex gap-1.5">
@@ -234,57 +200,37 @@ export default function HomePage() {
             </div>
 
             {/* Case Details */}
-            <div className="md:col-span-5 md:pl-8">
-              <h3 className="font-headline-lg text-headline-md text-primary mb-3">
-                AmeerGlobal Study Abroad & Immigration Consultancy
+            <div className="md:px-8">
+              <h3 className="font-headline-lg text-[32px] md:text-[40px] font-bold text-primary mb-8">
+                AmeerGlobal Study Abroad
               </h3>
-              <div className="flex gap-2 mb-6 flex-wrap">
-                <span className="px-2 py-1 bg-surface-alt text-primary font-label-mono text-label-mono border border-outline-variant">
-                  Web Platform
-                </span>
-                <span className="px-2 py-1 bg-surface-alt text-primary font-label-mono text-label-mono border border-outline-variant">
-                  Full-Stack
-                </span>
-              </div>
               
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div className="border-l-2 border-outline-variant pl-4">
-                  <span className="font-label-mono text-label-mono text-secondary uppercase block mb-1">
-                    Problem
+                  <span className="font-label-mono text-[10px] text-secondary uppercase block mb-2 tracking-widest">
+                    PROBLEM
                   </span>
-                  <p className="font-body-md text-body-md text-primary">
-                    Outdated supply chain processes, scattered B2B communications, and poor inventory tracking hindering global scaling.
+                  <p className="font-body-md text-[14px] text-secondary leading-relaxed">
+                    Fragmented student application tracking, complex immigration paperwork, and inefficient client communication causing severe delays.
                   </p>
                 </div>
                 <div className="border-l-2 border-outline-variant pl-4">
-                  <span className="font-label-mono text-label-mono text-secondary uppercase block mb-1">
-                    Solution
+                  <span className="font-label-mono text-[10px] text-secondary uppercase block mb-2 tracking-widest">
+                    SOLUTION
                   </span>
-                  <p className="font-body-md text-body-md text-primary">
-                    Designed a centralized digital presence with streamlined B2B intake forms and a unified logistics brand identity.
+                  <p className="font-body-md text-[14px] text-secondary leading-relaxed">
+                    Developed a comprehensive digital platform with unified document management and real-time application status tracking.
                   </p>
                 </div>
-                <div className="border-l-2 border-primary pl-4 bg-surface-alt p-3">
-                  <span className="font-label-mono text-label-mono text-primary uppercase block mb-1">
-                    Result
+                <div className="border-l-2 border-primary pl-4">
+                  <span className="font-label-mono text-[10px] text-primary uppercase block mb-2 tracking-widest">
+                    RESULT
                   </span>
-                  <p className="font-body-md text-body-md text-primary font-bold">
-                    Increased wholesale lead capture by 40% and improved inventory transparency for import/export partners.
+                  <p className="font-body-md text-[14px] text-primary font-bold">
+                    Reduced application processing time by 40% and increased successful student placements by 2.5x.
                   </p>
                 </div>
               </div>
-              
-              <a
-                href="https://ameerglobal.ca"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-6 font-label-mono text-label-mono text-primary uppercase hover:opacity-70 transition-opacity"
-              >
-                View Live
-                <span className="material-symbols-outlined text-sm">
-                  arrow_outward
-                </span>
-              </a>
             </div>
           </div>
 
@@ -378,90 +324,42 @@ export default function HomePage() {
 
         {/* ─── 6. THE LAB ─── */}
         <section id="lab" className="py-section-gap border-t border-outline-variant">
-          <div className="mb-8 flex justify-between items-end">
-            <h2 className="font-headline-lg text-headline-lg text-primary">
+          <div className="mb-8">
+            <h2 className="font-headline-lg text-[40px] md:text-[56px] leading-tight mb-4 text-primary">
               The Lab
             </h2>
-            <span className="font-label-mono text-label-mono text-secondary uppercase tracking-widest hidden md:block">
-              Insights &amp; Teardowns
-            </span>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter border-t border-l border-outline-variant">
+          <div className="flex flex-col border-t border-outline-variant">
             {/* Article 1 */}
             <Link
-              className="border-b border-r border-outline-variant p-stack-md block hover:bg-surface-alt transition-colors group"
-              href="/"
+              className="border-b border-outline-variant py-8 block group"
+              href="/lab"
             >
-              <span className="font-label-mono text-label-mono text-secondary uppercase mb-3 block">
-                UX Teardown
+              <span className="font-label-mono text-[10px] bg-surface-alt px-3 py-1 text-secondary uppercase mb-4 inline-block tracking-widest">
+                LATEST
               </span>
-              <h3 className="font-body-md text-body-lg text-primary mb-8 group-hover:underline underline-offset-4">
-                Why major SaaS platforms fail at complex navigation.
+              <h3 className="font-headline-lg text-[24px] md:text-[32px] font-bold text-primary mb-4 group-hover:opacity-80 transition-opacity">
+                The Death of Decorative UI
               </h3>
-              <div className="flex justify-between items-center text-secondary group-hover:text-primary transition-colors">
-                <span className="font-label-mono text-label-mono">Read</span>
-                <span className="material-symbols-outlined text-sm">
-                  arrow_forward
-                </span>
-              </div>
+              <p className="font-body-md text-[14px] text-secondary leading-relaxed">
+                Why pure structural design outlasts trend cycles and drives higher enterprise value.
+              </p>
             </Link>
 
             {/* Article 2 */}
             <Link
-              className="border-b border-r border-outline-variant p-stack-md block hover:bg-surface-alt transition-colors group"
-              href="/"
+              className="border-b border-outline-variant py-8 block group"
+              href="/lab"
             >
-              <span className="font-label-mono text-label-mono text-secondary uppercase mb-3 block">
-                Engineering
+              <span className="font-label-mono text-[10px] bg-surface-alt px-3 py-1 text-secondary uppercase mb-4 inline-block tracking-widest">
+                TECHNICAL
               </span>
-              <h3 className="font-body-md text-body-lg text-primary mb-8 group-hover:underline underline-offset-4">
-                Implementing AI: A pragmatic framework without the hype.
+              <h3 className="font-headline-lg text-[24px] md:text-[32px] font-bold text-primary mb-4 group-hover:opacity-80 transition-opacity">
+                Micro-Frontends in Practice
               </h3>
-              <div className="flex justify-between items-center text-secondary group-hover:text-primary transition-colors">
-                <span className="font-label-mono text-label-mono">Read</span>
-                <span className="material-symbols-outlined text-sm">
-                  arrow_forward
-                </span>
-              </div>
-            </Link>
-
-            {/* Article 3 */}
-            <Link
-              className="border-b border-r border-outline-variant p-stack-md block hover:bg-surface-alt transition-colors group"
-              href="/"
-            >
-              <span className="font-label-mono text-label-mono text-secondary uppercase mb-3 block">
-                Design Systems
-              </span>
-              <h3 className="font-body-md text-body-lg text-primary mb-8 group-hover:underline underline-offset-4">
-                The ROI of rigid constraints in enterprise product design.
-              </h3>
-              <div className="flex justify-between items-center text-secondary group-hover:text-primary transition-colors">
-                <span className="font-label-mono text-label-mono">Read</span>
-                <span className="material-symbols-outlined text-sm">
-                  arrow_forward
-                </span>
-              </div>
-            </Link>
-
-            {/* Article 4 */}
-            <Link
-              className="border-b border-r border-outline-variant p-stack-md block hover:bg-surface-alt transition-colors group"
-              href="/"
-            >
-              <span className="font-label-mono text-label-mono text-secondary uppercase mb-3 block">
-                View All
-              </span>
-              <h3 className="font-body-md text-body-lg text-primary mb-8 group-hover:underline underline-offset-4">
-                Explore the complete archive of technical essays.
-              </h3>
-              <div className="flex justify-between items-center text-secondary group-hover:text-primary transition-colors">
-                <span className="font-label-mono text-label-mono">Archive</span>
-                <span className="material-symbols-outlined text-sm">
-                  arrow_forward
-                </span>
-              </div>
+              <p className="font-body-md text-[14px] text-secondary leading-relaxed">
+                Architectural strategies for scaling development teams without increasing technical debt.
+              </p>
             </Link>
           </div>
         </section>

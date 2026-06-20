@@ -6,8 +6,8 @@ import Navbar from '@/components/Navbar';
 const FEATURED_PROJECTS = [
   {
     name: 'AmeerGlobal',
-    category: 'Global Trading, Imports & Exports',
-    tagline: 'End-to-end B2B trading and logistics platform for international supply chain management.',
+    category: 'Study Abroad & Immigration',
+    tagline: 'Comprehensive digital platform with unified document management and real-time application status tracking.',
     stack: ['Next.js', 'Node.js', 'PostgreSQL'],
     year: '2024',
     url: 'https://ameerglobal.ca',
@@ -61,7 +61,7 @@ export default function WorkPage() {
       {/* ── Top Nav ── */}
       <Navbar />
 
-      <main className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin bg-background min-h-screen">
+      <main className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin bg-background min-h-screen pt-[80px] md:pt-[100px]">
         {/* ── Page Header ── */}
         <section className="pt-[10rem] pb-section-gap flex flex-col items-start">
           <span className="font-label-mono text-label-mono text-secondary uppercase tracking-widest mb-stack-md">

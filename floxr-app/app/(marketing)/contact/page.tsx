@@ -64,7 +64,7 @@ export default function ContactPage() {
     <>
       <Navbar />
 
-      <main className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin py-section-gap flex flex-col lg:flex-row gap-gutter pt-[180px]">
+      <main className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin py-section-gap flex flex-col lg:flex-row gap-gutter pt-[80px] md:pt-[100px]">
         
         {/* Left Column: Copy & Info */}
         <div className="flex-1 flex flex-col">
