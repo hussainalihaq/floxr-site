@@ -24,7 +24,7 @@ export default function HomePage() {
 
       <main className="max-w-[1440px] mx-auto px-6 md:px-12 pt-[72px] md:pt-[80px]">
         {/* ─── 2. HERO SECTION ─── */}
-        <section className="relative min-h-[60vh] md:min-h-[70vh] flex flex-col justify-center pt-0 pb-12 md:py-section-gap overflow-hidden">
+        <section className="relative min-h-[calc(100svh-72px)] md:min-h-[70vh] flex flex-col justify-center pt-0 pb-12 md:py-section-gap overflow-hidden">
           {/* Abstract background pattern to feel less empty */}
           <div className="absolute inset-0 pointer-events-none -z-10">
             <BackgroundAnimation />

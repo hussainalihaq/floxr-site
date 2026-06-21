@@ -68,13 +68,6 @@ export default function ContactPage() {
         
         {/* Left Column: Copy & Info */}
         <div className="flex-1 flex flex-col">
-          <div className="flex items-center gap-3 mb-stack-lg">
-            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="font-label-mono text-label-mono uppercase tracking-widest text-primary bg-surface-alt border border-outline-variant px-3 py-1 rounded-sm">
-              Accepting New Projects
-            </span>
-          </div>
-
           <h1 className="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg font-bold text-primary leading-tight tracking-tight mb-stack-lg">
             Let's build<br />the future.
           </h1>
