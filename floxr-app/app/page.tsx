@@ -458,7 +458,7 @@ export default function HomePage() {
               money.
             </p>
             <Link
-              href="/contact"
+              href="/audit"
               className="inline-block w-full text-center bg-primary text-on-primary font-label-mono text-label-mono uppercase px-8 py-4 hover:opacity-90 transition-opacity duration-300"
               onClick={() => setShowPopup(false)}
             >
