@@ -112,6 +112,7 @@ export default function LabPage() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter px-6 md:px-12 py-section-gap max-w-[1440px] mx-auto items-start">
           <div className="md:col-span-6 flex flex-col space-y-8">
             <img src="/floxr-logo.svg" alt="FLOXR" className="h-8 md:h-12 w-auto object-contain object-left mb-2 brightness-0 invert" />
+            <div className="font-body-sm text-sm text-left text-[#888888] mb-1">hello@floxr.co</div>
             <div className="font-body-sm text-sm text-left text-[#888888]">© 2026 FLOXR built in house.</div>
           </div>
           <div className="md:col-span-6 flex justify-start md:justify-end mt-12 md:mt-0">

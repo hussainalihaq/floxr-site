@@ -171,7 +171,7 @@ export default function HomePage() {
           {/* Case Study 1 — AmeerGlobal */}
           <div className="mb-24">
             {/* Browser Mockup */}
-            <div className="w-full h-[300px] md:h-[500px] border border-outline-variant relative overflow-hidden bg-surface-alt flex flex-col mb-8">
+            <a href="https://ameerglobal.ca" target="_blank" rel="noopener noreferrer" className="w-full h-[300px] md:h-[500px] border border-outline-variant relative overflow-hidden bg-surface-alt flex flex-col mb-8 hover:opacity-90 transition-opacity">
               {/* Browser Chrome */}
               <div className="flex items-center gap-2 px-4 py-3 border-b border-outline-variant bg-surface-container-lowest">
                 <div className="flex gap-1.5">
@@ -197,12 +197,12 @@ export default function HomePage() {
                   </span>
                 </div>
               </div>
-            </div>
+            </a>
 
             {/* Case Details */}
             <div className="md:px-8">
               <h3 className="font-headline-lg text-[32px] md:text-[40px] font-bold text-primary mb-8">
-                AmeerGlobal Study Abroad
+                AmeerGlobal Trading & Imports
               </h3>
               
               <div className="space-y-6">
@@ -211,7 +211,7 @@ export default function HomePage() {
                     PROBLEM
                   </span>
                   <p className="font-body-md text-[14px] text-secondary leading-relaxed">
-                    Fragmented student application tracking, complex immigration paperwork, and inefficient client communication causing severe delays.
+                    A premium international trading company based in Toronto, specializing in import and export partnerships across commodities and logistics.
                   </p>
                 </div>
                 <div className="border-l-2 border-outline-variant pl-4">
@@ -219,7 +219,7 @@ export default function HomePage() {
                     SOLUTION
                   </span>
                   <p className="font-body-md text-[14px] text-secondary leading-relaxed">
-                    Developed a comprehensive digital platform with unified document management and real-time application status tracking.
+                    Built a modern digital storefront and operational platform to streamline private-label supply and global commodity trading.
                   </p>
                 </div>
                 <div className="border-l-2 border-primary pl-4">
@@ -227,7 +227,7 @@ export default function HomePage() {
                     RESULT
                   </span>
                   <p className="font-body-md text-[14px] text-primary font-bold">
-                    Reduced application processing time by 40% and increased successful student placements by 2.5x.
+                    Elevated brand positioning and enabled seamless sourcing of premium goods globally.
                   </p>
                 </div>
               </div>
@@ -291,8 +291,7 @@ export default function HomePage() {
               </a>
             </div>
 
-            {/* Browser Mockup */}
-            <div className="md:col-span-7 h-[400px] md:h-[500px] border border-outline-variant relative overflow-hidden bg-surface-alt flex flex-col order-1 md:order-2">
+            <a href="https://juriq.app" target="_blank" rel="noopener noreferrer" className="md:col-span-7 h-[400px] md:h-[500px] border border-outline-variant relative overflow-hidden bg-surface-alt flex flex-col order-1 md:order-2 hover:opacity-90 transition-opacity">
               {/* Browser Chrome */}
               <div className="flex items-center gap-2 px-4 py-3 border-b border-outline-variant bg-surface-container-lowest">
                 <div className="flex gap-1.5">
@@ -318,7 +317,7 @@ export default function HomePage() {
                   </span>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
         </section>
 
@@ -373,7 +372,7 @@ export default function HomePage() {
             <img
               src="/floxr-logo.svg"
               alt="FLOXR"
-              className="h-10 md:h-12 brightness-0 invert mb-4"
+              className="h-8 md:h-10 brightness-0 invert mb-4"
             />
             <p className="font-body-md text-body-md text-on-primary/70 max-w-sm">
               © 2026 FLOXR built in house.
