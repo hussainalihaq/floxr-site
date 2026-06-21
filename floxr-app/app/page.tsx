@@ -149,7 +149,7 @@ export default function HomePage() {
                 Stop guessing where your digital product is leaking revenue. We provide a rigorous, objective tear-down of your platform's architecture and UX.
               </p>
               <Link
-                href="/contact"
+                href="/audit"
                 className="inline-block bg-on-primary text-primary font-label-mono text-[12px] uppercase px-8 py-4 hover:opacity-90 transition-opacity duration-300 w-full md:w-auto text-center"
               >
                 REQUEST AN AUDIT
