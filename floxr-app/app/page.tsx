@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
+import BackgroundAnimation from '@/components/BackgroundAnimation';
 
 export default function HomePage() {
   const [showPopup, setShowPopup] = useState(false);
@@ -23,13 +24,13 @@ export default function HomePage() {
 
       <main className="max-w-[1440px] mx-auto px-6 md:px-12 pt-[72px] md:pt-[80px]">
         {/* ─── 2. HERO SECTION ─── */}
-        <section className="relative min-h-[60vh] md:min-h-[80vh] flex flex-col justify-center pt-0 pb-12 md:py-section-gap overflow-hidden">
+        <section className="relative min-h-[60vh] md:min-h-[70vh] flex flex-col justify-center pt-0 pb-12 md:py-section-gap overflow-hidden">
           {/* Abstract background pattern to feel less empty */}
-          <div className="absolute inset-0 pointer-events-none opacity-20 -z-10">
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)]"></div>
+          <div className="absolute inset-0 pointer-events-none -z-10">
+            <BackgroundAnimation />
           </div>
           
-          <h1 className="font-headline-lg text-[40px] md:text-[80px] text-primary max-w-4xl mb-6 md:mb-8 leading-tight tracking-tight mt-8 md:mt-0">
+          <h1 className="font-headline-lg text-[36px] md:text-[56px] text-primary max-w-4xl mb-6 md:mb-8 leading-[1.1] tracking-tight mt-8 md:mt-0">
             We diagnose what is broken, design what should exist, and build what
             moves businesses forward.
           </h1>
