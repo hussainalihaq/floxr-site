@@ -115,9 +115,9 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             <ul className="flex flex-col md:flex-row md:space-x-12 space-y-4 md:space-y-0">
               <li><Link className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="/about">About</Link></li>
               <li><Link className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="/contact">Contact</Link></li>
-              <li><Link className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="/">LinkedIn</Link></li>
-              <li><Link className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="/">Privacy</Link></li>
-              <li><Link className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="/">Instagram</Link></li>
+              <li><Link className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="https://linkedin.com/company/floxr">LinkedIn</Link></li>
+              <li><Link className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="/privacy">Privacy</Link></li>
+              <li><Link className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="https://instagram.com/floxr.co">Instagram</Link></li>
             </ul>
           </div>
         </div>

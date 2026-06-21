@@ -11,7 +11,7 @@
   <text x="15" y="55" font-family="Inter, sans-serif" font-weight="800" font-size="48" fill="#ffffff" letter-spacing="2">fl</text>
   
   <!-- Gear icon for 'o' - rotating in place like a wheel -->
-  <g transform="translate(60, 42)">
+  <g transform="translate(65, 42)">
     <!-- Rotating group for gear -->
     <g style="animation: rotate-gear 6s linear infinite; transform-origin: 0px 0px;">
       <!-- Gear -->
@@ -33,5 +33,5 @@
   </g>
   
   <!-- Text: xr -->
-  <text x="75" y="55" font-family="Inter, sans-serif" font-weight="800" font-size="48" fill="#ffffff" letter-spacing="2">xr</text>
+  <text x="80" y="55" font-family="Inter, sans-serif" font-weight="800" font-size="48" fill="#ffffff" letter-spacing="2">xr</text>
 </svg>

@@ -193,8 +193,8 @@ export default function AuditPage() {
           </div>
           <div className="md:col-span-6 flex justify-start md:justify-end mt-stack-lg md:mt-0">
             <ul className="flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0">
-              <li><a className="font-body-lg text-body-lg text-[#aaaaaa] hover:text-white transition-opacity cursor-pointer" href="/">LinkedIn</a></li>
-              <li><a className="font-body-lg text-body-lg text-[#aaaaaa] hover:text-white transition-opacity cursor-pointer" href="/">Instagram</a></li>
+              <li><a className="font-body-lg text-body-lg text-[#aaaaaa] hover:text-white transition-opacity cursor-pointer" href="https://linkedin.com/company/floxr">LinkedIn</a></li>
+              <li><a className="font-body-lg text-body-lg text-[#aaaaaa] hover:text-white transition-opacity cursor-pointer" href="https://instagram.com/floxr.co">Instagram</a></li>
               <li><Link className="font-body-lg text-body-lg text-[#aaaaaa] hover:text-white transition-opacity cursor-pointer" href="/contact">Contact</Link></li>
               <li><a className="font-body-lg text-body-lg text-[#aaaaaa] hover:text-white transition-opacity cursor-pointer" href="/">Privacy</a></li>
             </ul>

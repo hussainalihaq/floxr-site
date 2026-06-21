@@ -387,7 +387,7 @@ export default function HomePage() {
                 Social
               </span>
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/company/floxr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-on-primary/70 hover:text-on-primary transition-colors"
@@ -395,7 +395,7 @@ export default function HomePage() {
                 LinkedIn
               </a>
               <a
-                href="https://instagram.com"
+                href="https://instagram.com/floxr.co"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-on-primary/70 hover:text-on-primary transition-colors"
@@ -416,7 +416,7 @@ export default function HomePage() {
                 Contact
               </Link>
               <Link
-                href="/"
+                href="/privacy"
                 className="text-on-primary/70 hover:text-on-primary transition-colors"
               >
                 Privacy

@@ -232,7 +232,7 @@ export default function WorkPage() {
           <div className="col-span-12 md:col-span-6 flex flex-col md:flex-row gap-stack-lg md:justify-end">
             <div className="flex flex-col gap-4 font-body-lg text-body-lg text-left">
               <span className="font-label-mono text-label-mono text-on-primary/50 uppercase">Social</span>
-              <Link className="text-on-primary/70 hover:opacity-80 transition-opacity" href="/">LinkedIn</Link>
+              <Link className="text-on-primary/70 hover:opacity-80 transition-opacity" href="/privacy">LinkedIn</Link>
               <Link className="text-on-primary/70 hover:opacity-80 transition-opacity" href="/">Instagram</Link>
             </div>
             <div className="flex flex-col gap-4 font-body-lg text-body-lg text-left">

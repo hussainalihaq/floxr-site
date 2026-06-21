@@ -180,8 +180,8 @@ export default function AboutPage() {
           <div className="col-span-12 md:col-span-6 flex flex-col md:flex-row gap-stack-lg md:justify-end">
             <div className="flex flex-col gap-4 font-body-lg text-body-lg text-left">
               <span className="font-label-mono text-label-mono text-on-primary/50 uppercase">Social</span>
-              <a className="text-on-primary/70 hover:opacity-80 transition-opacity" href="/">LinkedIn</a>
-              <a className="text-on-primary/70 hover:opacity-80 transition-opacity" href="/">Instagram</a>
+              <a className="text-on-primary/70 hover:opacity-80 transition-opacity" href="https://linkedin.com/company/floxr">LinkedIn</a>
+              <a className="text-on-primary/70 hover:opacity-80 transition-opacity" href="https://instagram.com/floxr.co">Instagram</a>
             </div>
             <div className="flex flex-col gap-4 font-body-lg text-body-lg text-left">
               <span className="font-label-mono text-label-mono text-on-primary/50 uppercase">Legal</span>
