@@ -2,8 +2,44 @@
 
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
+import { useState } from 'react';
 
 export default function AuditPage() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    objective: 'UX Modernization'
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setErrorMsg('');
+
+    try {
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://backend-production-19db.up.railway.app';
+      const response = await fetch(`${backendUrl}/audit`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        throw new Error('Submission failed');
+      }
+
+      setIsSuccess(true);
+    } catch (err) {
+      setErrorMsg('An error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#111111] text-white font-body-md antialiased selection:bg-white selection:text-black">
       <Navbar />
@@ -148,26 +184,40 @@ export default function AuditPage() {
                   Provide preliminary details regarding your current digital infrastructure. A senior architect will review your submission and contact you within 24 hours.
               </p>
             </div>
-            <form className="space-y-stack-md">
+            {isSuccess ? (
+              <div className="bg-[#ddffdd] border border-[#00aa00] p-8 flex flex-col items-center justify-center text-center">
+                <span className="material-symbols-outlined text-[48px] text-[#00aa00] mb-4">check_circle</span>
+                <h3 className="font-headline-md text-headline-md text-black font-bold mb-2">Request Received</h3>
+                <p className="font-body-md text-body-md text-[#555555]">
+                  Our architects are reviewing your details. We will be in touch within 24 hours to schedule your audit.
+                </p>
+              </div>
+            ) : (
+            <form onSubmit={handleSubmit} className="space-y-stack-md">
+              {errorMsg && (
+                <div className="bg-[#ffdddd] text-[#ff0000] p-4 text-center font-body-md">
+                  {errorMsg}
+                </div>
+              )}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
                 <div>
                   <label className="block font-label-mono text-label-mono text-[#555555] mb-2 uppercase">First Name</label>
-                  <input className="w-full bg-transparent border-b border-[#aaaaaa] py-2 font-body-md text-black focus:border-black outline-none transition-colors" placeholder="Jane" type="text" />
+                  <input required value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} className="w-full bg-transparent border-b border-[#aaaaaa] py-2 font-body-md text-black focus:border-black outline-none transition-colors" placeholder="Jane" type="text" />
                 </div>
                 <div>
                   <label className="block font-label-mono text-label-mono text-[#555555] mb-2 uppercase">Last Name</label>
-                  <input className="w-full bg-transparent border-b border-[#aaaaaa] py-2 font-body-md text-black focus:border-black outline-none transition-colors" placeholder="Doe" type="text" />
+                  <input required value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} className="w-full bg-transparent border-b border-[#aaaaaa] py-2 font-body-md text-black focus:border-black outline-none transition-colors" placeholder="Doe" type="text" />
                 </div>
               </div>
               
               <div>
                 <label className="block font-label-mono text-label-mono text-[#555555] mb-2 uppercase">Corporate Email</label>
-                <input className="w-full bg-transparent border-b border-[#aaaaaa] py-2 font-body-md text-black focus:border-black outline-none transition-colors" placeholder="jane@company.com" type="email" />
+                <input required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full bg-transparent border-b border-[#aaaaaa] py-2 font-body-md text-black focus:border-black outline-none transition-colors" placeholder="jane@company.com" type="email" />
               </div>
               
               <div>
                 <label className="block font-label-mono text-label-mono text-[#555555] mb-2 uppercase">Primary Objective</label>
-                <select className="w-full bg-transparent border-b border-[#aaaaaa] py-2 font-body-md text-black focus:border-black outline-none transition-colors appearance-none rounded-none">
+                <select required value={formData.objective} onChange={(e) => setFormData({...formData, objective: e.target.value})} className="w-full bg-transparent border-b border-[#aaaaaa] py-2 font-body-md text-black focus:border-black outline-none transition-colors appearance-none rounded-none">
                   <option>UX Modernization</option>
                   <option>Tech Stack Consolidation</option>
                   <option>Brand Realignment</option>
@@ -176,11 +226,12 @@ export default function AuditPage() {
               </div>
               
               <div className="pt-stack-md">
-                <button className="bg-black text-white font-label-mono text-label-mono uppercase px-8 py-4 w-full border border-black hover:bg-white hover:text-black transition-colors duration-300" type="submit">
-                    Submit Request
+                <button disabled={isSubmitting} className="bg-black text-white font-label-mono text-label-mono uppercase px-8 py-4 w-full border border-black hover:bg-white hover:text-black disabled:opacity-50 transition-colors duration-300" type="submit">
+                    {isSubmitting ? 'SUBMITTING...' : 'Submit Request'}
                 </button>
               </div>
             </form>
+            )}
           </div>
         </section>
       </main>

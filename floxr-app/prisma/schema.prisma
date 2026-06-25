@@ -358,3 +358,13 @@ model ContactSubmission {
   scope     String
   createdAt DateTime @default(now())
 }
+
+// Audit Requests
+model AuditSubmission {
+  id        String   @id @default(cuid())
+  firstName String
+  lastName  String
+  email     String
+  objective String
+  createdAt DateTime @default(now())
+}

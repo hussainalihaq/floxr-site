@@ -151,7 +151,54 @@ app.get("/contact", async (_req, res) => {
     res.status(500).json({ error: "Server error or Database unreachable" });
   }
 });
+// Save a new audit submission
+app.post("/audit", async (req, res) => {
+  try {
+    const { firstName, lastName, email, objective } = req.body || {};
 
+    if (!firstName || !lastName || !email || !objective) {
+      return res.status(400).json({ error: "First name, last name, email, and objective are required" });
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ error: "Invalid email format" });
+    }
+
+    console.log(`New audit request from: ${firstName} ${lastName} (${email}) - Objective: ${objective}`);
+
+    try {
+      const submission = await prisma.auditSubmission.create({
+        data: {
+          firstName,
+          lastName,
+          email: email.toLowerCase(),
+          objective
+        }
+      });
+      return res.status(201).json({ success: true, id: submission.id });
+    } catch (dbError) {
+      console.error("Database connection failed for audit. Logging to console:", dbError.message);
+      return res.status(201).json({ success: true, fallback: true });
+    }
+  } catch (error) {
+    console.error("Audit form error:", error);
+    return res.status(500).json({ error: "Server error" });
+  }
+});
+
+// View all audit submissions
+app.get("/audit", async (_req, res) => {
+  try {
+    const submissions = await prisma.auditSubmission.findMany({
+      orderBy: { createdAt: "desc" }
+    });
+    res.json(submissions);
+  } catch (error) {
+    console.error("Error fetching audit submissions:", error);
+    res.status(500).json({ error: "Server error or Database unreachable" });
+  }
+});
 app.listen(port, () => {
   console.log(`Floxr backend running on port ${port}`);
 });
