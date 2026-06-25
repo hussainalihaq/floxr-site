@@ -348,3 +348,13 @@ model EquipmentAssignment {
   @@index([equipmentId])
   @@index([employeeId])
 }
+
+// Contact Form Submissions
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  budget    String?
+  scope     String
+  createdAt DateTime @default(now())
+}

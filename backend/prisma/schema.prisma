@@ -50,27 +50,57 @@ model Department {
 
 // Employee
 model Employee {
-  id            String         @id @default(cuid())
-  email         String         @unique
-  firstName     String
-  lastName      String
-  phone         String?
-  role          String?
-  departmentId  String?
-  department    Department?    @relation(fields: [departmentId], references: [id])
-  companyId     String
-  company       Company        @relation(fields: [companyId], references: [id], onDelete: Cascade)
-  salary        Decimal?
-  hourlyRate    Decimal?
-  employmentType String        @default("FULL_TIME") // FULL_TIME, PART_TIME, CONTRACT
-  startDate     DateTime
-  endDate       DateTime?
-  status        String         @default("ACTIVE") // ACTIVE, INACTIVE, TERMINATED
-  timesheets    Timesheet[]
-  leaveRequests LeaveRequest[]
-  payrolls      Payroll[]
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @updatedAt
+  id             String         @id @default(cuid())
+  email          String         @unique
+  firstName      String
+  lastName       String
+  phone          String?
+  whatsappNumber String?        // For WhatsApp notifications
+  personalEmail  String?
+  
+  // Job Details
+  jobTitle       String?
+  departmentId   String?
+  department     Department?    @relation(fields: [departmentId], references: [id])
+  managerId      String?        // Reference to another Employee
+  
+  // Employment
+  employmentType String         @default("FULL_TIME") // FULL_TIME, PART_TIME, CONTRACT
+  startDate      DateTime
+  endDate        DateTime?      // Last working day (for offboarding)
+  status         String         @default("ACTIVE") // ACTIVE, ONBOARDING, OFFBOARDING, TERMINATED
+  
+  // Onboarding
+  onboardingStatus   String     @default("NOT_STARTED") // NOT_STARTED, IN_PROGRESS, COMPLETED
+  onboardingProgress Int        @default(0) // 0-100 percentage
+  
+  // Local Compliance (South Asia)
+  taxId          String?        // NTN (Pakistan) / PAN (India)
+  taxIdType      String?        // NTN, PAN, CNIC, AADHAAR, etc.
+  
+  // Salary
+  salary         Decimal?
+  hourlyRate     Decimal?
+  currency       String         @default("PKR") // PKR, INR, USD, etc.
+  
+  // Company
+  companyId      String
+  company        Company        @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  
+  // Relations
+  timesheets     Timesheet[]
+  leaveRequests  LeaveRequest[]
+  payrolls       Payroll[]
+  documents      DocumentRequest[]
+  equipment      EquipmentAssignment[]
+  
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  
+  @@index([companyId])
+  @@index([departmentId])
+  @@index([status])
+  @@index([onboardingStatus])
 }
 
 // Time Tracking
@@ -118,6 +148,47 @@ model Payroll {
   paidAt          DateTime?
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+}
+
+// Payroll Consultants (Third-party access)
+model PayrollConsultant {
+  id          String   @id @default(cuid())
+  email       String
+  name        String?
+  accessToken String   @unique
+  permissions String   @default("VIEW_ONLY") // VIEW_ONLY, EXPORT
+  status      String   @default("ACTIVE") // ACTIVE, REVOKED
+  invitedBy   String?  // User ID who invited
+  expiresAt   DateTime?
+  lastAccess  DateTime?
+  
+  companyId   String
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([companyId])
+  @@index([accessToken])
+  @@unique([email, companyId])
+}
+
+// Payroll Audit Log
+model PayrollAuditLog {
+  id          String   @id @default(cuid())
+  action      String   // PROCESS, MARK_PAID, EXPORT_CSV, CONSULTANT_VIEW
+  details     Json?    // Additional context (period, count, etc.)
+  userId      String?  // User who performed action
+  consultantId String? // If action by consultant
+  ipAddress   String?
+  userAgent   String?
+  
+  companyId   String
+  
+  createdAt   DateTime @default(now())
+  
+  @@index([companyId])
+  @@index([action])
+  @@index([createdAt])
 }
 
 // Waitlist (for your marketing site)
@@ -194,4 +265,96 @@ model ActivityLog {
   
   @@index([userId])
   @@index([createdAt])
+}
+
+// Document Requests (Phase 3)
+model DocumentRequest {
+  id           String    @id @default(cuid())
+  employeeId   String
+  employee     Employee  @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  
+  documentType String    // ID_CARD, TAX_FORM, DEGREE, BANK, etc.
+  title        String
+  description  String?
+  isRequired   Boolean   @default(true)
+  dueDate      DateTime?
+  
+  // Status
+  status       String    @default("PENDING") // PENDING, SUBMITTED, VERIFIED, REJECTED
+  
+  // Chasing Automation
+  remindersSent Int      @default(0)
+  lastReminder  DateTime?
+  
+  // Submitted Document
+  fileUrl      String?
+  fileName     String?
+  fileSize     Int?
+  submittedAt  DateTime?
+  
+  // Verification
+  verifiedBy   String?
+  verifiedAt   DateTime?
+  rejectionReason String?
+  notes        String?
+  
+  companyId    String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  
+  @@index([employeeId])
+  @@index([companyId])
+  @@index([status])
+}
+
+// Equipment Inventory (Phase 5)
+model Equipment {
+  id           String    @id @default(cuid())
+  name         String    // "MacBook Pro 14"
+  type         String    // LAPTOP, PHONE, MONITOR, ACCESS_CARD, OTHER
+  serialNumber String?
+  assetTag     String?   // Company asset ID
+  
+  status       String    @default("AVAILABLE") // AVAILABLE, ASSIGNED, MAINTENANCE, RETIRED
+  condition    String    @default("GOOD") // NEW, GOOD, FAIR, POOR
+  purchaseDate DateTime?
+  purchasePrice Decimal?
+  notes        String?
+  
+  companyId    String
+  assignments  EquipmentAssignment[]
+  
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  
+  @@index([companyId])
+  @@index([status])
+}
+
+// Equipment Assignment History
+model EquipmentAssignment {
+  id           String    @id @default(cuid())
+  equipmentId  String
+  equipment    Equipment @relation(fields: [equipmentId], references: [id], onDelete: Cascade)
+  employeeId   String
+  employee     Employee  @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  
+  assignedAt   DateTime  @default(now())
+  returnedAt   DateTime?
+  returnReason String?   // OFFBOARDING, UPGRADE, REPAIR, OTHER
+  conditionOnReturn String?
+  notes        String?
+  
+  @@index([equipmentId])
+  @@index([employeeId])
+}
+
+// Contact Form Submissions
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  budget    String?
+  scope     String
+  createdAt DateTime @default(now())
 }
