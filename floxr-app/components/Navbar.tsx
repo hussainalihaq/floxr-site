@@ -3,7 +3,15 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
+
+const NAV_LINKS = [
+  { href: '/work', label: 'Work' },
+  { href: '/capabilities', label: 'Capabilities' },
+  { href: '/audit', label: 'Audit' },
+  { href: '/lab', label: 'Lab' },
+  { href: '/about', label: 'About' },
+];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,103 +19,75 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 8);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Prevent scrolling when mobile menu is open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    document.body.style.overflow = isOpen ? 'hidden' : 'unset';
     return () => {
       document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
 
-  const navLinks = [
-    { href: '/work', label: 'Work' },
-    { href: '/audit', label: 'Audit' },
-    { href: '/capabilities', label: 'Capabilities' },
-    { href: '/lab', label: 'Lab' },
-    { href: '/contact', label: 'Contact' },
-  ];
-
   return (
     <>
       <style>{`
-        @keyframes slideUpFade {
-          from { opacity: 0; transform: translateY(20px); }
+        @keyframes navLinkIn {
+          from { opacity: 0; transform: translateY(28px); }
           to { opacity: 1; transform: translateY(0); }
         }
         .mobile-link-animate {
           opacity: 0;
-          animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          animation: navLinkIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
       `}</style>
-      <nav 
-        className={`fixed z-[100] transition-all duration-300 ${
-          isScrolled 
-            ? 'top-4 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:w-max rounded-full bg-background/80 backdrop-blur-xl border border-outline-variant/60 shadow-[0_4px_24px_rgba(0,0,0,0.04)]' 
-            : 'top-0 left-0 w-full bg-background border-b border-outline-variant/30'
+
+      <nav
+        className={`fixed top-0 left-0 w-full z-[100] transition-shadow duration-300 ${
+          isScrolled ? 'shadow-[0_1px_0_var(--color-line),0_8px_32px_rgba(18,18,20,0.05)]' : 'shadow-[0_1px_0_var(--color-line)]'
         }`}
+        style={{ backgroundColor: 'rgba(250,249,245,0.88)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)' }}
       >
-        <div className={`flex justify-between items-center mx-auto transition-all duration-300 ${
-          isScrolled 
-            ? 'px-5 py-2.5 gap-6 md:gap-12 lg:gap-16' 
-            : 'px-6 md:px-12 py-4 w-full max-w-[1440px]'
-        }`}>
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10 h-[72px] md:h-[80px] flex items-center justify-between gap-8">
           {/* Logo */}
-          <Link href="/" onClick={() => setIsOpen(false)} className="flex-shrink-0">
-            <img 
-              src="/floxr-logo.svg" 
-              alt="FLOXR" 
-              className={`w-auto transition-all duration-300 ${isScrolled ? 'h-6' : 'h-7 md:h-8'}`} 
-            />
+          <Link href="/" onClick={() => setIsOpen(false)} className="flex-shrink-0" aria-label="FLOXR home">
+            <img src="/floxr-logo.svg" alt="FLOXR" className="h-7 md:h-8 w-auto" />
           </Link>
 
-          {/* Desktop Nav Links */}
-          <div className={`hidden md:flex items-center text-[12px] font-medium uppercase tracking-widest transition-all duration-300 ${isScrolled ? 'gap-6' : 'gap-10'}`}>
-            {navLinks.map((link) => {
+          {/* Desktop Links */}
+          <div className="hidden md:flex items-center gap-9">
+            {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href || pathname?.startsWith(`${link.href}/`);
               return (
-                <Link 
+                <Link
                   key={link.href}
-                  className={`relative py-1 transition-colors duration-300 ${
-                    isActive 
-                      ? 'text-primary font-bold' 
-                      : 'text-secondary hover:text-primary'
-                  }`} 
                   href={link.href}
+                  className={`eyebrow relative py-2 transition-colors duration-300 ${
+                    isActive ? 'text-[var(--color-ink)]' : 'text-[var(--color-mist)] hover:text-[var(--color-ink)]'
+                  }`}
                 >
-                  {link.label}
-                  {/* Active Indicator Underline */}
                   {isActive && (
-                    <span className="absolute left-0 bottom-0 w-full h-[1.5px] bg-primary rounded-full"></span>
+                    <span className="absolute -left-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[var(--color-rust)]" />
                   )}
+                  {link.label}
                 </Link>
               );
             })}
           </div>
 
-          {/* Get Started Button */}
-          <Link
-            href="/contact"
-            className={`text-[12px] uppercase tracking-widest font-medium text-primary border border-outline-variant/60 hover:bg-surface-alt transition-all duration-300 hidden md:block flex-shrink-0 ${
-              isScrolled ? 'px-5 py-2 rounded-full' : 'px-6 py-2.5 rounded'
-            }`}
-          >
-            Get Started
+          {/* CTA */}
+          <Link href="/contact" className="btn-pill btn-ink hidden md:inline-flex !px-6 !py-3">
+            Start a Project
+            <ArrowUpRight size={14} strokeWidth={2.25} />
           </Link>
 
           {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden text-primary p-1 -mr-1 flex-shrink-0 relative z-[110]"
+          <button
+            className="md:hidden text-[var(--color-ink)] p-1 -mr-1 relative z-[110]"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -117,45 +97,46 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Menu Overlay */}
-      <div 
-        className={`fixed inset-0 top-0 bg-background z-[90] flex flex-col px-8 py-24 md:hidden overflow-y-auto transition-opacity duration-300 ${
+      <div
+        className={`fixed inset-0 z-[90] flex flex-col px-8 pt-28 pb-10 md:hidden overflow-y-auto transition-opacity duration-300 ${
           isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
+        style={{ backgroundColor: 'var(--color-paper)' }}
       >
         {isOpen && (
-          <div className="flex flex-col gap-6 mt-4">
-            {navLinks.map((link, i) => {
-              const isActive = pathname === link.href || pathname?.startsWith(`${link.href}/`);
-              return (
-                <Link 
-                  key={link.href}
-                  href={link.href} 
-                  onClick={() => setIsOpen(false)} 
-                  className={`mobile-link-animate text-[36px] tracking-tight transition-all duration-300 flex items-center gap-4 ${
-                    isActive 
-                      ? 'text-primary font-bold' 
-                      : 'text-secondary hover:text-primary'
-                  }`}
-                  style={{ animationDelay: `${i * 0.08}s` }}
-                >
-                  {isActive && <span className="w-2 h-2 rounded-full bg-primary flex-shrink-0"></span>}
-                  {link.label}
-                </Link>
-              );
-            })}
-          </div>
-        )}
-        
-        {isOpen && (
-          <div className="mt-auto pt-10 mobile-link-animate" style={{ animationDelay: `${navLinks.length * 0.08}s` }}>
-            <Link
-              href="/contact"
-              onClick={() => setIsOpen(false)}
-              className="flex justify-center items-center w-full bg-primary text-on-primary text-[14px] font-medium tracking-widest uppercase px-6 py-5 rounded-full hover:bg-[#424245] transition-colors duration-300"
-            >
-              Get Started
-            </Link>
-          </div>
+          <>
+            <div className="flex flex-col">
+              {NAV_LINKS.map((link, i) => {
+                const isActive = pathname === link.href || pathname?.startsWith(`${link.href}/`);
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="mobile-link-animate flex items-baseline gap-4 py-5 border-b hairline group"
+                    style={{ animationDelay: `${i * 0.06}s` }}
+                  >
+                    <span className="eyebrow text-[var(--color-rust)]">0{i + 1}</span>
+                    <span
+                      className={`text-[34px] font-bold tracking-tight leading-none ${
+                        isActive ? 'text-[var(--color-ink)]' : 'text-[var(--color-mist)]'
+                      }`}
+                    >
+                      {link.label}
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+
+            <div className="mt-auto pt-12 mobile-link-animate" style={{ animationDelay: `${NAV_LINKS.length * 0.06}s` }}>
+              <Link href="/contact" onClick={() => setIsOpen(false)} className="btn-pill btn-ink w-full">
+                Start a Project
+                <ArrowUpRight size={14} strokeWidth={2.25} />
+              </Link>
+              <p className="eyebrow text-[var(--color-mist)] text-center mt-6">hello@floxr.co</p>
+            </div>
+          </>
         )}
       </div>
     </>

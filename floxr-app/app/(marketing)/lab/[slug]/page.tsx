@@ -1,6 +1,8 @@
 import Link from 'next/link';
-import Navbar from '@/components/Navbar';
 import { notFound } from 'next/navigation';
+import { ArrowLeft } from 'lucide-react';
+import Navbar from '@/components/Navbar';
+import SiteFooter from '@/components/marketing/SiteFooter';
 
 // Mock database for the articles
 const ARTICLES: Record<string, { title: string; category: string; date: string; content: string[] }> = {
@@ -14,8 +16,8 @@ const ARTICLES: Record<string, { title: string; category: string; date: string; 
       'Consider the evolution of developer tools and institutional financial software. The most heavily utilized platforms in the world index heavily on high-contrast, strictly utilitarian components. The "boring" UI is paradoxically the most engaging because it respects the user\'s time.',
       'In our recent teardowns of leading B2B SaaS platforms, we observed a 30% reduction in time-to-task completion when decorative elements were stripped away. Drop shadows were replaced with hard borders. Soft, rounded corners were sharpened to clearly define interactive hit areas.',
       'This isn\'t just about minimalism; it\'s about maximizing the signal-to-noise ratio. Every pixel on the screen must serve a functional purpose. When you remove the decorative layer, the underlying structural logic of the application is exposed. If the logic is flawed, the UI breaks down. This forces engineering and design teams to build better foundational systems.',
-      'Ultimately, the death of decorative UI is the birth of high-performance architecture. Design is no longer how it looks, but how it structuralizes information.'
-    ]
+      'Ultimately, the death of decorative UI is the birth of high-performance architecture. Design is no longer how it looks, but how it structuralizes information.',
+    ],
   },
   'micro-frontends-in-practice': {
     title: 'Micro-Frontends in Practice',
@@ -27,8 +29,8 @@ const ARTICLES: Record<string, { title: string; category: string; date: string; 
       'However, this architectural pattern is not a silver bullet. It introduces complex challenges around state sharing, routing, and consistent design system implementation. A poorly implemented micro-frontend architecture can easily devolve into a distributed monolith, combining the worst aspects of both paradigms.',
       'In our practical implementation, we strongly advocate for Webpack Module Federation as the underlying engine. It allows teams to share vendor dependencies at runtime while maintaining distinct build processes. But the technology is only half the battle.',
       'The true challenge lies in governance. How do you ensure four different teams don\'t load four different versions of React? How do you enforce a unified UX when the UI is stitched together from different repositories at runtime?',
-      'We found that establishing a rigorous "host" shell application, coupled with strict dependency management contracts, is the only sustainable path forward. In this structural review, we explore these strategies and how to mitigate the inherent technical debt that arises from distributed architectures.'
-    ]
+      'We found that establishing a rigorous "host" shell application, coupled with strict dependency management contracts, is the only sustainable path forward. In this structural review, we explore these strategies and how to mitigate the inherent technical debt that arises from distributed architectures.',
+    ],
   },
   'friction-as-a-feature': {
     title: 'Friction as a Feature',
@@ -40,8 +42,8 @@ const ARTICLES: Record<string, { title: string; category: string; date: string; 
       'When users are making irreversible decisions—such as transferring large sums of capital, deleting critical infrastructure, or altering permission sets—a momentary pause forced by the interface acts as a cognitive safety net.',
       'Consider the classic "type the repository name to delete" pattern. It breaks the flow. It requires active cognitive engagement. And it saves countless engineering hours every year by preventing accidental deletions.',
       'We deconstruct the anatomy of "positive friction," exploring techniques like required manual input over autocomplete, delayed confirmation states, and multi-step verifications. These are not dark patterns; they are defensive design mechanisms.',
-      'Ultimately, a system that protects the user from their own fast-twitch reflexes is a system that earns long-term loyalty.'
-    ]
+      'Ultimately, a system that protects the user from their own fast-twitch reflexes is a system that earns long-term loyalty.',
+    ],
   },
   'typographic-scales-in-fluid-contexts': {
     title: 'Typographic Scales in Fluid Contexts',
@@ -53,9 +55,9 @@ const ARTICLES: Record<string, { title: string; category: string; date: string; 
       'CSS clamp() allows us to set a minimum size, a preferred fluid size (usually based on viewport width), and a maximum size. But implementing this arbitrarily leads to a disjointed typographic hierarchy.',
       'In this essay, we explore the mathematics behind fluid typographic scales. By utilizing a modular scale ratio (like the Golden Ratio or Perfect Fourth) and mapping it to viewport bounds, we can generate a design token system that scales organically.',
       'Furthermore, we explore how to integrate these fluid values securely within an enterprise design token system (like Tailwind CSS or styled-components), ensuring consistency across the entire engineering organization.',
-      'The result is a typography system that feels organic and mathematically sound, regardless of whether it is viewed on a 320px mobile device or a 4K ultra-wide monitor.'
-    ]
-  }
+      'The result is a typography system that feels organic and mathematically sound, regardless of whether it is viewed on a 320px mobile device or a 4K ultra-wide monitor.',
+    ],
+  },
 };
 
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -67,70 +69,70 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   }
 
   return (
-    <div className="min-h-screen bg-background text-primary font-body-md antialiased">
+    <div className="mkt min-h-screen flex flex-col">
       <Navbar />
 
-      <main className="flex-grow pb-section-gap max-w-[1440px] mx-auto px-6 md:px-12 pt-[72px] md:pt-[80px]">
-        {/* Article Header */}
-        <section className="mb-16 pt-12 md:pt-24 border-b border-outline-variant pb-12">
-          <Link href="/lab" className="inline-flex items-center gap-2 font-label-mono text-[10px] uppercase tracking-widest text-secondary hover:text-primary transition-colors mb-8">
-            <span className="material-symbols-outlined text-[14px]">arrow_back</span>
-            Back to Lab
-          </Link>
-          
-          <div className="flex items-center gap-4 mb-6">
-            <span className="font-label-mono text-[10px] text-secondary uppercase tracking-widest px-3 py-1 bg-surface-alt border border-outline-variant">
-              {article.category}
-            </span>
-            <span className="font-label-mono text-[10px] text-secondary uppercase tracking-widest">
-              {article.date}
-            </span>
+      <main className="flex-grow pt-[72px] md:pt-[80px]">
+        {/* ── Article Header ── */}
+        <section className="relative overflow-hidden border-b hairline">
+          <div className="absolute inset-0 grid-lines opacity-40 [mask-image:radial-gradient(ellipse_80%_70%_at_70%_10%,#000_10%,transparent_70%)] pointer-events-none" />
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-14 md:pt-20 pb-14 md:pb-16 relative">
+            <Link
+              href="/lab"
+              className="eyebrow inline-flex items-center gap-2 text-[var(--color-mist)] hover:text-[var(--color-ink)] transition-colors mb-10"
+            >
+              <ArrowLeft size={14} strokeWidth={2} />
+              Back to Lab
+            </Link>
+
+            <div className="flex items-center gap-3 mb-8">
+              <span className="eyebrow border hairline rounded-full px-4 py-2" style={{ color: 'var(--color-mist)' }}>
+                {article.category}
+              </span>
+              <span className="eyebrow text-[var(--color-rust)]">{article.date}</span>
+            </div>
+
+            <h1 className="display-xl max-w-4xl">{article.title}</h1>
           </div>
-          
-          <h1 className="font-display-lg text-[48px] md:text-[72px] font-bold tracking-tight text-primary leading-tight max-w-4xl">
-            {article.title}
-          </h1>
         </section>
 
-        {/* Article Body */}
-        <section className="max-w-3xl mb-24">
-          <div className="prose prose-invert prose-lg prose-p:font-body-md prose-p:text-[16px] md:prose-p:text-[18px] prose-p:leading-loose prose-p:text-secondary prose-p:mb-8">
-            {article.content.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
-          </div>
-
-          {/* Dummy Author Bio */}
-          <div className="mt-16 pt-8 border-t border-outline-variant flex items-center gap-6">
-            <div className="w-16 h-16 bg-surface-alt border border-outline-variant rounded-full flex items-center justify-center">
-              <span className="material-symbols-outlined text-secondary text-2xl">person</span>
+        {/* ── Article Body ── */}
+        <section className="max-w-[1400px] mx-auto px-6 md:px-10 py-14 md:py-20 w-full">
+          <div className="max-w-3xl">
+            <div className="space-y-8">
+              {article.content.map((paragraph, index) => (
+                <p
+                  key={index}
+                  className={`leading-loose ${
+                    index === 0
+                      ? 'text-[19px] md:text-[22px] text-[var(--color-ink)] font-medium'
+                      : 'text-[16px] md:text-[18px]'
+                  }`}
+                  style={index === 0 ? undefined : { color: 'var(--color-mist)' }}
+                >
+                  {paragraph}
+                </p>
+              ))}
             </div>
-            <div>
-              <div className="font-headline-md text-primary font-bold mb-1">Floxr Research Team</div>
-              <div className="font-label-mono text-[10px] text-secondary uppercase tracking-widest">Digital Architecture Group</div>
+
+            {/* Author */}
+            <div className="mt-16 pt-10 border-t hairline flex items-center gap-5">
+              <div
+                className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0"
+                style={{ backgroundColor: 'var(--color-ink)' }}
+              >
+                <span className="text-[var(--color-paper)] font-bold text-[16px] tracking-tight">fl</span>
+              </div>
+              <div>
+                <div className="text-[17px] font-bold tracking-tight mb-1">Floxr Research Team</div>
+                <div className="eyebrow" style={{ color: 'var(--color-mist)' }}>Digital Architecture Group</div>
+              </div>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="bg-primary text-on-primary w-full mt-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter px-6 md:px-12 py-section-gap max-w-[1440px] mx-auto items-start">
-          <div className="md:col-span-6 flex flex-col space-y-8">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8 md:h-10 w-auto object-contain object-left mb-2 brightness-0 invert" />
-            <div className="font-body-sm text-sm text-left text-[#888888] mb-1">hello@floxr.co</div>
-            <div className="font-body-sm text-sm text-left text-[#888888]">© 2026 FLOXR built in house.</div>
-          </div>
-          <div className="md:col-span-6 flex justify-start md:justify-end mt-12 md:mt-0">
-            <ul className="flex flex-col md:flex-row md:space-x-12 space-y-4 md:space-y-0">
-              <li><Link className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="/about">About</Link></li>
-              <li><Link className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="/contact">Contact</Link></li>
-              <li><Link className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="https://linkedin.com/company/floxr">LinkedIn</Link></li>
-              <li><Link className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="/privacy">Privacy</Link></li>
-              <li><Link className="font-body-sm text-sm text-[#888888] hover:text-white transition-colors cursor-pointer" href="https://instagram.com/floxr.co">Instagram</Link></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

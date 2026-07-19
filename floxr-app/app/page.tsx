@@ -2,493 +2,538 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { ArrowRight, ArrowUpRight, X, Search, DraftingCompass, Hammer, Globe, LayoutDashboard, Bot, Check } from 'lucide-react';
 import Navbar from '@/components/Navbar';
-import BackgroundAnimation from '@/components/BackgroundAnimation';
+import SiteFooter from '@/components/marketing/SiteFooter';
+
+const FACTS = [
+  { value: '~2 wks', label: 'Typical Website Delivery' },
+  { value: 'Fixed', label: 'Quote Before We Start' },
+  { value: '48 h', label: 'Free Audit Turnaround' },
+  { value: '< 24 h', label: 'Response Time' },
+];
+
+const PACKAGES = [
+  {
+    icon: Globe,
+    title: 'Business Website',
+    timeline: '~2 weeks',
+    desc: 'A fast, credible site that actually brings in customers — designed, built, and launched.',
+    items: [
+      'Design, build, and launch on Next.js',
+      'Mobile-first, fast, SEO basics done right',
+      'Contact forms, analytics, CMS if you need it',
+    ],
+  },
+  {
+    icon: LayoutDashboard,
+    title: 'Platform or Dashboard',
+    timeline: '3–6 weeks',
+    desc: 'Custom web applications: client portals, internal dashboards, and the systems your business runs on.',
+    items: [
+      'Auth, database, and admin panels',
+      'Internal dashboards and client portals',
+      'Integrations with tools you already use',
+    ],
+  },
+  {
+    icon: Bot,
+    title: 'Custom AI Tool',
+    timeline: '2–4 weeks',
+    desc: 'Practical AI built into your workflow — assistants, document processing, and automation.',
+    items: [
+      'Chat assistants and document processing',
+      'Built around your data and workflows',
+      'Practical scope — no science projects',
+    ],
+  },
+];
+
+const FRAMEWORK = [
+  {
+    index: '01',
+    title: 'Audit',
+    icon: Search,
+    desc: 'We start by understanding what exists today — where it leaks, where it breaks, and where it holds you back.',
+    items: [
+      'System mapping & technical debt review',
+      'User experience friction identification',
+      'Performance & speed benchmarks',
+    ],
+  },
+  {
+    index: '02',
+    title: 'Architect',
+    icon: DraftingCompass,
+    desc: 'Then we plan what should exist — a clear structure and a fixed scope before a single line of code is written.',
+    items: [
+      'A blueprint you approve before we build',
+      'Design system & page structure',
+      'Data flow & integration planning',
+    ],
+  },
+  {
+    index: '03',
+    title: 'Build',
+    icon: Hammer,
+    desc: 'Then we build it — engineered, tested, and shipped on the timeline we quoted.',
+    items: [
+      'High-fidelity front-end implementation',
+      'Robust back-end service integration',
+      'Deployment, handover, and support',
+    ],
+  },
+];
+
+const CASE_STUDIES = [
+  {
+    name: 'AmeerGlobal Trading & Imports',
+    domain: 'ameerglobal.ca',
+    url: 'https://ameerglobal.ca',
+    tags: ['Website + Dashboard', 'Toronto'],
+    client:
+      'A Toronto-based international trading company specializing in import and export partnerships across commodities and logistics.',
+    build:
+      'We built everything end-to-end: the public website and the internal operations dashboard behind it — supporting private-label supply and global commodity trading.',
+    shipped:
+      'Profitable within two months of launch — ahead of the client’s own projections. Live at ameerglobal.ca.',
+  },
+  {
+    name: 'Juriq — AI Legal Research',
+    domain: 'juriq.app',
+    url: 'https://juriq.app',
+    tags: ['AI Tool', 'SaaS'],
+    client:
+      'Legal research is slow and scattered across databases — hours of manual work per case.',
+    build:
+      'We built Juriq, an AI legal research assistant: GPT-4-powered search, automated brief generation, and precedent matching.',
+    shipped: 'Live at juriq.app.',
+  },
+];
+
+const LAB_ARTICLES = [
+  {
+    slug: 'death-of-decorative-ui',
+    tag: 'Design Systems',
+    title: 'The Death of Decorative UI',
+    desc: 'Why pure structural design outlasts trend cycles and drives higher enterprise value.',
+  },
+  {
+    slug: 'micro-frontends-in-practice',
+    tag: 'Engineering',
+    title: 'Micro-Frontends in Practice',
+    desc: 'Architectural strategies for scaling development teams without increasing technical debt.',
+  },
+];
+
+function CaseMockup({ domain, url }: { domain: string; url: string }) {
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group block relative overflow-hidden rounded-2xl"
+      style={{ backgroundColor: 'var(--color-ink)' }}
+    >
+      <div className="absolute inset-0 grid-lines-dark" />
+      <div className="relative p-6 md:p-12 pb-0 md:pb-0">
+        {/* Browser chrome */}
+        <div
+          className="rounded-t-xl overflow-hidden border border-b-0 translate-y-px"
+          style={{ borderColor: 'var(--color-line-dark)', backgroundColor: 'var(--color-ink-2)' }}
+        >
+          <div className="flex items-center gap-2 px-5 py-3.5 border-b" style={{ borderColor: 'var(--color-line-dark)' }}>
+            <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-rust)]/70" />
+            <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: 'var(--color-line-dark)' }} />
+            <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: 'var(--color-line-dark)' }} />
+            <span className="eyebrow ml-4" style={{ color: 'var(--color-mist-dark)' }}>{domain}</span>
+          </div>
+          <div className="h-[220px] md:h-[300px] flex items-center justify-center">
+            <span className="text-[clamp(1.6rem,4vw,3rem)] font-bold tracking-tight text-[var(--color-paper)]/90 group-hover:scale-[1.04] transition-transform duration-700">
+              {domain}
+            </span>
+          </div>
+        </div>
+      </div>
+      {/* Hover badge */}
+      <div className="absolute top-5 right-5 w-11 h-11 rounded-full bg-[var(--color-paper)]/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <ArrowUpRight size={18} className="text-[var(--color-paper)]" />
+      </div>
+    </a>
+  );
+}
 
 export default function HomePage() {
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
-    // Temporarily removing sessionStorage check so the popup reliably appears for the user.
-    const timer = setTimeout(() => {
-      setShowPopup(true);
-    }, 3000);
-
+    const timer = setTimeout(() => setShowPopup(true), 3000);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <>
-      {/* ─── 1. FIXED TOP NAV BAR ─── */}
+    <div className="mkt min-h-screen">
       <Navbar />
 
-      <main className="max-w-[1440px] mx-auto px-6 md:px-12 pt-[72px] md:pt-[80px]">
-        {/* ─── 2. HERO SECTION ─── */}
-        <section className="relative min-h-[calc(100svh-72px)] md:min-h-[70vh] flex flex-col justify-center pt-0 pb-12 md:py-section-gap overflow-hidden">
-          {/* Abstract background pattern to feel less empty */}
-          <div className="absolute inset-0 pointer-events-none -z-10">
-            <BackgroundAnimation />
-          </div>
-          
-          <h1 className="font-headline-lg text-[36px] md:text-[56px] text-primary max-w-4xl mb-6 md:mb-8 leading-[1.1] tracking-tight mt-8 md:mt-0">
-            We diagnose what is broken, design what should exist, and build what
-            moves businesses forward.
-          </h1>
-          <hr className="w-12 border-t-2 border-primary mb-6" />
-          <p className="font-body-md text-[18px] md:text-[24px] text-primary max-w-2xl mb-8 leading-relaxed">
-            Digital architecture is destiny. The structural integrity of your platforms determines the ceiling of your growth. We construct the foundation.
-          </p>
-          <div>
-            <Link
-              href="/work"
-              className="inline-block bg-primary text-on-primary font-label-mono text-label-mono uppercase px-8 py-4 hover:bg-surface-tint hover:scale-[1.02] transition-all duration-300 shadow-sm"
+      <main className="pt-[72px] md:pt-[80px]">
+        {/* ─── HERO ─── */}
+        <section className="relative overflow-hidden">
+          <div className="absolute inset-0 grid-lines opacity-40 [mask-image:radial-gradient(ellipse_80%_70%_at_70%_10%,#000_10%,transparent_70%)] pointer-events-none" />
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-16 md:pt-28 pb-16 md:pb-24 relative">
+            <p className="eyebrow text-[var(--color-rust)] mb-8 anim-fade-up">
+              Websites · Platforms · Dashboards
+            </p>
+            <h1 className="display-xl max-w-5xl mb-8 anim-fade-up" style={{ animationDelay: '0.1s' }}>
+              Websites, platforms, and dashboards — built{' '}
+              <span className="font-serif-it font-normal">right</span>.
+            </h1>
+            <p
+              className="text-[18px] md:text-[21px] leading-relaxed max-w-2xl mb-12 anim-fade-up"
+              style={{ color: 'var(--color-mist)', animationDelay: '0.2s' }}
             >
-              Explore Our Work
-            </Link>
-          </div>
-        </section>
-
-        {/* ─── 3. THE CORE FRAMEWORK ─── */}
-        <section id="capabilities" className="py-section-gap border-t border-outline-variant">
-          <div className="mb-8 flex justify-between items-end">
-            <h2 className="font-headline-lg text-headline-lg text-primary">
-              The Core Framework
-            </h2>
-            <span className="font-label-mono text-label-mono text-secondary uppercase tracking-widest hidden md:block">
-              Capabilities
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Card: 01. Audit */}
-            <div className="border border-outline-variant p-8 bg-surface-container-lowest">
-              <div className="text-primary mb-6 flex items-center gap-3">
-                <span className="material-symbols-outlined text-outline">
-                  troubleshoot
-                </span>
-                <h3 className="font-headline-lg text-[24px] font-bold">Audit</h3>
-              </div>
-              <ul className="space-y-4 border-t border-outline-variant pt-6 font-body-md text-[14px] text-secondary">
-                <li className="flex items-start gap-2">
-                  <span className="text-primary">-</span>
-                  System mapping & technical debt analysis.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary">-</span>
-                  User experience friction identification.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary">-</span>
-                  Performance & scalability benchmarks.
-                </li>
-              </ul>
-            </div>
-
-            {/* Card: 02. Architect */}
-            <div className="border border-outline-variant p-8 bg-surface-container-lowest">
-              <div className="text-primary mb-6 flex items-center gap-3">
-                <span className="material-symbols-outlined text-outline">
-                  architecture
-                </span>
-                <h3 className="font-headline-lg text-[24px] font-bold">Architect</h3>
-              </div>
-              <ul className="space-y-4 border-t border-outline-variant pt-6 font-body-md text-[14px] text-secondary">
-                <li className="flex items-start gap-2">
-                  <span className="text-primary">-</span>
-                  Scalable infrastructure blueprints.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary">-</span>
-                  Design system & token engineering.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary">-</span>
-                  Data flow & API structural design.
-                </li>
-              </ul>
-            </div>
-
-            {/* Card: 03. Build */}
-            <div className="border border-outline-variant p-8 bg-surface-container-lowest">
-              <div className="text-primary mb-6 flex items-center gap-3">
-                <span className="material-symbols-outlined text-outline">
-                  construction
-                </span>
-                <h3 className="font-headline-lg text-[24px] font-bold">Build</h3>
-              </div>
-              <ul className="space-y-4 border-t border-outline-variant pt-6 font-body-md text-[14px] text-secondary">
-                <li className="flex items-start gap-2">
-                  <span className="text-primary">-</span>
-                  High-fidelity front-end implementation.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary">-</span>
-                  Robust back-end service integration.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary">-</span>
-                  Continuous deployment pipelines.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* ─── 4. LEAD MAGNET – THE FLOXR DIGITAL AUDIT™ ─── */}
-        <section id="audit" className="py-section-gap">
-          <div className="bg-primary text-on-primary p-8 md:p-12 flex flex-col md:flex-row gap-8 items-center">
-            {/* Left Content */}
-            <div className="flex-1">
-              <div className="font-label-mono text-[10px] text-on-primary/70 mb-4 uppercase tracking-widest">
-                DIAGNOSTIC PROTOCOL
-              </div>
-              <h2 className="font-headline-lg text-[40px] md:text-[56px] leading-tight mb-6">
-                The Floxr Digital Audit™
-              </h2>
-              <p className="font-body-md text-[16px] text-on-primary/90 mb-8 max-w-xl leading-relaxed">
-                Stop guessing where your digital product is leaking revenue. We provide a rigorous, objective tear-down of your platform's architecture and UX.
-              </p>
-              <Link
-                href="/audit"
-                className="inline-block bg-on-primary text-primary font-label-mono text-[12px] uppercase px-8 py-4 hover:opacity-90 transition-opacity duration-300 w-full md:w-auto text-center"
-              >
-                REQUEST AN AUDIT
+              Floxr is a small product studio. We ship business websites in about two weeks, and
+              custom platforms, dashboards, and AI tools without the agency overhead — clear scope,
+              a fixed quote, fast delivery.
+            </p>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-6 anim-fade-up" style={{ animationDelay: '0.3s' }}>
+              <Link href="#packages" className="btn-pill btn-ink">
+                See What We Build
+                <ArrowRight size={14} strokeWidth={2.25} />
+              </Link>
+              <Link href="/work" className="link-arrow w-fit">
+                Explore Our Work
+                <ArrowUpRight size={14} strokeWidth={2.25} />
               </Link>
             </div>
           </div>
+
+          {/* Facts band */}
+          <div className="border-t hairline relative">
+            <div className="max-w-[1400px] mx-auto px-6 md:px-10 grid grid-cols-2 md:grid-cols-4">
+              {FACTS.map((fact, i) => (
+                <div
+                  key={fact.label}
+                  className={`py-8 md:py-10 ${i > 0 ? 'md:border-l md:pl-10 hairline' : ''} ${i % 2 === 1 ? 'border-l pl-6 md:pl-10 hairline' : ''}`}
+                >
+                  <div className="text-[30px] md:text-[40px] font-bold tracking-tight leading-none mb-2">
+                    {fact.value}
+                  </div>
+                  <div className="eyebrow" style={{ color: 'var(--color-mist)' }}>{fact.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
 
-        {/* ─── 5. SELECTED TRANSFORMATIONS ─── */}
-        <section className="py-section-gap border-t border-outline-variant">
-          <div className="mb-8 flex justify-between items-end">
-            <h2 className="font-headline-lg text-headline-lg text-primary">
-              Selected Transformations
-            </h2>
-            <span className="font-label-mono text-label-mono text-secondary uppercase tracking-widest hidden md:block">
-              Case Studies
-            </span>
-          </div>
+        {/* ─── PACKAGES ─── */}
+        <section id="packages" className="border-t hairline scroll-mt-[80px]" style={{ backgroundColor: 'var(--color-paper-2)' }}>
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-20 md:py-28">
+            <div className="flex items-end justify-between mb-14 md:mb-16">
+              <div>
+                <p className="eyebrow text-[var(--color-rust)] mb-5">01 — What We Build</p>
+                <h2 className="display-lg2">
+                  Concrete work, clear <span className="font-serif-it font-normal">scope</span>.
+                </h2>
+              </div>
+            </div>
 
-          {/* Case Study 1 — AmeerGlobal */}
-          <div className="mb-24">
-            {/* Browser Mockup */}
-            <a href="https://ameerglobal.ca" target="_blank" rel="noopener noreferrer" className="w-full h-[300px] md:h-[500px] border border-outline-variant relative overflow-hidden bg-surface-alt flex flex-col mb-8 hover:opacity-90 transition-opacity">
-              {/* Browser Chrome */}
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-outline-variant bg-surface-container-lowest">
-                <div className="flex gap-1.5">
-                  <span className="w-3 h-3 rounded-full bg-red-400" />
-                  <span className="w-3 h-3 rounded-full bg-yellow-400" />
-                  <span className="w-3 h-3 rounded-full bg-green-400" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {PACKAGES.map((pkg) => (
+                <div
+                  key={pkg.title}
+                  className="group rounded-2xl border hairline bg-white p-8 md:p-9 flex flex-col hover:shadow-[0_16px_48px_rgba(18,18,20,0.07)] transition-shadow duration-500"
+                >
+                  <div className="flex items-center justify-between mb-8">
+                    <pkg.icon size={26} strokeWidth={1.5} className="text-[var(--color-ink)]" />
+                    <span className="eyebrow border hairline rounded-full px-4 py-2" style={{ color: 'var(--color-mist)' }}>
+                      {pkg.timeline}
+                    </span>
+                  </div>
+                  <h3 className="text-[22px] font-bold tracking-tight mb-4">{pkg.title}</h3>
+                  <p className="text-[15px] leading-relaxed mb-7" style={{ color: 'var(--color-mist)' }}>
+                    {pkg.desc}
+                  </p>
+                  <ul className="space-y-3.5 border-t hairline pt-6 mb-8">
+                    {pkg.items.map((item) => (
+                      <li key={item} className="flex items-start gap-3 text-[14px]">
+                        <Check size={16} strokeWidth={2.25} className="mt-[3px] text-[var(--color-rust)] flex-shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/contact" className="link-arrow mt-auto w-fit">
+                    Get a Quote
+                    <ArrowUpRight size={14} strokeWidth={2.25} />
+                  </Link>
                 </div>
-                <div className="flex-1 mx-4">
-                  <div className="bg-surface-alt rounded-sm px-3 py-1 font-label-mono text-label-mono text-secondary text-center text-xs">
-                    ameerglobal.ca
+              ))}
+            </div>
+
+            <p className="text-[15px] mt-10" style={{ color: 'var(--color-mist)' }}>
+              Every project gets a fixed quote before we start — no hourly billing, no surprises.
+              Not sure which fits? <Link href="/contact" className="underline underline-offset-4 text-[var(--color-ink)] hover:text-[var(--color-rust)] transition-colors">Tell us what you need</Link> and we&apos;ll tell you honestly.
+            </p>
+          </div>
+        </section>
+
+        {/* ─── HOW WE WORK ─── */}
+        <section id="capabilities" className="border-t hairline">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-20 md:py-28">
+            <div className="flex items-end justify-between mb-14 md:mb-20">
+              <div>
+                <p className="eyebrow text-[var(--color-rust)] mb-5">02 — How We Work</p>
+                <h2 className="display-lg2">Audit. Architect. Build.</h2>
+              </div>
+              <Link href="/capabilities" className="link-arrow hidden md:inline-flex">
+                All Capabilities
+                <ArrowUpRight size={14} strokeWidth={2.25} />
+              </Link>
+            </div>
+
+            <div className="flex flex-col">
+              {FRAMEWORK.map((step) => (
+                <div
+                  key={step.index}
+                  className="group grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 py-10 md:py-12 border-t hairline"
+                >
+                  <div className="md:col-span-2 flex md:block items-center gap-4">
+                    <span className="text-[15px] font-mono font-medium text-[var(--color-rust)]">
+                      {step.index}
+                    </span>
+                  </div>
+                  <div className="md:col-span-4">
+                    <div className="flex items-center gap-4 mb-4">
+                      <step.icon size={22} strokeWidth={1.75} className="text-[var(--color-ink)]" />
+                      <h3 className="display-md2 group-hover:text-[var(--color-rust)] transition-colors duration-300">
+                        {step.title}
+                      </h3>
+                    </div>
+                    <p className="text-[16px] leading-relaxed max-w-sm" style={{ color: 'var(--color-mist)' }}>
+                      {step.desc}
+                    </p>
+                  </div>
+                  <div className="md:col-span-6">
+                    <ul className="space-y-4">
+                      {step.items.map((item) => (
+                        <li key={item} className="flex items-start gap-4 text-[15px] pb-4 border-b hairline last:border-b-0">
+                          <span className="mt-[9px] w-1.5 h-1.5 rounded-full bg-[var(--color-rust)] flex-shrink-0" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
-              </div>
-              {/* Page Body */}
-              <div className="flex-1 bg-gradient-to-br from-primary/5 via-surface-alt to-primary/10 flex items-center justify-center relative">
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:24px_24px]" />
-                <div className="text-center relative z-10">
-                  <span className="material-symbols-outlined text-primary/20 text-[4rem] mb-2 block">
-                    public
-                  </span>
-                  <span className="font-headline-lg text-headline-md text-primary/40">
-                    ameerglobal.ca
-                  </span>
-                </div>
-              </div>
-            </a>
+              ))}
+            </div>
+          </div>
+        </section>
 
-            {/* Case Details */}
-            <div className="md:px-8">
-              <h3 className="font-headline-lg text-[32px] md:text-[40px] font-bold text-primary mb-8">
-                AmeerGlobal Trading & Imports
-              </h3>
-              
-              <div className="space-y-6">
-                <div className="border-l-2 border-outline-variant pl-4">
-                  <span className="font-label-mono text-[10px] text-secondary uppercase block mb-2 tracking-widest">
-                    PROBLEM
-                  </span>
-                  <p className="font-body-md text-[14px] text-secondary leading-relaxed">
-                    A premium international trading company based in Toronto, specializing in import and export partnerships across commodities and logistics.
-                  </p>
-                </div>
-                <div className="border-l-2 border-outline-variant pl-4">
-                  <span className="font-label-mono text-[10px] text-secondary uppercase block mb-2 tracking-widest">
-                    SOLUTION
-                  </span>
-                  <p className="font-body-md text-[14px] text-secondary leading-relaxed">
-                    Built a modern digital storefront and operational platform to streamline private-label supply and global commodity trading.
-                  </p>
-                </div>
-                <div className="border-l-2 border-primary pl-4">
-                  <span className="font-label-mono text-[10px] text-primary uppercase block mb-2 tracking-widest">
-                    RESULT
-                  </span>
-                  <p className="font-body-md text-[14px] text-primary font-bold">
-                    Elevated brand positioning and enabled seamless sourcing of premium goods globally.
-                  </p>
+        {/* ─── FREE AUDIT ─── */}
+        <section id="audit" style={{ backgroundColor: 'var(--color-ink)', color: 'var(--color-paper)' }}>
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-20 md:py-28 relative overflow-hidden">
+            <div className="absolute inset-0 grid-lines-dark opacity-60 [mask-image:radial-gradient(ellipse_70%_90%_at_90%_50%,#000_10%,transparent_70%)] pointer-events-none" />
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative">
+              <div className="lg:col-span-7">
+                <p className="eyebrow text-[var(--color-rust-lt)] mb-6">03 — Free Right Now</p>
+                <h2 className="display-lg2 mb-6">The Floxr Website Audit</h2>
+                <p className="text-[17px] leading-relaxed max-w-xl mb-10" style={{ color: 'var(--color-mist-dark)' }}>
+                  Send us your website. Within 48 hours we&apos;ll reply with a concrete, prioritized
+                  list of what&apos;s broken, what&apos;s slow, and what to fix first — free, whether
+                  or not you ever hire us. No sales pitch.
+                </p>
+                <Link href="/audit" className="btn-pill btn-paper">
+                  Get Your Free Audit
+                  <ArrowRight size={14} strokeWidth={2.25} />
+                </Link>
+              </div>
+
+              {/* Score card visual */}
+              <div className="lg:col-span-5 hidden lg:block">
+                <div
+                  className="rounded-2xl border p-8 max-w-sm ml-auto"
+                  style={{ backgroundColor: 'var(--color-ink-2)', borderColor: 'var(--color-line-dark)' }}
+                >
+                  <p className="eyebrow mb-6" style={{ color: 'var(--color-mist-dark)' }}>Sample Audit Report</p>
+                  <div className="text-[64px] font-bold leading-none tracking-tight mb-8">
+                    92.4<span className="text-[0.5em] font-medium" style={{ color: 'var(--color-mist-dark)' }}>/100</span>
+                  </div>
+                  <div className="space-y-4">
+                    {[
+                      { label: 'UX & Navigation', w: '86%' },
+                      { label: 'Speed & Code', w: '94%' },
+                      { label: 'Design Consistency', w: '78%' },
+                    ].map((row) => (
+                      <div key={row.label}>
+                        <div className="flex justify-between mb-2">
+                          <span className="eyebrow" style={{ color: 'var(--color-mist-dark)' }}>{row.label}</span>
+                          <span className="eyebrow text-[var(--color-paper)]">{row.w}</span>
+                        </div>
+                        <div className="h-[3px] rounded-full" style={{ backgroundColor: 'var(--color-line-dark)' }}>
+                          <div className="h-full rounded-full bg-[var(--color-rust)]" style={{ width: row.w }} />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+        </section>
 
-          {/* Case Study 2 — Juriq */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
-            {/* Case Details (left on desktop for alternating layout) */}
-            <div className="md:col-span-5 md:pr-8 order-2 md:order-1">
-              <h3 className="font-headline-lg text-headline-md text-primary mb-3">
-                Juriq AI Legal Research
-              </h3>
-              <div className="flex gap-2 mb-6 flex-wrap">
-                <span className="px-2 py-1 bg-surface-alt text-primary font-label-mono text-label-mono border border-outline-variant">
-                  AI Platform
-                </span>
-                <span className="px-2 py-1 bg-surface-alt text-primary font-label-mono text-label-mono border border-outline-variant">
-                  SaaS
-                </span>
+        {/* ─── SELECTED WORK ─── */}
+        <section>
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-20 md:py-28">
+            <div className="flex items-end justify-between mb-14 md:mb-20">
+              <div>
+                <p className="eyebrow text-[var(--color-rust)] mb-5">04 — Case Studies</p>
+                <h2 className="display-lg2">Selected Work</h2>
               </div>
-              <div className="space-y-4">
-                <div className="border-l-2 border-outline-variant pl-4">
-                  <span className="font-label-mono text-label-mono text-secondary uppercase block mb-1">
-                    Problem
-                  </span>
-                  <p className="font-body-md text-body-md text-primary">
-                    Legal professionals spending 15+ hours per case on manual
-                    research across scattered databases.
-                  </p>
-                </div>
-                <div className="border-l-2 border-outline-variant pl-4">
-                  <span className="font-label-mono text-label-mono text-secondary uppercase block mb-1">
-                    Solution
-                  </span>
-                  <p className="font-body-md text-body-md text-primary">
-                    AI-powered legal research assistant with GPT-4 integration,
-                    automated brief generation, and precedent matching.
-                  </p>
-                </div>
-                <div className="border-l-2 border-primary pl-4 bg-surface-alt p-3">
-                  <span className="font-label-mono text-label-mono text-primary uppercase block mb-1">
-                    Result
-                  </span>
-                  <p className="font-body-md text-body-md text-primary font-bold">
-                    Case prep time reduced by 80%. Adopted by 200+ legal
-                    professionals.
-                  </p>
-                </div>
-              </div>
-              <a
-                href="https://juriq.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-6 font-label-mono text-label-mono text-primary uppercase hover:opacity-70 transition-opacity"
-              >
-                View Live
-                <span className="material-symbols-outlined text-sm">
-                  arrow_outward
-                </span>
-              </a>
+              <Link href="/work" className="link-arrow hidden md:inline-flex">
+                View All Work
+                <ArrowUpRight size={14} strokeWidth={2.25} />
+              </Link>
             </div>
 
-            <a href="https://juriq.app" target="_blank" rel="noopener noreferrer" className="md:col-span-7 h-[400px] md:h-[500px] border border-outline-variant relative overflow-hidden bg-surface-alt flex flex-col order-1 md:order-2 hover:opacity-90 transition-opacity">
-              {/* Browser Chrome */}
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-outline-variant bg-surface-container-lowest">
-                <div className="flex gap-1.5">
-                  <span className="w-3 h-3 rounded-full bg-red-400" />
-                  <span className="w-3 h-3 rounded-full bg-yellow-400" />
-                  <span className="w-3 h-3 rounded-full bg-green-400" />
-                </div>
-                <div className="flex-1 mx-4">
-                  <div className="bg-surface-alt rounded-sm px-3 py-1 font-label-mono text-label-mono text-secondary text-center text-xs">
-                    juriq.app
+            <div className="space-y-20 md:space-y-28">
+              {CASE_STUDIES.map((cs, i) => (
+                <div key={cs.name} className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+                  <div className={`lg:col-span-7 ${i % 2 === 1 ? 'lg:order-2' : ''}`}>
+                    <CaseMockup domain={cs.domain} url={cs.url} />
+                  </div>
+                  <div className={`lg:col-span-5 ${i % 2 === 1 ? 'lg:order-1' : ''}`}>
+                    <div className="flex gap-2 mb-5 flex-wrap">
+                      {cs.tags.map((tag) => (
+                        <span key={tag} className="eyebrow border hairline rounded-full px-4 py-2" style={{ color: 'var(--color-mist)' }}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <h3 className="display-md2 mb-8">{cs.name}</h3>
+                    <div className="space-y-6">
+                      <div className="border-l-2 pl-5" style={{ borderColor: 'var(--color-line)' }}>
+                        <p className="eyebrow mb-2" style={{ color: 'var(--color-mist)' }}>The Brief</p>
+                        <p className="text-[15px] leading-relaxed" style={{ color: 'var(--color-mist)' }}>{cs.client}</p>
+                      </div>
+                      <div className="border-l-2 pl-5" style={{ borderColor: 'var(--color-line)' }}>
+                        <p className="eyebrow mb-2" style={{ color: 'var(--color-mist)' }}>What We Built</p>
+                        <p className="text-[15px] leading-relaxed" style={{ color: 'var(--color-mist)' }}>{cs.build}</p>
+                      </div>
+                      <div className="border-l-2 border-[var(--color-rust)] pl-5">
+                        <p className="eyebrow text-[var(--color-rust)] mb-2">Shipped</p>
+                        <p className="text-[15px] leading-relaxed font-semibold">{cs.shipped}</p>
+                      </div>
+                    </div>
+                    <a
+                      href={cs.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-arrow mt-8 inline-flex"
+                    >
+                      View Live
+                      <ArrowUpRight size={14} strokeWidth={2.25} />
+                    </a>
                   </div>
                 </div>
-              </div>
-              {/* Page Body */}
-              <div className="flex-1 bg-gradient-to-br from-primary/10 via-surface-alt to-primary/5 flex items-center justify-center relative">
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:24px_24px]" />
-                <div className="text-center relative z-10">
-                  <span className="material-symbols-outlined text-primary/20 text-[4rem] mb-2 block">
-                    smart_toy
-                  </span>
-                  <span className="font-headline-lg text-headline-md text-primary/40">
-                    juriq.app
-                  </span>
-                </div>
-              </div>
-            </a>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* ─── 6. THE LAB ─── */}
-        <section id="lab" className="py-section-gap border-t border-outline-variant">
-          <div className="mb-8">
-            <h2 className="font-headline-lg text-[40px] md:text-[56px] leading-tight mb-4 text-primary">
-              The Lab
-            </h2>
-          </div>
-          <div className="flex flex-col border-t border-outline-variant">
-            {/* Article 1 */}
-            <Link
-              className="border-b border-outline-variant py-8 block group"
-              href="/lab/death-of-decorative-ui"
-            >
-              <span className="font-label-mono text-[10px] bg-surface-alt px-3 py-1 text-secondary uppercase mb-4 inline-block tracking-widest">
-                LATEST
-              </span>
-              <h3 className="font-headline-lg text-[24px] md:text-[32px] font-bold text-primary mb-4 group-hover:opacity-80 transition-opacity">
-                The Death of Decorative UI
-              </h3>
-              <p className="font-body-md text-[14px] text-secondary leading-relaxed">
-                Why pure structural design outlasts trend cycles and drives higher enterprise value.
-              </p>
-            </Link>
+        {/* ─── THE LAB ─── */}
+        <section className="border-t hairline" style={{ backgroundColor: 'var(--color-paper-2)' }}>
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-20 md:py-28">
+            <div className="flex items-end justify-between mb-10 md:mb-14">
+              <div>
+                <p className="eyebrow text-[var(--color-rust)] mb-5">05 — Research & Writing</p>
+                <h2 className="display-lg2">The Lab</h2>
+              </div>
+              <Link href="/lab" className="link-arrow hidden md:inline-flex">
+                All Entries
+                <ArrowUpRight size={14} strokeWidth={2.25} />
+              </Link>
+            </div>
 
-            {/* Article 2 */}
-            <Link
-              className="border-b border-outline-variant py-8 block group"
-              href="/lab/micro-frontends-in-practice"
-            >
-              <span className="font-label-mono text-[10px] bg-surface-alt px-3 py-1 text-secondary uppercase mb-4 inline-block tracking-widest">
-                TECHNICAL
-              </span>
-              <h3 className="font-headline-lg text-[24px] md:text-[32px] font-bold text-primary mb-4 group-hover:opacity-80 transition-opacity">
-                Micro-Frontends in Practice
-              </h3>
-              <p className="font-body-md text-[14px] text-secondary leading-relaxed">
-                Architectural strategies for scaling development teams without increasing technical debt.
-              </p>
-            </Link>
+            <div className="flex flex-col">
+              {LAB_ARTICLES.map((article) => (
+                <Link
+                  key={article.slug}
+                  href={`/lab/${article.slug}`}
+                  className="group grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-8 py-8 md:py-10 border-t hairline items-baseline"
+                >
+                  <span className="md:col-span-3 eyebrow" style={{ color: 'var(--color-mist)' }}>{article.tag}</span>
+                  <div className="md:col-span-8">
+                    <h3 className="display-md2 mb-3 group-hover:text-[var(--color-rust)] transition-colors duration-300">
+                      {article.title}
+                    </h3>
+                    <p className="text-[15px] leading-relaxed" style={{ color: 'var(--color-mist)' }}>{article.desc}</p>
+                  </div>
+                  <span className="md:col-span-1 hidden md:flex justify-end">
+                    <ArrowUpRight
+                      size={20}
+                      strokeWidth={1.75}
+                      className="text-[var(--color-mist)] group-hover:text-[var(--color-rust)] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
+                    />
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
       </main>
 
-      {/* ─── 7. FOOTER ─── */}
-      <footer className="bg-primary w-full">
-        <div className="grid grid-cols-12 gap-gutter px-6 md:px-12 py-section-gap max-w-[1440px] mx-auto text-on-primary">
-          {/* Left: Logo + Copyright */}
-          <div className="col-span-12 md:col-span-6 mb-8 md:mb-0">
-            <img
-              src="/floxr-logo.svg"
-              alt="FLOXR"
-              className="h-8 md:h-10 brightness-0 invert mb-4"
-            />
-            <p className="font-body-md text-body-md text-on-primary/70 max-w-sm">
-              © 2026 FLOXR built in house.
-            </p>
-          </div>
+      <SiteFooter />
 
-          {/* Right Columns */}
-          <div className="col-span-12 md:col-span-6 flex flex-col md:flex-row gap-12 md:justify-end">
-            {/* Social */}
-            <div className="flex flex-col gap-4 font-body-md text-body-md">
-              <span className="font-label-mono text-label-mono text-on-primary/50 uppercase">
-                Social
-              </span>
-              <a
-                href="https://linkedin.com/company/floxr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-on-primary/70 hover:text-on-primary transition-colors"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://instagram.com/floxr.co"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-on-primary/70 hover:text-on-primary transition-colors"
-              >
-                Instagram
-              </a>
-            </div>
-
-            {/* Legal */}
-            <div className="flex flex-col gap-4 font-body-md text-body-md">
-              <span className="font-label-mono text-label-mono text-on-primary/50 uppercase">
-                Legal
-              </span>
-              <Link
-                href="/contact"
-                className="text-on-primary/70 hover:text-on-primary transition-colors"
-              >
-                Contact
-              </Link>
-              <Link
-                href="/privacy"
-                className="text-on-primary/70 hover:text-on-primary transition-colors"
-              >
-                Privacy
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
-
-      {/* ─── 8. FREE AUDIT POPUP ─── */}
+      {/* ─── FREE AUDIT POPUP ─── */}
       {showPopup && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 animate-[fadeIn_0.3s_ease-out]"
-          style={{ backdropFilter: 'blur(8px)', backgroundColor: 'rgba(0,0,0,0.4)' }}
+          className="fixed inset-0 z-[200] flex items-center justify-center p-4 animate-[fadeIn_0.3s_ease-out]"
+          style={{ backdropFilter: 'blur(8px)', backgroundColor: 'rgba(18,18,20,0.5)' }}
           onClick={() => setShowPopup(false)}
         >
           <div
-            className="bg-surface-container-lowest border border-outline-variant shadow-xl max-w-lg w-full p-8 md:p-10 relative animate-[scaleIn_0.3s_ease-out]"
+            className="rounded-2xl shadow-2xl max-w-lg w-full p-8 md:p-12 relative animate-[scaleIn_0.3s_ease-out]"
+            style={{ backgroundColor: 'var(--color-paper)' }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
             <button
               onClick={() => setShowPopup(false)}
-              className="absolute top-4 right-4 text-secondary hover:text-primary transition-colors"
+              className="absolute top-5 right-5 text-[var(--color-mist)] hover:text-[var(--color-ink)] transition-colors"
               aria-label="Close popup"
             >
-              <span className="material-symbols-outlined">close</span>
+              <X size={22} strokeWidth={1.75} />
             </button>
 
-            {/* Content */}
-            <div className="text-4xl mb-4">🎯</div>
-            <h2 className="font-headline-lg text-headline-md text-primary mb-3">
-              Get Your Free Digital Audit
+            <p className="eyebrow text-[var(--color-rust)] mb-5">Free Right Now</p>
+            <h2 className="display-md2 mb-4">
+              Get a free website <span className="font-serif-it font-normal">audit</span>.
             </h2>
-            <p className="font-body-md text-body-md text-secondary mb-6 leading-relaxed">
-              For a limited time, we are offering a complimentary audit of your
-              digital presence. Discover what is broken and what is costing you
-              money.
+            <p className="text-[15px] leading-relaxed mb-8" style={{ color: 'var(--color-mist)' }}>
+              Send us your site and within 48 hours we&apos;ll reply with a concrete list of
+              what&apos;s broken, what&apos;s slow, and what to fix first. No sales pitch, no
+              obligation.
             </p>
             <Link
               href="/audit"
-              className="inline-block w-full text-center bg-primary text-on-primary font-label-mono text-label-mono uppercase px-8 py-4 hover:opacity-90 transition-opacity duration-300"
+              className="btn-pill btn-ink w-full"
               onClick={() => setShowPopup(false)}
             >
               Claim Your Free Audit
+              <ArrowRight size={14} strokeWidth={2.25} />
             </Link>
           </div>
         </div>
       )}
 
-      {/* Keyframe animations for the popup */}
       <style jsx global>{`
         @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
         @keyframes scaleIn {
-          from {
-            opacity: 0;
-            transform: scale(0.95);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
+          from { opacity: 0; transform: scale(0.96); }
+          to { opacity: 1; transform: scale(1); }
         }
       `}</style>
-    </>
+    </div>
   );
 }

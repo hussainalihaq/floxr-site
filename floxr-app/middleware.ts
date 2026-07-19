@@ -2,6 +2,23 @@ import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
 export async function middleware(request: NextRequest) {
+    // admin.floxr.co → serve the /admin responses dashboard
+    const host = (request.headers.get('host') ?? '').split(':')[0]
+    if (host.startsWith('admin.')) {
+        if (!request.nextUrl.pathname.startsWith('/admin')) {
+            const url = request.nextUrl.clone()
+            url.pathname = '/admin'
+            return NextResponse.rewrite(url)
+        }
+        return NextResponse.next()
+    }
+
+    // Only the HR app routes below need Supabase session handling
+    const path = request.nextUrl.pathname
+    if (!path.startsWith('/dashboard') && path !== '/login' && path !== '/signup') {
+        return NextResponse.next()
+    }
+
     let response = NextResponse.next({
         request: {
             headers: request.headers,
@@ -70,5 +87,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ['/dashboard/:path*', '/login', '/signup'],
+    matcher: ['/dashboard/:path*', '/login', '/signup', '/'],
 }

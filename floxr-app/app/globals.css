@@ -67,6 +67,22 @@
   --font-display-lg: "Hanken Grotesk", sans-serif;
   --font-body-lg: "Inter", sans-serif;
   --font-body-md: "Inter", sans-serif;
+
+  /* ── Marketing site design system (Ink & Ivory) ─────────────── */
+  --color-paper: #faf9f5;
+  --color-paper-2: #f2f0e9;
+  --color-ink: #121214;
+  --color-ink-2: #1b1b1f;
+  --color-mist: #5f5e58;
+  --color-mist-dark: #a3a29b;
+  --color-line: #e5e2d8;
+  --color-line-dark: #2e2e33;
+  --color-rust: #c2410c;
+  --color-rust-lt: #e8763d;
+
+  --font-grotesk: "Hanken Grotesk", sans-serif;
+  --font-serif-display: "Instrument Serif", Georgia, serif;
+  --font-mono-label: "JetBrains Mono", monospace;
 }
 
 @layer utilities {
@@ -113,4 +129,155 @@
 
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ── Marketing site components (Ink & Ivory) ──────────────────── */
+
+@layer components {
+
+.mkt {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-grotesk);
+  -webkit-font-smoothing: antialiased;
+}
+
+.mkt ::selection {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.font-serif-it {
+  font-family: var(--font-serif-display);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  font-family: var(--font-mono-label);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.display-xl {
+  font-family: var(--font-grotesk);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  font-size: clamp(42px, 6.5vw, 84px);
+}
+
+.display-lg2 {
+  font-family: var(--font-grotesk);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  font-size: clamp(34px, 4.5vw, 56px);
+}
+
+.display-md2 {
+  font-family: var(--font-grotesk);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  font-size: clamp(24px, 2.6vw, 34px);
+}
+
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  border-radius: 9999px;
+  padding: 1rem 2rem;
+  font-family: var(--font-mono-label);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-ink {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  border: 1px solid var(--color-ink);
+}
+.btn-ink:hover {
+  background: var(--color-rust);
+  border-color: var(--color-rust);
+  transform: translateY(-1px);
+}
+
+.btn-paper {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  border: 1px solid var(--color-paper);
+}
+.btn-paper:hover {
+  background: var(--color-rust);
+  border-color: var(--color-rust);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink);
+  border: 1px solid var(--color-line);
+}
+.btn-ghost:hover {
+  border-color: var(--color-ink);
+  transform: translateY(-1px);
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono-label);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  border-bottom: 1px solid var(--color-ink);
+  padding-bottom: 0.375rem;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+.link-arrow:hover {
+  color: var(--color-rust);
+  border-color: var(--color-rust);
+}
+
+.hairline { border-color: var(--color-line); }
+
+.anim-fade-up {
+  opacity: 0;
+  animation: mktFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.grid-lines {
+  background-image:
+    linear-gradient(var(--color-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.grid-lines-dark {
+  background-image:
+    linear-gradient(rgba(250, 249, 245, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(250, 249, 245, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+} /* end @layer components */
+
+@keyframes mktFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
 }

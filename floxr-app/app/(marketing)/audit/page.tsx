@@ -1,15 +1,69 @@
 'use client';
 
 import Link from 'next/link';
-import Navbar from '@/components/Navbar';
 import { useState } from 'react';
+import { ArrowRight, ArrowDown, Route, Code2, Gem, Workflow, CheckCircle2 } from 'lucide-react';
+import Navbar from '@/components/Navbar';
+import SiteFooter from '@/components/marketing/SiteFooter';
+
+const VECTORS = [
+  {
+    index: '01',
+    icon: Route,
+    title: 'UX & Navigation',
+    desc: 'Where visitors get stuck, confused, or drop off — and what it costs you in enquiries and sales.',
+    wide: true,
+  },
+  {
+    index: '02',
+    icon: Code2,
+    title: 'Speed & Code',
+    desc: 'Load times, mobile performance, and technical debt.',
+    wide: false,
+  },
+  {
+    index: '03',
+    icon: Gem,
+    title: 'Design & Credibility',
+    desc: 'Whether your site looks coherent and trustworthy.',
+    wide: false,
+  },
+  {
+    index: '04',
+    icon: Workflow,
+    title: 'SEO & Content Basics',
+    desc: 'Titles, structure, and whether search engines can actually read and rank your pages.',
+    wide: true,
+  },
+];
+
+const PHASES = [
+  {
+    label: 'Step 1 / 2 Minutes',
+    title: 'Send Us Your Site',
+    desc: 'Fill in the short form below — your name, email, and what you most want to improve. That’s it.',
+  },
+  {
+    label: 'Step 2 / We Review',
+    title: 'We Go Through It',
+    desc: 'We review your site page by page across the four areas above — the same people who would build the fixes.',
+  },
+  {
+    label: 'Step 3 / Within 48 Hours',
+    title: 'You Get the List',
+    desc: 'A concrete, prioritized list of what’s broken, what’s slow, and what to fix first. Free, whether or not you hire us.',
+  },
+];
+
+const inputClass =
+  'w-full bg-transparent border-b hairline py-3 text-[16px] text-[var(--color-ink)] placeholder:text-[var(--color-mist)]/50 focus:border-[var(--color-ink)] outline-none transition-colors rounded-none';
 
 export default function AuditPage() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
-    objective: 'UX Modernization'
+    objective: 'UX Modernization',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -21,62 +75,73 @@ export default function AuditPage() {
     setErrorMsg('');
 
     try {
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://backend-production-19db.up.railway.app';
-      const response = await fetch(`${backendUrl}/audit`, {
+      const response = await fetch('/api/audit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
+      const data = await response.json().catch(() => ({}));
       if (!response.ok) {
-        throw new Error('Submission failed');
+        throw new Error(data.error || 'Submission failed');
       }
 
       setIsSuccess(true);
-    } catch (err) {
-      setErrorMsg('An error occurred. Please try again.');
+    } catch (err: any) {
+      setErrorMsg(err.message || 'Something went wrong. Please email hello@floxr.co instead.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#111111] text-white font-body-md antialiased selection:bg-white selection:text-black">
+    <div className="mkt min-h-screen">
       <Navbar />
 
-      <main className="flex-grow pb-section-gap max-w-[1440px] mx-auto px-6 md:px-12 pt-[72px] md:pt-[80px]">
-        {/* Hero Section */}
-        <section className="pt-12 pb-section-gap">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
-            <div className="md:col-span-7 flex flex-col space-y-stack-lg">
-              <div className="inline-flex items-center space-x-2">
-                <span className="bg-[#222222] px-3 py-1 font-label-mono text-label-mono text-white uppercase border border-[#444444]">DIAGNOSTIC PROTOCOL V2.1</span>
+      <main className="pt-[72px] md:pt-[80px]">
+        {/* ── Hero (ink) ── */}
+        <section style={{ backgroundColor: 'var(--color-ink)', color: 'var(--color-paper)' }}>
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-16 md:pb-24 relative overflow-hidden">
+            <div className="absolute inset-0 grid-lines-dark opacity-60 [mask-image:radial-gradient(ellipse_70%_90%_at_85%_20%,#000_10%,transparent_70%)] pointer-events-none" />
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative">
+              <div className="lg:col-span-7">
+                <p className="eyebrow text-[var(--color-rust-lt)] mb-6 anim-fade-up">
+                  Free Right Now
+                </p>
+                <h1 className="display-xl mb-8 anim-fade-up" style={{ animationDelay: '0.1s' }}>
+                  The Floxr Website{' '}
+                  <span className="font-serif-it font-normal">Audit</span>
+                </h1>
+                <p
+                  className="text-[17px] md:text-[19px] leading-relaxed max-w-xl mb-10 anim-fade-up"
+                  style={{ color: 'var(--color-mist-dark)', animationDelay: '0.2s' }}
+                >
+                  A straightforward, honest review of your website or product. We look at speed, UX,
+                  design, and SEO basics — then send you a prioritized list of what to fix, within
+                  48 hours, free. No sales pitch.
+                </p>
+                <div className="anim-fade-up" style={{ animationDelay: '0.3s' }}>
+                  <Link href="#initiate-audit" className="btn-pill btn-paper">
+                    Get Your Free Audit
+                    <ArrowDown size={14} strokeWidth={2.25} />
+                  </Link>
+                </div>
               </div>
-              <h1 className="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-white font-bold leading-tight">
-                  The Floxr Digital Audit™
-              </h1>
-              <p className="font-body-lg text-body-lg text-[#aaaaaa] max-w-2xl leading-relaxed">
-                  A rigorous, data-driven analysis of your digital ecosystem. We uncover technical debt, UX friction points, and architecture flaws that are silently leaking revenue.
-              </p>
-              <div className="pt-stack-md">
-                <Link href="#initiate-audit">
-                  <button className="bg-white text-black font-label-mono text-label-mono uppercase px-8 py-4 hover:bg-[#dddddd] transition-colors duration-300 flex items-center space-x-2 w-fit font-bold">
-                    <span>REQUEST DIAGNOSTIC</span>
-                  </button>
-                </Link>
-              </div>
-            </div>
-            
-            <div className="md:col-span-5 mt-stack-lg md:mt-0">
-              <div className="relative w-full aspect-square bg-[#1a1a1a] border border-[#333333] overflow-hidden flex items-center justify-center">
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
-                <div className="z-10 bg-white p-stack-md text-black w-full max-w-[80%]">
-                  <div className="font-label-mono text-label-mono uppercase mb-2 text-[#555]">SYSTEM HEALTH SCORE</div>
-                  <div className="font-headline-lg text-[64px] font-bold leading-none mb-6">92.4%</div>
-                  <div className="flex gap-2 font-label-mono text-[10px] uppercase tracking-widest font-bold">
-                    <span className="bg-[#ffdddd] text-[#ff0000] px-2 py-1">CRITICAL</span>
-                    <span className="bg-[#ffffdd] text-[#aaaa00] px-2 py-1">STABLE</span>
-                    <span className="bg-[#ddffdd] text-[#00aa00] px-2 py-1">OPTIMAL</span>
+
+              {/* Score card */}
+              <div className="lg:col-span-5 hidden lg:block">
+                <div
+                  className="rounded-2xl border p-8 max-w-sm ml-auto"
+                  style={{ backgroundColor: 'var(--color-ink-2)', borderColor: 'var(--color-line-dark)' }}
+                >
+                  <p className="eyebrow mb-6" style={{ color: 'var(--color-mist-dark)' }}>Sample Audit Score</p>
+                  <div className="text-[72px] font-bold leading-none tracking-tight mb-8">
+                    92.4<span className="text-[0.4em] font-medium" style={{ color: 'var(--color-mist-dark)' }}>%</span>
+                  </div>
+                  <div className="flex gap-2 flex-wrap">
+                    <span className="eyebrow rounded-full px-4 py-2 bg-[var(--color-rust)]/15 text-[var(--color-rust-lt)]">Critical</span>
+                    <span className="eyebrow rounded-full px-4 py-2" style={{ backgroundColor: 'rgba(250,249,245,0.08)', color: 'var(--color-mist-dark)' }}>Stable</span>
+                    <span className="eyebrow rounded-full px-4 py-2" style={{ backgroundColor: 'rgba(250,249,245,0.08)', color: 'var(--color-paper)' }}>Optimal</span>
                   </div>
                 </div>
               </div>
@@ -84,174 +149,174 @@ export default function AuditPage() {
           </div>
         </section>
 
-        {/* What We Analyze (Bento Grid) */}
-        <section className="px-grid-margin-mobile md:px-grid-margin py-section-gap border-t border-[#333333]">
-          <div className="mb-stack-lg">
-            <h2 className="font-headline-lg text-headline-lg text-white font-bold">Critical Vectors</h2>
-            <p className="font-body-md text-body-md text-[#aaaaaa] mt-stack-sm max-w-xl">We deconstruct your digital presence across four critical vectors to ensure architectural integrity.</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter auto-rows-[240px]">
-            {/* UX Card */}
-            <div className="md:col-span-8 bg-[#1a1a1a] border border-[#333333] p-stack-lg flex flex-col justify-between group hover:bg-[#222222] transition-colors duration-300">
-              <div className="flex justify-between items-start">
-                <span className="material-symbols-outlined text-white text-3xl">route</span>
-                <span className="font-label-mono text-label-mono text-[#888888]">V.01</span>
-              </div>
-              <div>
-                <h3 className="font-headline-md text-[24px] text-white font-bold">UX Architecture</h3>
-                <p className="font-body-md text-body-md text-[#aaaaaa] mt-2 max-w-lg">Evaluating navigation flows, friction points, and cognitive load to ensure seamless user journeys.</p>
-              </div>
-            </div>
-            
-            {/* Tech Stack Card */}
-            <div className="md:col-span-4 bg-[#222222] border border-[#444444] text-white p-stack-lg flex flex-col justify-between group">
-              <div className="flex justify-between items-start">
-                <span className="material-symbols-outlined text-white text-3xl">code_blocks</span>
-                <span className="font-label-mono text-label-mono text-[#aaaaaa]">V.02</span>
-              </div>
-              <div>
-                <h3 className="font-headline-md text-[24px] text-white font-bold">Tech Stack Integrity</h3>
-                <p className="font-body-md text-body-md text-[#aaaaaa] mt-2">Assessing performance, technical debt, and scalability.</p>
-              </div>
-            </div>
-            
-            {/* Brand Card */}
-            <div className="md:col-span-4 bg-[#1a1a1a] border border-[#333333] p-stack-lg flex flex-col justify-between group hover:bg-[#222222] transition-colors duration-300">
-              <div className="flex justify-between items-start">
-                <span className="material-symbols-outlined text-white text-3xl">diamond</span>
-                <span className="font-label-mono text-label-mono text-[#888888]">03 / Vector</span>
-              </div>
-              <div>
-                <h3 className="font-headline-md text-headline-md text-white font-bold">Brand Cohesion</h3>
-                <p className="font-body-md text-body-md text-[#aaaaaa] mt-2">Analyzing visual consistency and semantic alignment.</p>
-              </div>
-            </div>
-            
-            {/* Operations Card */}
-            <div className="md:col-span-8 bg-[#222222] border border-[#333333] p-stack-lg flex flex-col justify-between group">
-              <div className="flex justify-between items-start">
-                <span className="material-symbols-outlined text-white text-3xl">settings_account_box</span>
-                <span className="font-label-mono text-label-mono text-[#888888]">04 / Vector</span>
-              </div>
-              <div>
-                <h3 className="font-headline-md text-headline-md text-white font-bold">Operational Systems</h3>
-                <p className="font-body-md text-body-md text-[#aaaaaa] mt-2 max-w-lg">Reviewing internal workflows, CMS utilization, and integration efficiencies that support the digital facade.</p>
-              </div>
+        {/* ── Critical Vectors ── */}
+        <section>
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24">
+            <p className="eyebrow text-[var(--color-rust)] mb-5">01 — What We Review</p>
+            <h2 className="display-lg2 mb-4">Four Things That Cost You Customers</h2>
+            <p className="text-[16px] leading-relaxed max-w-xl mb-14" style={{ color: 'var(--color-mist)' }}>
+              We go through your site the way a skeptical customer would — then the way an engineer
+              would.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+              {VECTORS.map((vector) => (
+                <div
+                  key={vector.index}
+                  className={`${vector.wide ? 'md:col-span-8' : 'md:col-span-4'} rounded-2xl border hairline bg-white p-8 md:p-9 min-h-[220px] flex flex-col justify-between hover:shadow-[0_16px_48px_rgba(18,18,20,0.07)] transition-shadow duration-500`}
+                >
+                  <div className="flex justify-between items-start mb-10">
+                    <vector.icon size={26} strokeWidth={1.5} className="text-[var(--color-ink)]" />
+                    <span className="eyebrow text-[var(--color-rust)]">{vector.index}</span>
+                  </div>
+                  <div>
+                    <h3 className="text-[22px] font-bold tracking-tight mb-2">{vector.title}</h3>
+                    <p className="text-[15px] leading-relaxed max-w-lg" style={{ color: 'var(--color-mist)' }}>
+                      {vector.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Process Timeline */}
-        <section className="px-grid-margin-mobile md:px-grid-margin py-section-gap border-t border-[#333333]">
-          <div className="mb-stack-lg">
-            <h2 className="font-headline-lg text-headline-lg text-white font-bold">Methodology</h2>
-          </div>
-          
-          <div className="relative border-l border-[#333333] ml-4 md:ml-8 pl-8 md:pl-16 space-y-stack-lg py-stack-md">
-            {/* Step 1 */}
-            <div className="relative">
-              <div className="absolute -left-[33px] md:-left-[65px] top-1 w-4 h-4 bg-white border-4 border-[#111111]"></div>
-              <div className="font-label-mono text-label-mono text-[#888888] mb-1">Phase I / Week 1</div>
-              <h3 className="font-headline-md text-headline-md text-white font-bold">Discovery & Intake</h3>
-              <p className="font-body-md text-body-md text-[#aaaaaa] mt-2 max-w-2xl">We conduct stakeholder interviews and gather all existing analytics, documentation, and access credentials to establish a baseline.</p>
-            </div>
-            
-            {/* Step 2 */}
-            <div className="relative">
-              <div className="absolute -left-[33px] md:-left-[65px] top-1 w-4 h-4 bg-[#111111] border-2 border-white"></div>
-              <div className="font-label-mono text-label-mono text-[#888888] mb-1">Phase II / Week 2-3</div>
-              <h3 className="font-headline-md text-headline-md text-white font-bold">Rigorous Analysis</h3>
-              <p className="font-body-md text-body-md text-[#aaaaaa] mt-2 max-w-2xl">Our architects deploy proprietary diagnostic tools to evaluate the four vectors, identifying structural flaws and optimization opportunities.</p>
-            </div>
-            
-            {/* Step 3 */}
-            <div className="relative">
-              <div className="absolute -left-[33px] md:-left-[65px] top-1 w-4 h-4 bg-[#111111] border-2 border-white"></div>
-              <div className="font-label-mono text-label-mono text-[#888888] mb-1">Phase III / Week 4</div>
-              <h3 className="font-headline-md text-headline-md text-white font-bold">Blueprint Delivery</h3>
-              <p className="font-body-md text-body-md text-[#aaaaaa] mt-2 max-w-2xl">Presentation of the comprehensive Audit Report, including a prioritized, actionable roadmap for systematic improvement.</p>
+        {/* ── Methodology ── */}
+        <section className="border-t hairline" style={{ backgroundColor: 'var(--color-paper-2)' }}>
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24">
+            <p className="eyebrow text-[var(--color-rust)] mb-5">02 — How It Works</p>
+            <h2 className="display-lg2 mb-14">Three Steps, 48 Hours</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {PHASES.map((phase, i) => (
+                <div key={phase.title} className="rounded-2xl border hairline bg-white p-8 md:p-9 relative">
+                  <span className="text-[48px] font-bold tracking-tight leading-none text-[var(--color-line)] block mb-8">
+                    0{i + 1}
+                  </span>
+                  <p className="eyebrow text-[var(--color-rust)] mb-3">{phase.label}</p>
+                  <h3 className="text-[22px] font-bold tracking-tight mb-3">{phase.title}</h3>
+                  <p className="text-[15px] leading-relaxed" style={{ color: 'var(--color-mist)' }}>
+                    {phase.desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Lead Capture Form */}
-        <section id="initiate-audit" className="bg-[#efefef] text-black px-grid-margin-mobile md:px-grid-margin py-section-gap border-t border-[#333333] -mx-grid-margin-mobile md:-mx-grid-margin rounded-lg">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
-            <div>
-              <h2 className="font-headline-lg text-headline-lg text-black font-bold">Initiate Audit</h2>
-              <p className="font-body-md text-body-md text-[#555555] mt-stack-md max-w-md">
-                  Provide preliminary details regarding your current digital infrastructure. A senior architect will review your submission and contact you within 24 hours.
-              </p>
-            </div>
-            {isSuccess ? (
-              <div className="bg-[#ddffdd] border border-[#00aa00] p-8 flex flex-col items-center justify-center text-center">
-                <span className="material-symbols-outlined text-[48px] text-[#00aa00] mb-4">check_circle</span>
-                <h3 className="font-headline-md text-headline-md text-black font-bold mb-2">Request Received</h3>
-                <p className="font-body-md text-body-md text-[#555555]">
-                  Our architects are reviewing your details. We will be in touch within 24 hours to schedule your audit.
+        {/* ── Lead capture ── */}
+        <section id="initiate-audit" className="border-t hairline scroll-mt-[80px]">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+              <div>
+                <p className="eyebrow text-[var(--color-rust)] mb-5">03 — Get Started</p>
+                <h2 className="display-lg2 mb-6">
+                  Get your free <span className="font-serif-it font-normal">audit</span>.
+                </h2>
+                <p className="text-[16px] leading-relaxed max-w-md" style={{ color: 'var(--color-mist)' }}>
+                  Tell us where to look. We review every submission ourselves and reply within
+                  48 hours with your prioritized fix list.
                 </p>
-              </div>
-            ) : (
-            <form onSubmit={handleSubmit} className="space-y-stack-md">
-              {errorMsg && (
-                <div className="bg-[#ffdddd] text-[#ff0000] p-4 text-center font-body-md">
-                  {errorMsg}
-                </div>
-              )}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
-                <div>
-                  <label className="block font-label-mono text-label-mono text-[#555555] mb-2 uppercase">First Name</label>
-                  <input required value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} className="w-full bg-transparent border-b border-[#aaaaaa] py-2 font-body-md text-black focus:border-black outline-none transition-colors" placeholder="Jane" type="text" />
-                </div>
-                <div>
-                  <label className="block font-label-mono text-label-mono text-[#555555] mb-2 uppercase">Last Name</label>
-                  <input required value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} className="w-full bg-transparent border-b border-[#aaaaaa] py-2 font-body-md text-black focus:border-black outline-none transition-colors" placeholder="Doe" type="text" />
+                <div className="mt-10 flex flex-col gap-4">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 size={18} strokeWidth={1.75} className="text-[var(--color-rust)]" />
+                    <span className="text-[15px]" style={{ color: 'var(--color-mist)' }}>Reviewed by the people who&apos;d build the fixes — not a sales team</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 size={18} strokeWidth={1.75} className="text-[var(--color-rust)]" />
+                    <span className="text-[15px]" style={{ color: 'var(--color-mist)' }}>Reply within 48 hours</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 size={18} strokeWidth={1.75} className="text-[var(--color-rust)]" />
+                    <span className="text-[15px]" style={{ color: 'var(--color-mist)' }}>Free — no obligation, no follow-up spam</span>
+                  </div>
                 </div>
               </div>
-              
-              <div>
-                <label className="block font-label-mono text-label-mono text-[#555555] mb-2 uppercase">Corporate Email</label>
-                <input required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full bg-transparent border-b border-[#aaaaaa] py-2 font-body-md text-black focus:border-black outline-none transition-colors" placeholder="jane@company.com" type="email" />
+
+              <div className="rounded-2xl border hairline bg-white p-8 md:p-10">
+                {isSuccess ? (
+                  <div className="flex flex-col items-center justify-center text-center py-16">
+                    <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6" style={{ backgroundColor: 'var(--color-paper-2)' }}>
+                      <CheckCircle2 size={28} strokeWidth={1.75} className="text-[var(--color-rust)]" />
+                    </div>
+                    <h3 className="text-[24px] font-bold tracking-tight mb-3">Request Received</h3>
+                    <p className="text-[15px] leading-relaxed max-w-xs" style={{ color: 'var(--color-mist)' }}>
+                      We&apos;re on it. You&apos;ll get your prioritized fix list by email within
+                      48 hours.
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-8">
+                    {errorMsg && (
+                      <div className="rounded-lg p-4 text-center text-[14px] bg-[var(--color-rust)]/10 text-[var(--color-rust)]">
+                        {errorMsg}
+                      </div>
+                    )}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div>
+                        <label className="eyebrow block mb-2" style={{ color: 'var(--color-mist)' }}>First Name</label>
+                        <input
+                          required
+                          value={formData.firstName}
+                          onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                          className={inputClass}
+                          placeholder="Jane"
+                          type="text"
+                        />
+                      </div>
+                      <div>
+                        <label className="eyebrow block mb-2" style={{ color: 'var(--color-mist)' }}>Last Name</label>
+                        <input
+                          required
+                          value={formData.lastName}
+                          onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                          className={inputClass}
+                          placeholder="Doe"
+                          type="text"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="eyebrow block mb-2" style={{ color: 'var(--color-mist)' }}>Corporate Email</label>
+                      <input
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className={inputClass}
+                        placeholder="jane@company.com"
+                        type="email"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="eyebrow block mb-2" style={{ color: 'var(--color-mist)' }}>Primary Objective</label>
+                      <select
+                        required
+                        value={formData.objective}
+                        onChange={(e) => setFormData({ ...formData, objective: e.target.value })}
+                        className={`${inputClass} appearance-none cursor-pointer`}
+                      >
+                        <option>UX Modernization</option>
+                        <option>Tech Stack Consolidation</option>
+                        <option>Brand Realignment</option>
+                        <option>Comprehensive Overhaul</option>
+                      </select>
+                    </div>
+
+                    <button disabled={isSubmitting} type="submit" className="btn-pill btn-ink w-full disabled:opacity-50">
+                      {isSubmitting ? 'Submitting…' : 'Submit Request'}
+                      {!isSubmitting && <ArrowRight size={14} strokeWidth={2.25} />}
+                    </button>
+                  </form>
+                )}
               </div>
-              
-              <div>
-                <label className="block font-label-mono text-label-mono text-[#555555] mb-2 uppercase">Primary Objective</label>
-                <select required value={formData.objective} onChange={(e) => setFormData({...formData, objective: e.target.value})} className="w-full bg-transparent border-b border-[#aaaaaa] py-2 font-body-md text-black focus:border-black outline-none transition-colors appearance-none rounded-none">
-                  <option>UX Modernization</option>
-                  <option>Tech Stack Consolidation</option>
-                  <option>Brand Realignment</option>
-                  <option>Comprehensive Overhaul</option>
-                </select>
-              </div>
-              
-              <div className="pt-stack-md">
-                <button disabled={isSubmitting} className="bg-black text-white font-label-mono text-label-mono uppercase px-8 py-4 w-full border border-black hover:bg-white hover:text-black disabled:opacity-50 transition-colors duration-300" type="submit">
-                    {isSubmitting ? 'SUBMITTING...' : 'Submit Request'}
-                </button>
-              </div>
-            </form>
-            )}
+            </div>
           </div>
         </section>
       </main>
 
-      <footer className="bg-[#111111] text-white w-full border-t border-[#333333]">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter px-grid-margin-mobile md:px-grid-margin py-section-gap max-w-[1440px] mx-auto items-start">
-          <div className="md:col-span-6 flex flex-col space-y-stack-md">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8 md:h-12 w-auto object-contain object-left mb-stack-sm brightness-0 invert" />
-            <div className="font-body-lg text-body-lg text-left text-[#aaaaaa]">© 2026 FLOXR built in house.</div>
-          </div>
-          <div className="md:col-span-6 flex justify-start md:justify-end mt-stack-lg md:mt-0">
-            <ul className="flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0">
-              <li><a className="font-body-lg text-body-lg text-[#aaaaaa] hover:text-white transition-opacity cursor-pointer" href="https://linkedin.com/company/floxr">LinkedIn</a></li>
-              <li><a className="font-body-lg text-body-lg text-[#aaaaaa] hover:text-white transition-opacity cursor-pointer" href="https://instagram.com/floxr.co">Instagram</a></li>
-              <li><Link className="font-body-lg text-body-lg text-[#aaaaaa] hover:text-white transition-opacity cursor-pointer" href="/contact">Contact</Link></li>
-              <li><a className="font-body-lg text-body-lg text-[#aaaaaa] hover:text-white transition-opacity cursor-pointer" href="/">Privacy</a></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

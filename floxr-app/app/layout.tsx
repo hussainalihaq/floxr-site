@@ -4,11 +4,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.floxr.co'),
   title: {
-    default: "FLOXR - Digital Architecture & Product Systems",
+    default: "FLOXR — Websites, Platforms & Dashboards",
     template: "%s | FLOXR"
   },
-  description: "Floxr is a premium digital architecture firm. We diagnose technical debt, design modern digital ecosystems, and build scalable product systems that drive business growth.",
-  keywords: ["digital architecture", "product design", "software engineering", "UX research", "digital transformation", "Floxr", "tech agency"],
+  description: "Floxr is a small product studio. We design and build business websites, custom platforms, dashboards, and AI tools — clear scope, fixed quotes, fast delivery.",
+  keywords: ["web design", "website development", "web platforms", "dashboards", "AI tools", "Floxr", "product studio", "Lahore"],
   authors: [{ name: "Floxr" }],
   creator: "Floxr",
   publisher: "Floxr",
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
     apple: "/favicon.svg",
   },
   openGraph: {
-    title: "FLOXR - Digital Architecture & Product Systems",
-    description: "Floxr is a premium digital architecture firm. We diagnose technical debt, design modern digital ecosystems, and build scalable product systems that drive business growth.",
+    title: "FLOXR — Websites, Platforms & Dashboards",
+    description: "Floxr is a small product studio. We design and build business websites, custom platforms, dashboards, and AI tools — clear scope, fixed quotes, fast delivery.",
     url: "https://www.floxr.co",
     siteName: "FLOXR",
     type: "website",
@@ -32,8 +32,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "FLOXR - Digital Architecture & Product Systems",
-    description: "Floxr is a premium digital architecture firm. We diagnose technical debt, design modern digital ecosystems, and build scalable product systems that drive business growth.",
+    title: "FLOXR — Websites, Platforms & Dashboards",
+    description: "Floxr is a small product studio. We design and build business websites, custom platforms, dashboards, and AI tools — clear scope, fixed quotes, fast delivery.",
     creator: "@floxr_co",
   },
   robots: {
@@ -55,18 +55,23 @@ const jsonLd = {
   "name": "FLOXR",
   "url": "https://www.floxr.co",
   "logo": "https://www.floxr.co/floxr-logo.svg",
-  "description": "Floxr is a premium digital architecture firm. We diagnose technical debt, design modern digital ecosystems, and build scalable product systems that drive business growth.",
+  "description": "Floxr is a small product studio. We design and build business websites, custom platforms, dashboards, and AI tools — clear scope, fixed quotes, fast delivery.",
+  "founder": {
+    "@type": "Person",
+    "name": "Hussain Ali Haq"
+  },
   "sameAs": [
     "https://linkedin.com/company/floxr",
-    "https://instagram.com/floxr.co"
+    "https://instagram.com/floxr.co",
+    "https://www.linkedin.com/in/hussainalihaq/"
   ],
   "areaServed": "Worldwide",
   "knowsAbout": [
-    "Digital Architecture",
-    "Product Design",
-    "Software Engineering",
-    "UX Research",
-    "Digital Transformation"
+    "Web Design",
+    "Website Development",
+    "Web Platforms",
+    "Dashboards",
+    "AI Tools"
   ]
 };
 
@@ -80,7 +85,7 @@ export default function RootLayout({
       <head>
         <link href="https://fonts.googleapis.com" rel="preconnect" />
         <link crossOrigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-        <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&family=Inter:wght@400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
         <script
           type="application/ld+json"

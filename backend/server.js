@@ -9,6 +9,15 @@ const prisma = new PrismaClient();
 app.use(cors());
 app.use(express.json());
 
+// Require x-admin-key header on read endpoints (set ADMIN_KEY in env; denies all reads if unset)
+function requireAdminKey(req, res, next) {
+  const key = process.env.ADMIN_KEY;
+  if (!key || req.headers["x-admin-key"] !== key) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+  next();
+}
+
 app.get("/", (_req, res) => {
   res.json({ status: "ok", service: "floxr-waitlist" });
 });
@@ -55,7 +64,7 @@ app.post("/waitlist", async (req, res) => {
 });
 
 // View all signups (protect this in production!)
-app.get("/waitlist", async (_req, res) => {
+app.get("/waitlist", requireAdminKey, async (_req, res) => {
   try {
     const signups = await prisma.waitlist.findMany({
       orderBy: { createdAt: "desc" }
@@ -68,7 +77,7 @@ app.get("/waitlist", async (_req, res) => {
 });
 
 // Get signup count
-app.get("/waitlist/count", async (_req, res) => {
+app.get("/waitlist/count", requireAdminKey, async (_req, res) => {
   try {
     const count = await prisma.waitlist.count();
     res.json({ count });
@@ -78,7 +87,7 @@ app.get("/waitlist/count", async (_req, res) => {
 });
 
 // Export to CSV
-app.get("/waitlist/export", async (_req, res) => {
+app.get("/waitlist/export", requireAdminKey, async (_req, res) => {
   try {
     const signups = await prisma.waitlist.findMany({
       orderBy: { createdAt: "desc" }
@@ -140,7 +149,7 @@ app.post("/contact", async (req, res) => {
 });
 
 // View all contact submissions
-app.get("/contact", async (_req, res) => {
+app.get("/contact", requireAdminKey, async (_req, res) => {
   try {
     const submissions = await prisma.contactSubmission.findMany({
       orderBy: { createdAt: "desc" }
@@ -188,7 +197,7 @@ app.post("/audit", async (req, res) => {
 });
 
 // View all audit submissions
-app.get("/audit", async (_req, res) => {
+app.get("/audit", requireAdminKey, async (_req, res) => {
   try {
     const submissions = await prisma.auditSubmission.findMany({
       orderBy: { createdAt: "desc" }

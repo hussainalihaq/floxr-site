@@ -1,196 +1,158 @@
 import Link from 'next/link';
+import { ArrowRight, Target, Users, PenTool, BadgeCheck } from 'lucide-react';
 import Navbar from '@/components/Navbar';
-
-const STATS = [
-  { value: '50+', label: 'Projects Shipped' },
-  { value: '98%', label: 'Client Retention' },
-  { value: '15+', label: 'Engineers' },
-  { value: '4', label: 'Countries' },
-];
+import SiteFooter from '@/components/marketing/SiteFooter';
+import FounderPortrait from '@/components/marketing/FounderPortrait';
 
 const PRINCIPLES = [
   {
-    icon: 'target',
+    icon: Target,
     title: 'Outcome-Obsessed',
-    desc: "We don\u2019t bill hours. We deliver results.",
+    desc: 'We don’t bill hours. We deliver results.',
   },
   {
-    icon: 'groups',
-    title: 'Senior-Only Teams',
-    desc: "No juniors learning on your project. Every engineer has 5+ years experience.",
+    icon: Users,
+    title: 'Direct Access',
+    desc: 'You talk to the person building your product — no account managers, no telephone game.',
   },
   {
-    icon: 'design_services',
+    icon: PenTool,
     title: 'Design-Engineering Fusion',
-    desc: "Our engineers think in pixels and our designers think in systems.",
+    desc: 'Our engineers think in pixels and our designers think in systems.',
   },
   {
-    icon: 'verified',
+    icon: BadgeCheck,
     title: 'Relentless Standards',
-    desc: "If it\u2019s not exceptional, it doesn\u2019t ship.",
+    desc: 'If it’s not exceptional, it doesn’t ship.',
   },
 ];
 
 export default function AboutPage() {
   return (
-    <>
-      {/* ── Fixed Top Nav ─────────────────────────────────────────── */}
+    <div className="mkt min-h-screen">
       <Navbar />
 
-      <main className="min-h-screen bg-background pt-[72px] md:pt-[80px]">
-
-        {/* ── Page Header ─────────────────────────────────────────── */}
-        <section className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin pt-[180px] pb-section-gap">
-          <div className="max-w-3xl">
-            <span className="font-label-mono text-label-mono uppercase tracking-widest text-secondary bg-surface-alt border border-outline-variant px-3 py-1 inline-block mb-8">
-              About
-            </span>
-            <h1 className="font-headline-lg text-display-lg font-bold text-primary leading-tight tracking-tight mb-stack-lg">
-              We are Digital Architects
+      <main className="pt-[72px] md:pt-[80px]">
+        {/* ── Header ── */}
+        <section className="relative overflow-hidden">
+          <div className="absolute inset-0 grid-lines opacity-40 [mask-image:radial-gradient(ellipse_80%_70%_at_70%_10%,#000_10%,transparent_70%)] pointer-events-none" />
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-16 md:pb-20 relative">
+            <p className="eyebrow text-[var(--color-rust)] mb-6 anim-fade-up">About</p>
+            <h1 className="display-xl max-w-4xl mb-8 anim-fade-up" style={{ animationDelay: '0.1s' }}>
+              A small studio with serious{' '}
+              <span className="font-serif-it font-normal">standards</span>.
             </h1>
-            <p className="font-body-lg text-body-lg text-secondary leading-relaxed max-w-2xl border-l-2 border-primary pl-6">
-              FLOXR is a digital architecture firm. We audit what exists, architect what should,
-              and build what moves businesses forward. No templates. No shortcuts. Just precision engineering.
+            <p
+              className="text-[18px] md:text-[20px] leading-relaxed max-w-2xl anim-fade-up"
+              style={{ color: 'var(--color-mist)', animationDelay: '0.2s' }}
+            >
+              Floxr is a small product studio based in Lahore, working with clients worldwide. We
+              design and build websites, platforms, and dashboards. Being small is the point: you
+              talk directly to the people doing the work, scope stays honest, and nothing ships
+              that we wouldn&apos;t put our name on.
             </p>
           </div>
         </section>
 
-        {/* ── Stats Row ───────────────────────────────────────────── */}
-        <section className="border-y border-outline-variant">
-          <div className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin py-section-gap">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-gutter">
-              {STATS.map((stat, i) => (
+        {/* ── Founder ── */}
+        <section className="border-t hairline" style={{ backgroundColor: 'var(--color-ink)', color: 'var(--color-paper)' }}>
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-20 relative overflow-hidden">
+            <div className="absolute inset-0 grid-lines-dark opacity-60 [mask-image:radial-gradient(ellipse_70%_90%_at_90%_50%,#000_10%,transparent_70%)] pointer-events-none" />
+            <div className="relative flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12">
+              <FounderPortrait />
+              <div>
+                <p className="eyebrow text-[var(--color-rust-lt)] mb-4">The Founder</p>
+                <h2 className="display-md2 mb-2">Hussain Ali Haq</h2>
+                <p className="eyebrow mb-5" style={{ color: 'var(--color-mist-dark)' }}>
+                  Founder — Computer Science, LUMS · Lahore
+                </p>
+                <p className="text-[16px] leading-relaxed max-w-xl" style={{ color: 'var(--color-mist-dark)' }}>
+                  Floxr is run by Hussain, a computer science student at LUMS who builds for the
+                  web full-tilt alongside his degree. Every project is scoped, designed, and
+                  quality-checked by him personally — which is exactly why the standards hold.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Principles ── */}
+        <section>
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24">
+            <p className="eyebrow text-[var(--color-rust)] mb-5">01 — Our Principles</p>
+            <h2 className="display-lg2 mb-14">How we operate</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {PRINCIPLES.map((principle) => (
                 <div
-                  key={i}
-                  className="border border-outline-variant bg-surface-container-lowest p-stack-lg flex flex-col items-center text-center hover:border-primary transition-colors duration-300"
+                  key={principle.title}
+                  className="group rounded-2xl border hairline bg-white p-8 md:p-10 hover:shadow-[0_16px_48px_rgba(18,18,20,0.07)] transition-shadow duration-500"
                 >
-                  <span className="font-headline-lg text-[clamp(40px,6vw,64px)] font-bold text-primary leading-none mb-3">
-                    {stat.value}
-                  </span>
-                  <span className="font-label-mono text-label-mono text-secondary uppercase tracking-wider">
-                    {stat.label}
-                  </span>
+                  <div
+                    className="w-14 h-14 rounded-full flex items-center justify-center mb-8 group-hover:bg-[var(--color-rust)] transition-colors duration-500"
+                    style={{ backgroundColor: 'var(--color-paper-2)' }}
+                  >
+                    <principle.icon
+                      size={24}
+                      strokeWidth={1.5}
+                      className="text-[var(--color-ink)] group-hover:text-white transition-colors duration-500"
+                    />
+                  </div>
+                  <h3 className="display-md2 mb-3">{principle.title}</h3>
+                  <p className="text-[15px] leading-relaxed" style={{ color: 'var(--color-mist)' }}>
+                    {principle.desc}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── Our Principles ──────────────────────────────────────── */}
-        <section className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin py-section-gap">
-          <div className="flex items-center gap-4 mb-16">
-            <span className="font-label-mono text-label-mono uppercase tracking-widest text-secondary">
-              Our Principles
-            </span>
-            <div className="flex-1 h-[1px] bg-outline-variant" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
-            {PRINCIPLES.map((p, i) => (
-              <div
-                key={i}
-                className="group border border-outline-variant bg-surface-container-lowest p-stack-lg hover:border-primary transition-colors duration-300 flex flex-col gap-6"
-              >
-                <div className="w-14 h-14 bg-surface-alt border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors duration-300">
-                  <span className="material-symbols-outlined text-primary text-[28px]">
-                    {p.icon}
-                  </span>
-                </div>
-                <div>
-                  <h3 className="font-headline-lg text-headline-md font-bold text-primary mb-3">
-                    {p.title}
-                  </h3>
-                  <p className="font-body-md text-body-md text-secondary leading-relaxed">
-                    {p.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── The Team Section ────────────────────────────────────── */}
-        <section className="relative overflow-hidden border-y border-outline-variant">
-          {/* Subtle Grid Pattern Background */}
-          <div
-            className="absolute inset-0 opacity-[0.04] pointer-events-none"
-            style={{
-              backgroundImage:
-                'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)',
-              backgroundSize: '40px 40px',
-            }}
-          />
-
-          <div className="relative max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin py-section-gap">
+        {/* ── The Team ── */}
+        <section className="border-t hairline relative overflow-hidden" style={{ backgroundColor: 'var(--color-paper-2)' }}>
+          <div className="absolute inset-0 grid-lines opacity-50 [mask-image:radial-gradient(ellipse_60%_80%_at_50%_50%,#000_10%,transparent_70%)] pointer-events-none" />
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-20 md:py-28 relative">
             <div className="max-w-2xl mx-auto text-center flex flex-col items-center">
-              <span className="font-label-mono text-label-mono uppercase tracking-widest text-secondary bg-surface-alt border border-outline-variant px-3 py-1 inline-block mb-8">
-                The Team
-              </span>
-              <h2 className="font-headline-lg text-headline-lg font-bold text-primary leading-tight mb-stack-lg">
-                Built by Operators
+              <p className="eyebrow text-[var(--color-rust)] mb-6">02 — Why Small Wins</p>
+              <h2 className="display-lg2 mb-6">
+                No account managers. No <span className="font-serif-it font-normal">telephone game</span>.
               </h2>
-              <p className="font-body-lg text-body-lg text-secondary leading-relaxed max-w-xl">
-                Every member of our team has built and scaled their own products.
-                We understand the pressure because we have lived it.
+              <p className="text-[17px] leading-relaxed max-w-xl" style={{ color: 'var(--color-mist)' }}>
+                When you work with Floxr, you talk to the person building your product. Decisions
+                happen in hours, not meetings. That&apos;s how projects ship in weeks instead of
+                quarters — and why nothing gets lost in translation.
               </p>
-
-              {/* Decorative team silhouette row */}
-              <div className="mt-16 flex gap-6 items-end justify-center">
-                {[48, 56, 64, 56, 48].map((h, i) => (
-                  <div
-                    key={i}
-                    className="bg-surface-alt border border-outline-variant rounded-sm"
-                    style={{ width: '48px', height: `${h}px` }}
-                  />
-                ))}
-              </div>
             </div>
           </div>
         </section>
 
-        {/* ── CTA ─────────────────────────────────────────────────── */}
-        <section className="max-w-[1440px] mx-auto px-grid-margin-mobile md:px-grid-margin py-section-gap">
-          <div className="border border-outline-variant bg-surface-container-lowest p-stack-lg md:p-16 flex flex-col items-center text-center">
-            <h2 className="font-headline-lg text-headline-lg font-bold text-primary leading-tight mb-stack-md">
-              Ready to build something exceptional?
-            </h2>
-            <p className="font-body-md text-body-md text-secondary mb-10 max-w-md leading-relaxed">
-              Let&apos;s talk about your next project. No sales pitch, just a real conversation with engineers.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-3 bg-primary text-on-primary font-label-mono text-label-mono uppercase px-8 py-4 hover:bg-surface-tint transition-colors duration-300"
+        {/* ── CTA ── */}
+        <section className="border-t hairline">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24">
+            <div
+              className="rounded-2xl p-10 md:p-16 flex flex-col items-center text-center relative overflow-hidden"
+              style={{ backgroundColor: 'var(--color-ink)', color: 'var(--color-paper)' }}
             >
-              <span>Start a Conversation</span>
-              <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-            </Link>
+              <div className="absolute inset-0 grid-lines-dark opacity-60 [mask-image:radial-gradient(ellipse_60%_100%_at_50%_0%,#000_10%,transparent_80%)] pointer-events-none" />
+              <div className="relative flex flex-col items-center">
+                <h2 className="display-lg2 mb-5 max-w-2xl">
+                  Ready to build something <span className="font-serif-it font-normal">exceptional</span>?
+                </h2>
+                <p className="text-[16px] leading-relaxed max-w-md mb-10" style={{ color: 'var(--color-mist-dark)' }}>
+                  Let&apos;s talk about your next project. No sales pitch — just a real conversation
+                  with engineers.
+                </p>
+                <Link href="/contact" className="btn-pill btn-paper">
+                  Start a Conversation
+                  <ArrowRight size={14} strokeWidth={2.25} />
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
       </main>
 
-      {/* ── Footer ────────────────────────────────────────────────── */}
-      <footer className="bg-primary w-full mt-0">
-        <div className="grid grid-cols-12 gap-gutter px-grid-margin-mobile md:px-grid-margin py-section-gap max-w-[1440px] mx-auto text-on-primary">
-          <div className="col-span-12 md:col-span-6 mb-stack-lg md:mb-0">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8 md:h-12 w-auto object-contain object-left mb-stack-sm brightness-0 invert" />
-            <p className="font-body-lg text-body-lg text-left text-on-primary/70 max-w-sm">
-              © 2026 FLOXR built in house.
-            </p>
-          </div>
-          <div className="col-span-12 md:col-span-6 flex flex-col md:flex-row gap-stack-lg md:justify-end">
-            <div className="flex flex-col gap-4 font-body-lg text-body-lg text-left">
-              <span className="font-label-mono text-label-mono text-on-primary/50 uppercase">Social</span>
-              <a className="text-on-primary/70 hover:opacity-80 transition-opacity" href="https://linkedin.com/company/floxr">LinkedIn</a>
-              <a className="text-on-primary/70 hover:opacity-80 transition-opacity" href="https://instagram.com/floxr.co">Instagram</a>
-            </div>
-            <div className="flex flex-col gap-4 font-body-lg text-body-lg text-left">
-              <span className="font-label-mono text-label-mono text-on-primary/50 uppercase">Legal</span>
-              <Link className="text-on-primary/70 hover:opacity-80 transition-opacity" href="/contact">Contact</Link>
-              <a className="text-on-primary/70 hover:opacity-80 transition-opacity" href="/">Privacy</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </>
+      <SiteFooter />
+    </div>
   );
 }
