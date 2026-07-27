@@ -91,7 +91,7 @@ export default function ContactPage() {
               hours with honest next steps and a fixed quote.
             </p>
 
-            <div className="mt-auto border-t hairline pt-10 grid grid-cols-1 sm:grid-cols-3 gap-8">
+            <div className="mt-auto border-t hairline pt-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
               <div>
                 <p className="eyebrow mb-3" style={{ color: 'var(--color-mist)' }}>Email</p>
                 <a
@@ -99,6 +99,17 @@ export default function ContactPage() {
                   className="text-[15px] font-semibold hover:text-[var(--color-rust)] transition-colors"
                 >
                   hello@floxr.co
+                </a>
+              </div>
+              <div>
+                <p className="eyebrow mb-3" style={{ color: 'var(--color-mist)' }}>Instagram</p>
+                <a
+                  href="https://instagram.com/floxr.co"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[15px] font-semibold hover:text-[var(--color-rust)] transition-colors"
+                >
+                  @floxr.co
                 </a>
               </div>
               <div>

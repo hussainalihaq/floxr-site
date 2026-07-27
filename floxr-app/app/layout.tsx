@@ -58,14 +58,9 @@ const jsonLd = {
   "url": "https://www.floxr.co",
   "logo": "https://www.floxr.co/floxr-logo.svg",
   "description": "Floxr is a small product studio. We design and build business websites, custom platforms, dashboards, and AI tools — clear scope, fixed quotes, fast delivery.",
-  "founder": {
-    "@type": "Person",
-    "name": "Hussain Ali Haq"
-  },
   "sameAs": [
     "https://linkedin.com/company/floxr",
-    "https://instagram.com/floxr.co",
-    "https://www.linkedin.com/in/hussainalihaq/"
+    "https://instagram.com/floxr.co"
   ],
   "areaServed": "Worldwide",
   "knowsAbout": [

@@ -1,8 +1,7 @@
 import Link from 'next/link';
-import { ArrowRight, Target, Users, PenTool, BadgeCheck } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Target, Users, PenTool, BadgeCheck } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import SiteFooter from '@/components/marketing/SiteFooter';
-import FounderPortrait from '@/components/marketing/FounderPortrait';
 
 const PRINCIPLES = [
   {
@@ -54,23 +53,45 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ── Founder ── */}
+        {/* ── The Studio ── */}
         <section className="border-t hairline" style={{ backgroundColor: 'var(--color-ink)', color: 'var(--color-paper)' }}>
           <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-20 relative overflow-hidden">
             <div className="absolute inset-0 grid-lines-dark opacity-60 [mask-image:radial-gradient(ellipse_70%_90%_at_90%_50%,#000_10%,transparent_70%)] pointer-events-none" />
-            <div className="relative flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12">
-              <FounderPortrait />
-              <div>
-                <p className="eyebrow text-[var(--color-rust-lt)] mb-4">The Founder</p>
-                <h2 className="display-md2 mb-2">Hussain Ali Haq</h2>
-                <p className="eyebrow mb-5" style={{ color: 'var(--color-mist-dark)' }}>
-                  Founder — Computer Science, LUMS · Lahore
-                </p>
+            <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+              <div className="lg:col-span-7">
+                <p className="eyebrow text-[var(--color-rust-lt)] mb-5">The Studio</p>
+                <h2 className="display-lg2 mb-5">
+                  Based in Lahore. Building{' '}
+                  <span className="font-serif-it font-normal">worldwide</span>.
+                </h2>
                 <p className="text-[16px] leading-relaxed max-w-xl" style={{ color: 'var(--color-mist-dark)' }}>
-                  Floxr is run by Hussain, a computer science student at LUMS who builds for the
-                  web full-tilt alongside his degree. Every project is scoped, designed, and
-                  quality-checked by him personally — which is exactly why the standards hold.
+                  We keep the team small and the process direct. Every project is scoped, designed,
+                  and quality-checked by the same people who build it — which is exactly why the
+                  standards hold.
                 </p>
+                <a
+                  href="https://instagram.com/floxr.co"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="eyebrow inline-flex items-center gap-2 mt-8 text-[var(--color-paper)] border-b border-[var(--color-paper)]/40 pb-1.5 hover:text-[var(--color-rust-lt)] hover:border-[var(--color-rust-lt)] transition-colors"
+                >
+                  Follow @floxr.co
+                  <ArrowUpRight size={14} strokeWidth={2.25} />
+                </a>
+              </div>
+
+              <div className="lg:col-span-5 grid grid-cols-2 gap-x-6 gap-y-8">
+                {[
+                  { label: 'Based In', value: 'Lahore, PK' },
+                  { label: 'Working', value: 'Worldwide' },
+                  { label: 'Engagement', value: 'Fixed Quote' },
+                  { label: 'Response', value: '< 24 Hours' },
+                ].map((item) => (
+                  <div key={item.label} className="border-t pt-5" style={{ borderColor: 'var(--color-line-dark)' }}>
+                    <p className="eyebrow mb-2" style={{ color: 'var(--color-mist-dark)' }}>{item.label}</p>
+                    <p className="text-[18px] font-bold tracking-tight">{item.value}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

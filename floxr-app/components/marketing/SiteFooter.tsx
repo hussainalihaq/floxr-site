@@ -70,7 +70,7 @@ export default function SiteFooter() {
               </li>
               <li>
                 <a href="https://instagram.com/floxr.co" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-rust-lt)] transition-colors">
-                  Instagram
+                  Instagram <span style={{ color: 'var(--color-mist-dark)' }}>@floxr.co</span>
                 </a>
               </li>
             </ul>

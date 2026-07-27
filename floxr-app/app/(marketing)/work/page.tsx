@@ -10,7 +10,7 @@ const FEATURED_PROJECTS = [
     tagline:
       'Public website and internal operations dashboard, built end-to-end — profitable within two months of launch, ahead of the client’s own projections.',
     stack: ['Next.js', 'Node.js', 'PostgreSQL'],
-    year: '2024',
+    year: '2026',
     url: 'https://ameerglobal.ca',
     domain: 'ameerglobal.ca',
   },
