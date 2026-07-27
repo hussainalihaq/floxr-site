@@ -119,7 +119,7 @@ export default async function AdminPage({
   } catch (e) {
     console.error('Admin dashboard DB error:', e);
     dbError =
-      'Database unreachable. Check that DATABASE_URL in the environment points to a live database (the old Supabase project no longer resolves).';
+      'Could not reach the database. Check DATABASE_URL in the environment, and that the Supabase project is running (free-tier projects pause after ~7 days of inactivity).';
   }
 
   return (
