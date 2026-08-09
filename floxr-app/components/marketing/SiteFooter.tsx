@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
+import { COMPANY_LINE } from '@/lib/site-content';
 
 export default function SiteFooter() {
   return (
@@ -26,8 +27,7 @@ export default function SiteFooter() {
           <div className="col-span-2 md:col-span-5">
             <img src="/floxr-logo.svg" alt="FLOXR" className="h-8 brightness-0 invert mb-5" />
             <p className="text-[15px] leading-relaxed max-w-xs" style={{ color: 'var(--color-mist-dark)' }}>
-              A small product studio. We design and build the websites, platforms, and dashboards
-              your business runs on — clear scope, fixed quotes, fast delivery.
+              {COMPANY_LINE}
             </p>
             <a
               href="mailto:hello@floxr.co"
@@ -43,8 +43,8 @@ export default function SiteFooter() {
             <ul className="space-y-3.5 text-[15px]">
               <li><Link href="/work" className="hover:text-[var(--color-rust-lt)] transition-colors">Work</Link></li>
               <li><Link href="/capabilities" className="hover:text-[var(--color-rust-lt)] transition-colors">Capabilities</Link></li>
-              <li><Link href="/audit" className="hover:text-[var(--color-rust-lt)] transition-colors">The Audit</Link></li>
               <li><Link href="/lab" className="hover:text-[var(--color-rust-lt)] transition-colors">The Lab</Link></li>
+              <li><Link href="/contact" className="hover:text-[var(--color-rust-lt)] transition-colors">Contact</Link></li>
             </ul>
           </div>
 

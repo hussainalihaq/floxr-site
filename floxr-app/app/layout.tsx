@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { COMPANY_META } from "@/lib/site-content";
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.floxr.co'),
   title: {
-    default: "FLOXR — Websites, Platforms & Dashboards",
+    default: "FLOXR — Software & Digital Infrastructure",
     template: "%s | FLOXR"
   },
-  description: "Floxr is a small product studio. We design and build business websites, custom platforms, dashboards, and AI tools — clear scope, fixed quotes, fast delivery.",
-  keywords: ["web design", "website development", "web platforms", "dashboards", "AI tools", "Floxr", "product studio", "Lahore"],
+  description: COMPANY_META,
+  keywords: ["web design", "website development", "web platforms", "dashboards", "AI tools", "Floxr", "solutions company", "Lahore"],
   authors: [{ name: "Floxr" }],
   creator: "Floxr",
   publisher: "Floxr",
@@ -25,8 +26,8 @@ export const metadata: Metadata = {
     apple: "/favicon.svg",
   },
   openGraph: {
-    title: "FLOXR — Websites, Platforms & Dashboards",
-    description: "Floxr is a small product studio. We design and build business websites, custom platforms, dashboards, and AI tools — clear scope, fixed quotes, fast delivery.",
+    title: "FLOXR — Software & Digital Infrastructure",
+    description: COMPANY_META,
     url: "https://www.floxr.co",
     siteName: "FLOXR",
     type: "website",
@@ -34,8 +35,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "FLOXR — Websites, Platforms & Dashboards",
-    description: "Floxr is a small product studio. We design and build business websites, custom platforms, dashboards, and AI tools — clear scope, fixed quotes, fast delivery.",
+    title: "FLOXR — Software & Digital Infrastructure",
+    description: COMPANY_META,
     creator: "@floxr_co",
   },
   robots: {
@@ -57,7 +58,7 @@ const jsonLd = {
   "name": "FLOXR",
   "url": "https://www.floxr.co",
   "logo": "https://www.floxr.co/floxr-logo.svg",
-  "description": "Floxr is a small product studio. We design and build business websites, custom platforms, dashboards, and AI tools — clear scope, fixed quotes, fast delivery.",
+  "description": COMPANY_META,
   "sameAs": [
     "https://linkedin.com/company/floxr",
     "https://instagram.com/floxr.co"

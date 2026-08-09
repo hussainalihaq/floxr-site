@@ -83,12 +83,20 @@ export default function ContactPage() {
               Let&apos;s build the <span className="font-serif-it font-normal">future</span>.
             </h1>
             <p
-              className="text-[17px] md:text-[19px] leading-relaxed max-w-md mb-16 anim-fade-up"
+              className="text-[17px] md:text-[19px] leading-relaxed max-w-md mb-8 anim-fade-up"
               style={{ color: 'var(--color-mist)', animationDelay: '0.2s' }}
             >
-              Whether you need a new website, a custom platform or dashboard, or an AI tool built
-              into your workflow — tell us what you&apos;re after and we&apos;ll reply within 24
-              hours with honest next steps and a fixed quote.
+              Whether you need a new website, a platform or dashboard, or AI built into your
+              workflow — tell us what you&apos;re after and we&apos;ll reply within 24 hours with
+              scope, timeline, and a fixed price.
+            </p>
+
+            <p
+              className="text-[15px] leading-relaxed max-w-md mb-16 pl-5 border-l-2 anim-fade-up"
+              style={{ color: 'var(--color-mist)', borderColor: 'var(--color-line)', animationDelay: '0.3s' }}
+            >
+              Not ready to start a project? Send us your site and we&apos;ll tell you honestly what
+              we&apos;d fix first.
             </p>
 
             <div className="mt-auto border-t hairline pt-10 grid grid-cols-2 lg:grid-cols-4 gap-8">

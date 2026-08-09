@@ -44,8 +44,8 @@ export default function CareersPage() {
               className="text-[18px] md:text-[20px] leading-relaxed max-w-2xl anim-fade-up"
               style={{ color: 'var(--color-mist)', animationDelay: '0.2s' }}
             >
-              Floxr is a small studio, and we like it that way — so we don&apos;t run a big hiring
-              pipeline. But we do collaborate with sharp freelance engineers and designers on a
+              We hire deliberately rather than continuously, so we don&apos;t always run open
+              listings. We do collaborate with strong freelance engineers and designers on a
               project basis, and we always want to hear from exceptional people.
             </p>
           </div>

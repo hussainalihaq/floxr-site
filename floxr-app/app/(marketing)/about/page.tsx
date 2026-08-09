@@ -1,28 +1,39 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, ArrowUpRight, Target, Users, PenTool, BadgeCheck } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import SiteFooter from '@/components/marketing/SiteFooter';
+import Reveal from '@/components/marketing/Reveal';
+import GearMotif from '@/components/marketing/GearMotif';
+import {
+  CLIENT_LINE,
+  COMPANY_LINE,
+  ENGAGEMENT_TERMS,
+  FOUNDING_STORY,
+  SERVICES,
+} from '@/lib/site-content';
 
-const PRINCIPLES = [
+export const metadata: Metadata = {
+  title: 'About',
+  description: COMPANY_LINE,
+};
+
+const POSITIONS = [
   {
-    icon: Target,
-    title: 'Outcome-Obsessed',
-    desc: 'We don’t bill hours. We deliver results.',
+    title: 'Fixed scope, fixed price',
+    body: 'Hourly billing rewards slow work. We agree the scope and the price in writing before anything is built, so the incentive is to deliver — not to extend.',
   },
   {
-    icon: Users,
-    title: 'Direct Access',
-    desc: 'You talk to the person building your product — no account managers, no telephone game.',
+    title: 'A written blueprint before code',
+    body: 'Most projects fail commercially before they fail technically. Architecture and scope are documented and approved first, which is why timelines hold.',
   },
   {
-    icon: PenTool,
-    title: 'Design-Engineering Fusion',
-    desc: 'Our engineers think in pixels and our designers think in systems.',
+    title: 'Direct access, start to finish',
+    body: 'You speak to the people building your product. No account managers relaying requirements, no context lost between the brief and the build.',
   },
   {
-    icon: BadgeCheck,
-    title: 'Relentless Standards',
-    desc: 'If it’s not exceptional, it doesn’t ship.',
+    title: 'Systems you can operate without us',
+    body: 'Every engagement ends with a handover: code, deployment, and documentation. You should never be locked in to the vendor who built it.',
   },
 ];
 
@@ -33,142 +44,136 @@ export default function AboutPage() {
 
       <main className="pt-[72px] md:pt-[80px]">
         {/* ── Header ── */}
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0 grid-lines opacity-40 [mask-image:radial-gradient(ellipse_80%_70%_at_70%_10%,#000_10%,transparent_70%)] pointer-events-none" />
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-16 md:pb-20 relative">
+        <section className="relative overflow-hidden grain">
+          <div className="absolute inset-0 grid-lines opacity-40 [mask-image:radial-gradient(ellipse_75%_65%_at_65%_15%,#000_10%,transparent_72%)] pointer-events-none" />
+          <GearMotif className="absolute -right-24 -top-20 w-[520px] h-[520px] hidden lg:block text-[var(--color-ink)] pointer-events-none" opacity={0.06} />
+
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-16 md:pb-20 relative z-10">
             <p className="eyebrow text-[var(--color-rust)] mb-6 anim-fade-up">About</p>
             <h1 className="display-xl max-w-4xl mb-8 anim-fade-up" style={{ animationDelay: '0.1s' }}>
-              A small studio with serious{' '}
-              <span className="font-serif-it font-normal">standards</span>.
+              A solutions company with a{' '}
+              <span className="font-serif-it font-normal">method</span>.
             </h1>
             <p
               className="text-[18px] md:text-[20px] leading-relaxed max-w-2xl anim-fade-up"
               style={{ color: 'var(--color-mist)', animationDelay: '0.2s' }}
             >
-              Floxr is a small product studio based in Lahore, working with clients worldwide. We
-              design and build websites, platforms, and dashboards. Being small is the point: you
-              talk directly to the people doing the work, scope stays honest, and nothing ships
-              that we wouldn&apos;t put our name on.
+              {COMPANY_LINE}
             </p>
           </div>
         </section>
 
-        {/* ── The Studio ── */}
-        <section className="border-t hairline" style={{ backgroundColor: 'var(--color-ink)', color: 'var(--color-paper)' }}>
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-20 relative overflow-hidden">
-            <div className="absolute inset-0 grid-lines-dark opacity-60 [mask-image:radial-gradient(ellipse_70%_90%_at_90%_50%,#000_10%,transparent_70%)] pointer-events-none" />
-            <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-              <div className="lg:col-span-7">
-                <p className="eyebrow text-[var(--color-rust-lt)] mb-5">The Studio</p>
-                <h2 className="display-lg2 mb-5">
-                  Based in Lahore. Building{' '}
-                  <span className="font-serif-it font-normal">worldwide</span>.
-                </h2>
-                <p className="text-[16px] leading-relaxed max-w-xl" style={{ color: 'var(--color-mist-dark)' }}>
-                  We keep the team small and the process direct. Every project is scoped, designed,
-                  and quality-checked by the same people who build it — which is exactly why the
-                  standards hold.
+        {/* ── Our Story ── */}
+        <section className="border-t hairline" style={{ backgroundColor: 'var(--color-paper-2)' }}>
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+              <Reveal className="lg:col-span-4">
+                <p className="eyebrow text-[var(--color-rust)] mb-5">01 — Our Story</p>
+                <h2 className="display-lg2">Why Floxr exists</h2>
+              </Reveal>
+              <Reveal className="lg:col-span-8" delay={80}>
+                <p className="text-[19px] md:text-[22px] leading-relaxed font-medium mb-8">
+                  {FOUNDING_STORY}
                 </p>
-                <a
-                  href="https://instagram.com/floxr.co"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="eyebrow inline-flex items-center gap-2 mt-8 text-[var(--color-paper)] border-b border-[var(--color-paper)]/40 pb-1.5 hover:text-[var(--color-rust-lt)] hover:border-[var(--color-rust-lt)] transition-colors"
-                >
-                  Follow @floxr.co
-                  <ArrowUpRight size={14} strokeWidth={2.25} />
-                </a>
-              </div>
-
-              <div className="lg:col-span-5 grid grid-cols-2 gap-x-6 gap-y-8">
-                {[
-                  { label: 'Based In', value: 'Lahore, PK' },
-                  { label: 'Working', value: 'Worldwide' },
-                  { label: 'Engagement', value: 'Fixed Quote' },
-                  { label: 'Response', value: '< 24 Hours' },
-                ].map((item) => (
-                  <div key={item.label} className="border-t pt-5" style={{ borderColor: 'var(--color-line-dark)' }}>
-                    <p className="eyebrow mb-2" style={{ color: 'var(--color-mist-dark)' }}>{item.label}</p>
-                    <p className="text-[18px] font-bold tracking-tight">{item.value}</p>
-                  </div>
-                ))}
-              </div>
+                <p className="text-[16px] leading-relaxed max-w-2xl" style={{ color: 'var(--color-mist)' }}>
+                  {CLIENT_LINE} That focus is deliberate: it means the patterns we have already
+                  solved — operations dashboards, document workflows, client portals — are the ones
+                  our clients need next.
+                </p>
+              </Reveal>
             </div>
           </div>
         </section>
 
-        {/* ── Principles ── */}
-        <section>
+        {/* ── Positions ── */}
+        <section className="border-t hairline">
           <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24">
-            <p className="eyebrow text-[var(--color-rust)] mb-5">01 — Our Principles</p>
-            <h2 className="display-lg2 mb-14">How we operate</h2>
+            <Reveal>
+              <p className="eyebrow text-[var(--color-rust)] mb-5">02 — How We Operate</p>
+              <h2 className="display-lg2 mb-14 max-w-2xl">
+                Four positions we don&apos;t{' '}
+                <span className="font-serif-it font-normal">compromise</span> on.
+              </h2>
+            </Reveal>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {PRINCIPLES.map((principle) => (
-                <div
-                  key={principle.title}
-                  className="group rounded-2xl border hairline bg-white p-8 md:p-10 hover:shadow-[0_16px_48px_rgba(18,18,20,0.07)] transition-shadow duration-500"
-                >
-                  <div
-                    className="w-14 h-14 rounded-full flex items-center justify-center mb-8 group-hover:bg-[var(--color-rust)] transition-colors duration-500"
-                    style={{ backgroundColor: 'var(--color-paper-2)' }}
-                  >
-                    <principle.icon
-                      size={24}
-                      strokeWidth={1.5}
-                      className="text-[var(--color-ink)] group-hover:text-white transition-colors duration-500"
-                    />
+              {POSITIONS.map((position, i) => (
+                <Reveal key={position.title} delay={i * 70}>
+                  <div className="card p-8 md:p-10 h-full">
+                    <span className="numeral text-[52px] block mb-8">0{i + 1}</span>
+                    <h3 className="display-md2 mb-4">{position.title}</h3>
+                    <p className="text-[15px] leading-relaxed" style={{ color: 'var(--color-mist)' }}>
+                      {position.body}
+                    </p>
                   </div>
-                  <h3 className="display-md2 mb-3">{principle.title}</h3>
-                  <p className="text-[15px] leading-relaxed" style={{ color: 'var(--color-mist)' }}>
-                    {principle.desc}
-                  </p>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── The Team ── */}
-        <section className="border-t hairline relative overflow-hidden" style={{ backgroundColor: 'var(--color-paper-2)' }}>
-          <div className="absolute inset-0 grid-lines opacity-50 [mask-image:radial-gradient(ellipse_60%_80%_at_50%_50%,#000_10%,transparent_70%)] pointer-events-none" />
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-20 md:py-28 relative">
-            <div className="max-w-2xl mx-auto text-center flex flex-col items-center">
-              <p className="eyebrow text-[var(--color-rust)] mb-6">02 — Why Small Wins</p>
-              <h2 className="display-lg2 mb-6">
-                No account managers. No <span className="font-serif-it font-normal">telephone game</span>.
-              </h2>
-              <p className="text-[17px] leading-relaxed max-w-xl" style={{ color: 'var(--color-mist)' }}>
-                When you work with Floxr, you talk to the person building your product. Decisions
-                happen in hours, not meetings. That&apos;s how projects ship in weeks instead of
-                quarters — and why nothing gets lost in translation.
-              </p>
+        {/* ── What we build (mirrors homepage + capabilities) ── */}
+        <section
+          className="border-t hairline relative overflow-hidden grain"
+          style={{ backgroundColor: 'var(--color-ink)', color: 'var(--color-paper)' }}
+        >
+          <div className="absolute inset-0 grid-lines-dark opacity-60 [mask-image:radial-gradient(ellipse_70%_90%_at_85%_20%,#000_10%,transparent_72%)] pointer-events-none" />
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24 relative z-10">
+            <Reveal>
+              <p className="eyebrow text-[var(--color-rust-lt)] mb-5">03 — What We Build</p>
+              <h2 className="display-lg2 mb-14">Four categories of work.</h2>
+            </Reveal>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-12">
+              {SERVICES.map((service, i) => (
+                <Reveal key={service.id} delay={i * 70}>
+                  <div className="border-t pt-8" style={{ borderColor: 'var(--color-line-dark)' }}>
+                    <p className="eyebrow mb-4" style={{ color: 'var(--color-mist-dark)' }}>{service.index}</p>
+                    <h3 className="text-[20px] font-bold tracking-tight mb-3">{service.name}</h3>
+                    <p className="text-[14px] leading-relaxed" style={{ color: 'var(--color-mist-dark)' }}>
+                      {service.summary}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
             </div>
+
+            <Reveal>
+              <div
+                className="mt-16 pt-10 border-t flex flex-col md:flex-row md:items-center md:justify-between gap-8"
+                style={{ borderColor: 'var(--color-line-dark)' }}
+              >
+                <p className="text-[17px] max-w-lg" style={{ color: 'var(--color-mist-dark)' }}>
+                  Every engagement runs on the same terms: {ENGAGEMENT_TERMS.map((t) => t.value.toLowerCase()).join(', ')}.
+                </p>
+                <Link href="/capabilities" className="btn-pill btn-paper flex-shrink-0">
+                  See Capabilities
+                  <ArrowUpRight size={14} strokeWidth={2.25} />
+                </Link>
+              </div>
+            </Reveal>
           </div>
         </section>
 
         {/* ── CTA ── */}
         <section className="border-t hairline">
           <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24">
-            <div
-              className="rounded-2xl p-10 md:p-16 flex flex-col items-center text-center relative overflow-hidden"
-              style={{ backgroundColor: 'var(--color-ink)', color: 'var(--color-paper)' }}
-            >
-              <div className="absolute inset-0 grid-lines-dark opacity-60 [mask-image:radial-gradient(ellipse_60%_100%_at_50%_0%,#000_10%,transparent_80%)] pointer-events-none" />
-              <div className="relative flex flex-col items-center">
-                <h2 className="display-lg2 mb-5 max-w-2xl">
-                  Ready to build something <span className="font-serif-it font-normal">exceptional</span>?
+            <Reveal>
+              <div className="max-w-2xl mx-auto text-center flex flex-col items-center">
+                <h2 className="display-lg2 mb-5">
+                  Ready to scope something{' '}
+                  <span className="font-serif-it font-normal">properly</span>?
                 </h2>
-                <p className="text-[16px] leading-relaxed max-w-md mb-10" style={{ color: 'var(--color-mist-dark)' }}>
-                  Let&apos;s talk about your next project. No sales pitch — just a real conversation
-                  with engineers.
+                <p className="text-[16px] leading-relaxed max-w-md mb-10" style={{ color: 'var(--color-mist)' }}>
+                  Tell us what you need. We&apos;ll come back with scope, timeline, and a fixed
+                  price — no sales pitch, just a real conversation about what you need.
                 </p>
-                <Link href="/contact" className="btn-pill btn-paper">
+                <Link href="/contact" className="btn-pill btn-ink">
                   Start a Conversation
                   <ArrowRight size={14} strokeWidth={2.25} />
                 </Link>
               </div>
-            </div>
+            </Reveal>
           </div>
         </section>
       </main>
