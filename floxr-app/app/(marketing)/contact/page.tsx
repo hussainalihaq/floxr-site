@@ -10,7 +10,6 @@ import Reveal from '@/components/marketing/Reveal';
 import { TextReveal, ScrollRail, Spotlight } from '@/components/marketing/Motion';
 import { SERVICES } from '@/lib/site-content';
 
-const BUDGETS = ['Under $2k', '$2k – $5k', '$5k – $15k', '$15k+', 'Not sure yet'];
 const TIMELINES = ['ASAP', 'Within a month', '1–3 months', 'Just exploring'];
 
 const NEXT_STEPS = [
@@ -33,7 +32,6 @@ export default function ContactPage() {
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState<string | null>(null);
   const [service, setService] = useState<string>(SERVICES[0].name);
-  const [budget, setBudget] = useState<string>('');
   const [timeline, setTimeline] = useState<string>('');
   const [draft, setDraft] = useState({ name: '', email: '', company: '', message: '' });
 
@@ -52,7 +50,7 @@ export default function ContactPage() {
   const mailtoFallback = () =>
     `mailto:hello@floxr.co?subject=${encodeURIComponent(
       `Project enquiry — ${service}`
-    )}&body=${encodeURIComponent(`${composeScope()}\n\nBudget: ${budget || 'Not specified'}\n— ${draft.name}`)}`;
+    )}&body=${encodeURIComponent(`${composeScope()}\n\n— ${draft.name}`)}`;
 
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -66,7 +64,6 @@ export default function ContactPage() {
         body: JSON.stringify({
           name: draft.name,
           email: draft.email,
-          budget: budget || undefined,
           scope: composeScope(),
         }),
       });
@@ -250,52 +247,27 @@ export default function ContactPage() {
                         />
                       </label>
 
-                      {/* Budget + timeline */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                        <fieldset>
-                          <legend className="eyebrow mb-4">Budget</legend>
-                          <div className="flex flex-wrap gap-2">
-                            {BUDGETS.map((b) => (
-                              <button
-                                type="button"
-                                key={b}
-                                onClick={() => setBudget(b === budget ? '' : b)}
-                                aria-pressed={b === budget}
-                                className="px-4 py-2.5 rounded-full text-[13px] font-light border transition-all duration-300"
-                                style={{
-                                  borderColor: b === budget ? 'var(--signal)' : 'var(--line-1)',
-                                  backgroundColor: b === budget ? 'var(--signal-lo)' : 'transparent',
-                                  color: b === budget ? 'var(--text-1)' : 'var(--text-2)',
-                                }}
-                              >
-                                {b}
-                              </button>
-                            ))}
-                          </div>
-                        </fieldset>
-
-                        <fieldset>
-                          <legend className="eyebrow mb-4">Timeline</legend>
-                          <div className="flex flex-wrap gap-2">
-                            {TIMELINES.map((t) => (
-                              <button
-                                type="button"
-                                key={t}
-                                onClick={() => setTimeline(t === timeline ? '' : t)}
-                                aria-pressed={t === timeline}
-                                className="px-4 py-2.5 rounded-full text-[13px] font-light border transition-all duration-300"
-                                style={{
-                                  borderColor: t === timeline ? 'var(--signal)' : 'var(--line-1)',
-                                  backgroundColor: t === timeline ? 'var(--signal-lo)' : 'transparent',
-                                  color: t === timeline ? 'var(--text-1)' : 'var(--text-2)',
-                                }}
-                              >
-                                {t}
-                              </button>
-                            ))}
-                          </div>
-                        </fieldset>
-                      </div>
+                      <fieldset>
+                        <legend className="eyebrow mb-4">Timeline</legend>
+                        <div className="flex flex-wrap gap-2">
+                          {TIMELINES.map((t) => (
+                            <button
+                              type="button"
+                              key={t}
+                              onClick={() => setTimeline(t === timeline ? '' : t)}
+                              aria-pressed={t === timeline}
+                              className="px-4 py-2.5 rounded-full text-[13px] font-light border transition-all duration-300"
+                              style={{
+                                borderColor: t === timeline ? 'var(--signal)' : 'var(--line-1)',
+                                backgroundColor: t === timeline ? 'var(--signal-lo)' : 'transparent',
+                                color: t === timeline ? 'var(--text-1)' : 'var(--text-2)',
+                              }}
+                            >
+                              {t}
+                            </button>
+                          ))}
+                        </div>
+                      </fieldset>
 
                       <label className="block">
                         <span className="eyebrow block mb-3">What are you building?</span>
