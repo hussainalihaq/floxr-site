@@ -79,7 +79,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    // Dark is rendered as the default so the common case matches exactly; the
+    // inline script below only rewrites this when a light preference is stored,
+    // which is why the attribute is exempted from hydration checks.
+    <html lang="en" className="scroll-smooth" data-theme="dark" suppressHydrationWarning>
       <head>
         <link href="https://fonts.googleapis.com" rel="preconnect" />
         <link crossOrigin="" href="https://fonts.gstatic.com" rel="preconnect" />
@@ -89,8 +92,14 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* Set the theme before first paint so there is no flash of the wrong ground. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('floxr-theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')}catch(e){document.documentElement.setAttribute('data-theme','dark')}})()`,
+          }}
+        />
       </head>
-      <body className="bg-[#08090B] text-on-background font-body-md antialiased overflow-x-hidden">
+      <body className="text-on-background font-body-md antialiased overflow-x-hidden">
         {children}
         <Analytics />
         <SpeedInsights />

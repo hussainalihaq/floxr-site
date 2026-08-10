@@ -40,13 +40,13 @@ export default function CapabilitiesPage() {
       <CustomCursor />
       <Navbar />
 
-      <main className="pt-[72px] md:pt-[80px]">
+      <main className="pt-[76px] md:pt-[88px]">
         {/* ── Hero ── */}
         <section className="relative overflow-hidden grain">
           <div className="absolute inset-0 grid-lines opacity-40 [mask-image:radial-gradient(ellipse_75%_65%_at_65%_15%,#000_10%,transparent_72%)] pointer-events-none" />
           <GearMotif className="absolute -right-24 -top-20 w-[520px] h-[520px] hidden lg:block text-[var(--text-1)] pointer-events-none" opacity={0.06} />
 
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-16 md:pb-20 relative z-10">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-12 md:pt-24 pb-16 md:pb-20 relative z-10">
             <p className="eyebrow text-[var(--signal)] mb-6 anim-fade-up">Capabilities</p>
             <h1 className="display-xl max-w-4xl mb-8 anim-fade-up" style={{ animationDelay: '0.1s' }}>
               What we build, and{' '}
@@ -63,7 +63,7 @@ export default function CapabilitiesPage() {
 
         {/* ── Services ── */}
         <section className="border-t hairline" style={{ backgroundColor: 'var(--plane-1)' }}>
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-14 md:py-24">
             <Reveal>
               <p className="eyebrow text-[var(--signal)] mb-5">01 — Services</p>
               <h2 className="display-lg2 mb-14">Four categories of work.</h2>
@@ -106,7 +106,7 @@ export default function CapabilitiesPage() {
 
         {/* ── Process ── */}
         <section className="border-t hairline">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-14 md:py-24">
             <Reveal>
               <p className="eyebrow text-[var(--signal)] mb-5">02 — Method</p>
               <h2 className="display-lg2 mb-14">Audit. Architect. Build.</h2>
@@ -142,7 +142,7 @@ export default function CapabilitiesPage() {
           style={{ backgroundColor: 'var(--plane-1)', color: 'var(--text-1)' }}
         >
           <div className="absolute inset-0 grid-lines-dark opacity-60 [mask-image:radial-gradient(ellipse_70%_90%_at_85%_15%,#000_10%,transparent_72%)] pointer-events-none" />
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24 relative z-10">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-14 md:py-24 relative z-10">
             <Reveal>
               <p className="eyebrow text-[var(--signal)] mb-5">03 — Standards</p>
               <h2 className="display-lg2 mb-14 max-w-2xl">What ships with every engagement.</h2>
@@ -165,7 +165,7 @@ export default function CapabilitiesPage() {
 
         {/* ── Engagement terms + stack ── */}
         <section className="border-t hairline" style={{ backgroundColor: 'var(--plane-1)' }}>
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-14 md:py-24">
             <Reveal>
               <p className="eyebrow text-[var(--signal)] mb-5">04 — Engagement</p>
               <h2 className="display-lg2 mb-14">Terms and tools.</h2>
@@ -209,7 +209,7 @@ export default function CapabilitiesPage() {
 
         {/* ── CTA ── */}
         <section className="border-t hairline">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-14 md:py-24">
             <Reveal>
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
                 <div>

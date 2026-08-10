@@ -29,7 +29,7 @@ export default function SiteFooter() {
 
       {/* Closing statement */}
       <div className="border-t hairline relative z-10">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 pt-24 md:pt-36 pb-20 md:pb-28">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 pt-16 md:pt-36 pb-14 md:pb-28">
           <p className="eyebrow mb-8">Next Step</p>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12">
             <h2 className="display-lg2 max-w-3xl">
@@ -46,9 +46,9 @@ export default function SiteFooter() {
 
       {/* Directory */}
       <div className="border-t hairline relative z-10">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-20 grid grid-cols-2 md:grid-cols-12 gap-x-8 gap-y-14">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-12 md:py-20 grid grid-cols-2 md:grid-cols-12 gap-x-8 gap-y-14">
           <div className="col-span-2 md:col-span-5">
-            <img src="/floxr-logo.svg" alt="Floxr" className="h-7 brightness-0 invert mb-7" />
+            <img src="/floxr-logo.svg" alt="Floxr" className="brand-mark h-7 mb-7" />
             <p className="body max-w-xs mb-8">{COMPANY_LINE}</p>
             <a
               href="mailto:hello@floxr.co"

@@ -19,13 +19,13 @@ export default function WorkPage() {
       <CustomCursor />
       <Navbar />
 
-      <main className="pt-[72px] md:pt-[80px]">
+      <main className="pt-[76px] md:pt-[88px]">
         {/* ── Header ── */}
         <section className="relative overflow-hidden grain">
           <div className="absolute inset-0 grid-lines opacity-40 [mask-image:radial-gradient(ellipse_75%_65%_at_65%_15%,#000_10%,transparent_72%)] pointer-events-none" />
           <GearMotif className="absolute -right-24 -top-20 w-[520px] h-[520px] hidden lg:block text-[var(--text-1)] pointer-events-none" opacity={0.06} />
 
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-16 md:pb-20 relative z-10">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-12 md:pt-24 pb-16 md:pb-20 relative z-10">
             <p className="eyebrow text-[var(--signal)] mb-6 anim-fade-up">Work</p>
             <h1 className="display-xl max-w-4xl mb-8 anim-fade-up" style={{ animationDelay: '0.1s' }}>
               Work we have <span className="font-serif-it font-normal">shipped</span>.
@@ -41,7 +41,7 @@ export default function WorkPage() {
 
         {/* ── Case studies ── */}
         <section className="border-t hairline">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-14 md:py-24">
             <div className="flex flex-col gap-16 md:gap-24">
               {CASE_STUDIES.map((project, i) => (
                 <Reveal key={project.name}>
@@ -133,7 +133,7 @@ export default function WorkPage() {
 
         {/* ── CTA ── */}
         <section className="border-t hairline" style={{ backgroundColor: 'var(--plane-1)' }}>
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-14 md:py-24">
             <Reveal>
               <div
                 className="rounded-2xl p-10 md:p-16 flex flex-col md:flex-row md:items-center md:justify-between gap-8 relative overflow-hidden grain"

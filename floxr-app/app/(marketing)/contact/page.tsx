@@ -75,9 +75,9 @@ export default function ContactPage() {
       <CustomCursor />
       <Navbar />
 
-      <main className="flex-grow pt-[72px] md:pt-[80px] relative overflow-hidden">
+      <main className="flex-grow pt-[76px] md:pt-[88px] relative overflow-hidden">
         <div className="absolute inset-0 grid-lines opacity-40 [mask-image:radial-gradient(ellipse_80%_70%_at_20%_10%,#000_10%,transparent_70%)] pointer-events-none" />
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20 relative">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-14 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20 relative">
           {/* Left: copy & info */}
           <div className="lg:col-span-6 flex flex-col">
             <p className="eyebrow text-[var(--signal)] mb-6 anim-fade-up">Contact</p>

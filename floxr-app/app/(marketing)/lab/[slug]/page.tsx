@@ -74,7 +74,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       <CustomCursor />
       <Navbar />
 
-      <main className="flex-grow pt-[72px] md:pt-[80px]">
+      <main className="flex-grow pt-[76px] md:pt-[88px]">
         {/* ── Article Header ── */}
         <section className="relative overflow-hidden border-b hairline">
           <div className="absolute inset-0 grid-lines opacity-40 [mask-image:radial-gradient(ellipse_80%_70%_at_70%_10%,#000_10%,transparent_70%)] pointer-events-none" />

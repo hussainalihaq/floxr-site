@@ -44,13 +44,13 @@ export default function AboutPage() {
       <CustomCursor />
       <Navbar />
 
-      <main className="pt-[72px] md:pt-[80px]">
+      <main className="pt-[76px] md:pt-[88px]">
         {/* ── Header ── */}
         <section className="relative overflow-hidden grain">
           <div className="absolute inset-0 grid-lines opacity-40 [mask-image:radial-gradient(ellipse_75%_65%_at_65%_15%,#000_10%,transparent_72%)] pointer-events-none" />
           <GearMotif className="absolute -right-24 -top-20 w-[520px] h-[520px] hidden lg:block text-[var(--text-1)] pointer-events-none" opacity={0.06} />
 
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-16 md:pb-20 relative z-10">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-12 md:pt-24 pb-16 md:pb-20 relative z-10">
             <p className="eyebrow text-[var(--signal)] mb-6 anim-fade-up">About</p>
             <h1 className="display-xl max-w-4xl mb-8 anim-fade-up" style={{ animationDelay: '0.1s' }}>
               A solutions company with a{' '}
@@ -67,7 +67,7 @@ export default function AboutPage() {
 
         {/* ── Our Story ── */}
         <section className="border-t hairline" style={{ backgroundColor: 'var(--plane-1)' }}>
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-14 md:py-24">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
               <Reveal className="lg:col-span-4">
                 <p className="eyebrow text-[var(--signal)] mb-5">01 — Our Story</p>
@@ -89,7 +89,7 @@ export default function AboutPage() {
 
         {/* ── Positions ── */}
         <section className="border-t hairline">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-14 md:py-24">
             <Reveal>
               <p className="eyebrow text-[var(--signal)] mb-5">02 — How We Operate</p>
               <h2 className="display-lg2 mb-14 max-w-2xl">
@@ -120,7 +120,7 @@ export default function AboutPage() {
           style={{ backgroundColor: 'var(--plane-1)', color: 'var(--text-1)' }}
         >
           <div className="absolute inset-0 grid-lines-dark opacity-60 [mask-image:radial-gradient(ellipse_70%_90%_at_85%_20%,#000_10%,transparent_72%)] pointer-events-none" />
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24 relative z-10">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-14 md:py-24 relative z-10">
             <Reveal>
               <p className="eyebrow text-[var(--signal)] mb-5">03 — What We Build</p>
               <h2 className="display-lg2 mb-14">Four categories of work.</h2>
@@ -159,7 +159,7 @@ export default function AboutPage() {
 
         {/* ── CTA ── */}
         <section className="border-t hairline">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-14 md:py-24">
             <Reveal>
               <div className="max-w-2xl mx-auto text-center flex flex-col items-center">
                 <h2 className="display-lg2 mb-5">

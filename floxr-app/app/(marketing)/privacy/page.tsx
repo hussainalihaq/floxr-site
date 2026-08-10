@@ -8,8 +8,8 @@ export default function PrivacyPage() {
       <CustomCursor />
       <Navbar />
 
-      <main className="flex-grow pt-[72px] md:pt-[80px]">
-        <section className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24 w-full">
+      <main className="flex-grow pt-[76px] md:pt-[88px]">
+        <section className="max-w-[1400px] mx-auto px-6 md:px-10 py-14 md:py-24 w-full">
           <p className="eyebrow text-[var(--signal)] mb-6">Legal</p>
           <h1 className="display-xl mb-14">
             Privacy <span className="font-serif-it font-normal">policy</span>.

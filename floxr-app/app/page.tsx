@@ -43,7 +43,7 @@ function SectionHead({
   link?: { href: string; text: string };
 }) {
   return (
-    <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16 md:mb-24">
+    <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12 md:mb-24">
       <div>
         <div className="flex items-center gap-4 mb-7">
           <span className="eyebrow" style={{ color: 'var(--signal)' }}>{index}</span>
@@ -80,7 +80,7 @@ export default function HomePage() {
             opacity={0.05}
           />
 
-          <div className="max-w-[1440px] mx-auto px-6 md:px-12 w-full relative z-10 pt-32 pb-24">
+          <div className="max-w-[1440px] mx-auto px-6 md:px-12 w-full relative z-10 pt-28 md:pt-32 pb-20 md:pb-24">
             <div className="flex items-center gap-4 mb-10 anim-fade-up">
               <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--signal)' }} />
               <p className="eyebrow">Full-Stack Software Company</p>
@@ -96,7 +96,7 @@ export default function HomePage() {
               designed, built, and shipped end to end.
             </p>
 
-            <div className="flex flex-col sm:flex-row sm:items-center gap-6 anim-fade-up" style={{ animationDelay: '0.36s' }}>
+            <div className="cta-row flex flex-col sm:flex-row sm:items-center gap-6 anim-fade-up" style={{ animationDelay: '0.36s' }}>
               <Link href="/contact" className="btn-pill btn-ink">
                 Start a Project
               </Link>
@@ -129,7 +129,7 @@ export default function HomePage() {
 
         {/* ─── CLIENT FOCUS ─── */}
         <section className="border-t hairline relative" style={{ backgroundColor: 'var(--plane-1)' }}>
-          <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-20 md:py-28">
+          <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-14 md:py-28">
             <Reveal>
               <p className="eyebrow mb-8">Who We Work With</p>
               <p className="display-md2 max-w-4xl font-light" style={{ color: 'var(--text-1)' }}>
@@ -141,7 +141,7 @@ export default function HomePage() {
 
         {/* ─── CAPABILITIES ─── */}
         <section className="border-t hairline">
-          <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-24 md:py-36">
+          <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-36">
             <Reveal>
               <SectionHead
                 index="01"
@@ -186,7 +186,7 @@ export default function HomePage() {
         {/* ─── METHOD ─── */}
         <section className="border-t hairline relative overflow-hidden" style={{ backgroundColor: 'var(--plane-1)' }}>
           <div className="aura w-[700px] h-[700px] -top-40 left-1/4 opacity-30" />
-          <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-24 md:py-36 relative z-10">
+          <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-36 relative z-10">
             <Reveal>
               <SectionHead index="02" label="Method" title="Audit. Architect. Build." />
             </Reveal>
@@ -224,7 +224,7 @@ export default function HomePage() {
 
         {/* ─── SELECTED WORK ─── */}
         <section className="border-t hairline">
-          <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-24 md:py-36">
+          <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-36">
             <Reveal>
               <SectionHead
                 index="03"
@@ -234,7 +234,7 @@ export default function HomePage() {
               />
             </Reveal>
 
-            <div className="flex flex-col gap-20 md:gap-32">
+            <div className="flex flex-col gap-16 md:gap-32">
               {CASE_STUDIES.map((cs, i) => (
                 <Reveal key={cs.name}>
                   <article className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 items-center">
@@ -316,7 +316,7 @@ export default function HomePage() {
 
         {/* ─── THE STACK ─── */}
         <section className="border-t hairline" style={{ backgroundColor: 'var(--plane-1)' }}>
-          <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-24 md:py-36">
+          <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-36">
             <Reveal>
               <SectionHead
                 index="04"
@@ -349,7 +349,7 @@ export default function HomePage() {
 
         {/* ─── ENGAGEMENT ─── */}
         <section className="border-t hairline">
-          <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-24 md:py-36">
+          <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-36">
             <Reveal>
               <SectionHead
                 index="05"
@@ -380,7 +380,7 @@ export default function HomePage() {
 
         {/* ─── LAB ─── */}
         <section className="border-t hairline" style={{ backgroundColor: 'var(--plane-1)' }}>
-          <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-24 md:py-36">
+          <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-36">
             <Reveal>
               <SectionHead
                 index="06"

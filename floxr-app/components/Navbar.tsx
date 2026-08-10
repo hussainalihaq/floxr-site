@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
+import ThemeToggle from '@/components/marketing/ThemeToggle';
 
 const NAV_LINKS = [
   { href: '/work', label: 'Work' },
@@ -47,7 +48,7 @@ export default function Navbar() {
       <nav
         className="fixed top-0 left-0 w-full z-[100] transition-colors duration-500"
         style={{
-          backgroundColor: isScrolled ? 'rgba(8,9,11,0.72)' : 'transparent',
+          backgroundColor: isScrolled ? 'var(--nav-scrim)' : 'transparent',
           backdropFilter: isScrolled ? 'blur(20px) saturate(140%)' : 'none',
           WebkitBackdropFilter: isScrolled ? 'blur(20px) saturate(140%)' : 'none',
           borderBottom: `1px solid ${isScrolled ? 'var(--line-1)' : 'transparent'}`,
@@ -55,7 +56,7 @@ export default function Navbar() {
       >
         <div className="max-w-[1440px] mx-auto px-6 md:px-12 h-[76px] md:h-[88px] flex items-center justify-between gap-8">
           <Link href="/" onClick={() => setIsOpen(false)} className="flex-shrink-0" aria-label="Floxr home">
-            <img src="/floxr-logo.svg" alt="Floxr" className="h-6 md:h-7 w-auto brightness-0 invert" />
+            <img src="/floxr-logo.svg" alt="Floxr" className="brand-mark h-6 md:h-7 w-auto" />
           </Link>
 
           <div className="hidden md:flex items-center gap-10">
@@ -80,18 +81,24 @@ export default function Navbar() {
             })}
           </div>
 
-          <Link href="/contact" className="btn-pill btn-ink hidden md:inline-flex !py-2.5 !px-6 !text-[13px]">
-            Start a Project
-          </Link>
+          <div className="hidden md:flex items-center gap-4">
+            <ThemeToggle />
+            <Link href="/contact" className="btn-pill btn-ink !py-2.5 !px-6 !text-[13px]">
+              Start a Project
+            </Link>
+          </div>
 
+          <div className="md:hidden flex items-center gap-3 relative z-[110]">
+            <ThemeToggle />
           <button
-            className="md:hidden p-1 -mr-1 relative z-[110]"
+            className="p-1 -mr-1"
             style={{ color: 'var(--text-1)' }}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={24} strokeWidth={1.25} /> : <Menu size={24} strokeWidth={1.25} />}
           </button>
+          </div>
         </div>
       </nav>
 
