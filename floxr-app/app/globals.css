@@ -399,6 +399,103 @@
   .plane, .card, .btn-pill { transition: none; }
 }
 
+
+/* ── Motion system ───────────────────────────────────────────── */
+
+/* Floating rounded header */
+.nav-pill {
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  transition: background-color .5s ease, border-color .5s ease,
+              box-shadow .5s ease, transform .55s cubic-bezier(.16,1,.3,1);
+}
+.nav-pill.is-floating {
+  background: var(--nav-scrim);
+  border-color: var(--line-1);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  box-shadow: 0 10px 40px rgba(0,0,0,.30);
+}
+:root[data-theme='light'] .nav-pill.is-floating { box-shadow: 0 10px 40px rgba(10,11,13,.09); }
+
+/* Sliding pill behind the hovered/active nav item */
+.nav-ind {
+  position: absolute;
+  border-radius: 9999px;
+  background: var(--plane-3);
+  transition: transform .55s cubic-bezier(.16,1,.3,1),
+              width .55s cubic-bezier(.16,1,.3,1), opacity .35s ease;
+  z-index: 0;
+}
+
+/* Word-level text reveal */
+.tr-word { display: inline-block; overflow: hidden; vertical-align: bottom; }
+.tr-word > span {
+  display: inline-block;
+  transform: translateY(105%);
+  transition: transform .95s cubic-bezier(.16,1,.3,1);
+}
+.tr-in .tr-word > span { transform: none; }
+
+/* Infinite marquee */
+.marquee { display: flex; overflow: hidden; user-select: none; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-track {
+  flex-shrink: 0; display: flex; align-items: center;
+  gap: 3.5rem; padding-right: 3.5rem; min-width: 100%;
+  animation: marqueeSlide 34s linear infinite;
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+  mask-image: linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+}
+
+/* Light sweep across primary buttons */
+.btn-ink { position: relative; overflow: hidden; }
+.btn-ink::after {
+  content: ''; position: absolute; inset: 0;
+  transform: translateX(-120%) skewX(-18deg);
+  background: linear-gradient(90deg,transparent,rgba(255,255,255,.34),transparent);
+  transition: transform .85s cubic-bezier(.16,1,.3,1);
+  pointer-events: none;
+}
+.btn-ink:hover::after { transform: translateX(120%) skewX(-18deg); }
+
+/* Pointer-tracked spotlight on raised surfaces */
+.spot { position: relative; }
+.spot::before {
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
+  opacity: 0; transition: opacity .45s ease; pointer-events: none;
+  background: radial-gradient(420px circle at var(--mx,50%) var(--my,50%), var(--signal-lo), transparent 62%);
+}
+.spot:hover::before { opacity: 1; }
+
+/* Scroll progress rail */
+.scroll-rail {
+  position: fixed; top: 0; left: 0; height: 2px; width: 100%;
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--signal), var(--text-1));
+  z-index: 200; will-change: transform;
+}
+
+/* Underline that draws in */
+.ul-draw { position: relative; }
+.ul-draw::after {
+  content: ''; position: absolute; left: 0; bottom: -3px; height: 1px; width: 100%;
+  background: currentColor; transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform .5s cubic-bezier(.16,1,.3,1);
+}
+.ul-draw:hover::after { transform: scaleX(1); }
+
+.float-slow { animation: floatSlow 13s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track, .float-slow { animation: none; }
+  .tr-word > span { transform: none; transition: none; }
+  .btn-ink::after { display: none; }
+  .nav-pill, .nav-ind, .ul-draw::after { transition: none; }
+}
+
 } /* end @layer components */
 
 /* Nav backdrop lives outside @theme: no utility consumes it, so Tailwind
@@ -479,4 +576,14 @@ body { background-color: var(--void); }
 @keyframes floxrSpin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+@keyframes marqueeSlide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-100% - 3.5rem)); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
 }

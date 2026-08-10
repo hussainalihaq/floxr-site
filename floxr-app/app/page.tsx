@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import SiteFooter from '@/components/marketing/SiteFooter';
 import Reveal from '@/components/marketing/Reveal';
 import CustomCursor from '@/components/marketing/CustomCursor';
+import { TextReveal, Marquee, ScrollRail, Spotlight } from '@/components/marketing/Motion';
 import GearMotif from '@/components/marketing/GearMotif';
 import {
   CASE_STUDIES,
@@ -65,6 +66,7 @@ function SectionHead({
 export default function HomePage() {
   return (
     <div className="mkt min-h-screen">
+      <ScrollRail />
       <CustomCursor />
       <Navbar />
 
@@ -75,7 +77,7 @@ export default function HomePage() {
           <div className="aura w-[900px] h-[900px] -top-56 -right-64" />
           <div className="aura w-[520px] h-[520px] top-1/3 -left-56 opacity-30" />
           <GearMotif
-            className="absolute right-[-14%] top-1/2 -translate-y-1/2 w-[820px] h-[820px] hidden lg:block pointer-events-none"
+            className="absolute right-[-14%] top-1/2 -translate-y-1/2 w-[820px] h-[820px] hidden lg:block pointer-events-none float-slow"
             stroke="#FFFFFF"
             opacity={0.05}
           />
@@ -86,8 +88,8 @@ export default function HomePage() {
               <p className="eyebrow">Full-Stack Software Company</p>
             </div>
 
-            <h1 className="display-xl max-w-[17ch] mb-12 anim-fade-up" style={{ animationDelay: '0.12s' }}>
-              We engineer the systems your business{' '}
+            <h1 className="display-xl max-w-[17ch] mb-12">
+              <TextReveal text="We engineer the systems your business" delay={120} />{' '}
               <span className="font-serif-it">runs on</span>.
             </h1>
 
@@ -158,7 +160,7 @@ export default function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {SERVICES.map((service, i) => (
                 <Reveal key={service.id} delay={i * 80}>
-                  <div className="plane p-9 md:p-12 h-full flex flex-col">
+                  <Spotlight className="plane p-9 md:p-12 h-full flex flex-col">
                     <div className="flex items-start justify-between mb-10">
                       <span className="numeral">{service.index}</span>
                       <span className="eyebrow">{service.timeline}</span>
@@ -176,7 +178,7 @@ export default function HomePage() {
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </Spotlight>
                 </Reveal>
               ))}
             </div>
