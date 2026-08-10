@@ -1,8 +1,16 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Code2, Zap, Shield, Globe } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import CustomCursor from '@/components/marketing/CustomCursor';
 import SiteFooter from '@/components/marketing/SiteFooter';
+
+export const metadata: Metadata = {
+  title: 'Careers',
+  description: 'We collaborate with strong freelance engineers and designers. Tell us what you are great at.',
+  alternates: { canonical: '/careers' },
+};
+
 
 const VALUES = [
   {

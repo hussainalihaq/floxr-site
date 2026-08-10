@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
@@ -60,6 +61,34 @@ const ARTICLES: Record<string, { title: string; category: string; date: string; 
     ],
   },
 };
+
+export function generateStaticParams() {
+  return Object.keys(ARTICLES).map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const article = ARTICLES[slug];
+  if (!article) return { title: 'Not Found' };
+
+  const summary = `${article.content[0].slice(0, 155).trim()}…`;
+  return {
+    title: article.title,
+    description: summary,
+    alternates: { canonical: `/lab/${slug}` },
+    openGraph: {
+      type: 'article',
+      title: article.title,
+      description: summary,
+      url: `/lab/${slug}`,
+    },
+    twitter: { card: 'summary_large_image', title: article.title, description: summary },
+  };
+}
 
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

@@ -125,6 +125,14 @@ export const STACK_LAYERS = [
   { layer: 'Infrastructure', items: 'AWS · Vercel · Docker · CI/CD' },
 ] as const;
 
+/** Lab entry slugs — shared with the sitemap so published writing is discoverable. */
+export const LAB_SLUGS = [
+  'death-of-decorative-ui',
+  'micro-frontends-in-practice',
+  'friction-as-a-feature',
+  'typographic-scales-in-fluid-contexts',
+] as const;
+
 /** Real, shipped work only. */
 export const CASE_STUDIES = [
   {

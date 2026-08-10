@@ -1,6 +1,14 @@
+import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import CustomCursor from '@/components/marketing/CustomCursor';
 import SiteFooter from '@/components/marketing/SiteFooter';
+
+export const metadata: Metadata = {
+  title: 'Privacy',
+  description: 'How Floxr collects, uses, and protects your information.',
+  alternates: { canonical: '/privacy' },
+};
+
 
 export default function PrivacyPage() {
   return (

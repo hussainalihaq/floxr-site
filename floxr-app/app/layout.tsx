@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { COMPANY_META } from "@/lib/site-content";
+import { COMPANY_META, SERVICES } from "@/lib/site-content";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -20,24 +20,42 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  alternates: {
+    canonical: "/",
+  },
+  manifest: "/manifest.webmanifest",
+  // Safari and iOS ignore SVG for the touch icon, so a PNG has to be supplied.
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+    ],
+    shortcut: "/favicon-32.png",
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   openGraph: {
     title: "FLOXR — Software & Digital Infrastructure",
     description: COMPANY_META,
     url: "https://www.floxr.co",
-    siteName: "FLOXR",
+    siteName: "Floxr",
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        type: "image/png",
+        alt: "Floxr — we engineer the systems your business runs on",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "FLOXR — Software & Digital Infrastructure",
     description: COMPANY_META,
     creator: "@floxr_co",
+    images: ["/og.png"],
   },
   robots: {
     index: true,
@@ -52,25 +70,87 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#08090B" },
+    { media: "(prefers-color-scheme: light)", color: "#FBFBFC" },
+  ],
+  colorScheme: "dark light",
+};
+
+const SITE = "https://www.floxr.co";
+
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "FLOXR",
-  "url": "https://www.floxr.co",
-  "logo": "https://www.floxr.co/floxr-logo.svg",
-  "description": COMPANY_META,
-  "sameAs": [
-    "https://linkedin.com/company/floxr",
-    "https://instagram.com/floxr.co"
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE}/#organization`,
+      name: "Floxr",
+      alternateName: "FLOXR",
+      url: SITE,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE}/icon-512.png`,
+        width: 512,
+        height: 512,
+      },
+      image: `${SITE}/og.png`,
+      description: COMPANY_META,
+      email: "hello@floxr.co",
+      foundingDate: "2024",
+      sameAs: ["https://linkedin.com/company/floxr", "https://instagram.com/floxr.co"],
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          contactType: "sales",
+          email: "hello@floxr.co",
+          availableLanguage: ["English"],
+          areaServed: "Worldwide",
+        },
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE}/#website`,
+      url: SITE,
+      name: "Floxr",
+      description: COMPANY_META,
+      publisher: { "@id": `${SITE}/#organization` },
+      inLanguage: "en",
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": `${SITE}/#service`,
+      name: "Floxr",
+      url: SITE,
+      image: `${SITE}/og.png`,
+      description: COMPANY_META,
+      provider: { "@id": `${SITE}/#organization` },
+      areaServed: "Worldwide",
+      serviceType: SERVICES.map((service) => service.name),
+      knowsAbout: [
+        "Software Development",
+        "Product Engineering",
+        "Internal Systems",
+        "Dashboards",
+        "AI Integration",
+        "Cloud Infrastructure",
+      ],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Capabilities",
+        itemListElement: SERVICES.map((service) => ({
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: service.name,
+            description: service.summary,
+          },
+        })),
+      },
+    },
   ],
-  "areaServed": "Worldwide",
-  "knowsAbout": [
-    "Web Design",
-    "Website Development",
-    "Web Platforms",
-    "Dashboards",
-    "AI Tools"
-  ]
 };
 
 export default function RootLayout({
