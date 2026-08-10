@@ -39,9 +39,9 @@ function fmt(date: Date): string {
 
 function StatCard({ label, value }: { label: string; value: number }) {
   return (
-    <div className="rounded-2xl border hairline bg-white p-6">
-      <div className="text-[36px] font-bold tracking-tight leading-none mb-2">{value}</div>
-      <div className="eyebrow" style={{ color: 'var(--color-mist)' }}>{label}</div>
+    <div className="rounded-2xl border hairline bg-[var(--plane-2)] p-6">
+      <div className="text-[36px] font-light tracking-[-0.03em] leading-none mb-2">{value}</div>
+      <div className="eyebrow" style={{ color: 'var(--text-2)' }}>{label}</div>
     </div>
   );
 }
@@ -50,10 +50,10 @@ function Section({ title, count, children }: { title: string; count: number; chi
   return (
     <section className="mb-14">
       <div className="flex items-baseline gap-4 mb-5">
-        <h2 className="text-[22px] font-bold tracking-tight">{title}</h2>
-        <span className="eyebrow" style={{ color: 'var(--color-mist)' }}>{count} total</span>
+        <h2 className="text-[22px] font-light tracking-[-0.03em]">{title}</h2>
+        <span className="eyebrow" style={{ color: 'var(--text-2)' }}>{count} total</span>
       </div>
-      <div className="rounded-2xl border hairline bg-white overflow-x-auto">{children}</div>
+      <div className="rounded-2xl border hairline bg-[var(--plane-2)] overflow-x-auto">{children}</div>
     </section>
   );
 }
@@ -73,18 +73,18 @@ export default async function AdminPage({
   if (!authed) {
     return (
       <div className="mkt min-h-screen flex items-center justify-center px-6">
-        <div className="w-full max-w-sm rounded-2xl border hairline bg-white p-8 md:p-10">
+        <div className="w-full max-w-sm rounded-2xl border hairline bg-[var(--plane-2)] p-8 md:p-10">
           <img src="/floxr-logo.svg" alt="FLOXR" className="h-7 mb-8" />
-          <p className="eyebrow text-[var(--color-rust)] mb-3">Admin</p>
-          <h1 className="text-[24px] font-bold tracking-tight mb-6">Responses Dashboard</h1>
+          <p className="eyebrow text-[var(--signal)] mb-3">Admin</p>
+          <h1 className="text-[24px] font-light tracking-[-0.03em] mb-6">Responses Dashboard</h1>
           {!process.env.ADMIN_PASSWORD && (
-            <div className="rounded-lg p-4 mb-5 text-[13px] bg-[var(--color-rust)]/10 text-[var(--color-rust)]">
+            <div className="rounded-lg p-4 mb-5 text-[13px] bg-[var(--signal)]/10 text-[var(--signal)]">
               ADMIN_PASSWORD is not set in the environment. Add it to .env.local (and your host)
               to enable login.
             </div>
           )}
           {error && (
-            <div className="rounded-lg p-4 mb-5 text-[13px] bg-[var(--color-rust)]/10 text-[var(--color-rust)]">
+            <div className="rounded-lg p-4 mb-5 text-[13px] bg-[var(--signal)]/10 text-[var(--signal)]">
               Wrong password.
             </div>
           )}
@@ -95,7 +95,7 @@ export default async function AdminPage({
               required
               autoFocus
               placeholder="Password"
-              className="w-full border hairline rounded-xl px-4 py-3.5 text-[15px] bg-transparent outline-none focus:border-[var(--color-ink)] transition-colors"
+              className="w-full border hairline rounded-xl px-4 py-3.5 text-[15px] bg-transparent outline-none focus:border-[var(--line-2)] transition-colors"
             />
             <button type="submit" className="btn-pill btn-ink w-full">Sign In</button>
           </form>
@@ -125,14 +125,14 @@ export default async function AdminPage({
   return (
     <div className="mkt min-h-screen">
       {/* Top bar */}
-      <header className="border-b hairline" style={{ backgroundColor: 'var(--color-paper)' }}>
+      <header className="border-b hairline" style={{ backgroundColor: 'var(--void)' }}>
         <div className="max-w-[1200px] mx-auto px-6 h-[68px] flex items-center justify-between">
           <div className="flex items-center gap-4">
             <img src="/floxr-logo.svg" alt="FLOXR" className="h-6" />
-            <span className="eyebrow text-[var(--color-rust)]">Admin — Responses</span>
+            <span className="eyebrow text-[var(--signal)]">Admin — Responses</span>
           </div>
           <form action={adminLogout}>
-            <button type="submit" className="eyebrow text-[var(--color-mist)] hover:text-[var(--color-ink)] transition-colors cursor-pointer">
+            <button type="submit" className="eyebrow text-[var(--text-2)] hover:text-[var(--text-1)] transition-colors cursor-pointer">
               Sign Out
             </button>
           </form>
@@ -141,7 +141,7 @@ export default async function AdminPage({
 
       <main className="max-w-[1200px] mx-auto px-6 py-10">
         {dbError ? (
-          <div className="rounded-2xl border p-8 text-[15px] leading-relaxed bg-[var(--color-rust)]/8 border-[var(--color-rust)]/30 text-[var(--color-rust)] max-w-2xl">
+          <div className="rounded-2xl border p-8 text-[15px] leading-relaxed bg-[var(--signal)]/8 border-[var(--signal)]/30 text-[var(--signal)] max-w-2xl">
             {dbError}
           </div>
         ) : (
@@ -157,7 +157,7 @@ export default async function AdminPage({
             <Section title="Audit Requests" count={audits.length}>
               <table className="w-full min-w-[720px]">
                 <thead>
-                  <tr style={{ color: 'var(--color-mist)' }}>
+                  <tr style={{ color: 'var(--text-2)' }}>
                     <th className={th}>Name</th>
                     <th className={th}>Email</th>
                     <th className={th}>Objective</th>
@@ -167,7 +167,7 @@ export default async function AdminPage({
                 <tbody>
                   {audits.length === 0 && (
                     <tr>
-                      <td className={`${td} hairline`} colSpan={4} style={{ color: 'var(--color-mist)' }}>
+                      <td className={`${td} hairline`} colSpan={4} style={{ color: 'var(--text-2)' }}>
                         No audit requests yet.
                       </td>
                     </tr>
@@ -178,12 +178,12 @@ export default async function AdminPage({
                         {row.firstName} {row.lastName}
                       </td>
                       <td className={`${td} hairline`}>
-                        <a href={`mailto:${row.email}`} className="underline underline-offset-2 hover:text-[var(--color-rust)]">
+                        <a href={`mailto:${row.email}`} className="underline underline-offset-2 hover:text-[var(--signal)]">
                           {row.email}
                         </a>
                       </td>
                       <td className={`${td} hairline`}>{row.objective}</td>
-                      <td className={`${td} hairline whitespace-nowrap`} style={{ color: 'var(--color-mist)' }}>
+                      <td className={`${td} hairline whitespace-nowrap`} style={{ color: 'var(--text-2)' }}>
                         {fmt(row.createdAt)}
                       </td>
                     </tr>
@@ -196,7 +196,7 @@ export default async function AdminPage({
             <Section title="Contact Submissions" count={contacts.length}>
               <table className="w-full min-w-[720px]">
                 <thead>
-                  <tr style={{ color: 'var(--color-mist)' }}>
+                  <tr style={{ color: 'var(--text-2)' }}>
                     <th className={th}>Name</th>
                     <th className={th}>Email</th>
                     <th className={th}>Project</th>
@@ -206,7 +206,7 @@ export default async function AdminPage({
                 <tbody>
                   {contacts.length === 0 && (
                     <tr>
-                      <td className={`${td} hairline`} colSpan={4} style={{ color: 'var(--color-mist)' }}>
+                      <td className={`${td} hairline`} colSpan={4} style={{ color: 'var(--text-2)' }}>
                         No contact submissions yet.
                       </td>
                     </tr>
@@ -215,14 +215,14 @@ export default async function AdminPage({
                     <tr key={row.id}>
                       <td className={`${td} hairline font-semibold whitespace-nowrap`}>{row.name}</td>
                       <td className={`${td} hairline`}>
-                        <a href={`mailto:${row.email}`} className="underline underline-offset-2 hover:text-[var(--color-rust)]">
+                        <a href={`mailto:${row.email}`} className="underline underline-offset-2 hover:text-[var(--signal)]">
                           {row.email}
                         </a>
                       </td>
                       <td className={`${td} hairline max-w-[420px]`}>
                         <span className="line-clamp-4 whitespace-pre-wrap">{row.scope}</span>
                       </td>
-                      <td className={`${td} hairline whitespace-nowrap`} style={{ color: 'var(--color-mist)' }}>
+                      <td className={`${td} hairline whitespace-nowrap`} style={{ color: 'var(--text-2)' }}>
                         {fmt(row.createdAt)}
                       </td>
                     </tr>
@@ -235,7 +235,7 @@ export default async function AdminPage({
             <Section title="Waitlist" count={waitlist.length}>
               <table className="w-full min-w-[560px]">
                 <thead>
-                  <tr style={{ color: 'var(--color-mist)' }}>
+                  <tr style={{ color: 'var(--text-2)' }}>
                     <th className={th}>Email</th>
                     <th className={th}>Source</th>
                     <th className={th}>Joined</th>
@@ -244,7 +244,7 @@ export default async function AdminPage({
                 <tbody>
                   {waitlist.length === 0 && (
                     <tr>
-                      <td className={`${td} hairline`} colSpan={3} style={{ color: 'var(--color-mist)' }}>
+                      <td className={`${td} hairline`} colSpan={3} style={{ color: 'var(--text-2)' }}>
                         No waitlist signups yet.
                       </td>
                     </tr>
@@ -252,12 +252,12 @@ export default async function AdminPage({
                   {waitlist.map((row) => (
                     <tr key={row.id}>
                       <td className={`${td} hairline`}>
-                        <a href={`mailto:${row.email}`} className="underline underline-offset-2 hover:text-[var(--color-rust)]">
+                        <a href={`mailto:${row.email}`} className="underline underline-offset-2 hover:text-[var(--signal)]">
                           {row.email}
                         </a>
                       </td>
-                      <td className={`${td} hairline`} style={{ color: 'var(--color-mist)' }}>{row.source || '—'}</td>
-                      <td className={`${td} hairline whitespace-nowrap`} style={{ color: 'var(--color-mist)' }}>
+                      <td className={`${td} hairline`} style={{ color: 'var(--text-2)' }}>{row.source || '—'}</td>
+                      <td className={`${td} hairline whitespace-nowrap`} style={{ color: 'var(--text-2)' }}>
                         {fmt(row.createdAt)}
                       </td>
                     </tr>

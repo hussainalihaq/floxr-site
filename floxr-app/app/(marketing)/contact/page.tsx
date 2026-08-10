@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Send, CheckCircle2 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
+import CustomCursor from '@/components/marketing/CustomCursor';
 import SiteFooter from '@/components/marketing/SiteFooter';
 
 export default function ContactPage() {
@@ -60,17 +61,18 @@ export default function ContactPage() {
   const fieldWrap = (name: string) =>
     `relative px-5 py-4 rounded-xl border transition-all duration-300 ${
       focusedField === name
-        ? 'border-[var(--color-ink)] bg-white shadow-[0_8px_24px_rgba(18,18,20,0.05)]'
-        : 'hairline bg-white hover:border-[var(--color-mist)]'
+        ? 'border-[var(--line-2)] bg-[var(--plane-2)] shadow-[0_8px_24px_rgba(18,18,20,0.05)]'
+        : 'hairline bg-[var(--plane-2)] hover:border-[var(--color-mist)]'
     }`;
 
   const labelClass = (name: string) =>
     `absolute left-5 transition-all duration-300 pointer-events-none eyebrow ${
-      isActive(name) ? 'top-2.5 !text-[9px] text-[var(--color-rust)]' : 'top-5 text-[var(--color-mist)]'
+      isActive(name) ? 'top-2.5 !text-[9px] text-[var(--signal)]' : 'top-5 text-[var(--text-2)]'
     }`;
 
   return (
     <div className="mkt min-h-screen flex flex-col">
+      <CustomCursor />
       <Navbar />
 
       <main className="flex-grow pt-[72px] md:pt-[80px] relative overflow-hidden">
@@ -78,54 +80,54 @@ export default function ContactPage() {
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20 relative">
           {/* Left: copy & info */}
           <div className="lg:col-span-6 flex flex-col">
-            <p className="eyebrow text-[var(--color-rust)] mb-6 anim-fade-up">Contact</p>
+            <p className="eyebrow text-[var(--signal)] mb-6 anim-fade-up">Contact</p>
             <h1 className="display-xl mb-8 anim-fade-up" style={{ animationDelay: '0.1s' }}>
               Let&apos;s build the <span className="font-serif-it font-normal">future</span>.
             </h1>
             <p
               className="text-[17px] md:text-[19px] leading-relaxed max-w-md mb-8 anim-fade-up"
-              style={{ color: 'var(--color-mist)', animationDelay: '0.2s' }}
+              style={{ color: 'var(--text-2)', animationDelay: '0.2s' }}
             >
-              Whether you need a new website, a platform or dashboard, or AI built into your
-              workflow — tell us what you&apos;re after and we&apos;ll reply within 24 hours with
-              scope, timeline, and a fixed price.
+              Whether you need a new product built, internal systems replaced, or AI brought into
+              your workflow — tell us what you&apos;re after and we&apos;ll reply within 24 hours
+              with scope, timeline, and a fixed price.
             </p>
 
             <p
               className="text-[15px] leading-relaxed max-w-md mb-16 pl-5 border-l-2 anim-fade-up"
-              style={{ color: 'var(--color-mist)', borderColor: 'var(--color-line)', animationDelay: '0.3s' }}
+              style={{ color: 'var(--text-2)', borderColor: 'var(--line-1)', animationDelay: '0.3s' }}
             >
-              Not ready to start a project? Send us your site and we&apos;ll tell you honestly what
-              we&apos;d fix first.
+              Not ready to start a project? Send us what you&apos;re running today and we&apos;ll
+              tell you honestly what we&apos;d fix first.
             </p>
 
             <div className="mt-auto border-t hairline pt-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
               <div>
-                <p className="eyebrow mb-3" style={{ color: 'var(--color-mist)' }}>Email</p>
+                <p className="eyebrow mb-3" style={{ color: 'var(--text-2)' }}>Email</p>
                 <a
                   href="mailto:hello@floxr.co"
-                  className="text-[15px] font-semibold hover:text-[var(--color-rust)] transition-colors"
+                  className="text-[15px] font-semibold hover:text-[var(--signal)] transition-colors"
                 >
                   hello@floxr.co
                 </a>
               </div>
               <div>
-                <p className="eyebrow mb-3" style={{ color: 'var(--color-mist)' }}>Instagram</p>
+                <p className="eyebrow mb-3" style={{ color: 'var(--text-2)' }}>Instagram</p>
                 <a
                   href="https://instagram.com/floxr.co"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[15px] font-semibold hover:text-[var(--color-rust)] transition-colors"
+                  className="text-[15px] font-semibold hover:text-[var(--signal)] transition-colors"
                 >
                   @floxr.co
                 </a>
               </div>
               <div>
-                <p className="eyebrow mb-3" style={{ color: 'var(--color-mist)' }}>Location</p>
+                <p className="eyebrow mb-3" style={{ color: 'var(--text-2)' }}>Location</p>
                 <p className="text-[15px] font-semibold">Global · Remote</p>
               </div>
               <div>
-                <p className="eyebrow mb-3" style={{ color: 'var(--color-mist)' }}>Response Time</p>
+                <p className="eyebrow mb-3" style={{ color: 'var(--text-2)' }}>Response Time</p>
                 <p className="text-[15px] font-semibold">&lt; 24 Hours</p>
               </div>
             </div>
@@ -133,21 +135,21 @@ export default function ContactPage() {
 
           {/* Right: form */}
           <div className="lg:col-span-6 flex items-start justify-center lg:justify-end">
-            <div className="w-full max-w-lg rounded-2xl border hairline p-8 md:p-10" style={{ backgroundColor: 'var(--color-paper-2)' }}>
+            <div className="w-full max-w-lg rounded-2xl border hairline p-8 md:p-10" style={{ backgroundColor: 'var(--plane-1)' }}>
               {isSuccess ? (
                 <div className="flex flex-col items-center justify-center text-center py-20">
-                  <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mb-6">
-                    <CheckCircle2 size={28} strokeWidth={1.75} className="text-[var(--color-rust)]" />
+                  <div className="w-16 h-16 rounded-full bg-[var(--plane-2)] flex items-center justify-center mb-6">
+                    <CheckCircle2 size={28} strokeWidth={1.75} className="text-[var(--signal)]" />
                   </div>
-                  <h3 className="text-[26px] font-bold tracking-tight mb-3">Sent.</h3>
-                  <p className="text-[15px] leading-relaxed max-w-xs" style={{ color: 'var(--color-mist)' }}>
+                  <h3 className="text-[26px] font-light tracking-[-0.03em] mb-3">Sent.</h3>
+                  <p className="text-[15px] leading-relaxed max-w-xs" style={{ color: 'var(--text-2)' }}>
                     We&apos;ve received your brief and will reach out within 24 hours.
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col">
                   {error && (
-                    <div className="rounded-lg p-4 mb-5 text-center text-[14px] bg-[var(--color-rust)]/10 text-[var(--color-rust)]">
+                    <div className="rounded-lg p-4 mb-5 text-center text-[14px] bg-[var(--signal)]/10 text-[var(--signal)]">
                       {error}
                     </div>
                   )}
@@ -159,7 +161,7 @@ export default function ContactPage() {
                       type="text"
                       name="name"
                       required
-                      className="w-full bg-transparent pt-4 pb-0.5 text-[16px] text-[var(--color-ink)] outline-none"
+                      className="w-full bg-transparent pt-4 pb-0.5 text-[16px] text-[var(--text-1)] outline-none"
                       onFocus={() => setFocusedField('name')}
                       onBlur={(e) => handleBlur('name', e.target.value)}
                     />
@@ -172,7 +174,7 @@ export default function ContactPage() {
                       type="email"
                       name="email"
                       required
-                      className="w-full bg-transparent pt-4 pb-0.5 text-[16px] text-[var(--color-ink)] outline-none"
+                      className="w-full bg-transparent pt-4 pb-0.5 text-[16px] text-[var(--text-1)] outline-none"
                       onFocus={() => setFocusedField('email')}
                       onBlur={(e) => handleBlur('email', e.target.value)}
                     />
@@ -185,7 +187,7 @@ export default function ContactPage() {
                       name="scope"
                       required
                       rows={4}
-                      className="w-full bg-transparent pt-4 pb-0.5 text-[16px] text-[var(--color-ink)] outline-none resize-none"
+                      className="w-full bg-transparent pt-4 pb-0.5 text-[16px] text-[var(--text-1)] outline-none resize-none"
                       onFocus={() => setFocusedField('scope')}
                       onBlur={(e) => handleBlur('scope', e.target.value)}
                     />
@@ -202,7 +204,7 @@ export default function ContactPage() {
                     )}
                   </button>
 
-                  <p className="eyebrow text-center mt-5" style={{ color: 'var(--color-mist)' }}>
+                  <p className="eyebrow text-center mt-5" style={{ color: 'var(--text-2)' }}>
                     Your information is encrypted.
                   </p>
                 </form>

@@ -2,75 +2,105 @@ import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { COMPANY_LINE } from '@/lib/site-content';
 
+const COLUMNS = [
+  {
+    label: 'Company',
+    links: [
+      { href: '/work', text: 'Work' },
+      { href: '/capabilities', text: 'Capabilities' },
+      { href: '/about', text: 'About' },
+      { href: '/careers', text: 'Careers' },
+    ],
+  },
+  {
+    label: 'Resources',
+    links: [
+      { href: '/lab', text: 'The Lab' },
+      { href: '/contact', text: 'Contact' },
+      { href: '/privacy', text: 'Privacy' },
+    ],
+  },
+];
+
 export default function SiteFooter() {
   return (
-    <footer className="w-full" style={{ backgroundColor: 'var(--color-ink)', color: 'var(--color-paper)' }}>
-      {/* Top CTA band */}
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-20 md:pt-28 pb-16 md:pb-20">
-        <p className="eyebrow text-[var(--color-rust-lt)] mb-6">Next Steps</p>
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
-          <h2 className="display-lg2 max-w-2xl">
-            Have a project in mind? Let&apos;s build it{' '}
-            <span className="font-serif-it font-normal">right</span>.
-          </h2>
-          <Link href="/contact" className="btn-pill btn-paper flex-shrink-0">
-            Start a Conversation
-            <ArrowUpRight size={14} strokeWidth={2.25} />
-          </Link>
+    <footer className="relative overflow-hidden" style={{ backgroundColor: 'var(--void)' }}>
+      <div className="aura w-[640px] h-[640px] -bottom-80 left-1/2 -translate-x-1/2" />
+
+      {/* Closing statement */}
+      <div className="border-t hairline relative z-10">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 pt-24 md:pt-36 pb-20 md:pb-28">
+          <p className="eyebrow mb-8">Next Step</p>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12">
+            <h2 className="display-lg2 max-w-3xl">
+              Tell us what you need built. We&apos;ll come back with scope, timeline, and a{' '}
+              <span className="font-serif-it">fixed price</span>.
+            </h2>
+            <Link href="/contact" className="btn-pill btn-ink flex-shrink-0">
+              Start a Conversation
+              <ArrowUpRight size={15} strokeWidth={1.75} />
+            </Link>
+          </div>
         </div>
       </div>
 
-      {/* Link columns */}
-      <div className="border-t" style={{ borderColor: 'var(--color-line-dark)' }}>
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-14 md:py-16 grid grid-cols-2 md:grid-cols-12 gap-x-6 gap-y-12">
-          {/* Brand */}
+      {/* Directory */}
+      <div className="border-t hairline relative z-10">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-20 grid grid-cols-2 md:grid-cols-12 gap-x-8 gap-y-14">
           <div className="col-span-2 md:col-span-5">
-            <img src="/floxr-logo.svg" alt="FLOXR" className="h-8 brightness-0 invert mb-5" />
-            <p className="text-[15px] leading-relaxed max-w-xs" style={{ color: 'var(--color-mist-dark)' }}>
-              {COMPANY_LINE}
-            </p>
+            <img src="/floxr-logo.svg" alt="Floxr" className="h-7 brightness-0 invert mb-7" />
+            <p className="body max-w-xs mb-8">{COMPANY_LINE}</p>
             <a
               href="mailto:hello@floxr.co"
-              className="eyebrow inline-block mt-6 text-[var(--color-paper)] hover:text-[var(--color-rust-lt)] transition-colors"
+              className="text-[15px] font-light transition-colors duration-300 hover:text-[var(--signal)]"
+              style={{ color: 'var(--text-1)' }}
             >
               hello@floxr.co
             </a>
           </div>
 
-          {/* Explore */}
-          <div className="md:col-span-2 md:col-start-7">
-            <p className="eyebrow mb-5" style={{ color: 'var(--color-mist-dark)' }}>Explore</p>
-            <ul className="space-y-3.5 text-[15px]">
-              <li><Link href="/work" className="hover:text-[var(--color-rust-lt)] transition-colors">Work</Link></li>
-              <li><Link href="/capabilities" className="hover:text-[var(--color-rust-lt)] transition-colors">Capabilities</Link></li>
-              <li><Link href="/lab" className="hover:text-[var(--color-rust-lt)] transition-colors">The Lab</Link></li>
-              <li><Link href="/contact" className="hover:text-[var(--color-rust-lt)] transition-colors">Contact</Link></li>
-            </ul>
-          </div>
+          {COLUMNS.map((column, i) => (
+            <div key={column.label} className={i === 0 ? 'md:col-span-2 md:col-start-7' : 'md:col-span-2'}>
+              <p className="eyebrow mb-6">{column.label}</p>
+              <ul className="space-y-4">
+                {column.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-[15px] font-light transition-colors duration-300 hover:text-[var(--text-1)]"
+                      style={{ color: 'var(--text-2)' }}
+                    >
+                      {link.text}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
-          {/* Company */}
           <div className="md:col-span-2">
-            <p className="eyebrow mb-5" style={{ color: 'var(--color-mist-dark)' }}>Company</p>
-            <ul className="space-y-3.5 text-[15px]">
-              <li><Link href="/about" className="hover:text-[var(--color-rust-lt)] transition-colors">About</Link></li>
-              <li><Link href="/careers" className="hover:text-[var(--color-rust-lt)] transition-colors">Careers</Link></li>
-              <li><Link href="/contact" className="hover:text-[var(--color-rust-lt)] transition-colors">Contact</Link></li>
-              <li><Link href="/privacy" className="hover:text-[var(--color-rust-lt)] transition-colors">Privacy</Link></li>
-            </ul>
-          </div>
-
-          {/* Connect */}
-          <div className="md:col-span-2">
-            <p className="eyebrow mb-5" style={{ color: 'var(--color-mist-dark)' }}>Connect</p>
-            <ul className="space-y-3.5 text-[15px]">
+            <p className="eyebrow mb-6">Connect</p>
+            <ul className="space-y-4">
               <li>
-                <a href="https://linkedin.com/company/floxr" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-rust-lt)] transition-colors">
+                <a
+                  href="https://linkedin.com/company/floxr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[15px] font-light transition-colors duration-300 hover:text-[var(--text-1)]"
+                  style={{ color: 'var(--text-2)' }}
+                >
                   LinkedIn
                 </a>
               </li>
               <li>
-                <a href="https://instagram.com/floxr.co" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-rust-lt)] transition-colors">
-                  Instagram <span style={{ color: 'var(--color-mist-dark)' }}>@floxr.co</span>
+                <a
+                  href="https://instagram.com/floxr.co"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[15px] font-light transition-colors duration-300 hover:text-[var(--text-1)]"
+                  style={{ color: 'var(--text-2)' }}
+                >
+                  Instagram <span style={{ color: 'var(--text-3)' }}>@floxr.co</span>
                 </a>
               </li>
             </ul>
@@ -78,15 +108,11 @@ export default function SiteFooter() {
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="border-t" style={{ borderColor: 'var(--color-line-dark)' }}>
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-          <p className="eyebrow" style={{ color: 'var(--color-mist-dark)' }}>
-            © 2026 FLOXR — All Rights Reserved
-          </p>
-          <p className="eyebrow" style={{ color: 'var(--color-mist-dark)' }}>
-            Built In House · Global, Remote-First
-          </p>
+      {/* Baseline */}
+      <div className="border-t hairline relative z-10">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-7 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          <p className="eyebrow">© 2026 Floxr — All Rights Reserved</p>
+          <p className="eyebrow">Global · Remote-First</p>
         </div>
       </div>
     </footer>

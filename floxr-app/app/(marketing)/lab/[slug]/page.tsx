@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import Navbar from '@/components/Navbar';
+import CustomCursor from '@/components/marketing/CustomCursor';
 import SiteFooter from '@/components/marketing/SiteFooter';
 
 // Mock database for the articles
@@ -70,6 +71,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   return (
     <div className="mkt min-h-screen flex flex-col">
+      <CustomCursor />
       <Navbar />
 
       <main className="flex-grow pt-[72px] md:pt-[80px]">
@@ -79,17 +81,17 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-14 md:pt-20 pb-14 md:pb-16 relative">
             <Link
               href="/lab"
-              className="eyebrow inline-flex items-center gap-2 text-[var(--color-mist)] hover:text-[var(--color-ink)] transition-colors mb-10"
+              className="eyebrow inline-flex items-center gap-2 text-[var(--text-2)] hover:text-[var(--text-1)] transition-colors mb-10"
             >
               <ArrowLeft size={14} strokeWidth={2} />
               Back to Lab
             </Link>
 
             <div className="flex items-center gap-3 mb-8">
-              <span className="eyebrow border hairline rounded-full px-4 py-2" style={{ color: 'var(--color-mist)' }}>
+              <span className="eyebrow border hairline rounded-full px-4 py-2" style={{ color: 'var(--text-2)' }}>
                 {article.category}
               </span>
-              <span className="eyebrow text-[var(--color-rust)]">{article.date}</span>
+              <span className="eyebrow text-[var(--signal)]">{article.date}</span>
             </div>
 
             <h1 className="display-xl max-w-4xl">{article.title}</h1>
@@ -105,10 +107,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                   key={index}
                   className={`leading-loose ${
                     index === 0
-                      ? 'text-[19px] md:text-[22px] text-[var(--color-ink)] font-medium'
+                      ? 'text-[19px] md:text-[22px] text-[var(--text-1)] font-medium'
                       : 'text-[16px] md:text-[18px]'
                   }`}
-                  style={index === 0 ? undefined : { color: 'var(--color-mist)' }}
+                  style={index === 0 ? undefined : { color: 'var(--text-2)' }}
                 >
                   {paragraph}
                 </p>
@@ -119,13 +121,13 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <div className="mt-16 pt-10 border-t hairline flex items-center gap-5">
               <div
                 className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0"
-                style={{ backgroundColor: 'var(--color-ink)' }}
+                style={{ backgroundColor: 'var(--plane-1)' }}
               >
-                <span className="text-[var(--color-paper)] font-bold text-[16px] tracking-tight">fl</span>
+                <span className="text-[var(--text-1)] font-bold text-[16px] tracking-tight">fl</span>
               </div>
               <div>
-                <div className="text-[17px] font-bold tracking-tight mb-1">Floxr Research Team</div>
-                <div className="eyebrow" style={{ color: 'var(--color-mist)' }}>Digital Architecture Group</div>
+                <div className="text-[17px] font-light tracking-[-0.03em] mb-1">Floxr Research Team</div>
+                <div className="eyebrow" style={{ color: 'var(--text-2)' }}>Digital Architecture Group</div>
               </div>
             </div>
           </div>

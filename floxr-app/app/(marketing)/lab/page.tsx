@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
+import CustomCursor from '@/components/marketing/CustomCursor';
 import SiteFooter from '@/components/marketing/SiteFooter';
 
 const ARTICLES = [
@@ -49,6 +50,7 @@ export default function LabPage() {
 
   return (
     <div className="mkt min-h-screen flex flex-col">
+      <CustomCursor />
       <Navbar />
 
       <main className="flex-grow pt-[72px] md:pt-[80px]">
@@ -56,13 +58,13 @@ export default function LabPage() {
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 grid-lines opacity-40 [mask-image:radial-gradient(ellipse_80%_70%_at_70%_10%,#000_10%,transparent_70%)] pointer-events-none" />
           <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-12 md:pb-16 relative">
-            <p className="eyebrow text-[var(--color-rust)] mb-6 anim-fade-up">Research & Writing</p>
+            <p className="eyebrow text-[var(--signal)] mb-6 anim-fade-up">Research & Writing</p>
             <h1 className="display-xl mb-8 anim-fade-up" style={{ animationDelay: '0.1s' }}>
               The <span className="font-serif-it font-normal">Lab</span>.
             </h1>
             <p
               className="text-[18px] md:text-[20px] leading-relaxed max-w-2xl mb-14 anim-fade-up"
-              style={{ color: 'var(--color-mist)', animationDelay: '0.2s' }}
+              style={{ color: 'var(--text-2)', animationDelay: '0.2s' }}
             >
               A rigorous examination of digital architecture, component strategy, and interface
               kinematics.
@@ -75,8 +77,8 @@ export default function LabPage() {
                   onClick={() => setFilter(cat)}
                   className={`eyebrow rounded-full px-5 py-2.5 border transition-all duration-300 cursor-pointer ${
                     filter === cat
-                      ? 'bg-[var(--color-ink)] text-[var(--color-paper)] border-[var(--color-ink)]'
-                      : 'hairline text-[var(--color-mist)] hover:text-[var(--color-ink)] hover:border-[var(--color-ink)]'
+                      ? 'bg-[var(--plane-2)] text-[var(--text-1)] border-[var(--line-2)]'
+                      : 'hairline text-[var(--text-2)] hover:text-[var(--text-1)] hover:border-[var(--line-2)]'
                   }`}
                 >
                   {cat}
@@ -90,7 +92,7 @@ export default function LabPage() {
         <section className="border-t hairline">
           <div className="max-w-[1400px] mx-auto px-6 md:px-10 pb-20 md:pb-28 min-h-[400px]">
             {filteredArticles.length === 0 ? (
-              <div className="py-24 text-center eyebrow" style={{ color: 'var(--color-mist)' }}>
+              <div className="py-24 text-center eyebrow" style={{ color: 'var(--text-2)' }}>
                 No entries found for {filter}
               </div>
             ) : (
@@ -103,26 +105,26 @@ export default function LabPage() {
                   }`}
                 >
                   <div className="md:col-span-2 flex justify-between md:block">
-                    <span className="eyebrow" style={{ color: 'var(--color-mist)' }}>{article.category}</span>
-                    <span className="eyebrow md:hidden" style={{ color: 'var(--color-mist)' }}>{article.date}</span>
+                    <span className="eyebrow" style={{ color: 'var(--text-2)' }}>{article.category}</span>
+                    <span className="eyebrow md:hidden" style={{ color: 'var(--text-2)' }}>{article.date}</span>
                   </div>
                   <div className="md:col-span-8">
-                    <h2 className="display-md2 mb-4 group-hover:text-[var(--color-rust)] transition-colors duration-300">
+                    <h2 className="display-md2 mb-4 group-hover:text-[var(--signal)] transition-colors duration-300">
                       {article.title}
                     </h2>
-                    <p className="text-[15px] leading-relaxed max-w-3xl" style={{ color: 'var(--color-mist)' }}>
+                    <p className="text-[15px] leading-relaxed max-w-3xl" style={{ color: 'var(--text-2)' }}>
                       {article.badge && (
-                        <span className="eyebrow text-[var(--color-rust)] mr-3">[{article.badge}]</span>
+                        <span className="eyebrow text-[var(--signal)] mr-3">[{article.badge}]</span>
                       )}
                       {article.desc}
                     </p>
                   </div>
                   <div className="md:col-span-2 hidden md:flex items-center justify-end gap-6">
-                    <span className="eyebrow" style={{ color: 'var(--color-mist)' }}>{article.date}</span>
+                    <span className="eyebrow" style={{ color: 'var(--text-2)' }}>{article.date}</span>
                     <ArrowUpRight
                       size={20}
                       strokeWidth={1.75}
-                      className="text-[var(--color-mist)] group-hover:text-[var(--color-rust)] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
+                      className="text-[var(--text-2)] group-hover:text-[var(--signal)] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
                     />
                   </div>
                 </Link>
@@ -131,7 +133,7 @@ export default function LabPage() {
 
             {filteredArticles.length > 0 && (
               <div className="border-t hairline pt-10 text-center">
-                <p className="eyebrow" style={{ color: 'var(--color-mist)' }}>
+                <p className="eyebrow" style={{ color: 'var(--text-2)' }}>
                   End of archive — {filteredArticles.length} {filteredArticles.length === 1 ? 'entry' : 'entries'}
                 </p>
               </div>
