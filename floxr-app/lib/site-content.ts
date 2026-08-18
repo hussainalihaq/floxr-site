@@ -5,91 +5,91 @@
  */
 
 export const COMPANY_LINE =
-  'Floxr is a solutions company. We build the software businesses run on — storefronts, point of sale, operations, and everything in between.';
+  'Floxr builds everything a growing business needs online — websites and stores, ordering apps, point of sale, inventory, and analytics.';
 
 export const COMPANY_META =
-  'Floxr builds the software businesses run on: e-commerce platforms, point of sale, ERP and operations, CRM, dashboards, and custom internal tools.';
+  'Floxr builds everything a growing business needs online: websites and online stores, ordering apps, point of sale, inventory, analytics, and loyalty — one connected system.';
 
 export const CLIENT_LINE =
-  'Restaurants, retail and clothing labels, traders, and service businesses — teams who need the software side handled properly, once.';
+  'Restaurants and cafés, retail and clothing brands, supermarkets, traders, and service businesses — anyone with customers to serve and stock, orders, or bookings to keep track of.';
 
 export const FOUNDING_STORY =
   'Most businesses end up running on a patchwork: a storefront that does not talk to the till, stock counted twice, orders copied into a spreadsheet by hand. Floxr exists to replace that patchwork with systems that fit together. We scope the work in writing, quote a fixed price, and build it end to end.';
 
-/** What we build. Used verbatim across every page. */
-export const SERVICES = [
-  {
-    id: 'ecommerce',
-    index: '01',
-    name: 'E-Commerce',
-    summary: 'Online stores that handle real catalogues, real payments, and real stock.',
-    timeline: '2–5 weeks',
-    deliverables: [
-      'Storefront, catalogue, and checkout',
-      'Local and international payment gateways',
-      'Stock synced with your other systems',
-    ],
-  },
+/** Products we sell. Named as products, not agency capabilities. */
+export const PRODUCTS = [
   {
     id: 'pos',
-    index: '02',
+    index: '01',
     name: 'Point of Sale',
-    summary: 'Billing at the counter that keeps working when the internet does not.',
-    timeline: '3–6 weeks',
-    deliverables: [
-      'Fast counter billing and receipts',
-      'Offline-first, syncs when back online',
-      'Multi-branch stock and cash reconciliation',
-    ],
+    tagline: 'Billing that never stops',
+    summary:
+      'A modern till for counters and dine-in that keeps taking orders when the internet drops.',
+    bullets: ['Offline-first, syncs when back online', 'Multi-branch stock and cash-up', 'Works on tablet, desktop, or terminal'],
   },
   {
-    id: 'erp',
+    id: 'ordering',
+    index: '02',
+    name: 'Online Ordering',
+    tagline: 'Your own app, not an aggregator',
+    summary:
+      'Branded ordering site and app so repeat customers order direct — and you keep the full ticket.',
+    bullets: ['No per-order commission to anyone', 'Delivery, pickup, and dine-in QR', 'Rider assignment and live tracking'],
+  },
+  {
+    id: 'store',
     index: '03',
-    name: 'ERP & Operations',
-    summary: 'Inventory, purchasing, and suppliers in one place instead of five spreadsheets.',
-    timeline: '4–8 weeks',
-    deliverables: [
-      'Inventory, purchasing, and supplier records',
-      'Approvals and role-based access',
-      'Exports your accountant can actually use',
-    ],
+    name: 'Online Store',
+    tagline: 'Retail that actually converts',
+    summary:
+      'An e-commerce storefront built around real catalogues — variants, sizes, and live stock.',
+    bullets: ['Local and international payments', 'Sizes, variants, and collections', 'Stock shared with your POS'],
   },
   {
-    id: 'crm',
+    id: 'inventory',
     index: '04',
-    name: 'CRM & Sales',
-    summary: 'Every lead, quote, and follow-up tracked instead of living in WhatsApp.',
-    timeline: '3–5 weeks',
-    deliverables: [
-      'Leads, pipelines, and follow-up reminders',
-      'Quotes and customer history',
-      'WhatsApp and email integration',
-    ],
+    name: 'Inventory & Operations',
+    tagline: 'One source of truth',
+    summary:
+      'Stock, purchasing, suppliers, and recipes in one place instead of across five spreadsheets.',
+    bullets: ['Live stock across branches', 'Purchase orders and suppliers', 'Recipes and wastage tracking'],
   },
   {
-    id: 'dashboards',
+    id: 'analytics',
     index: '05',
-    name: 'Dashboards & Reporting',
-    summary: 'The numbers that matter, live, without anyone building a report by hand.',
-    timeline: '2–4 weeks',
-    deliverables: [
-      'Live sales, stock, and margin views',
-      'Branch and product breakdowns',
-      'Scheduled exports and alerts',
-    ],
+    name: 'Analytics & Reports',
+    tagline: 'Numbers you can act on',
+    summary:
+      'Sales, margins, and best-sellers live on a dashboard, plus the reports your accountant wants.',
+    bullets: ['Live sales, margin, and hourly peaks', 'Branch and product comparison', 'Scheduled exports and alerts'],
   },
   {
-    id: 'custom',
+    id: 'loyalty',
     index: '06',
-    name: 'Custom Software',
-    summary: 'The tool your business needs that no off-the-shelf product sells.',
-    timeline: 'Scoped per project',
-    deliverables: [
-      'Internal tools and customer portals',
-      'Integrations between systems you already run',
-      'Automation and AI where it genuinely pays off',
-    ],
+    name: 'Loyalty & Customers',
+    tagline: 'Make them come back',
+    summary:
+      'Every customer, order, and preference on record — and the tools to bring them back in.',
+    bullets: ['Points, vouchers, and offers', 'Order history and preferences', 'WhatsApp and SMS campaigns'],
   },
+] as const;
+
+/** Kept as an alias so pages importing SERVICES keep working. */
+export const SERVICES = PRODUCTS.map((p) => ({
+  id: p.id,
+  index: p.index,
+  name: p.name,
+  summary: p.summary,
+  timeline: p.tagline,
+  deliverables: p.bullets,
+}));
+
+/** Built to order, on top of the products above. */
+export const CUSTOM_BUILDS = [
+  { name: 'Websites', note: 'Brand sites, landing pages, and booking flows.' },
+  { name: 'Mobile Apps', note: 'Customer, staff, and rider apps for iOS and Android.' },
+  { name: 'Integrations', note: 'Accounting, payments, WhatsApp, and courier APIs.' },
+  { name: 'Custom Software', note: 'The internal tool no off-the-shelf product sells.' },
 ] as const;
 
 /** Sectors we build for. */

@@ -6,13 +6,15 @@ import Navbar from '@/components/Navbar';
 import SiteFooter from '@/components/marketing/SiteFooter';
 import Reveal from '@/components/marketing/Reveal';
 import { TextReveal } from '@/components/marketing/Motion';
+import CustomCursor from '@/components/marketing/CustomCursor';
 import {
   CASE_STUDIES,
   CLIENT_LINE,
+  CUSTOM_BUILDS,
   ENGAGEMENT_TERMS,
   INDUSTRIES,
   PROCESS,
-  SERVICES,
+  PRODUCTS,
 } from '@/lib/site-content';
 
 const WRAP = 'max-w-[1180px] mx-auto px-6 md:px-8';
@@ -48,22 +50,23 @@ function SectionHead({
 export default function HomePage() {
   return (
     <div className="mkt min-h-screen">
+      <CustomCursor />
       <Navbar />
 
       <main>
         {/* ── Hero ── */}
         <section className="border-b hairline">
           <div className={`${WRAP} pt-32 md:pt-48 pb-16 md:pb-24`}>
-            <p className="eyebrow mb-8 anim-fade-up">Solutions Company</p>
+            <p className="eyebrow mb-8 anim-fade-up">Software for Growing Businesses</p>
 
             <h1 className="display-xl max-w-[16ch] mb-10">
-              <TextReveal text="The software your business" delay={80} />{' '}
-              <span className="font-serif-it">runs on</span>.
+              <TextReveal text="Everything your business needs to run, sell, and" delay={80} />{' '}
+              <span className="font-serif-it">grow</span>.
             </h1>
 
             <p className="lede max-w-xl mb-12 anim-fade-up" style={{ animationDelay: '0.2s' }}>
-              Online stores, point of sale, inventory, CRM, dashboards — built to fit how your
-              business actually works, and built to work together.
+              Your website, online store, ordering app, point of sale, inventory, and analytics —
+              one connected system, set up around how your business already works.
             </p>
 
             <div
@@ -81,33 +84,33 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── What we build ── */}
+        {/* ── Products ── */}
         <section className="border-b hairline">
           <div className={`${WRAP} py-16 md:py-28`}>
             <Reveal>
               <SectionHead
-                label="What We Build"
-                title="Everything the business needs to run."
-                note="Most clients start with one system and add the next once it proves itself."
-                link={{ href: '/capabilities', text: 'All capabilities' }}
+                label="Products"
+                title="Six systems. One place they all agree."
+                note="Take one to start, add the rest as you grow — they share the same stock, customers, and numbers."
               />
             </Reveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px" style={{ backgroundColor: 'var(--line-1)' }}>
-              {SERVICES.map((service, i) => (
-                <Reveal key={service.id} delay={i * 55}>
+            <div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px"
+              style={{ backgroundColor: 'var(--line-1)' }}
+            >
+              {PRODUCTS.map((product, i) => (
+                <Reveal key={product.id} delay={i * 55}>
                   <div
                     className="h-full p-8 md:p-10 transition-colors duration-300 hover:bg-[var(--plane-1)]"
                     style={{ backgroundColor: 'var(--void)' }}
                   >
-                    <div className="flex items-baseline justify-between mb-7">
-                      <span className="numeral">{service.index}</span>
-                      <span className="eyebrow">{service.timeline}</span>
-                    </div>
-                    <h3 className="text-[21px] font-normal tracking-[-0.025em] mb-3">{service.name}</h3>
-                    <p className="body mb-8">{service.summary}</p>
+                    <span className="numeral block mb-7">{product.index}</span>
+                    <h3 className="text-[21px] font-normal tracking-[-0.025em] mb-2">{product.name}</h3>
+                    <p className="eyebrow mb-5">{product.tagline}</p>
+                    <p className="body mb-8">{product.summary}</p>
                     <ul>
-                      {service.deliverables.map((item) => (
+                      {product.bullets.map((item) => (
                         <li
                           key={item}
                           className="text-[13.5px] font-light py-3 border-t hairline"
@@ -117,6 +120,30 @@ export default function HomePage() {
                         </li>
                       ))}
                     </ul>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Built to order ── */}
+        <section className="border-b hairline">
+          <div className={`${WRAP} py-14 md:py-20`}>
+            <Reveal>
+              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-4 mb-10">
+                <p className="eyebrow">Also Built To Order</p>
+                <p className="body !text-[14px] max-w-md md:text-right">
+                  Not every business needs a till. We build the rest of it too.
+                </p>
+              </div>
+            </Reveal>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-8">
+              {CUSTOM_BUILDS.map((item, i) => (
+                <Reveal key={item.name} delay={i * 55}>
+                  <div className="border-t pt-5" style={{ borderColor: 'var(--line-2)' }}>
+                    <h3 className="text-[16px] font-normal tracking-[-0.02em] mb-2">{item.name}</h3>
+                    <p className="body !text-[13.5px]">{item.note}</p>
                   </div>
                 </Reveal>
               ))}

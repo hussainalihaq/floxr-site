@@ -7,8 +7,8 @@ import Navbar from '@/components/Navbar';
 import CustomCursor from '@/components/marketing/CustomCursor';
 import SiteFooter from '@/components/marketing/SiteFooter';
 import Reveal from '@/components/marketing/Reveal';
-import { TextReveal, ScrollRail, Spotlight } from '@/components/marketing/Motion';
-import { SERVICES } from '@/lib/site-content';
+import { TextReveal } from '@/components/marketing/Motion';
+import { PRODUCTS, CUSTOM_BUILDS } from '@/lib/site-content';
 
 const TIMELINES = ['ASAP', 'Within a month', '1–3 months', 'Just exploring'];
 
@@ -31,16 +31,22 @@ type Status = 'idle' | 'sending' | 'sent' | 'error';
 export default function ContactPage() {
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState<string | null>(null);
-  const [service, setService] = useState<string>(SERVICES[0].name);
+  const [picked, setPicked] = useState<string[]>([]);
+
+  const OPTIONS = [...PRODUCTS.map((p) => p.name), ...CUSTOM_BUILDS.map((c) => c.name)];
+  const toggleOption = (name: string) =>
+    setPicked((cur) => (cur.includes(name) ? cur.filter((n) => n !== name) : [...cur, name]));
   const [timeline, setTimeline] = useState<string>('');
-  const [draft, setDraft] = useState({ name: '', email: '', company: '', message: '' });
+  const [draft, setDraft] = useState({ name: '', email: '', company: '', phone: '', branches: '', message: '' });
 
   // Composed so the whole enquiry survives even if only `scope` is stored.
   const composeScope = () =>
     [
-      `Service: ${service}`,
+      `Interested in: ${picked.length ? picked.join(', ') : 'Not specified'}`,
       timeline && `Timeline: ${timeline}`,
-      draft.company && `Company: ${draft.company}`,
+      draft.company && `Business: ${draft.company}`,
+      draft.phone && `Phone / WhatsApp: ${draft.phone}`,
+      draft.branches && `Size: ${draft.branches}`,
       '',
       draft.message,
     ]
@@ -49,7 +55,7 @@ export default function ContactPage() {
 
   const mailtoFallback = () =>
     `mailto:hello@floxr.co?subject=${encodeURIComponent(
-      `Project enquiry — ${service}`
+      `Enquiry — ${picked.join(', ') || 'General'}`
     )}&body=${encodeURIComponent(`${composeScope()}\n\n— ${draft.name}`)}`;
 
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -81,7 +87,6 @@ export default function ContactPage() {
 
   return (
     <div className="mkt min-h-screen">
-      <ScrollRail />
       <CustomCursor />
       <Navbar />
 
@@ -96,12 +101,12 @@ export default function ContactPage() {
               <p className="eyebrow">Start a Project</p>
             </div>
             <h1 className="display-xl max-w-[15ch] mb-8">
-              <TextReveal text="Tell us what you need" />{' '}
-              <span className="font-serif-it">built</span>.
+              <TextReveal text="Let's get your business" />{' '}
+              <span className="font-serif-it">running</span>.
             </h1>
             <p className="lede max-w-xl anim-fade-up" style={{ animationDelay: '0.25s' }}>
-              Send a brief and we&apos;ll come back within 24 hours with scope, timeline, and a
-              fixed price. If we&apos;re not the right fit for it, we&apos;ll tell you that instead.
+              Tell us what you sell and how you sell it. We&apos;ll come back within 24 hours with
+              what we&apos;d set up, how long it takes, and a fixed price.
             </p>
           </div>
         </section>
@@ -154,7 +159,7 @@ export default function ContactPage() {
             {/* Form */}
             <div className="lg:col-span-8">
               <Reveal delay={80}>
-                <Spotlight className="plane p-7 md:p-12 rounded-[22px]">
+                <div className="plane p-7 md:p-12">
                   {status === 'sent' ? (
                     <div className="py-20 flex flex-col items-center text-center">
                       <div
@@ -175,26 +180,26 @@ export default function ContactPage() {
                     </div>
                   ) : (
                     <form onSubmit={submit} className="flex flex-col gap-10">
-                      {/* Service chips */}
                       <fieldset>
-                        <legend className="eyebrow mb-5">What do you need?</legend>
+                        <legend className="eyebrow mb-2">What are you after?</legend>
+                        <p className="body !text-[13.5px] mb-5">Pick as many as apply.</p>
                         <div className="flex flex-wrap gap-2.5">
-                          {SERVICES.map((s) => {
-                            const on = service === s.name;
+                          {OPTIONS.map((name) => {
+                            const on = picked.includes(name);
                             return (
                               <button
                                 type="button"
-                                key={s.id}
-                                onClick={() => setService(s.name)}
+                                key={name}
+                                onClick={() => toggleOption(name)}
                                 aria-pressed={on}
-                                className="px-5 py-3 rounded-full text-[13.5px] font-light border transition-all duration-300"
+                                className="px-4 py-2.5 rounded-full text-[13.5px] font-light border transition-colors duration-200"
                                 style={{
-                                  borderColor: on ? 'var(--signal)' : 'var(--line-1)',
-                                  backgroundColor: on ? 'var(--signal-lo)' : 'transparent',
-                                  color: on ? 'var(--text-1)' : 'var(--text-2)',
+                                  borderColor: on ? 'var(--text-1)' : 'var(--line-1)',
+                                  backgroundColor: on ? 'var(--text-1)' : 'transparent',
+                                  color: on ? 'var(--void)' : 'var(--text-2)',
                                 }}
                               >
-                                {s.name}
+                                {name}
                               </button>
                             );
                           })}
@@ -211,7 +216,7 @@ export default function ContactPage() {
                             placeholder="Jane Doe"
                             className={field}
                             style={{ borderColor: 'var(--line-1)', color: 'var(--text-1)' }}
-                            onFocus={(e) => (e.currentTarget.style.borderColor = 'var(--signal)')}
+                            onFocus={(e) => (e.currentTarget.style.borderColor = 'var(--text-1)')}
                             onBlur={(e) => (e.currentTarget.style.borderColor = 'var(--line-1)')}
                           />
                         </label>
@@ -225,26 +230,64 @@ export default function ContactPage() {
                             placeholder="jane@company.com"
                             className={field}
                             style={{ borderColor: 'var(--line-1)', color: 'var(--text-1)' }}
-                            onFocus={(e) => (e.currentTarget.style.borderColor = 'var(--signal)')}
+                            onFocus={(e) => (e.currentTarget.style.borderColor = 'var(--text-1)')}
                             onBlur={(e) => (e.currentTarget.style.borderColor = 'var(--line-1)')}
                           />
                         </label>
                       </div>
 
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                       <label className="block">
                         <span className="eyebrow block mb-3">
-                          Company <span style={{ color: 'var(--text-3)' }}>— optional</span>
+                          Business name <span style={{ color: 'var(--text-3)' }}>— optional</span>
                         </span>
                         <input
                           value={draft.company}
                           onChange={(e) => setDraft({ ...draft, company: e.target.value })}
-                          placeholder="Where you work"
+                          placeholder="Your shop, brand, or company"
                           className={field}
                           style={{ borderColor: 'var(--line-1)', color: 'var(--text-1)' }}
-                          onFocus={(e) => (e.currentTarget.style.borderColor = 'var(--signal)')}
+                          onFocus={(e) => (e.currentTarget.style.borderColor = 'var(--text-1)')}
                           onBlur={(e) => (e.currentTarget.style.borderColor = 'var(--line-1)')}
                         />
                       </label>
+                      <label className="block">
+                        <span className="eyebrow block mb-3">
+                          Phone / WhatsApp <span style={{ color: 'var(--text-3)' }}>— optional</span>
+                        </span>
+                        <input
+                          value={draft.phone}
+                          onChange={(e) => setDraft({ ...draft, phone: e.target.value })}
+                          placeholder="+92 300 0000000"
+                          className={field}
+                          style={{ borderColor: 'var(--line-1)', color: 'var(--text-1)' }}
+                          onFocus={(e) => (e.currentTarget.style.borderColor = 'var(--text-1)')}
+                          onBlur={(e) => (e.currentTarget.style.borderColor = 'var(--line-1)')}
+                        />
+                      </label>
+                      </div>
+
+                      <fieldset>
+                        <legend className="eyebrow mb-4">How many outlets?</legend>
+                        <div className="flex flex-wrap gap-2">
+                          {['Just starting', '1 outlet', '2–5', '6–15', '15+', 'Online only'].map((b) => (
+                            <button
+                              type="button"
+                              key={b}
+                              onClick={() => setDraft({ ...draft, branches: b === draft.branches ? '' : b })}
+                              aria-pressed={b === draft.branches}
+                              className="px-4 py-2.5 rounded-full text-[13px] font-light border transition-colors duration-200"
+                              style={{
+                                borderColor: b === draft.branches ? 'var(--text-1)' : 'var(--line-1)',
+                                backgroundColor: b === draft.branches ? 'var(--text-1)' : 'transparent',
+                                color: b === draft.branches ? 'var(--void)' : 'var(--text-2)',
+                              }}
+                            >
+                              {b}
+                            </button>
+                          ))}
+                        </div>
+                      </fieldset>
 
                       <fieldset>
                         <legend className="eyebrow mb-4">Timeline</legend>
@@ -257,9 +300,9 @@ export default function ContactPage() {
                               aria-pressed={t === timeline}
                               className="px-4 py-2.5 rounded-full text-[13px] font-light border transition-all duration-300"
                               style={{
-                                borderColor: t === timeline ? 'var(--signal)' : 'var(--line-1)',
-                                backgroundColor: t === timeline ? 'var(--signal-lo)' : 'transparent',
-                                color: t === timeline ? 'var(--text-1)' : 'var(--text-2)',
+                                borderColor: t === timeline ? 'var(--text-1)' : 'var(--line-1)',
+                                backgroundColor: t === timeline ? 'var(--text-1)' : 'transparent',
+                                color: t === timeline ? 'var(--void)' : 'var(--text-2)',
                               }}
                             >
                               {t}
@@ -278,7 +321,7 @@ export default function ContactPage() {
                           placeholder="What it should do, who it's for, and anything you already have running."
                           className={`${field} resize-none`}
                           style={{ borderColor: 'var(--line-1)', color: 'var(--text-1)' }}
-                          onFocus={(e) => (e.currentTarget.style.borderColor = 'var(--signal)')}
+                          onFocus={(e) => (e.currentTarget.style.borderColor = 'var(--text-1)')}
                           onBlur={(e) => (e.currentTarget.style.borderColor = 'var(--line-1)')}
                         />
                       </label>
@@ -318,7 +361,7 @@ export default function ContactPage() {
                       </div>
                     </form>
                   )}
-                </Spotlight>
+                </div>
               </Reveal>
             </div>
           </div>
