@@ -41,11 +41,11 @@ export default function CareersPage() {
       <CustomCursor />
       <Navbar />
 
-      <main className="flex-grow pt-[76px] md:pt-[88px]">
+      <main className="flex-grow pt-[92px] md:pt-[104px]">
         {/* ── Header ── */}
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 grid-lines opacity-40 [mask-image:radial-gradient(ellipse_80%_70%_at_70%_10%,#000_10%,transparent_70%)] pointer-events-none" />
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-12 md:pt-24 pb-16 md:pb-20 relative">
+          <div className="max-w-[1180px] mx-auto px-6 md:px-8 pt-12 md:pt-24 pb-16 md:pb-20 relative">
             <p className="eyebrow text-[var(--signal)] mb-6 anim-fade-up">Work With Us</p>
             <h1 className="display-xl max-w-4xl mb-8 anim-fade-up" style={{ animationDelay: '0.1s' }}>
               Build what <span className="font-serif-it font-normal">matters</span>.
@@ -63,7 +63,7 @@ export default function CareersPage() {
 
         {/* ── Values ── */}
         <section className="border-t hairline">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-14 md:py-24">
+          <div className="max-w-[1180px] mx-auto px-6 md:px-8 py-14 md:py-24">
             <p className="eyebrow text-[var(--signal)] mb-5">01 — How We Work</p>
             <h2 className="display-lg2 mb-14">What we care about</h2>
 
@@ -95,7 +95,7 @@ export default function CareersPage() {
 
         {/* ── Collaborate ── */}
         <section className="border-t hairline" style={{ backgroundColor: 'var(--plane-1)' }}>
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-14 md:py-24">
+          <div className="max-w-[1180px] mx-auto px-6 md:px-8 py-14 md:py-24">
             <div className="max-w-2xl mx-auto text-center flex flex-col items-center">
               <p className="eyebrow text-[var(--signal)] mb-6">02 — Open Door</p>
               <h2 className="display-lg2 mb-5">

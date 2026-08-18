@@ -25,11 +25,11 @@ const COLUMNS = [
 export default function SiteFooter() {
   return (
     <footer className="relative overflow-hidden" style={{ backgroundColor: 'var(--void)' }}>
-      <div className="aura w-[640px] h-[640px] -bottom-80 left-1/2 -translate-x-1/2" />
+      
 
       {/* Closing statement */}
       <div className="border-t hairline relative z-10">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 pt-16 md:pt-36 pb-14 md:pb-28">
+        <div className="max-w-[1180px] mx-auto px-6 md:px-8 pt-16 md:pt-36 pb-14 md:pb-28">
           <p className="eyebrow mb-8">Next Step</p>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12">
             <h2 className="display-lg2 max-w-3xl">
@@ -46,7 +46,7 @@ export default function SiteFooter() {
 
       {/* Directory */}
       <div className="border-t hairline relative z-10">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-12 md:py-20 grid grid-cols-2 md:grid-cols-12 gap-x-8 gap-y-14">
+        <div className="max-w-[1180px] mx-auto px-6 md:px-8 py-12 md:py-20 grid grid-cols-2 md:grid-cols-12 gap-x-8 gap-y-14">
           <div className="col-span-2 md:col-span-5">
             <img src="/floxr-logo.svg" alt="Floxr" className="brand-mark h-7 mb-7" />
             <p className="body max-w-xs mb-8">{COMPANY_LINE}</p>
@@ -110,7 +110,7 @@ export default function SiteFooter() {
 
       {/* Baseline */}
       <div className="border-t hairline relative z-10">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-7 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+        <div className="max-w-[1180px] mx-auto px-6 md:px-8 py-7 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <p className="eyebrow">© 2026 Floxr — All Rights Reserved</p>
           <p className="eyebrow">Global · Remote-First</p>
         </div>

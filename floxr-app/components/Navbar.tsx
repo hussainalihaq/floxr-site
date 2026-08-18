@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import ThemeToggle from '@/components/marketing/ThemeToggle';
 
 const NAV_LINKS = [
@@ -62,7 +62,7 @@ export default function Navbar() {
       <header className="fixed top-0 left-0 w-full z-[100] px-3 md:px-6 pt-3 md:pt-4">
         <nav
           className={`nav-pill max-w-[1200px] mx-auto ${isFloating ? 'is-floating' : ''}`}
-          style={{ transform: isFloating ? 'scale(0.985)' : 'none' }}
+          
         >
           <div className="flex items-center justify-between gap-6 h-[62px] md:h-[68px] px-5 md:px-6">
             <Link href="/" onClick={() => setIsOpen(false)} className="flex-shrink-0" aria-label="Floxr home">
@@ -108,7 +108,6 @@ export default function Navbar() {
               <ThemeToggle />
               <Link href="/contact" className="btn-pill btn-ink !py-2.5 !px-5 !text-[13px]">
                 Start a Project
-                <ArrowUpRight size={14} strokeWidth={1.9} />
               </Link>
             </div>
 
@@ -163,7 +162,6 @@ export default function Navbar() {
             <div className="mt-auto pt-12 mobile-link-animate" style={{ animationDelay: `${NAV_LINKS.length * 0.07}s` }}>
               <Link href="/contact" onClick={() => setIsOpen(false)} className="btn-pill btn-ink w-full">
                 Start a Project
-                <ArrowUpRight size={14} strokeWidth={1.9} />
               </Link>
               <p className="eyebrow text-center mt-7">hello@floxr.co</p>
             </div>

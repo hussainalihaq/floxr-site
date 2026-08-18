@@ -72,10 +72,10 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#08090B" },
-    { media: "(prefers-color-scheme: light)", color: "#FBFBFC" },
+    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B0B0C" },
   ],
-  colorScheme: "dark light",
+  colorScheme: "light dark",
 };
 
 const SITE = "https://www.floxr.co";
@@ -159,10 +159,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // Dark is rendered as the default so the common case matches exactly; the
-    // inline script below only rewrites this when a light preference is stored,
-    // which is why the attribute is exempted from hydration checks.
-    <html lang="en" className="scroll-smooth" data-theme="dark" suppressHydrationWarning>
+    // Light is the default. The inline script below only rewrites this when a
+    // dark preference is stored, which is why the attribute is exempted from
+    // hydration checks.
+    <html lang="en" className="scroll-smooth" data-theme="light" suppressHydrationWarning>
       <head>
         <link href="https://fonts.googleapis.com" rel="preconnect" />
         <link crossOrigin="" href="https://fonts.gstatic.com" rel="preconnect" />
@@ -175,7 +175,7 @@ export default function RootLayout({
         {/* Set the theme before first paint so there is no flash of the wrong ground. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('floxr-theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')}catch(e){document.documentElement.setAttribute('data-theme','dark')}})()`,
+            __html: `(function(){try{var t=localStorage.getItem('floxr-theme');document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light')}catch(e){document.documentElement.setAttribute('data-theme','light')}})()`,
           }}
         />
       </head>

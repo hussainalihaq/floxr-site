@@ -87,11 +87,10 @@ export default function ContactPage() {
 
       <main className="pt-[92px] md:pt-[112px]">
         {/* ── Header ── */}
-        <section className="relative overflow-hidden grain">
+        <section className="relative overflow-hidden">
           <div className="absolute inset-0 grid-lines opacity-[0.5] [mask-image:radial-gradient(ellipse_60%_60%_at_30%_20%,#000_5%,transparent_75%)] pointer-events-none" />
-          <div className="aura w-[720px] h-[720px] -top-56 -left-40 float-slow" />
 
-          <div className="max-w-[1440px] mx-auto px-6 md:px-12 pt-12 md:pt-20 pb-12 md:pb-16 relative z-10">
+          <div className="max-w-[1180px] mx-auto px-6 md:px-8 pt-12 md:pt-20 pb-12 md:pb-16 relative z-10">
             <div className="flex items-center gap-4 mb-8 anim-fade-up">
               <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--signal)' }} />
               <p className="eyebrow">Start a Project</p>
@@ -109,7 +108,7 @@ export default function ContactPage() {
 
         {/* ── Form + rail ── */}
         <section className="border-t hairline">
-          <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-14 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+          <div className="max-w-[1180px] mx-auto px-6 md:px-8 py-14 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
             {/* What happens next */}
             <div className="lg:col-span-4">
               <Reveal>
@@ -327,7 +326,7 @@ export default function ContactPage() {
 
         {/* ── Working with us ── */}
         <section className="border-t hairline" style={{ backgroundColor: 'var(--plane-1)' }}>
-          <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-14 md:py-24">
+          <div className="max-w-[1180px] mx-auto px-6 md:px-8 py-14 md:py-24">
             <Reveal>
               <p className="eyebrow mb-8">Working With Us</p>
               <h2 className="display-lg2 mb-14 max-w-2xl">

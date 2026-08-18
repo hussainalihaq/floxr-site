@@ -1,131 +1,142 @@
 /**
- * Single source of truth for marketing copy that appears on more than one page.
+ * Single source of truth for copy that appears on more than one page.
  * Import from here rather than retyping — it is what keeps every page
  * describing the same company in the same words.
  */
 
 export const COMPANY_LINE =
-  'Floxr is a full-stack software company. We design, build, and ship the systems businesses run on.';
+  'Floxr is a solutions company. We build the software businesses run on — storefronts, point of sale, operations, and everything in between.';
 
 export const COMPANY_META =
-  'Floxr is a full-stack software company. We design, build, and ship end-to-end software solutions — product engineering, internal systems, AI, and infrastructure.';
+  'Floxr builds the software businesses run on: e-commerce platforms, point of sale, ERP and operations, CRM, dashboards, and custom internal tools.';
 
 export const CLIENT_LINE =
-  'We work with trading, logistics, and professional services businesses building their first real digital infrastructure.';
+  'Restaurants, retail and clothing labels, traders, and service businesses — teams who need the software side handled properly, once.';
 
 export const FOUNDING_STORY =
-  'Floxr was founded to close the gap between what businesses actually need and what most software vendors deliver: unclear scope, unpredictable timelines, and hourly billing that rewards slow work. We operate differently — fixed scope, fixed price, agreed before anything is built, and direct access to the people doing the work throughout.';
+  'Most businesses end up running on a patchwork: a storefront that does not talk to the till, stock counted twice, orders copied into a spreadsheet by hand. Floxr exists to replace that patchwork with systems that fit together. We scope the work in writing, quote a fixed price, and build it end to end.';
 
-/** The four capability areas. These names are used verbatim across every page. */
+/** What we build. Used verbatim across every page. */
 export const SERVICES = [
   {
-    id: 'product',
+    id: 'ecommerce',
     index: '01',
-    name: 'Product Engineering',
-    summary:
-      'Customer-facing platforms and applications, taken from first screen to production.',
-    timeline: 'Typically 3–6 weeks',
+    name: 'E-Commerce',
+    summary: 'Online stores that handle real catalogues, real payments, and real stock.',
+    timeline: '2–5 weeks',
     deliverables: [
-      'Interface design and front-end engineering',
-      'Accounts, workflows, and document handling',
-      'Payments and third-party integrations',
+      'Storefront, catalogue, and checkout',
+      'Local and international payment gateways',
+      'Stock synced with your other systems',
     ],
   },
   {
-    id: 'systems',
+    id: 'pos',
     index: '02',
-    name: 'Internal Systems',
-    summary:
-      'The operational software your team works inside every day — dashboards, admin, reporting.',
-    timeline: 'Typically 3–6 weeks',
+    name: 'Point of Sale',
+    summary: 'Billing at the counter that keeps working when the internet does not.',
+    timeline: '3–6 weeks',
     deliverables: [
-      'Operational dashboards and reporting',
-      'Admin panels and role-based access',
-      'Integrations with the tools you already run',
+      'Fast counter billing and receipts',
+      'Offline-first, syncs when back online',
+      'Multi-branch stock and cash reconciliation',
     ],
   },
   {
-    id: 'ai',
+    id: 'erp',
     index: '03',
-    name: 'AI & Automation',
-    summary:
-      'Applied AI built into real workflows — assistants, document processing, retrieval.',
-    timeline: 'Typically 2–4 weeks',
+    name: 'ERP & Operations',
+    summary: 'Inventory, purchasing, and suppliers in one place instead of five spreadsheets.',
+    timeline: '4–8 weeks',
     deliverables: [
-      'Assistants grounded in your own data',
-      'Document processing and extraction',
-      'Automation of repetitive internal work',
+      'Inventory, purchasing, and supplier records',
+      'Approvals and role-based access',
+      'Exports your accountant can actually use',
     ],
   },
   {
-    id: 'infrastructure',
+    id: 'crm',
     index: '04',
-    name: 'Cloud & Infrastructure',
-    summary:
-      'The layer underneath: APIs, data, deployment pipelines, and the systems that keep it running.',
-    timeline: 'Scoped per engagement',
+    name: 'CRM & Sales',
+    summary: 'Every lead, quote, and follow-up tracked instead of living in WhatsApp.',
+    timeline: '3–5 weeks',
     deliverables: [
-      'API design and service architecture',
-      'Database design and data migration',
-      'Deployment pipelines and monitoring',
+      'Leads, pipelines, and follow-up reminders',
+      'Quotes and customer history',
+      'WhatsApp and email integration',
+    ],
+  },
+  {
+    id: 'dashboards',
+    index: '05',
+    name: 'Dashboards & Reporting',
+    summary: 'The numbers that matter, live, without anyone building a report by hand.',
+    timeline: '2–4 weeks',
+    deliverables: [
+      'Live sales, stock, and margin views',
+      'Branch and product breakdowns',
+      'Scheduled exports and alerts',
+    ],
+  },
+  {
+    id: 'custom',
+    index: '06',
+    name: 'Custom Software',
+    summary: 'The tool your business needs that no off-the-shelf product sells.',
+    timeline: 'Scoped per project',
+    deliverables: [
+      'Internal tools and customer portals',
+      'Integrations between systems you already run',
+      'Automation and AI where it genuinely pays off',
     ],
   },
 ] as const;
 
-/** The engagement method. A named process is the core "this is a company" signal. */
+/** Sectors we build for. */
+export const INDUSTRIES = [
+  { name: 'Food & Restaurants', note: 'Ordering, counter billing, branches, and delivery platforms.' },
+  { name: 'Retail & Clothing', note: 'Storefronts, sizes and variants, stock across shops.' },
+  { name: 'Trading & Logistics', note: 'Suppliers, shipments, documents, and margins.' },
+  { name: 'Professional Services', note: 'Clients, matters, billing, and internal workflow.' },
+] as const;
+
+/** How an engagement runs. */
 export const PROCESS = [
   {
     index: '01',
-    name: 'Audit',
-    summary:
-      'Every engagement starts by understanding what exists — where it leaks, where it breaks, and what is holding the business back.',
-    detail: [
-      'Systems and technical debt review',
-      'User experience and friction analysis',
-      'Performance and scalability benchmarks',
-    ],
+    name: 'Understand',
+    summary: 'We sit with how the business runs today — the workarounds included — before proposing anything.',
+    detail: ['Walk through current process', 'Find what breaks and what costs time', 'Agree what success looks like'],
   },
   {
     index: '02',
-    name: 'Architect',
-    summary:
-      'We define what should exist and agree it in writing. Scope and price are fixed before a line of code is written.',
-    detail: [
-      'Technical blueprint you approve first',
-      'Design system and interface structure',
-      'Data model and integration planning',
-    ],
+    name: 'Scope',
+    summary: 'You get the plan in writing: what gets built, in what order, by when, for how much.',
+    detail: ['Written scope you approve first', 'Fixed price, fixed timeline', 'Phases, so value lands early'],
   },
   {
     index: '03',
-    name: 'Build',
-    summary:
-      'We build to the agreed blueprint and hand over a system your team can operate without us.',
-    detail: [
-      'Full-stack implementation, front to back',
-      'Tests, CI/CD, and deployment',
-      'Handover documentation and support',
-    ],
+    name: 'Build & Hand Over',
+    summary: 'We build it, put it in your team’s hands, and make sure they can run it without us.',
+    detail: ['Built, tested, and deployed', 'Team training and documentation', 'Support window after launch'],
   },
 ] as const;
 
-/** Engagement terms — operational facts, the register procurement-literate buyers expect. */
+/** Operational facts, in the register buyers expect. */
 export const ENGAGEMENT_TERMS = [
-  { label: 'Pricing', value: 'Fixed fee', note: 'Agreed in writing before work begins. No hourly billing.' },
-  { label: 'Scope', value: 'Defined upfront', note: 'A written blueprint you approve before we build.' },
-  { label: 'Access', value: 'Direct', note: 'You speak to the people building your product.' },
-  { label: 'Handover', value: 'Documented', note: 'Code, deployment, and documentation are yours.' },
+  { label: 'Pricing', value: 'Fixed fee', note: 'Quoted in writing before work starts. No hourly billing.' },
+  { label: 'Scope', value: 'Agreed upfront', note: 'A written plan you approve before anything is built.' },
+  { label: 'Access', value: 'Direct', note: 'You talk to the people building it, not an account manager.' },
+  { label: 'Handover', value: 'Yours to keep', note: 'Code, accounts, and documentation transfer to you.' },
 ] as const;
 
-/** The stack we build across — full-stack, stated plainly. */
 export const STACK_LAYERS = [
-  { layer: 'Front-end', items: 'TypeScript · React · Next.js' },
-  { layer: 'Back-end', items: 'Node.js · REST & RPC APIs' },
-  { layer: 'Data', items: 'PostgreSQL · Prisma · Redis' },
-  { layer: 'Infrastructure', items: 'AWS · Vercel · Docker · CI/CD' },
+  { layer: 'Interfaces', items: 'Web · Mobile · In-store' },
+  { layer: 'Services', items: 'APIs · Payments · Messaging' },
+  { layer: 'Data', items: 'Inventory · Orders · Customers' },
+  { layer: 'Operations', items: 'Hosting · Backups · Monitoring' },
 ] as const;
 
-/** Lab entry slugs — shared with the sitemap so published writing is discoverable. */
 export const LAB_SLUGS = [
   'death-of-decorative-ui',
   'micro-frontends-in-practice',
@@ -140,26 +151,25 @@ export const CASE_STUDIES = [
     domain: 'ameerglobal.ca',
     url: 'https://ameerglobal.ca',
     year: '2026',
-    categories: ['Product Engineering', 'Internal Systems'],
+    categories: ['E-Commerce', 'ERP & Operations'],
     sector: 'Trading & Logistics',
     brief:
-      'A Toronto-based international trading company specializing in import and export partnerships across commodities and logistics.',
+      'A Toronto trading company handling import and export across commodities and logistics, running on email and spreadsheets.',
     delivered:
-      'We built the customer-facing platform and the internal operations system behind it, end to end — supporting private-label supply and global commodity trading.',
-    outcome:
-      'Profitable within two months of launch, ahead of the client’s own projections.',
+      'We built the customer-facing platform and the internal operations system behind it — catalogue, enquiries, and the supply workflow in one place.',
+    outcome: 'Profitable within two months of launch, ahead of the client’s own projections.',
   },
   {
     name: 'Juriq',
     domain: 'juriq.app',
     url: 'https://juriq.app',
     year: '2024',
-    categories: ['Product Engineering', 'AI & Automation'],
-    sector: 'Legal & Professional Services',
+    categories: ['Custom Software'],
+    sector: 'Professional Services',
     brief:
-      'Legal research is slow and scattered across databases, costing professionals hours of manual work per case.',
+      'Legal research was slow and scattered across databases, costing professionals hours of manual work per case.',
     delivered:
-      'We built an AI legal research assistant: GPT-4-powered search, automated brief generation, and precedent matching.',
+      'We built a research assistant with AI-powered search, automated brief generation, and precedent matching.',
     outcome: 'Live and in use at juriq.app.',
   },
 ] as const;

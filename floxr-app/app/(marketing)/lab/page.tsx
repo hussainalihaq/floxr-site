@@ -53,11 +53,11 @@ export default function LabPage() {
       <CustomCursor />
       <Navbar />
 
-      <main className="flex-grow pt-[76px] md:pt-[88px]">
+      <main className="flex-grow pt-[92px] md:pt-[104px]">
         {/* ── Header ── */}
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 grid-lines opacity-40 [mask-image:radial-gradient(ellipse_80%_70%_at_70%_10%,#000_10%,transparent_70%)] pointer-events-none" />
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-12 md:pt-24 pb-12 md:pb-16 relative">
+          <div className="max-w-[1180px] mx-auto px-6 md:px-8 pt-12 md:pt-24 pb-12 md:pb-16 relative">
             <p className="eyebrow text-[var(--signal)] mb-6 anim-fade-up">Research & Writing</p>
             <h1 className="display-xl mb-8 anim-fade-up" style={{ animationDelay: '0.1s' }}>
               The <span className="font-serif-it font-normal">Lab</span>.
@@ -90,7 +90,7 @@ export default function LabPage() {
 
         {/* ── Entries ── */}
         <section className="border-t hairline">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 pb-20 md:pb-28 min-h-[400px]">
+          <div className="max-w-[1180px] mx-auto px-6 md:px-8 pb-20 md:pb-28 min-h-[400px]">
             {filteredArticles.length === 0 ? (
               <div className="py-24 text-center eyebrow" style={{ color: 'var(--text-2)' }}>
                 No entries found for {filter}

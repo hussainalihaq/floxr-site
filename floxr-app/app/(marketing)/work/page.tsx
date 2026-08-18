@@ -5,7 +5,6 @@ import Navbar from '@/components/Navbar';
 import CustomCursor from '@/components/marketing/CustomCursor';
 import SiteFooter from '@/components/marketing/SiteFooter';
 import Reveal from '@/components/marketing/Reveal';
-import GearMotif from '@/components/marketing/GearMotif';
 import { CASE_STUDIES, CLIENT_LINE, COMPANY_LINE } from '@/lib/site-content';
 
 export const metadata: Metadata = {
@@ -19,13 +18,12 @@ export default function WorkPage() {
       <CustomCursor />
       <Navbar />
 
-      <main className="pt-[76px] md:pt-[88px]">
+      <main className="pt-[92px] md:pt-[104px]">
         {/* ── Header ── */}
-        <section className="relative overflow-hidden grain">
+        <section className="relative overflow-hidden">
           <div className="absolute inset-0 grid-lines opacity-40 [mask-image:radial-gradient(ellipse_75%_65%_at_65%_15%,#000_10%,transparent_72%)] pointer-events-none" />
-          <GearMotif className="absolute -right-24 -top-20 w-[520px] h-[520px] hidden lg:block text-[var(--text-1)] pointer-events-none" opacity={0.06} />
 
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-12 md:pt-24 pb-16 md:pb-20 relative z-10">
+          <div className="max-w-[1180px] mx-auto px-6 md:px-8 pt-12 md:pt-24 pb-16 md:pb-20 relative z-10">
             <p className="eyebrow text-[var(--signal)] mb-6 anim-fade-up">Work</p>
             <h1 className="display-xl max-w-4xl mb-8 anim-fade-up" style={{ animationDelay: '0.1s' }}>
               Work we have <span className="font-serif-it font-normal">shipped</span>.
@@ -41,7 +39,7 @@ export default function WorkPage() {
 
         {/* ── Case studies ── */}
         <section className="border-t hairline">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-14 md:py-24">
+          <div className="max-w-[1180px] mx-auto px-6 md:px-8 py-14 md:py-24">
             <div className="flex flex-col gap-16 md:gap-24">
               {CASE_STUDIES.map((project, i) => (
                 <Reveal key={project.name}>
@@ -133,10 +131,10 @@ export default function WorkPage() {
 
         {/* ── CTA ── */}
         <section className="border-t hairline" style={{ backgroundColor: 'var(--plane-1)' }}>
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-14 md:py-24">
+          <div className="max-w-[1180px] mx-auto px-6 md:px-8 py-14 md:py-24">
             <Reveal>
               <div
-                className="rounded-2xl p-10 md:p-16 flex flex-col md:flex-row md:items-center md:justify-between gap-8 relative overflow-hidden grain"
+                className="rounded-2xl p-10 md:p-16 flex flex-col md:flex-row md:items-center md:justify-between gap-8 relative overflow-hidden"
                 style={{ backgroundColor: 'var(--plane-1)', color: 'var(--text-1)' }}
               >
                 <div className="absolute inset-0 grid-lines-dark opacity-60 [mask-image:radial-gradient(ellipse_60%_100%_at_50%_0%,#000_10%,transparent_80%)] pointer-events-none" />

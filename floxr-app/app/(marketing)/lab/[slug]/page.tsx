@@ -103,11 +103,11 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       <CustomCursor />
       <Navbar />
 
-      <main className="flex-grow pt-[76px] md:pt-[88px]">
+      <main className="flex-grow pt-[92px] md:pt-[104px]">
         {/* ── Article Header ── */}
         <section className="relative overflow-hidden border-b hairline">
           <div className="absolute inset-0 grid-lines opacity-40 [mask-image:radial-gradient(ellipse_80%_70%_at_70%_10%,#000_10%,transparent_70%)] pointer-events-none" />
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-14 md:pt-20 pb-14 md:pb-16 relative">
+          <div className="max-w-[1180px] mx-auto px-6 md:px-8 pt-14 md:pt-20 pb-14 md:pb-16 relative">
             <Link
               href="/lab"
               className="eyebrow inline-flex items-center gap-2 text-[var(--text-2)] hover:text-[var(--text-1)] transition-colors mb-10"
@@ -128,7 +128,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         </section>
 
         {/* ── Article Body ── */}
-        <section className="max-w-[1400px] mx-auto px-6 md:px-10 py-14 md:py-20 w-full">
+        <section className="max-w-[1180px] mx-auto px-6 md:px-8 py-14 md:py-20 w-full">
           <div className="max-w-3xl">
             <div className="space-y-8">
               {article.content.map((paragraph, index) => (

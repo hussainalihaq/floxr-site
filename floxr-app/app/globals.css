@@ -68,39 +68,33 @@
   --font-body-lg: "Inter Tight", sans-serif;
   --font-body-md: "Inter Tight", sans-serif;
 
-  /* ── Marketing: Obsidian (premium dark) ───────────────────── */
+  /* ── Marketing: minimal, near-monochrome ─────────────────── */
+  --void:      #FFFFFF;
+  --plane-1:   #F7F7F8;
+  --plane-2:   #FFFFFF;
+  --plane-3:   #F2F2F3;
 
-  /* Depth ladder — each step is a plane, not a box */
-  --void:      #08090B;   /* page base */
-  --plane-1:   #0C0E11;   /* recessed band */
-  --plane-2:   #111419;   /* raised surface */
-  --plane-3:   #171B21;   /* hover / interactive */
+  --text-1:    #101112;
+  --text-2:    #63676E;
+  --text-3:    #9A9EA5;
 
-  /* Type */
-  --text-1:    #F4F5F7;   /* primary */
-  --text-2:    #9CA3AE;   /* secondary */
-  --text-3:    #646B76;   /* tertiary / labels */
+  --line-1:    rgba(16, 17, 18, 0.10);
+  --line-2:    rgba(16, 17, 18, 0.20);
 
-  /* Hairlines */
-  --line-1:    rgba(255, 255, 255, 0.07);
-  --line-2:    rgba(255, 255, 255, 0.12);
+  /* Accent is typographic, not chromatic — no neon anywhere. */
+  --signal:    #101112;
+  --signal-lo: rgba(16, 17, 18, 0.05);
 
-  /* Signal — used sparingly, never as decoration */
-  --signal:    #7C7BFF;
-  --signal-lo: rgba(124, 123, 255, 0.14);
-
-
-  /* Legacy aliases kept so older marketing markup resolves to the dark theme */
-  --color-paper:      #08090B;
-  --color-paper-2:    #0C0E11;
-  --color-ink:        #111419;
-  --color-ink-2:      #171B21;
-  --color-mist:       #9CA3AE;
-  --color-mist-dark:  #646B76;
-  --color-line:       rgba(255, 255, 255, 0.07);
-  --color-line-dark:  rgba(255, 255, 255, 0.12);
-  --color-rust:       #7C7BFF;
-  --color-rust-lt:    #A5A4FF;
+  --color-paper:      #FFFFFF;
+  --color-paper-2:    #F7F7F8;
+  --color-ink:        #FFFFFF;
+  --color-ink-2:      #F2F2F3;
+  --color-mist:       #63676E;
+  --color-mist-dark:  #9A9EA5;
+  --color-line:       rgba(16, 17, 18, 0.10);
+  --color-line-dark:  rgba(16, 17, 18, 0.20);
+  --color-rust:       #101112;
+  --color-rust-lt:    #63676E;
 
   --font-grotesk: "Inter Tight", sans-serif;
   --font-serif-display: "Newsreader", Georgia, serif;
@@ -301,37 +295,21 @@
 /* Atmosphere ------------------------------------------------- */
 
 /* Soft luminous field — replaces flat tinted blocks */
-.aura {
-  position: absolute;
-  border-radius: 9999px;
-  pointer-events: none;
-  filter: blur(90px);
-  opacity: 0.5;
-  background: radial-gradient(circle at center, var(--signal-lo) 0%, transparent 68%);
-}
+.aura { display: none; }
 
-.grain::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.16;
-  z-index: 0;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+.grain::after { content: none; }
 
 .grid-lines {
   background-image:
     linear-gradient(var(--line-1) 1px, transparent 1px),
     linear-gradient(90deg, var(--line-1) 1px, transparent 1px);
-  background-size: 88px 88px;
+  background-size: 120px 120px;
 }
 .grid-lines-dark {
   background-image:
     linear-gradient(var(--line-1) 1px, transparent 1px),
     linear-gradient(90deg, var(--line-1) 1px, transparent 1px);
-  background-size: 88px 88px;
+  background-size: 120px 120px;
 }
 
 /* Motion ----------------------------------------------------- */
@@ -414,15 +392,15 @@
   border-color: var(--line-1);
   backdrop-filter: blur(22px) saturate(150%);
   -webkit-backdrop-filter: blur(22px) saturate(150%);
-  box-shadow: 0 10px 40px rgba(0,0,0,.30);
+  box-shadow: 0 1px 2px rgba(16,17,18,.05);
 }
-:root[data-theme='light'] .nav-pill.is-floating { box-shadow: 0 10px 40px rgba(10,11,13,.09); }
+
 
 /* Sliding pill behind the hovered/active nav item */
 .nav-ind {
   position: absolute;
   border-radius: 9999px;
-  background: var(--plane-3);
+  background: var(--plane-1);
   transition: transform .55s cubic-bezier(.16,1,.3,1),
               width .55s cubic-bezier(.16,1,.3,1), opacity .35s ease;
   z-index: 0;
@@ -452,29 +430,19 @@
 
 /* Light sweep across primary buttons */
 .btn-ink { position: relative; overflow: hidden; }
-.btn-ink::after {
-  content: ''; position: absolute; inset: 0;
-  transform: translateX(-120%) skewX(-18deg);
-  background: linear-gradient(90deg,transparent,rgba(255,255,255,.34),transparent);
-  transition: transform .85s cubic-bezier(.16,1,.3,1);
-  pointer-events: none;
-}
-.btn-ink:hover::after { transform: translateX(120%) skewX(-18deg); }
+.btn-ink::after { content: none; }
+
 
 /* Pointer-tracked spotlight on raised surfaces */
 .spot { position: relative; }
-.spot::before {
-  content: ''; position: absolute; inset: 0; border-radius: inherit;
-  opacity: 0; transition: opacity .45s ease; pointer-events: none;
-  background: radial-gradient(420px circle at var(--mx,50%) var(--my,50%), var(--signal-lo), transparent 62%);
-}
-.spot:hover::before { opacity: 1; }
+.spot::before { content: none; }
+
 
 /* Scroll progress rail */
 .scroll-rail {
   position: fixed; top: 0; left: 0; height: 2px; width: 100%;
   transform-origin: 0 50%;
-  background: linear-gradient(90deg, var(--signal), var(--text-1));
+  background: var(--text-1);
   z-index: 200; will-change: transform;
 }
 
@@ -487,12 +455,12 @@
 }
 .ul-draw:hover::after { transform: scaleX(1); }
 
-.float-slow { animation: floatSlow 13s ease-in-out infinite; }
+.float-slow { animation: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track, .float-slow { animation: none; }
   .tr-word > span { transform: none; transition: none; }
-  .btn-ink::after { display: none; }
+  .btn-ink::after { content: none; }
   .nav-pill, .nav-ind, .ul-draw::after { transition: none; }
 }
 
@@ -500,53 +468,52 @@
 
 /* Nav backdrop lives outside @theme: no utility consumes it, so Tailwind
    would tree-shake it out of the generated :root block. */
-:root { --nav-scrim: rgba(8, 9, 11, 0.72); }
+:root { --nav-scrim: rgba(255, 255, 255, 0.82); }
 
 /* ── Light theme ──────────────────────────────────────────────
    Same structure, inverted ladder. Set via data-theme on <html>;
    dark remains the default. Higher specificity than Tailwind's
    :root block, so these win without !important.                */
 
-:root[data-theme='light'] {
-  --void:      #FBFBFC;
-  --plane-1:   #F4F5F7;
-  --plane-2:   #FFFFFF;
-  --plane-3:   #EFF1F4;
+:root[data-theme='dark'] {
+  --void:      #0B0B0C;
+  --plane-1:   #101012;
+  --plane-2:   #151517;
+  --plane-3:   #1B1B1E;
 
-  --text-1:    #0A0B0D;
-  --text-2:    #565B63;
-  --text-3:    #878C95;
+  --text-1:    #F4F4F5;
+  --text-2:    #9B9FA6;
+  --text-3:    #6B7077;
 
-  --line-1:    rgba(10, 11, 13, 0.09);
-  --line-2:    rgba(10, 11, 13, 0.17);
+  --line-1:    rgba(255, 255, 255, 0.09);
+  --line-2:    rgba(255, 255, 255, 0.18);
 
-  --signal:    #5546E0;
-  --signal-lo: rgba(85, 70, 224, 0.12);
-  --nav-scrim: rgba(251, 251, 252, 0.78);
+  --signal:    #F4F4F5;
+  --signal-lo: rgba(255, 255, 255, 0.06);
 
-  /* legacy aliases */
-  --color-paper:     #FBFBFC;
-  --color-paper-2:   #F4F5F7;
-  --color-ink:       #FFFFFF;
-  --color-ink-2:     #EFF1F4;
-  --color-mist:      #565B63;
-  --color-mist-dark: #878C95;
-  --color-line:      rgba(10, 11, 13, 0.09);
-  --color-line-dark: rgba(10, 11, 13, 0.17);
-  --color-rust:      #5546E0;
-  --color-rust-lt:   #6E5FF0;
+  --color-paper:     #0B0B0C;
+  --color-paper-2:   #101012;
+  --color-ink:       #151517;
+  --color-ink-2:     #1B1B1E;
+  --color-mist:      #9B9FA6;
+  --color-mist-dark: #6B7077;
+  --color-line:      rgba(255, 255, 255, 0.09);
+  --color-line-dark: rgba(255, 255, 255, 0.18);
+  --color-rust:      #F4F4F5;
+  --color-rust-lt:   #9B9FA6;
 
-  color-scheme: light;
+  --nav-scrim: rgba(11, 11, 12, 0.80);
+  color-scheme: dark;
 }
 
-:root[data-theme='dark'] { color-scheme: dark; }
+
 
 /* The mark is a single-colour SVG; flip it per theme rather than shipping two files. */
-.brand-mark { filter: brightness(0) invert(1); }
-:root[data-theme='light'] .brand-mark { filter: brightness(0); }
+.brand-mark { filter: brightness(0); }
+:root[data-theme='dark'] .brand-mark { filter: brightness(0) invert(1); }
 
 /* Grain is tuned for dark; it reads as dirt on a light ground. */
-:root[data-theme='light'] .grain::after { opacity: 0.05; mix-blend-mode: multiply; }
+
 
 /* Page background follows the theme so there is no flash at the edges. */
 body { background-color: var(--void); }

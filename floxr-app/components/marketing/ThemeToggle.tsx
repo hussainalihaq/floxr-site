@@ -12,11 +12,11 @@ type Theme = 'dark' | 'light';
  * this component only reads that state and toggles it.
  */
 export default function ThemeToggle({ className = '' }: { className?: string }) {
-  const [theme, setTheme] = useState<Theme>('dark');
+  const [theme, setTheme] = useState<Theme>('light');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const current = (document.documentElement.getAttribute('data-theme') as Theme) || 'dark';
+    const current = (document.documentElement.getAttribute('data-theme') as Theme) || 'light';
     setTheme(current);
     setMounted(true);
   }, []);
