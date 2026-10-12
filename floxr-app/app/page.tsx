@@ -227,11 +227,13 @@ export default function HomePage() {
                     href={cs.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group block h-full p-8 md:p-10 border hairline transition-colors duration-300 hover:border-[var(--line-2)]"
+                    className={`group block h-full p-8 md:p-10 border hairline transition-colors duration-300 hover:border-[var(--line-2)] ${
+                      cs.featured ? 'md:col-span-2 border-[var(--signal)]/45' : ''
+                    }`}
                     style={{ backgroundColor: 'var(--void)' }}
                   >
                     <div className="flex items-center justify-between mb-8">
-                      <span className="eyebrow">{cs.sector}</span>
+                      <span className="eyebrow">{cs.featured ? 'Featured Project' : cs.sector}</span>
                       <span className="eyebrow">{cs.year}</span>
                     </div>
 

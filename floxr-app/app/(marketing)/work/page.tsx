@@ -49,7 +49,9 @@ export default function WorkPage() {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`group lg:col-span-7 block relative overflow-hidden rounded-2xl ${i % 2 === 1 ? 'lg:order-2' : ''}`}
+                      className={`group lg:col-span-7 block relative overflow-hidden rounded-2xl ${
+                        project.featured ? 'ring-1 ring-[var(--signal)]/45' : ''
+                      } ${i % 2 === 1 ? 'lg:order-2' : ''}`}
                       style={{ backgroundColor: 'var(--plane-1)' }}
                     >
                       <div className="absolute inset-0 grid-lines-dark" />
@@ -79,6 +81,11 @@ export default function WorkPage() {
                     {/* Detail */}
                     <div className={`lg:col-span-5 ${i % 2 === 1 ? 'lg:order-1' : ''}`}>
                       <div className="flex gap-2 mb-5 flex-wrap">
+                        {project.featured && (
+                          <span className="eyebrow border border-[var(--signal)]/45 rounded-full px-4 py-2 text-[var(--signal)]">
+                            Featured Project
+                          </span>
+                        )}
                         <span className="eyebrow border hairline rounded-full px-4 py-2" style={{ color: 'var(--text-2)' }}>
                           {project.sector}
                         </span>

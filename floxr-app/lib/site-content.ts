@@ -147,12 +147,27 @@ export const LAB_SLUGS = [
 /** Real, shipped work only. */
 export const CASE_STUDIES = [
   {
+    name: 'WOVN',
+    domain: 'wovn.pk',
+    url: 'https://www.wovn.pk',
+    year: '2026',
+    categories: ['AI Search', 'Fashion Commerce'],
+    sector: 'Retail & Clothing',
+    featured: true,
+    brief:
+      'A Pakistan-focused fashion discovery platform helping shoppers find outfits across local brands without jumping between separate stores.',
+    delivered:
+      'We built the live discovery experience around visual search, outfit exploration, and a fast product browsing flow for Pakistani fashion.',
+    outcome: 'Featured project, live at wovn.pk.',
+  },
+  {
     name: 'AmeerGlobal Trading & Imports',
     domain: 'ameerglobal.ca',
     url: 'https://ameerglobal.ca',
     year: '2026',
     categories: ['E-Commerce', 'ERP & Operations'],
     sector: 'Trading & Logistics',
+    featured: false,
     brief:
       'A Toronto trading company handling import and export across commodities and logistics, running on email and spreadsheets.',
     delivered:
@@ -166,6 +181,7 @@ export const CASE_STUDIES = [
     year: '2024',
     categories: ['Custom Software'],
     sector: 'Professional Services',
+    featured: false,
     brief:
       'Legal research was slow and scattered across databases, costing professionals hours of manual work per case.',
     delivered:
