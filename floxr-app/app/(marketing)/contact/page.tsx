@@ -8,7 +8,7 @@ import CustomCursor from '@/components/marketing/CustomCursor';
 import SiteFooter from '@/components/marketing/SiteFooter';
 import Reveal from '@/components/marketing/Reveal';
 import { TextReveal } from '@/components/marketing/Motion';
-import { PRODUCTS, CUSTOM_BUILDS } from '@/lib/site-content';
+import { PRODUCTS, CUSTOM_BUILDS, CHAT_MESSAGE, WHATSAPP_DISPLAY, whatsappLink } from '@/lib/site-content';
 
 const TIMELINES = ['ASAP', 'Within a month', '1–3 months', 'Just exploring'];
 
@@ -135,13 +135,13 @@ export default function ContactPage() {
                     hello@floxr.co
                   </a>
                   <a
-                    href="https://wa.me/message"
+                    href={whatsappLink(CHAT_MESSAGE)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="ul-draw w-fit text-[15px] font-light"
                     style={{ color: 'var(--text-2)' }}
                   >
-                    WhatsApp
+                    WhatsApp {WHATSAPP_DISPLAY}
                   </a>
                   <a
                     href="https://instagram.com/floxr.co"
