@@ -5,13 +5,16 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import ThemeToggle from '@/components/marketing/ThemeToggle';
+import { DEMO_MESSAGE, WHATSAPP_DISPLAY, whatsappLink } from '@/lib/site-content';
 
 const NAV_LINKS = [
+  { href: '/#pricing', label: 'Pricing' },
   { href: '/work', label: 'Work' },
-  { href: '/capabilities', label: 'Capabilities' },
-  { href: '/lab', label: 'Lab' },
+  { href: '/capabilities', label: 'Products' },
   { href: '/contact', label: 'Contact' },
 ];
+
+const DEMO_HREF = whatsappLink(DEMO_MESSAGE);
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -106,9 +109,14 @@ export default function Navbar() {
 
             <div className="hidden md:flex items-center gap-3">
               <ThemeToggle />
-              <Link href="/contact" className="btn-pill btn-ink !py-2.5 !px-5 !text-[13px]">
-                Start a Project
-              </Link>
+              <a
+                href={DEMO_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-pill btn-ink !py-2.5 !px-5 !text-[13px]"
+              >
+                Book a demo
+              </a>
             </div>
 
             <div className="md:hidden flex items-center gap-2 relative z-[110]">
@@ -160,10 +168,16 @@ export default function Navbar() {
             </div>
 
             <div className="mt-auto pt-12 mobile-link-animate" style={{ animationDelay: `${NAV_LINKS.length * 0.07}s` }}>
-              <Link href="/contact" onClick={() => setIsOpen(false)} className="btn-pill btn-ink w-full">
-                Start a Project
-              </Link>
-              <p className="eyebrow text-center mt-7">hello@floxr.co</p>
+              <a
+                href={DEMO_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsOpen(false)}
+                className="btn-pill btn-ink w-full"
+              >
+                Book a free demo on WhatsApp
+              </a>
+              <p className="eyebrow text-center mt-7">{WHATSAPP_DISPLAY} · hello@floxr.co</p>
             </div>
           </>
         )}

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
-import { COMPANY_LINE } from '@/lib/site-content';
+import { COMPANY_LINE, DEMO_MESSAGE, WHATSAPP_DISPLAY, whatsappLink } from '@/lib/site-content';
+import WhatsAppFab from '@/components/marketing/WhatsAppFab';
+import Magnetic from '@/components/marketing/Magnetic';
 
 const COLUMNS = [
   {
@@ -25,6 +27,7 @@ const COLUMNS = [
 export default function SiteFooter() {
   return (
     <footer className="relative overflow-hidden" style={{ backgroundColor: 'var(--void)' }}>
+      <WhatsAppFab />
       
 
       {/* Closing statement */}
@@ -33,13 +36,25 @@ export default function SiteFooter() {
           <p className="eyebrow mb-8">Next Step</p>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12">
             <h2 className="display-lg2 max-w-3xl">
-              Tell us what you need built. We&apos;ll come back with scope, timeline, and a{' '}
-              <span className="font-serif-it">fixed price</span>.
+              See it running on your own menu in a{' '}
+              <span className="font-serif-it">15-minute</span> demo.
             </h2>
-            <Link href="/contact" className="btn-pill btn-ink flex-shrink-0">
-              Start a Conversation
-              <ArrowUpRight size={15} strokeWidth={1.75} />
-            </Link>
+            <div className="flex flex-col items-start lg:items-end gap-4 flex-shrink-0">
+              <Magnetic>
+                <a
+                  href={whatsappLink(DEMO_MESSAGE)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-pill btn-ink"
+                >
+                  Book a free demo
+                  <ArrowUpRight size={15} strokeWidth={1.75} />
+                </a>
+              </Magnetic>
+              <Link href="/contact" className="ul-draw text-[14px] font-light" style={{ color: 'var(--text-2)' }}>
+                Not a restaurant? Send us a brief
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -56,6 +71,15 @@ export default function SiteFooter() {
               style={{ color: 'var(--text-1)' }}
             >
               hello@floxr.co
+            </a>
+            <a
+              href={whatsappLink('Hi Floxr')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block mt-2 text-[15px] font-light transition-colors duration-300 hover:text-[var(--signal)]"
+              style={{ color: 'var(--text-2)' }}
+            >
+              WhatsApp {WHATSAPP_DISPLAY}
             </a>
           </div>
 
